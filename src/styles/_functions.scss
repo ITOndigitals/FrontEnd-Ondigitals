@@ -1,0 +1,11 @@
+@function zoom_ratio ($value, $zoom_ratio: 0.8) {
+
+  $return: ();
+
+  @each $key in $value {
+    $rounded_value: round($key * $zoom_ratio);
+    $return: append($return, $rounded_value);
+  }
+
+  @return $return;
+}

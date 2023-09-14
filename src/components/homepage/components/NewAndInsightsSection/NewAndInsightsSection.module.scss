@@ -1,0 +1,186 @@
+@import ".././../../../styles/variables";
+@import ".././../../../styles/mixins";
+@import ".././../../../styles/functions";
+
+.section-new-insights {
+  background-color: #faf5ff;
+  height: 100vh;
+  padding: 89px 20px;
+  &__content {
+    .button-discover-more {
+      @include text;
+      font-weight: 600;
+      color: #131114;
+      a {
+        display: inline-flex;
+        float: right;
+        justify-content: flex-end;
+        position: relative;
+        z-index: calc($header-index + 1);
+
+      }
+    }
+    .card-news-insights {
+      border-radius: 20px 20px 0px 0px;
+      background-color: #fff;
+      position: relative;
+      width: 100%;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+      &__button span {
+        color: #131114;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 26px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        align-self: stretch;
+      }
+      &__content {
+        padding: 10px;
+        &--tag {
+          border-radius: 40px;
+          background: #3d1766;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 16px;
+          width: auto;
+          height: auto;
+          padding: 6px 12px;
+        }
+        &__dayView {
+          display: flex;
+          padding: 16px 0;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          p {
+            color: var(--neutral-100, #131114);
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 16px;
+          }
+        }
+        &--titlePost {
+          color: #131114;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 28px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          text-align: start;
+        }
+        &--text {
+          color: #131114;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          margin: 16px 0;
+          text-align: start;
+        }
+      }
+
+      &__image {
+        width: 100%;
+        height: 150px;
+        min-height: 150px;
+        overflow: hidden;
+        position: relative;
+        img {
+          object-fit: cover;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 42px;
+    &--left {
+      color: #131114;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 40px;
+    }
+    &--right {
+      color: #131313;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .section-new-insights {
+    height: auto;
+    &__content {
+      padding: 0px;
+      .button-discover-more {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+@media (max-width: 360px) {
+  .section-new-insights {
+    height: auto;
+    &__content {
+      padding: 0px;
+      .button-discover-more {
+        margin-top: 30px;
+      }
+      .card-news-insights {
+        border-radius: 20px 20px 0px 0px;
+        background-color: #fff;
+        position: relative;
+        width: 100%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
+          rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        &__content {
+          padding: 10px;
+
+          &__dayView {
+            justify-content: space-evenly;
+            p {
+              margin-top: 10px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    &__title {
+      &--left {
+        color: #131114;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

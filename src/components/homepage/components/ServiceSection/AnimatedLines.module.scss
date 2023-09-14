@@ -1,0 +1,41 @@
+@import "../../../../styles/variables";
+
+.animated-lines {
+  width: 100%;
+  &-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &-item {
+    display: flex;
+    text-overflow: unset;
+    margin-right: 45px;
+    &-circle {
+      border-radius: 100%;
+      width: 16px;
+      height: 16px;
+      margin-right: 45px;
+      &.primary {
+        background-color: $primary-dark;
+      }
+      &.red-dark {
+        background-color: $red-dark;
+      }
+      &.red-light {
+        background-color: $red-light;
+      }
+      &.primary-light {
+        background-color: $primary-light;
+      }
+    }
+    &-content {
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 400;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

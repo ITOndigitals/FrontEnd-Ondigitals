@@ -1,0 +1,70 @@
+.button-search {
+  padding: 10px 12px;
+  border-radius: 24px;
+  border: 1px solid #000;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+      border: none;
+      margin: 0 5px;
+      width: 100%;
+    }
+
+    .form-input-hide {
+      width: 0;
+      position: relative;
+      overflow: hidden;
+      transition: 500ms width ease-in-out, 500ms padding ease-in-out,
+        500ms border-radius ease-in-out;
+    }
+    .form-input-show {
+      display: flex;
+      width: 110px;
+      max-width: 110px;
+      transition: 500ms width ease-in-out, 500ms padding ease-in-out,
+        500ms border-radius ease-in-out;
+    }
+  }
+  .btn-hide {
+    display: none;
+  }
+  .icon-hide {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    svg {
+      animation: hide 0.3s;
+    }
+  }
+  .icon-show {
+    width: 24px;
+    height: 24px;
+    svg {
+      animation: hide 0.3s;
+    }
+    cursor: pointer;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

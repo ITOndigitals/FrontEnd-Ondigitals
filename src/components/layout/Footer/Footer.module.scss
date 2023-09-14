@@ -1,0 +1,139 @@
+@import "../../../styles/variables";
+.footer {
+  background-color: #3d1766;
+  height: auto;
+}
+.footer__row {
+  display: flex;
+  gap: 60px;
+  padding: 94px 0 65px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .colum-1 {
+    width: 26%;
+    .title__company__footer {
+      font-weight: 600;
+      margin: 38px 0 10px 0;
+    }
+    .image-logo-footer {
+      position: relative;
+      width: 241px;
+      height: 108px;
+     
+    }
+  }
+  .colum-2 {
+    width: 28%;
+    .row__services {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+  .colum-3 {
+    width: 15%;
+  }
+  .colum-4 {
+    width: 15%;
+    .icon__homepage--social {
+      display: flex;
+      gap: 16px;
+      a {
+        font-size: 24px;
+      }
+    }
+  }
+  p,
+  li {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+.footer__row {
+  .colum__title {
+    margin-bottom: 12px;
+  }
+  .colum-1 p {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .colum-1 span {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+  }
+  a {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  p {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+  }
+}
+@media (max-width: 1240px) {
+  .footer__row {
+    margin: 0 20px;
+    justify-content: unset;
+    .colum-1 {
+      width: 45%;
+    }
+    .colum-2 {
+      width: 45%;
+      .row__services {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .colum-3 {
+      width: 45%;
+    }
+    .colum-4 {
+      width: 45%;
+    }
+  }
+}
+@media (max-width: 640px) {
+  .footer__row {
+    .colum-1 {
+      width: 100%;
+      .title__company__footer {
+        font-weight: 600;
+        margin: 38px 0 10px 0;
+      }
+      .image-logo-footer {
+        width: 241px;
+        height: 108px;
+      }
+    }
+    .colum-2 {
+      width: 100%;
+      .row__services {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .colum-3 {
+      width: 100%;
+    }
+    .colum-4 {
+      width: 100%;
+    }
+  }
+}

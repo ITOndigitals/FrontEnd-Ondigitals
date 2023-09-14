@@ -1,0 +1,48 @@
+@import "../../../../styles/variables";
+
+.case-study {
+  background-color: $primary-dark;
+  padding-top: 103px;
+  padding-bottom: 120px;
+  height: 100vh;
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    &__heading {
+      font-size: 36px;
+      line-height: 40px;
+      font-weight: 600;
+    }
+    a {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+      margin-top: 5px;
+      display: block;
+      display: flex;
+      p {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .case-study {
+    height: auto;
+  }
+}
+
+@media (max-width: 780px) {
+  .case-study {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 680px) {
+  .case-study {
+    height: auto;
+  }
+}

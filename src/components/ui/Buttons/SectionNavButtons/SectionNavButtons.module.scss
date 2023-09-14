@@ -1,0 +1,31 @@
+@import "../../../../styles/variables";
+
+.container {
+  width: 100%;
+  bottom: calc($header-padding);
+  position: absolute;
+  left: 0;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    svg {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bottom-nav-item {
+  font-size: 20px;
+  line-height: 28px;
+}

@@ -1,0 +1,153 @@
+@import ".././../../../styles/variables";
+@import ".././../../../styles/mixins";
+.section-contact-form {
+  background-color: $primary-light;
+  height: 100vh;
+  position: relative;
+}
+.contact-section {
+  padding: 123px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__columLeft {
+    width: 45%;
+    &__form {
+      width: 100%;
+      &__buttonAndNote {
+        margin-top: 16px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        div:first-child{
+          width: 50%;
+        }
+        &--btn {
+          display: flex;
+          flex-direction: column;
+          span {
+            color: #dcc7ed;
+            text-align: center;
+            font-family: Maven Pro;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 16px;
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+  &__columRight {
+    width: 35%;
+    transform: translateY(-30px);
+    &__image {
+      position: relative;
+      width: 329px;
+      height: 327px;
+    }
+    &__text {
+      p:first-child {
+        color: $white;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+        margin: 12px 0;
+      }
+      p:last-child {
+        color: $white;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .section-contact-form {
+    height: auto;
+  }
+  .contact-section {
+    padding: 100px 20px;
+    &__columLeft {
+      width: 100%;
+      &__form {
+        width: 100%;
+        &__buttonAndNote {
+          div:first-child{
+            margin-bottom: 20px;
+          }
+          &--btn {
+            display: flex;
+            flex-direction: column;
+            span {
+              color: #dcc7ed;
+              text-align: center;
+              font-family: Maven Pro;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 16px;
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+    }
+    &__columRight {
+      width: 100%;
+      transform: unset;
+      margin: 30px 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .contact-section {
+    &__columRight {
+      &__image {
+        position: relative;
+        width: 272px;
+        height: 270px;
+      }
+    }
+    &__columLeft {
+      &__form {
+        width: 100%;
+        &__buttonAndNote {
+          div:first-child{
+            width: 100%;
+            margin-bottom: 20px;
+          }
+        
+        }
+      }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .contact-section {
+    &__columLeft {
+      &__form {
+        width: 100%;
+        &__buttonAndNote {
+          div:first-child{
+            width: 100%;
+            margin-bottom: 20px;
+          }
+        
+        }
+      }
+    }
+  }
+}
+

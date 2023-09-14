@@ -1,0 +1,14 @@
+.dateview-wrapper {
+    display: flex;
+    align-items: center;
+    p {
+      color: var(--neutral-100, #131114);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+      &:nth-child(2) {
+        margin-left: 8px;
+      }
+    }
+  }
