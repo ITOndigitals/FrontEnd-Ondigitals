@@ -67,6 +67,35 @@
         font-style: normal;
         font-weight: 600;
         line-height: 28px;
+        em {
+          margin: unset;
+          display: unset;
+        }
+      }
+    }
+    .post-detail-footer {
+      margin-top: 32px;
+      hr {
+        height: 3px;
+        background-color: #000;
+      }
+      .post-detail-footer-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 16px;
+        &__back {
+          a {
+            gap: 8px;
+          }
+        }
+        &__icon-to-top {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }

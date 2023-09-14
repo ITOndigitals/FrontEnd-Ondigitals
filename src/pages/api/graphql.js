@@ -8,6 +8,7 @@ export const getDataForNewAndInsightsSection = async () => {
           id
           title
           date
+          slug
           excerpt
           featuredImage {
             node {
@@ -37,6 +38,7 @@ export const SearchPostsByKey = async ({ key }) => {
           title
           date
           excerpt
+          slug
           featuredImage {
             node {
               sourceUrl
@@ -57,34 +59,33 @@ export const SearchPostsByKey = async ({ key }) => {
     return [];
   }
 };
-export const GetPostDetailById = async (postId) => {
+export const GetPostDetailBySlug = async (slug) => {
   const endpoint = "https://kimlongdiep.com/graphql";
   const query = gql`
-    query GetPost($postId: Int!) {
-      posts(where: { id: $postId }) {
-        nodes {
-          id
-          title
-          date
-          postId
-          excerpt
-          content
-          featuredImage {
-            node {
-              sourceUrl
-            }
+    query GetPost($slug: String!) {
+      postBy(slug: $slug) {
+        id
+        title
+        date
+        postId
+        excerpt
+        content
+        featuredImage {
+          node {
+            sourceUrl
           }
-          link
         }
+        link
       }
     }
   `;
-  const variables = { postId };
+  const variables = { slug };
   try {
     const data = await request(endpoint, query, variables);
-    return data.posts.nodes;
+    return data.postBy;
   } catch (error) {
     console.error("Error fetching data", error);
-    return [];
+    return null; 
   }
 };
+
