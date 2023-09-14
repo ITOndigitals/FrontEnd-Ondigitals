@@ -1,9 +1,23 @@
-import React from 'react'
-import Header from './Header/Header'
-import Footer from './Footer/Footer'
+import React, { useEffect, useState } from "react";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+
 const Layout = ({ children, className }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
   return (
     <div className={className}>
+      {loading && (
+        <div class="overlay">
+          <div class="spinner"></div>
+        </div>
+      )}
       <Header />
       <main>{children}</main>
       <Footer />
@@ -12,3 +26,6 @@ const Layout = ({ children, className }) => {
 };
 
 export default Layout;
+<div class="gotrs-loading">
+  <div class="gotrs-spinner"></div>
+</div>;
