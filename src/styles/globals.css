@@ -504,6 +504,7 @@ a {
   top: 96% !important;
 }
 /* END READMORE IN BLOG DETAIL */
+/* start preloader */
 .overlay {
   position: relative;
   z-index: 9999;
@@ -605,3 +606,4 @@ a {
     opacity: 0;
   }
 }
+/* end preloader */
