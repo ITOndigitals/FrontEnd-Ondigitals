@@ -1,8 +1,7 @@
 import { useBoundStore } from "@/store/useBoundStore";
 import classes from "./BlogDetail.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../ui/Breadcrumb/Breadcrumb";
-import Link from "next/link";
 import ButtonNoBorder from "../ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import TopRightArrow from "../ui/Icons/TopRightArrow";
 import ReadMoreSlider from "./components/ReadMoreSlider/ReadMoreSlider";
@@ -10,6 +9,7 @@ import PostDetail from "./components/postdetail/PostDetail";
 import { Maven_Pro } from "next/font/google";
 import Button from "../ui/Buttons/Button/Button";
 import { ArrowRight } from "../ui/Icons/ListIcon";
+import TableOfContent from "./components/TableOfContent/TableOfContent";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -37,6 +37,7 @@ const DUMMY_BREADCRUMB_DATA = [
 ];
 
 const BlogDetail = ({ relatedPosts, postDetail }) => {
+  const [markdown, setMarkdown] = useState();
   const headerIsDark = useBoundStore((state) => state.isDark);
   const setToDark = useBoundStore((state) => state.setToDark);
   const setHeaderCanNotChangeColor = useBoundStore(
@@ -51,6 +52,11 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     }
   }, [headerIsDark]);
 
+  const applyMarkDownHandler = (markdownData) => {
+    console.log(markdownData)
+    setMarkdown(markdownData);
+  };
+
   return (
     <div className={classes["blog-detail"]}>
       <div className="container">
@@ -59,10 +65,15 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
           <Breadcrumb data={DUMMY_BREADCRUMB_DATA} />
         </div>
         <section className={classes["blog-detail-content"]}>
-          <div className={classes["blog-detail-content__toc"]}></div>
+          <div className={classes["blog-detail-content__toc"]}>
+            {markdown && <TableOfContent markdown={markdown}/>}
+          </div>
           <div className={classes["blog-detail-content__spacer"]}></div>
           <div className={classes["blog-detail-content__main"]}>
-            <PostDetail data={postDetail} />
+            <PostDetail
+              data={postDetail}
+              applyMarkDown={applyMarkDownHandler}
+            />
           </div>
         </section>
         <section className={classes["blog-detail-read-more"]}>
