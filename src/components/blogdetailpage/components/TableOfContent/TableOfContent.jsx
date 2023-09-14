@@ -56,7 +56,6 @@ const TableOfContent = ({ markdown }) => {
         tocWrapperRef.current.style.height = "0";
         return;
     }
-    console.log(tableOfContentHeight);
     tocWrapperRef.current.style.height = `${tableOfContentHeight}px`;
   }, [tableOfContentIsShown]);
 
