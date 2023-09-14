@@ -8,19 +8,22 @@ const Layout = ({ children, className }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   return (
     <div className={className}>
-      {loading && (
+      {loading ? (
         <div class="overlay">
           <div class="spinner"></div>
         </div>
+      ) : (
+        <>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </>
       )}
-      <Header />
-      <main>{children}</main>
-      <Footer />
     </div>
   );
 };
