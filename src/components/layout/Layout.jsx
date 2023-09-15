@@ -29,6 +29,3 @@ const Layout = ({ children, className }) => {
 };
 
 export default Layout;
-<div class="gotrs-loading">
-  <div class="gotrs-spinner"></div>
-</div>;

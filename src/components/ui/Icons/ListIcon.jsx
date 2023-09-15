@@ -24,6 +24,7 @@ export const ArrowRight = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const IconSuccess = ({ width, height, color }) => {
   return (
     <svg
@@ -50,6 +51,7 @@ export const IconSuccess = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const IconDanger = ({ width, height, color }) => {
   return (
     <svg
@@ -83,6 +85,7 @@ export const IconDanger = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const DownNavIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -102,6 +105,7 @@ export const DownNavIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const UpNavIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -121,6 +125,7 @@ export const UpNavIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const SearchIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -147,6 +152,7 @@ export const SearchIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const CancelIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -173,6 +179,7 @@ export const CancelIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const FacebookIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -189,6 +196,7 @@ export const FacebookIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const IconChevronLeft = ({ width, height, color }) => {
   return (
     <svg
@@ -208,6 +216,7 @@ export const IconChevronLeft = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const LinkedIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -224,6 +233,29 @@ export const LinkedIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
+export const IconChevronUp = ({ width, height, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={`${width}`}
+      height={`${height}`}
+      viewBox={`0 0 ${width} ${height}`}
+      fill="none"
+    >
+      <path
+        d="M6.295 23.6245H1.68515V7.85162H6.295V23.6245ZM3.9876 5.70006C2.51351 5.70006 1.31787 4.40279 1.31787 2.83658C1.31787 2.08427 1.59914 1.36278 2.09982 0.830816C2.60049 0.298853 3.27954 0 3.9876 0C4.69565 0 5.3747 0.298853 5.87538 0.830816C6.37605 1.36278 6.65732 2.08427 6.65732 2.83658C6.65732 4.40279 5.46118 5.70006 3.9876 5.70006ZM23.5482 23.6245H18.9483V15.9463C18.9483 14.1165 18.9135 11.7698 16.5515 11.7698C14.1548 11.7698 13.7875 13.7579 13.7875 15.8145V23.6245H9.18261V7.85162H13.6039V10.0032H13.6684C14.2838 8.76393 15.7872 7.45611 18.0301 7.45611C22.6955 7.45611 23.5532 10.7204 23.5532 14.9602V23.6245H23.5482Z"
+        fill={color}
+        d="M18 15L12 9L6 15"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const XTwitterIcon = ({ width, height, color }) => {
   return (
     <svg
@@ -240,6 +272,7 @@ export const XTwitterIcon = ({ width, height, color }) => {
     </svg>
   );
 };
+
 export const PinterestIcon = ({ width, height, color }) => {
   return (
     <svg

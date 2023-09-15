@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import classes from "./postdetail.module.scss";
 import Tag from "@/components/ui/Tag/Tag";
 import Image from "next/image";
@@ -9,6 +9,14 @@ import { IconChevronLeft, UpNavIcon } from "@/components/ui/Icons/ListIcon";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function PostDetail({ data, applyMarkDown }) {
+  const post = data;
+  const postDetailRef = useRef(null);
+  const handleScrollToTop = () => {
+    if (postDetailRef.current) {
+      const offsetTop = postDetailRef.current.offsetTop;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
   //useEffect sau là khâu chuẩn bị dữ liệu cho Table Of Content
   useEffect(() => {
     const headingElements = document.querySelectorAll("h2, h3, h4");
@@ -69,18 +77,10 @@ export default function PostDetail({ data, applyMarkDown }) {
       applyMarkDown(markdown);
     }
   }, []);
-
-  const post = data;
-  const postDetailRef = useRef(null);
-  const handleScrollToTop = () => {
-    if (postDetailRef.current) {
-      const offsetTop = postDetailRef.current.offsetTop;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-    }
-  };
   if (!data) {
     return null;
   }
+
   return (
     <div ref={postDetailRef} className={classes["post-detail-container"]}>
       <div className={classes["post-detail-content"]} key={post.postId}>
