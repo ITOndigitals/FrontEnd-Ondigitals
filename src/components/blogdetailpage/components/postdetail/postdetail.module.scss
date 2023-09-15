@@ -103,3 +103,24 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .post-detail-container {
+    .post-detail-content {
+      .content-post {
+        h2 {
+          margin: 7px 0;
+        }
+        h3 {
+          margin: 7px 0 6px 0;
+        }
+        img {
+          margin: 8px 0 5px 0;
+        }
+        em {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

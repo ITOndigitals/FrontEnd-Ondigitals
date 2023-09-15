@@ -41,7 +41,6 @@ export default function PostDetail({ data, applyMarkDown }) {
         }
 
         if (headingContent !== "") {
-          const tagName = headingElement.tagName;
           const headingId = "heading-" + i;
           headingElement.id = headingId;
           let numbering = 1;
