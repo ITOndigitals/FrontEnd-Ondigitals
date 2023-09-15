@@ -170,6 +170,14 @@ const HomePage = (allPosts) => {
 
   return (
     <>
+      <style>
+        {`
+        ::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+        `}
+      </style>
       {isShowSectionSlide && (
         <Swiper
           onSlideChange={(swiper) => handleSlideChange(swiper)}

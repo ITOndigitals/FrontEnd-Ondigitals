@@ -21,7 +21,7 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
 
   return (
     <>
-      <Link href={post.link}>
+      <Link href={`/blog/${post.slug}`}>
         <div className={containerClasses}>
           <div className={classes["blog-card__image"]}>
             <Image
