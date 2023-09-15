@@ -149,7 +149,10 @@ a {
 /* start NewAndInsightsSection homepage */
 .news-insights-swiper {
   padding: 0 40px !important;
-  @media (max-width: 360px) {
+  @media (max-width: 1024px) {
+    padding: 0 20px !important;
+  }
+  @media (max-width: 600px) {
     padding: 0 !important;
   }
 }
@@ -233,6 +236,12 @@ a {
   border: 2px solid #ff5252 !important;
 }
 .input-contact-form-success input {
+  border: 2px solid #5cffae !important;
+}
+.textare-contact-form-error textarea {
+  border: 2px solid #ff5252 !important;
+}
+.textare-contact-form-success textarea {
   border: 2px solid #5cffae !important;
 }
 .icon-contact-form {

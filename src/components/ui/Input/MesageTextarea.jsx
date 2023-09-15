@@ -15,8 +15,8 @@ export default function MesageTextarea({
     <>
       <div
         className={`${classes["contact-form-textarea"]} ${
-          errors != null ? "input-contact-form-error" : ""
-        } ${isSuccess ? "input-contact-form-success" : ""}`}
+          errors != null ? "textare-contact-form-error" : ""
+        } ${isSuccess ? "textare-contact-form-success" : ""}`}
       >
         <div style={{ position: "relative" }}>
           <label htmlFor={name}>Message</label>

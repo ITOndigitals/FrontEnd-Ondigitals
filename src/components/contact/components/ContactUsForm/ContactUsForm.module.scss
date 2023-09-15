@@ -1,0 +1,230 @@
+@import ".././../../../styles/variables";
+@import ".././../../../styles/mixins";
+.section-contact-form {
+  background: linear-gradient(
+    180deg,
+    #131313 -26.11%,
+    #54188b 18.79%,
+    #6f1ab6 48.57%,
+    #491879 96.72%,
+    #3d1766 133.24%
+  );
+  height: 100vh;
+  position: relative;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 7%;
+    flex-wrap: wrap;
+    &__title {
+      color: #fff;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 40px;
+    }
+    &__notification {
+      width: 20%;
+    }
+  }
+}
+.contact-section {
+  padding: 2% 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  &__columLeft {
+    width: 45%;
+    &__form {
+      width: 100%;
+      span {
+        color: #dcc7ed;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      &__buttonAndNote {
+        margin: 16px 0;
+        display: flex;
+        justify-content: end;
+        div:first-child {
+          width: 40%;
+          button {
+            justify-content: space-between;
+          }
+        }
+        &--btn {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+  &__columRight {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__text {
+      transform: translateY(-25%);
+      padding: 5%;
+      position: relative;
+      p:first-child {
+        color: #fff;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 68px;
+        display: inline;
+      }
+      .talk {
+        color: #fff;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 68px;
+        display: inline;
+        position: relative;
+        &::before {
+          content: "";
+          width: 50px;
+          height: 50px;
+          background-color: #6f1ab6;
+          border-radius: 50%;
+          position: absolute;
+          top: -50%;
+          right: -50%;
+          z-index: -1;
+        }
+      }
+      p:last-child {
+        color: #fff;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 36px;
+      }
+      &::before {
+        content: "";
+        width: 50px;
+        height: 50px;
+        background-color: #cd0404;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: -1;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .section-contact-form {
+    height: auto;
+    &__header {
+      padding-top: 13%;
+      &__notification {
+        width: 40%;
+      }
+    }
+  }
+  .contact-section {
+    &__columLeft {
+      width: 100%;
+      &__form {
+        width: 100%;
+        &__buttonAndNote {
+          &--btn {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+    &__columRight {
+      width: 100%;
+      transform: unset;
+      margin: 30px 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__text {
+        transform: translateY(0%);
+        padding: 5%;
+        &::before {
+          content: "";
+          width: 50px;
+          height: 50px;
+          background-color: #cd0404;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 30%;
+          left: 5%;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .section-contact-form {
+    height: auto;
+    &__header {
+      padding-top: 26%;
+      &__notification {
+        width: 100%;
+        margin: 5% 0;
+      }
+    }
+  }
+  .contact-section {
+    &__columLeft {
+      &__form {
+        &__buttonAndNote {
+          div:first-child {
+            width: 100%;
+            button {
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+    &__columRight {
+      &__text {
+        margin-bottom: 26%;
+        &::before {
+          content: "";
+          width: 50px;
+          height: 50px;
+          background-color: #cd0404;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 10%;
+          left: 10%;
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 300px) {
+  .contact-section {
+    &__columLeft {
+      &__form {
+        width: 100%;
+        &__buttonAndNote {
+          div:first-child {
+            width: 100%;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
