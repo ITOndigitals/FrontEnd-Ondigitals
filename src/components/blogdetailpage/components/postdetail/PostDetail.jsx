@@ -86,9 +86,9 @@ export default function PostDetail({ data, applyMarkDown }) {
         <h1 className={classes["title-post-detail"]}>{post.title}</h1>
         <div className={classes["day-and-tag-post-detail"]}>
           <div className={classes["tag-post-detail"]}>
-            <Tag type={1} name={"SEO Tip"} />
-            <Tag type={3} name={"Content Marketing"} />
-            <Tag type={2} name={"Digital Marketing"} />
+            <Tag type={1} name={"SEO Tip"} href=""/>
+            <Tag type={3} name={"Content Marketing"} href="" />
+            <Tag type={2} name={"Digital Marketing"} href="" />
           </div>
           <div>
             <DateAndViews createDate={post.date} views={500} />

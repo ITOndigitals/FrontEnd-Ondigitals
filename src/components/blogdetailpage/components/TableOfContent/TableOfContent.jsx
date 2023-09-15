@@ -58,14 +58,14 @@ const TableOfContent = ({ markdown }) => {
       tocWrapperRef.current.style.height = "0";
       return;
     }
-    tocWrapperRef.current.style.height = `${tableOfContentHeight}px`;
+    tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
   }, [tableOfContentIsShown]);
 
   //Set lại height phòng khi user đổi sang kích thước màn hình khác
   useEffect(() => {
     const handleResize = () => {
       const tableOfContentHeight = tocRef.current.clientHeight;
-      tocWrapperRef.current.style.height = `${tableOfContentHeight}px`;
+      tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
     };
     window.addEventListener("resize", handleResize);
     handleResize();

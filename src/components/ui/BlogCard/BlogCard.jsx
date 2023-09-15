@@ -18,7 +18,7 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
 
   return (
     <>
-      <Link href={`/blog/${post.slug}`}>
+      <div href={`/blog/${post.slug}`}>
         <div className={containerClasses}>
           <div className={classes["blog-card__image"]}>
             <Image
@@ -41,7 +41,7 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
                 SEO Tips
               </span> */}
               <div className={classes["blog-card__content__dayView__item"]}>
-                <Tag type={4} name="Web Development" />
+                <Tag type={4} name="Web Development" href="#"/>
               </div>
               {isForSlider && (
                 <div className={classes["blog-card__content__dayView__item"]}>
@@ -49,35 +49,42 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
                 </div>
               )}
             </div>
-            <p className={classes["blog-card__content--title-post"]}>
+            <Link
+              href={`/blog/${post.slug}`}
+              className={classes["blog-card__content--title-post"]}
+            >
               {post.title}
-            </p>
+            </Link>
             <div
               style={{ fontFamily: MavenPro.style.fontFamily }}
               className={classes["blog-card__content--text"]}
               dangerouslySetInnerHTML={{ __html: post.excerpt }}
             ></div>
             {isForSlider && (
-              <div className={classes["blog-card__button"]}>
-                <span>
-                  Read Full<i className="fa-solid fa-arrow-right"></i>
-                </span>
-              </div>
-            )}
-            {!isForSlider && <DateAndViews createDate={isoDate} views={500} />}
-            {isForBlogPage && (
-              <div
+              <Link
                 className={classes["blog-card__button"]}
-                style={{ marginTop: "10px" }}
+                href={`/blog/${post.slug}`}
               >
                 <span>
                   Read Full<i className="fa-solid fa-arrow-right"></i>
                 </span>
-              </div>
+              </Link>
+            )}
+            {!isForSlider && <DateAndViews createDate={isoDate} views={500} />}
+            {isForBlogPage && (
+              <Link
+                className={classes["blog-card__button"]}
+                style={{ marginTop: "10px" }}
+                href={`/blog/${post.slug}`}
+              >
+                <span>
+                  Read Full<i className="fa-solid fa-arrow-right"></i>
+                </span>
+              </Link>
             )}
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

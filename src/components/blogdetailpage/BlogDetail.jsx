@@ -53,7 +53,6 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   }, [headerIsDark]);
 
   const applyMarkDownHandler = (markdownData) => {
-    console.log(markdownData)
     setMarkdown(markdownData);
   };
 
