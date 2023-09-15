@@ -40,6 +40,7 @@ const TableOfContent = ({ markdown }) => {
     setTableOfContentIsShown((oldState) => !oldState);
   };
 
+  //Bắt sự kiện scroll tới khi nhấn TOC
   const scrollToHandler = (e) => {
     e.preventDefault();
     const element = e.target;
@@ -50,14 +51,28 @@ const TableOfContent = ({ markdown }) => {
     targetElement.scrollIntoView({ behavior: "smooth" });
   };
 
+  //Bắt sự kiện click vào nút expanse trên TOC
   useEffect(() => {
     const tableOfContentHeight = tocRef.current.clientHeight;
     if (!tableOfContentIsShown && tocRef && tocWrapperRef) {
-        tocWrapperRef.current.style.height = "0";
-        return;
+      tocWrapperRef.current.style.height = "0";
+      return;
     }
     tocWrapperRef.current.style.height = `${tableOfContentHeight}px`;
   }, [tableOfContentIsShown]);
+
+  //Set lại height phòng khi user đổi sang kích thước màn hình khác
+  useEffect(() => {
+    const handleResize = () => {
+      const tableOfContentHeight = tocRef.current.clientHeight;
+      tocWrapperRef.current.style.height = `${tableOfContentHeight}px`;
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className={classes.toc}>

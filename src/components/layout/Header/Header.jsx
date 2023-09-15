@@ -24,6 +24,8 @@ const Header = () => {
   const headerIsDark = useBoundStore((state) => state.isDark);
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
+
+  //Note: Chỉ khi biến headerCanChangeColor = true mới có thể chuyển màu
   const headerCanChangeColor = useBoundStore(
     (state) => state.headerCanChangeColor
   );
@@ -46,19 +48,13 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // console.log(
-    //   "can change",
-    //   headerCanChangeColor,
-    //   "is dark",
-    //   headerIsDark
-    // );
-
     if (headerCanChangeColor) {
       setIsDark(headerIsDark);
       setBottomIsDark(headerIsDark);
     }
   }, [headerIsDark, headerCanChangeColor]);
 
+  //Xác định các section (tọa độ điểm top và bottom) để set màu lại
   useEffect(() => {
     const header = document.querySelector(".main-header-g");
     const bottomNav = document.querySelector(".bottom-nav");
@@ -167,7 +163,7 @@ const Header = () => {
       <ExpanseMenu
         options={overlayOptions}
         isActive={menuIsOpen}
-        menu={menuItems}
+        menu={menuItems} //prop menu lưu data về menu, khi có api đa ngôn ngữ thì sửa lại
       />
       <header
         className={`${classes["main-header"]} main-header-g ${

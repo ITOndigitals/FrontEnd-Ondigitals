@@ -20,8 +20,12 @@ const ReadMoreSlider = ({ data }) => {
         disableOnInteraction: false,
       }}
       breakpoints={{
-        640: {
+        260: {
           slidesPerView: 1,
+          spaceBetween: 15,
+        },
+        576: {
+          slidesPerView: 2,
           spaceBetween: 15,
         },
         768: {

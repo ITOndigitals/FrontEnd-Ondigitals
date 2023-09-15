@@ -159,6 +159,16 @@
   }
 }
 
+@media (max-width: 410px) {
+  .intro {
+    &-brand-img-container {
+      width: zoom_ratio(523px, 0.6);
+      height: zoom_ratio(60.5px, 0.6);
+      margin: 30px auto;
+    }
+  }
+}
+
 @media (max-width: 380px) {
   .intro {
     &-brand-img-container {
@@ -176,8 +186,8 @@
 @media (max-width: 300px) {
   .intro {
     &-brand-img-container {
-      width: zoom_ratio(523px, 0.3);
-      height: zoom_ratio(60.5px, 0.3);
+      width: zoom_ratio(523px, 0.4);
+      height: zoom_ratio(60.5px, 0.4);
       margin: 30px auto;
     }
   }

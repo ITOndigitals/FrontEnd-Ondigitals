@@ -8,8 +8,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
       .tag-post-detail {
         display: flex;
+        flex-wrap: wrap;
         gap: 8px;
       }
     }

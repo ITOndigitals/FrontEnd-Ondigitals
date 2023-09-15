@@ -36,11 +36,13 @@
     padding: 10px;
     &__dayView {
       display: flex;
-      padding-top: 6px;
       padding-bottom: 16px;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      &__item {
+        margin-top: 6px;
+      }
     }
     &--title-post {
       color: #131114;

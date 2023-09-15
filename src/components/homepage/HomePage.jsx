@@ -34,6 +34,7 @@ const HomePage = (allPosts) => {
   );
   const contactFormRef = useRef(null);
 
+  //Lướt tới contact form
   const scrollToContactForm = () => {
     if (contactFormRef.current) {
       contactFormRef.current.scrollIntoView({ behavior: "smooth" });
@@ -42,6 +43,7 @@ const HomePage = (allPosts) => {
     setToLight();
   };
 
+  //Lướt lên slider
   const scrollToSlider = () => {
     if (swiperRef.current) {
       swiperRef.current.scrollIntoView({ behavior: "smooth" });
@@ -50,6 +52,7 @@ const HomePage = (allPosts) => {
     setToDark();
   };
 
+  //Set header sang màu sáng
   useEffect(() => {
     setHeaderCanChangeColor();
     setToLight();
@@ -59,6 +62,7 @@ const HomePage = (allPosts) => {
     const swiperElement = swiperRef.current;
     const swiperObj = swiperElement.swiper;
     if (!swiperObj) return;
+    //Khóa slider khi đã mở menu
     if (expanseMenuIsOpen) {
       swiperObj.allowSlideNext = false;
       swiperObj.allowSlidePrev = false;
@@ -69,6 +73,7 @@ const HomePage = (allPosts) => {
   }, [expanseMenuIsOpen]);
 
   useEffect(() => {
+    //Khi ở màn hình mobile, hiển thị dưới dạng thông thường
     const handleResize = () => {
       const isOnMobile = window.innerWidth < 1280;
       setIsShowSectionSlide(!isOnMobile);
@@ -86,16 +91,21 @@ const HomePage = (allPosts) => {
     };
   }, []);
 
+  //Khi refresh, tự động lướt lên đầu trang
   useEffect(() => {
     window.history.scrollRestoration = "manual";
   }, []);
 
+  //Handle sự kiện lăn chuột
   useEffect(() => {
-    if (!isShowSectionSlide) return;
+    if (!isShowSectionSlide) return; //Bỏ qua nếu không ở màn hình desktop
     const handleScrollWheel = (event) => {
+      //Biến xác định đang lướt lên hay xuống
       const wheelDirection = event.deltaY > 0 ? "down" : "up";
+
       const swiperElement = swiperRef.current;
       const swiperObj = swiperElement.swiper;
+
       if (!swiperObj) return;
       if (swiperObj.enabled) {
         setHeaderCanNotChangeColor();
@@ -110,6 +120,7 @@ const HomePage = (allPosts) => {
         return;
       }
 
+      //Set header về dark, vô hiệu slider khi ở slide cuối cùng
       if (
         elementTop === 0 &&
         swiperObj.isEnd &&
@@ -134,10 +145,12 @@ const HomePage = (allPosts) => {
     };
   }, [expanseMenuIsOpen]);
 
+  //Chuyển slide tiếp theo
   const nextSlideHandler = () => {
     swiperRef.current.swiper.slideNext();
   };
 
+  //Sự kiện khi chuyển slide
   const handleSlideChange = (swiper) => {
     const header = document.querySelector(".main-header-g");
     if (swiper.isEnd) {

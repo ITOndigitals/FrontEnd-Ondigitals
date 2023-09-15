@@ -16,9 +16,6 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
       : ""
   } ${isForBlogPage ? classes["blog-card-blog-page"] : ""}`;
 
-  //Random từ 1 đến 4
-  const randomType = Math.floor(Math.random() * 4) + 1;
-
   return (
     <>
       <Link href={`/blog/${post.slug}`}>
@@ -43,8 +40,14 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
               >
                 SEO Tips
               </span> */}
-              <Tag type={4} name="Web Development" />
-              {isForSlider && <DateAndViews createDate={isoDate} views={500} />}
+              <div className={classes["blog-card__content__dayView__item"]}>
+                <Tag type={4} name="Web Development" />
+              </div>
+              {isForSlider && (
+                <div className={classes["blog-card__content__dayView__item"]}>
+                  <DateAndViews createDate={isoDate} views={500} />
+                </div>
+              )}
             </div>
             <p className={classes["blog-card__content--title-post"]}>
               {post.title}
