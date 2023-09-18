@@ -1,5 +1,5 @@
 @import "../../styles/variables";
 
 .container {
-  margin-top: calc($header_padding * 4);
+  margin-top: calc($header_padding + 30px);
 }

@@ -1,5 +1,9 @@
 @import "../../../styles/variables";
 
+.blog-card-container {
+  display: inline;
+}
+
 .blog-card {
   border-radius: 20px 20px 0px 0px;
   background-color: #fff;

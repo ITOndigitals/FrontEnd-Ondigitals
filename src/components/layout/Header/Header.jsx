@@ -68,64 +68,96 @@ const Header = () => {
       // và là section thứ 2 đối với mobile section
       const secondSection = document.querySelector(".service-section");
       const introSection = document.querySelector(".intro-section");
-      if (!secondSection || !introSection) return;
+      const contactInforSection = document.querySelector(".contact-infor");
+      if (secondSection && introSection) {
+        const secondSectionTop = secondSection.offsetTop;
+        const secondSectionBottom =
+          secondSectionTop + secondSection.offsetHeight - headerHeight;
 
-      const secondSectionTop = secondSection.offsetTop;
-      const secondSectionBottom =
-        secondSectionTop + secondSection.offsetHeight - headerHeight;
+        if (headerCanChangeColor) {
+          if (
+            headerScrollOffset >= secondSectionTop &&
+            headerScrollOffset <= secondSectionBottom
+          ) {
+            setIsDark(true);
+          } else {
+            setIsDark(false);
+          }
 
-      if (headerCanChangeColor) {
-        if (
-          headerScrollOffset >= secondSectionTop &&
-          headerScrollOffset <= secondSectionBottom
-        ) {
-          setIsDark(true);
-        } else {
-          setIsDark(false);
+          if (
+            bottomNavScrollOffset >= secondSectionTop &&
+            bottomNavScrollOffset <= secondSectionBottom
+          ) {
+            setBottomIsDark(true);
+          } else {
+            setBottomIsDark(false);
+          }
         }
+      }
+      if (contactInforSection) {
+        const contactSectionTop = contactInforSection.offsetTop;
+        const contactSectionBottom =
+          contactSectionTop + contactInforSection.offsetHeight - headerHeight;
 
-        if (
-          bottomNavScrollOffset >= secondSectionTop &&
-          bottomNavScrollOffset <= secondSectionBottom
-        ) {
-          setBottomIsDark(true);
-        } else {
-          setBottomIsDark(false);
+        if (headerCanChangeColor) {
+          if (
+            headerScrollOffset >= contactSectionTop &&
+            headerScrollOffset <= contactSectionBottom
+          ) {
+            setIsDark(true);
+          } else {
+            setIsDark(false);
+          }
+
+          if (
+            bottomNavScrollOffset >= contactSectionTop &&
+            bottomNavScrollOffset <= contactSectionBottom
+          ) {
+            setBottomIsDark(true);
+          } else {
+            setBottomIsDark(false);
+          }
         }
       }
 
       // Khi ở mobile, tìm đến section insight và thay đổi thành dark
       const insightSection = document.querySelector(".insights-section");
-      const insightSectionTop = insightSection.offsetTop;
-      const insightSectionBottom =
-        insightSection.offsetTop + insightSection.offsetHeight;
-      if (isOnMobile) {
-        if (!insightSection) return;
+      if (insightSection) {
+        const insightSectionTop = insightSection.offsetTop;
+        const insightSectionBottom =
+          insightSection.offsetTop + insightSection.offsetHeight;
+        if (isOnMobile) {
+          if (!insightSection) return;
 
-        if (
-          headerScrollOffset >= insightSectionTop &&
-          headerScrollOffset <= insightSectionBottom
-        ) {
-          setIsDark(true);
+          if (
+            headerScrollOffset >= insightSectionTop &&
+            headerScrollOffset <= insightSectionBottom
+          ) {
+            setIsDark(true);
+          }
+          if (
+            bottomNavScrollOffset >= insightSectionTop &&
+            bottomNavScrollOffset <= insightSectionBottom
+          ) {
+            setBottomIsDark(true);
+          }
         }
-        if (
-          bottomNavScrollOffset >= insightSectionTop &&
-          bottomNavScrollOffset <= insightSectionBottom
-        ) {
-          setBottomIsDark(true);
-        }
-      }
-      if (!isOnMobile) {
-        if (bottomNavScrollOffset > secondSectionBottom) {
-          setBottomNavIsShown(false);
+        if (!isOnMobile && secondSection) {
+          const secondSectionTop = secondSection.offsetTop;
+          const secondSectionBottom =
+            secondSectionTop + secondSection.offsetHeight - headerHeight;
+            
+          if (bottomNavScrollOffset > secondSectionBottom) {
+            setBottomNavIsShown(false);
+          } else {
+            setBottomNavIsShown(true);
+          }
         } else {
-          setBottomNavIsShown(true);
-        }
-      } else {
-        if (bottomNavScrollOffset > insightSectionBottom) {
-          setBottomNavIsShown(false);
-        } else {
-          setBottomNavIsShown(true);
+          if (bottomNavScrollOffset > insightSectionBottom) {
+            setBottomNavIsShown(false);
+          } else {
+            setBottomNavIsShown(true);
+          }
         }
       }
     };

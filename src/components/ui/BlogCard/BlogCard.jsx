@@ -18,7 +18,7 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
 
   return (
     <>
-      <div href={`/blog/${post.slug}`}>
+      <div href={`/blog/${post.slug}`} className={classes["blog-card-container"]}>
         <div className={containerClasses}>
           <div className={classes["blog-card__image"]}>
             <Image
@@ -41,7 +41,7 @@ const BlogCard = ({ isForSlider, data, isForBlogPage }) => {
                 SEO Tips
               </span> */}
               <div className={classes["blog-card__content__dayView__item"]}>
-                <Tag type={4} name="Web Development" href="#"/>
+                <Tag type={4} name="Web Development" href="#" />
               </div>
               {isForSlider && (
                 <div className={classes["blog-card__content__dayView__item"]}>

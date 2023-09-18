@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .blog-detail {
-  margin-top: calc($header_padding * 4);
+  margin-top: calc($header_padding + 30px);
   &-header {
     font-size: 36px;
     font-weight: 600;
