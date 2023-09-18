@@ -4,11 +4,9 @@ import classes from "./ContactUsForm.module.scss";
 import MesageTextarea from "@/components/ui/Input/MesageTextarea";
 import Input from "@/components/ui/Input/Input";
 import { validationSchema } from "../../../../until/validationForm";
-import Image from "next/image";
 import Button from "@/components/ui/Buttons/Button/Button";
 import {
   ArrowRight,
-  IconDanger,
   IconSuccess,
 } from "@/components/ui/Icons/ListIcon";
 import Note from "@/components/ui/Note/Note";

@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import classes from "./Footer.module.scss";
 import { Maven_Pro } from "next/font/google";
+import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 export default function Footer() {
   return (
@@ -16,12 +17,7 @@ export default function Footer() {
         <div className={classes["footer__row"]}>
           <div className={classes["colum-1"]}>
             <div className={classes["image-logo-footer"]}>
-              <Image
-                src="/assets/images/ui/Logo Footer.png"
-                fill
-                alt="Logo Ondigitals"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
+              <LogoFooter width={240} height={100} color={"#FFF"} />
             </div>
             <div>
               <p
@@ -134,7 +130,9 @@ export default function Footer() {
               <a>
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a className={classes["icon--Zalo"]}>Zalo</a>
+              <a>
+                <IconZalo width={52} height={18} color={"#FFF"} />
+              </a>
             </div>
           </div>
         </div>

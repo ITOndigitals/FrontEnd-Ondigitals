@@ -5,7 +5,7 @@
 }
 .footer__row {
   display: flex;
-  gap: 60px;
+  gap: 30px;
   padding: 94px 0 65px 0;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -15,10 +15,9 @@
       font-weight: 600;
       margin: 38px 0 10px 0;
     }
-    .image-logo-footer {
-      position: relative;
+    .image-logo-footer { 
       width: 241px;
-      height: 108px;
+      height: 77px;
      
     }
   }
@@ -31,10 +30,10 @@
     }
   }
   .colum-3 {
-    width: 15%;
+    width: 11%;
   }
   .colum-4 {
-    width: 15%;
+    width: 14%;
     .icon__homepage--social {
       display: flex;
       gap: 16px;
@@ -119,7 +118,6 @@
       }
       .image-logo-footer {
         width: 241px;
-        height: 108px;
       }
     }
     .colum-2 {
