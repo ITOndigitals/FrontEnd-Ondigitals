@@ -11,8 +11,8 @@ import { useBoundStore } from "../../../store/useBoundStore";
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [bottomIsDark, setBottomIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+  const [bottomIsDark, setBottomIsDark] = useState(true);
   const [isOnMobile, setIsOnMobile] = useState(false);
   const menuButtonClasses = `${classes["header-menu-btn"]} ${
     menuIsOpen ? classes["active"] : ""
@@ -20,10 +20,14 @@ const Header = () => {
   const bottomNavIsShownState = useBoundStore(
     (state) => state.bottomNavIsShown
   );
-  const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
+  // const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
   const headerIsDark = useBoundStore((state) => state.isDark);
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
+  const setBottomNavIsShown = useBoundStore(
+    (state) => state.setBottomNavIsShown
+  );
+  const headerIsSticky = useBoundStore((state) => state.headerIsSticky);
 
   //Note: Chỉ khi biến headerCanChangeColor = true mới có thể chuyển màu
   const headerCanChangeColor = useBoundStore(
@@ -32,6 +36,14 @@ const Header = () => {
   const setExpanseMenuIsOpen = useBoundStore(
     (state) => state.setExpanseMenuIsOpen
   );
+  const setHeaderCanNotChangeColor = useBoundStore(
+    (state) => state.setHeaderCanNotChangeColor
+  );
+  const setHeaderCanChangeColor = useBoundStore(
+    (state) => state.setHeaderCanChangeColor
+  );
+  const setToDark = useBoundStore((state) => state.setToDark);
+  const setToLight = useBoundStore((state) => state.setToLight);
 
   const toggleMenuButtonHandler = () => {
     if (isOnMobile) {
@@ -46,6 +58,8 @@ const Header = () => {
       }
     }
   };
+
+  console.log(headerIsDark);
 
   useEffect(() => {
     if (headerCanChangeColor) {
@@ -146,7 +160,7 @@ const Header = () => {
           const secondSectionTop = secondSection.offsetTop;
           const secondSectionBottom =
             secondSectionTop + secondSection.offsetHeight - headerHeight;
-            
+
           if (bottomNavScrollOffset > secondSectionBottom) {
             setBottomNavIsShown(false);
           } else {
@@ -190,6 +204,18 @@ const Header = () => {
     };
   }, [headerCanChangeColor]);
 
+  //Nếu header đang không sticky, set header sang dark và không cho đổi màu
+  useEffect(() => {
+    if (!headerIsSticky) {
+      setToDark();
+      setHeaderCanNotChangeColor();
+      setBottomNavIsShown(false);
+    } else {
+      setToLight();
+      setHeaderCanChangeColor();
+    }
+  }, [headerIsSticky]);
+
   return (
     <div>
       <ExpanseMenu
@@ -200,7 +226,7 @@ const Header = () => {
       <header
         className={`${classes["main-header"]} main-header-g ${
           isDark ? classes["main-header-dark"] : ""
-        }`}
+        } ${!headerIsSticky ? classes["main-header-no-sticky"] : ""}`}
       >
         <div className="container--big">
           <div className={classes["header-wrapper"]}>
@@ -272,7 +298,7 @@ const Header = () => {
           <BottomNavigator
             isVisible={
               !menuIsOpen &&
-              bottomNavIsShown &&
+              // bottomNavIsShown &&
               headerBtnIsShown &&
               bottomNavIsShownState
             }

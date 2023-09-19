@@ -62,10 +62,15 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .service {
     height: auto;
     padding: calc($header_padding * 2) 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .service {
     &-grid {
       &__spacer {
         display: none;

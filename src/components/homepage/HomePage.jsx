@@ -33,6 +33,9 @@ const HomePage = (allPosts) => {
     (state) => state.setBottomNavIsShown
   );
   const contactFormRef = useRef(null);
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
 
   //Lướt tới contact form
   const scrollToContactForm = () => {
@@ -52,10 +55,11 @@ const HomePage = (allPosts) => {
     setToDark();
   };
 
-  //Set header sang màu sáng
+  //Set header sang màu sáng, set fixed header
   useEffect(() => {
     setHeaderCanChangeColor();
     setToLight();
+    setHeaderStickyState(true);
   }, []);
 
   useEffect(() => {
@@ -92,9 +96,9 @@ const HomePage = (allPosts) => {
   }, []);
 
   //Khi refresh, tự động lướt lên đầu trang
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual";
+  // }, []);
 
   //Handle sự kiện lăn chuột
   useEffect(() => {
