@@ -70,7 +70,7 @@ const BlogsHeader = ({ onSearch }) => {
           <div className={classes["blog-header-right-item__option--mg"]}>
             <SelectOption options={DUMMY_SORT_BY} label="sort by" />
           </div>
-          <div className={classes["blog-header-right-item__option--mg"]}>
+          <div className={classes["blog-header-right-item__option__search"]}>
             <ButtonSearch onSearch={onSearch} />
           </div>
         </div>

@@ -30,13 +30,14 @@ export default function NewAndInsightsSection({ data, NavButton }) {
           >
             <Swiper
               cssMode={true}
+              loop={true}
               navigation={true}
               pagination={{
                 clickable: true,
               }}
               freeMode={true}
               autoplay={{
-                delay: 2500000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               breakpoints={{
@@ -51,6 +52,7 @@ export default function NewAndInsightsSection({ data, NavButton }) {
                 1024: {
                   slidesPerView: 3,
                   spaceBetween: 0,
+                  slidesPerGroup: 3,
                 },
               }}
               modules={[Navigation, Pagination, Autoplay, FreeMode]}

@@ -1,9 +1,10 @@
 @import "../../../../styles/functions";
 @import "../../../../styles/variables";
+@import "../../../../styles/mixins";
 
 .service {
-  padding-top: 125px;
-  padding-bottom: 70px;
+  @include section;
+  flex-direction: column;
   height: 100vh;
   background-color: $neutral-900;
   position: relative;
@@ -64,7 +65,7 @@
 @media (max-width: 1024px) {
   .service {
     height: auto;
-    padding-top: 80px;
+    padding: calc($header_padding * 2) 0;
     &-grid {
       &__spacer {
         display: none;

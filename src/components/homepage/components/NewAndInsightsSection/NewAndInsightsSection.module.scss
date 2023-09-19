@@ -5,7 +5,7 @@
 .section-new-insights {
   background-color: #faf5ff;
   height: 100vh;
-  padding: 89px 20px;
+  @include section;
   &__content {
     .button-discover-more {
       @include text;
@@ -17,7 +17,6 @@
         justify-content: flex-end;
         position: relative;
         z-index: calc($header-index + 1);
-
       }
     }
     .card-news-insights {
@@ -136,6 +135,8 @@
 @media (max-width: 1024px) {
   .section-new-insights {
     height: auto;
+    padding: calc($header_padding *2) 0;
+
     &__content {
       padding: 0px;
       .button-discover-more {

@@ -98,6 +98,7 @@
           justify-content: center;
           width: 24px;
           height: 24px;
+          cursor: pointer;
         }
       }
     }
@@ -120,6 +121,9 @@
         em {
           margin-bottom: 5px;
         }
+      }
+      .image-main-post-detail {
+        height: 250px;
       }
     }
   }

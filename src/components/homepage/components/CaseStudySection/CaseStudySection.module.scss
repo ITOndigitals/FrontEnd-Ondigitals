@@ -1,9 +1,10 @@
 @import "../../../../styles/variables";
+@import "../../../../styles/mixins";
 
 .case-study {
   background-color: $primary-dark;
-  padding-top: 103px;
-  padding-bottom: 120px;
+  @include section;
+  flex-direction: column;
   height: 100vh;
   &-header {
     display: flex;
@@ -32,14 +33,11 @@
 @media (max-width: 1024px) {
   .case-study {
     height: auto;
+    padding: calc($header_padding *2) 0;
   }
 }
 
-@media (max-width: 780px) {
-  .case-study {
-    padding-top: 80px;
-  }
-}
+
 
 @media (max-width: 680px) {
   .case-study {

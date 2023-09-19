@@ -4,9 +4,9 @@
   background-color: $primary-light;
   height: 100vh;
   position: relative;
+  @include section;
 }
 .contact-section {
-  padding: 123px 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -20,7 +20,7 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        div:first-child{
+        div:first-child {
           width: 50%;
         }
         &--btn {
@@ -72,13 +72,13 @@
     height: auto;
   }
   .contact-section {
-    padding: 100px 20px;
+    padding: calc($header_padding * 2) 20px;
     &__columLeft {
       width: 100%;
       &__form {
         width: 100%;
         &__buttonAndNote {
-          div:first-child{
+          div:first-child {
             margin-bottom: 20px;
           }
           &--btn {
@@ -124,11 +124,10 @@
       &__form {
         width: 100%;
         &__buttonAndNote {
-          div:first-child{
+          div:first-child {
             width: 100%;
             margin-bottom: 20px;
           }
-        
         }
       }
     }
@@ -140,14 +139,12 @@
       &__form {
         width: 100%;
         &__buttonAndNote {
-          div:first-child{
+          div:first-child {
             width: 100%;
             margin-bottom: 20px;
           }
-        
         }
       }
     }
   }
 }
-

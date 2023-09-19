@@ -11,11 +11,14 @@
   );
   height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: calc($header_padding + 30px);
+    // padding-top: calc($header_padding + 30px);
     flex-wrap: wrap;
     &__title {
       color: #fff;
@@ -126,7 +129,7 @@
     height: auto;
 
     &__header {
-      padding-top: 13%;
+      padding-top: 14%;
       &__notification {
         width: 40%;
       }
@@ -163,15 +166,8 @@
         transform: translateY(0%);
         padding: 5%;
         &::before {
-          content: "";
-          width: 50px;
-          height: 50px;
-          background-color: #cd0404;
-          border-radius: 50%;
-          position: absolute;
           bottom: 30%;
           left: 5%;
-          z-index: -1;
         }
         p:first-child {
           font-size: 55px;
@@ -210,21 +206,14 @@
     &__columRight {
       &__text {
         &::before {
-          content: "";
-          width: 50px;
-          height: 50px;
-          background-color: #cd0404;
-          border-radius: 50%;
-          position: absolute;
           bottom: 10%;
           left: 10%;
-          z-index: -1;
         }
       }
     }
   }
 }
-@media (max-width: 300px) {
+@media (max-width: 320px) {
   .contact-section {
     &__columLeft {
       &__form {
@@ -234,6 +223,20 @@
             width: 100%;
             margin-bottom: 20px;
           }
+        }
+      }
+    }
+    &__columRight {
+      &__text {
+        &::before {
+          bottom: 30%;
+          left: 5%;
+        }
+        p:first-child {
+          font-size: 45px;
+        }
+        .talk {
+          font-size: 45px;
         }
       }
     }

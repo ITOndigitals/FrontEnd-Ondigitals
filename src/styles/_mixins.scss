@@ -12,3 +12,8 @@
   font-weight: 400;
   line-height: 24px;
 }
+@mixin section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -32,6 +32,10 @@
         margin-top: 10px;
         margin-left: 20px;
       }
+      &__search {
+        margin-top: 10px;
+        margin-left: 20px;
+      }
     }
   }
 }
@@ -49,4 +53,26 @@
       }
     }
   }
+}
+@media (max-width: 1024px) {
+  .blog-header {
+    &-right-item {
+      &__option {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+        &--no-mg {
+         width: 100%;
+        }
+        &--mg {
+          width: 100%;
+        }
+        &__search{
+          // width: 100%;
+        }
+      }
+    }
+  }
+  
 }
