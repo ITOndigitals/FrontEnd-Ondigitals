@@ -6,12 +6,13 @@ import { Maven_Pro } from "next/font/google";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useEffect, useState } from "react";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
+import CouterNumber from "@/components/ui/CouterNumber/CouterNumber";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function PartnerSection({ NavButton }) {
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
- 
+
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -38,8 +39,10 @@ export default function PartnerSection({ NavButton }) {
         >
           <div className={classes["homepagesectionpartner__content__colleft"]}>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p className={classes["homepagesectionpartner__content--number"]}>
-                500+
+              <p
+                className={`${classes["homepagesectionpartner__content--number"]} number-trusted`}
+              >
+                <CouterNumber value={500} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
@@ -49,8 +52,10 @@ export default function PartnerSection({ NavButton }) {
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p className={classes["homepagesectionpartner__content--number"]}>
-                300+
+              <p
+                className={`${classes["homepagesectionpartner__content--number"]} number-successful`}
+              >
+                <CouterNumber value={300} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
@@ -60,14 +65,16 @@ export default function PartnerSection({ NavButton }) {
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p className={classes["homepagesectionpartner__content--number"]}>
-                1000+
+              <p
+                className={`${classes["homepagesectionpartner__content--number"]} number-monthly`}
+              >
+                <CouterNumber value={1000} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                TRUSTED CLIENTS
+                MONTHLY VIEWS
               </p>
             </div>
           </div>
@@ -86,7 +93,6 @@ export default function PartnerSection({ NavButton }) {
                 classes["homepagesectionpartner__content__colrightimage"]
               }
             >
-              
               <div className={`${divImage} pulse-grow`}>
                 <Image
                   src="/assets/images/SectionHomepage/areus-atelier.png"
