@@ -1,7 +1,10 @@
 @import "../../styles/variables";
 
 .blog-detail {
-  margin-top: calc($header_padding + 30px);
+  // padding-top: calc($header-height + 40px);
+  // padding-top: calc($header_padding + 30px);
+//  padding-top: $section-padding;
+  padding-top: calc($header-height + $header-padding + $section-padding);
   &-header {
     font-size: 36px;
     font-weight: 600;
@@ -65,6 +68,12 @@
     }
   }
 }
+
+// @media (max-width: 1280px) {
+//   .blog-detail {
+//     padding-top: calc($header_padding * 2);
+//   }
+// }
 
 @media (max-width: 1024px) {
   .blog-detail {

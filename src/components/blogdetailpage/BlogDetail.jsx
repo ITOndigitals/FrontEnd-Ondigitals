@@ -40,16 +40,25 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const [markdown, setMarkdown] = useState();
   const headerIsDark = useBoundStore((state) => state.isDark);
   const setToDark = useBoundStore((state) => state.setToDark);
-  const setHeaderCanNotChangeColor = useBoundStore(
-    (state) => state.setHeaderCanNotChangeColor
+  const setHeaderCanChangeColor = useBoundStore(
+    (state) => state.setHeaderCanChangeColor
+  );
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
   );
 
   useEffect(() => {
-    if (!headerIsDark) {
-      setToDark();
-    } else {
-      setHeaderCanNotChangeColor();
+    setHeaderStickyState(false);
+    setChangeStickyIsAllowed(true)
+    const header = document.querySelector(".main-header-g");
+    if (header) {
+      header.classList.remove("hide");
     }
+    setHeaderCanChangeColor();
+    setToDark();
   }, [headerIsDark]);
 
   const applyMarkDownHandler = (markdownData) => {
@@ -65,7 +74,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
         </div>
         <section className={classes["blog-detail-content"]}>
           <div className={classes["blog-detail-content__toc"]}>
-            {markdown && <TableOfContent markdown={markdown}/>}
+            {markdown && <TableOfContent markdown={markdown} />}
           </div>
           <div className={classes["blog-detail-content__spacer"]}></div>
           <div className={classes["blog-detail-content__main"]}>

@@ -1,5 +1,6 @@
 @import "../../styles/variables";
 
 .container {
-  margin-top: calc($header_padding + 30px);
+  // padding-top: $section-padding;
+  padding-top: calc($header-height + $header-padding + $section-padding);
 }

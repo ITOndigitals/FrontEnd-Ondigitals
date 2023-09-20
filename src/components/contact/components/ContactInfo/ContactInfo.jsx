@@ -124,7 +124,7 @@ export default function ContactInfo() {
                 <ul className={classes["contact-infor__content-social-list"]}>
                   {socialsSharingData.map((item, index) => {
                     return (
-                      <li>
+                      <li key={index}>
                         <Link href={item.href}>{item.icon}</Link>
                       </li>
                     );

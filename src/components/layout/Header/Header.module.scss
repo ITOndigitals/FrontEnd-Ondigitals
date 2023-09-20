@@ -6,6 +6,12 @@
   position: fixed;
   top: $header-padding;
   width: 100%;
+  height: $header-height;
+  &-no-sticky {
+    top: 0;
+    position: absolute;
+    margin-top: $header-padding;
+  }
 }
 .header {
   &-wrapper {
