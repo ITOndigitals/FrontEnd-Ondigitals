@@ -1,14 +1,7 @@
 @import ".././../../../styles/variables";
 @import ".././../../../styles/mixins";
 .section-contact-form {
-  background: linear-gradient(
-    180deg,
-    #131313 -26.11%,
-    #54188b 18.79%,
-    #6f1ab6 48.57%,
-    #491879 96.72%,
-    #3d1766 133.24%
-  );
+ background-color: #3D1766;
   height: 100vh;
   position: relative;
   display: flex;

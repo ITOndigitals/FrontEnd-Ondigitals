@@ -28,7 +28,6 @@ export default function Input({
           value={value}
           onChange={onChange}
           onBlur={onBlur}
-          autoComplete="true"
           style={{ fontFamily: MavenPro.style.fontFamily }}
         />
         {errors && (

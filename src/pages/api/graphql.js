@@ -3,7 +3,7 @@ export const getDataForNewAndInsightsSection = async () => {
   const endpoint = "https://kimlongdiep.com/graphql";
   const query = gql`
     {
-      posts {
+      posts(first:9) {
         nodes {
           id
           title

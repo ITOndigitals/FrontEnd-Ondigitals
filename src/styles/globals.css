@@ -195,7 +195,6 @@ a {
   transform: translateY(-30px);
   transition: all 0.5s;
 }
-
 .news-insights-swiper
   .swiper-wrapper
   .swiper-slide:hover
@@ -220,9 +219,19 @@ a {
   .news-insights-swiper .swiper-slide {
     padding: 40px 30px;
   }
+  .news-insights-swiper .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after {
+    font-size: 30px !important;
+    margin-right: 10px;
+  }
+  .news-insights-swiper .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after {
+    font-size: 30px !important;
+    margin-left: 10px;
+  }
 }
 /* end NewAndInsightsSection homepage */
-/* error contac form */
+/* error contact form */
 .message-errors-contact-form {
   display: flex;
   justify-content: flex-end;
@@ -260,7 +269,7 @@ a {
   top: 47%;
   right: 2%;
 }
-/* hiệu ứng hover ảnh phân parner homepage */
+/* hiệu ứng hover ảnh phần parner homepage */
 @keyframes pulseGrow {
   0%,
   100% {

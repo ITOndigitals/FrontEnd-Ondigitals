@@ -11,6 +11,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 export default function PartnerSection({ NavButton }) {
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
+ 
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -85,6 +86,7 @@ export default function PartnerSection({ NavButton }) {
                 classes["homepagesectionpartner__content__colrightimage"]
               }
             >
+              
               <div className={`${divImage} pulse-grow`}>
                 <Image
                   src="/assets/images/SectionHomepage/areus-atelier.png"
