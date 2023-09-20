@@ -9,29 +9,37 @@ import { SearchPostsByKey } from "@/pages/api/graphql";
 const BlogPage = ({ blogsData }) => {
   const setToDark = useBoundStore((state) => state.setToDark);
   const [renderData, setRenderData] = useState(blogsData);
-  const setHeaderCanNotChangeColor = useBoundStore(
-    (state) => state.setHeaderCanNotChangeColor
-  );
   const headerIsDark = useBoundStore((state) => state.isDark);
-
+  const setHeaderCanChangeColor = useBoundStore(
+    (state) => state.setHeaderCanChangeColor
+  );
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
+  //Khi tới các section homepage, cho ẩn header chính để hiện section header
+  //nên cần set lại xuất hiện
   useEffect(() => {
-    if (!headerIsDark) {
-      setToDark();
-      //setHeaderCanNotChangeColor();
-    } else {
-      setHeaderCanNotChangeColor();
+    setHeaderStickyState(false);
+    setChangeStickyIsAllowed(true)
+    const header = document.querySelector(".main-header-g");
+    if (header) {
+      header.classList.remove("hide");
     }
+    setHeaderCanChangeColor();
+    setToDark();
   }, [headerIsDark]);
 
   const onChangePageHandler = (pageNum) => {
     console.log(pageNum);
   };
 
-
-  const  searchBlogHandler = async (searchValue) => {
+  const searchBlogHandler = async (searchValue) => {
     const searchedPosts = await SearchPostsByKey({ key: searchValue.text });
-    setRenderData(searchedPosts) 
-  }
+    setRenderData(searchedPosts);
+  };
 
   return (
     <div className={`container ${classes.container}`}>

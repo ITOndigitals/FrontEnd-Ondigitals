@@ -25,21 +25,26 @@ export const menuItems = [
   {
     id: 1,
     name: "About us",
+    href: "",
   },
   {
     id: 2,
     name: "Services",
+    href: "",
   },
   {
     id: 3,
     name: "Case study",
+    href: "",
   },
   {
     id: 4,
     name: "Blog",
+    href: "/blog",
   },
   {
     id: 5,
     name: "Contact",
+    href: "/contact",
   },
 ];

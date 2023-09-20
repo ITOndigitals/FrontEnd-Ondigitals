@@ -1,7 +1,6 @@
 @import "../../../styles/variables";
 
 .menu-social {
-  margin-top: 90px;
   display: flex;
   width: fit-content;
   height: fit-content;
@@ -37,8 +36,16 @@
     position: absolute;
     top: 0;
     background-color: $neutral-200;
-    padding: calc(6% + 40px) 0;
+    padding-top: calc($header-padding + 40px);
+    padding-bottom: calc($header-padding + 10px);
     text-align: right;
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-right: 28px;
+    }
     .menu-list {
       font-size: 48px;
       font-weight: 700;

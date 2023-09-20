@@ -11,10 +11,12 @@ const BlogDetailPage = ({ allPosts, dataPostDetail }) => {
     </>
   );
 };
+
 const redirectTo404 = (res) => {
   res.writeHead(302, { Location: "/404" });
   res.end();
 };
+
 export const getServerSideProps = async (context) => {
   const { query, res } = context;
   const postId = query.blogId;

@@ -34,6 +34,12 @@ const HomePage = (allPosts) => {
     (state) => state.setBottomNavIsShown
   );
   const contactFormRef = useRef(null);
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
 
   //Lướt tới contact form
   const scrollToContactForm = () => {
@@ -68,10 +74,12 @@ const HomePage = (allPosts) => {
     setToDark();
   };
 
-  //Set header sang màu sáng
+  //Set header sang màu sáng, set fixed header
   useEffect(() => {
     setHeaderCanChangeColor();
     setToLight();
+    setHeaderStickyState(true);
+    setChangeStickyIsAllowed(false)
   }, []);
 
   useEffect(() => {
@@ -108,9 +116,9 @@ const HomePage = (allPosts) => {
   }, []);
 
   //Khi refresh, tự động lướt lên đầu trang
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual";
+  // }, []);
 
   //Handle sự kiện lăn chuột
   useEffect(() => {
@@ -145,7 +153,10 @@ const HomePage = (allPosts) => {
       ) {
         swiperObj.enabled = false;
         setToDark();
+        hideHeaderBtn();
         return;
+      } else {
+        showHeaderBtn();
       }
 
       if (elementTop === 0 && swiperObj.isEnd && wheelDirection === "up") {

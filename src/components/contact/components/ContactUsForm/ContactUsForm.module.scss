@@ -1,7 +1,8 @@
 @import ".././../../../styles/variables";
 @import ".././../../../styles/mixins";
 .section-contact-form {
- background-color: #3D1766;
+  background-color: #3D1766;
+  padding-top: calc($header-height + $header-padding + $section-padding);
   height: 100vh;
   position: relative;
   display: flex;
