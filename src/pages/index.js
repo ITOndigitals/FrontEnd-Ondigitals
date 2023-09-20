@@ -1,5 +1,6 @@
 import HomePage from "@/components/homepage/HomePage";
 import {getDataForNewAndInsightsSection} from "./api/graphql"
+
 export default function Home({allPosts}) {
   return (
     <>
@@ -7,6 +8,7 @@ export default function Home({allPosts}) {
     </>
   )
 }
+
 export const getServerSideProps = async () => {
   const allPosts = await getDataForNewAndInsightsSection()
   return { props: { allPosts } }
