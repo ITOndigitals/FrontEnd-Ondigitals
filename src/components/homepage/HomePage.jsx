@@ -133,7 +133,10 @@ const HomePage = (allPosts) => {
       ) {
         swiperObj.enabled = false;
         setToDark();
+        hideHeaderBtn();
         return;
+      } else {
+        showHeaderBtn();
       }
 
       if (elementTop === 0 && swiperObj.isEnd && wheelDirection === "up") {

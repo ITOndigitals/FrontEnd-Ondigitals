@@ -9,7 +9,7 @@
   height: $header-height;
   &-no-sticky {
     top: 0;
-    position: relative;
+    position: absolute;
     margin-top: $header-padding;
   }
 }

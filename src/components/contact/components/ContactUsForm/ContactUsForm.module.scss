@@ -1,7 +1,7 @@
 @import ".././../../../styles/variables";
 @import ".././../../../styles/mixins";
 .section-contact-form {
-  padding-top: calc($header-height + 40px);
+  padding-top: calc($header-height + $header-padding);
   background: linear-gradient(
     180deg,
     #131313 -26.11%,

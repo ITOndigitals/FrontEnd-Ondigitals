@@ -13,8 +13,12 @@ export default function Contact() {
   const setBottomNavIsShown = useBoundStore(
     (state) => state.setBottomNavIsShown
   );
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
 
   useEffect(() => {
+    setHeaderStickyState(false);
     const header = document.querySelector(".main-header-g");
     if (header) {
       setHeaderCanChangeColor();

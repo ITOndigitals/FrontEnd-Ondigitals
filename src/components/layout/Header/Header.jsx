@@ -14,6 +14,7 @@ const Header = () => {
   const [isDark, setIsDark] = useState(true);
   const [bottomIsDark, setBottomIsDark] = useState(true);
   const [isOnMobile, setIsOnMobile] = useState(false);
+  const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
   const menuButtonClasses = `${classes["header-menu-btn"]} ${
     menuIsOpen ? classes["active"] : ""
   }`;
@@ -24,9 +25,6 @@ const Header = () => {
   const headerIsDark = useBoundStore((state) => state.isDark);
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
-  const setBottomNavIsShown = useBoundStore(
-    (state) => state.setBottomNavIsShown
-  );
   const headerIsSticky = useBoundStore((state) => state.headerIsSticky);
 
   //Note: Chỉ khi biến headerCanChangeColor = true mới có thể chuyển màu
@@ -44,6 +42,9 @@ const Header = () => {
   );
   const setToDark = useBoundStore((state) => state.setToDark);
   const setToLight = useBoundStore((state) => state.setToLight);
+  const setHeaderStickyState = useBoundStore(
+    (state) => state.setHeaderStickyState
+  );
 
   const toggleMenuButtonHandler = () => {
     if (isOnMobile) {
@@ -59,14 +60,17 @@ const Header = () => {
     }
   };
 
-  console.log(headerIsDark);
-
   useEffect(() => {
     if (headerCanChangeColor) {
       setIsDark(headerIsDark);
       setBottomIsDark(headerIsDark);
     }
-  }, [headerIsDark, headerCanChangeColor]);
+    if(menuIsOpen) {
+      setHeaderStickyState(true);
+    } else {
+      setHeaderStickyState(false);
+    }
+  }, [headerIsDark, headerCanChangeColor, menuIsOpen]);
 
   //Xác định các section (tọa độ điểm top và bottom) để set màu lại
   useEffect(() => {
@@ -82,7 +86,7 @@ const Header = () => {
       // và là section thứ 2 đối với mobile section
       const secondSection = document.querySelector(".service-section");
       const introSection = document.querySelector(".intro-section");
-      const contactInforSection = document.querySelector(".contact-infor");
+      //const contactInforSection = document.querySelector(".contact-infor");
       if (secondSection && introSection) {
         const secondSectionTop = secondSection.offsetTop;
         const secondSectionBottom =
@@ -108,31 +112,31 @@ const Header = () => {
           }
         }
       }
-      if (contactInforSection) {
-        const contactSectionTop = contactInforSection.offsetTop;
-        const contactSectionBottom =
-          contactSectionTop + contactInforSection.offsetHeight - headerHeight;
+      // if (contactInforSection) {
+      //   const contactSectionTop = contactInforSection.offsetTop;
+      //   const contactSectionBottom =
+      //     contactSectionTop + contactInforSection.offsetHeight - headerHeight;
 
-        if (headerCanChangeColor) {
-          if (
-            headerScrollOffset >= contactSectionTop &&
-            headerScrollOffset <= contactSectionBottom
-          ) {
-            setIsDark(true);
-          } else {
-            setIsDark(false);
-          }
+      //   if (headerCanChangeColor) {
+      //     if (
+      //       headerScrollOffset >= contactSectionTop &&
+      //       headerScrollOffset <= contactSectionBottom
+      //     ) {
+      //       setIsDark(true);
+      //     } else {
+      //       setIsDark(false);
+      //     }
 
-          if (
-            bottomNavScrollOffset >= contactSectionTop &&
-            bottomNavScrollOffset <= contactSectionBottom
-          ) {
-            setBottomIsDark(true);
-          } else {
-            setBottomIsDark(false);
-          }
-        }
-      }
+      //     if (
+      //       bottomNavScrollOffset >= contactSectionTop &&
+      //       bottomNavScrollOffset <= contactSectionBottom
+      //     ) {
+      //       setBottomIsDark(true);
+      //     } else {
+      //       setBottomIsDark(false);
+      //     }
+      //   }
+      // }
 
       // Khi ở mobile, tìm đến section insight và thay đổi thành dark
       const insightSection = document.querySelector(".insights-section");
@@ -207,12 +211,11 @@ const Header = () => {
   //Nếu header đang không sticky, set header sang dark và không cho đổi màu
   useEffect(() => {
     if (!headerIsSticky) {
-      setToDark();
       setHeaderCanNotChangeColor();
       setBottomNavIsShown(false);
     } else {
-      setToLight();
       setHeaderCanChangeColor();
+      setBottomNavIsShown(false);
     }
   }, [headerIsSticky]);
 
@@ -298,7 +301,7 @@ const Header = () => {
           <BottomNavigator
             isVisible={
               !menuIsOpen &&
-              // bottomNavIsShown &&
+              bottomNavIsShown &&
               headerBtnIsShown &&
               bottomNavIsShownState
             }
