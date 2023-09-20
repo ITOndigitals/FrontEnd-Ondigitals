@@ -1,0 +1,19 @@
+@import "../../../../styles/variables";
+
+.intro {
+  height: 100vh;
+  position: relative;
+  background-color: $red-light;
+  overflow: hidden;
+  z-index: -2;
+  .cursor-backdrop {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none; /* Để không ảnh hưởng đến sự kiện chuột chính */
+    transform: translate(-50%, -50%);
+    background-color: $primary-light;
+    z-index: -1;
+  }
+}
