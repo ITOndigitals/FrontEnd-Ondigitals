@@ -8,6 +8,7 @@ import Link from "next/link";
 import ExpanseMenu from "@/components/ui/ExpanseMenu/ExpanseMenu";
 import { overlayOptions, menuItems } from "@/configurations/menuData";
 import { useBoundStore } from "../../../store/useBoundStore";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -26,6 +27,9 @@ const Header = () => {
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
   const headerIsSticky = useBoundStore((state) => state.headerIsSticky);
+  const changeStickyIsAllowed = useBoundStore(
+    (state) => state.changeStickyIsAllowed
+  );
 
   //Note: Chỉ khi biến headerCanChangeColor = true mới có thể chuyển màu
   const headerCanChangeColor = useBoundStore(
@@ -40,11 +44,25 @@ const Header = () => {
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
   );
-  const setToDark = useBoundStore((state) => state.setToDark);
-  const setToLight = useBoundStore((state) => state.setToLight);
+  // const setToDark = useBoundStore((state) => state.setToDark);
+  // const setToLight = useBoundStore((state) => state.setToLight);
+  const router = useRouter();
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
   );
+
+  //Khi có route thay đổi, đóng expanse menu
+  useEffect(() => {
+    const onRouteChange = () => {
+      setMenuIsOpen(false);
+    }
+
+    router.events.on("routeChangeComplete", onRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", onRouteChange);
+    };
+  }, [router]);
 
   const toggleMenuButtonHandler = () => {
     if (isOnMobile) {
@@ -65,10 +83,12 @@ const Header = () => {
       setIsDark(headerIsDark);
       setBottomIsDark(headerIsDark);
     }
-    if(menuIsOpen) {
-      setHeaderStickyState(true);
-    } else {
-      setHeaderStickyState(false);
+    if (changeStickyIsAllowed) {
+      if (menuIsOpen) {
+        setHeaderStickyState(true);
+      } else {
+        setHeaderStickyState(false);
+      }
     }
   }, [headerIsDark, headerCanChangeColor, menuIsOpen]);
 
@@ -215,7 +235,7 @@ const Header = () => {
       setBottomNavIsShown(false);
     } else {
       setHeaderCanChangeColor();
-      setBottomNavIsShown(false);
+      setBottomNavIsShown(true);
     }
   }, [headerIsSticky]);
 

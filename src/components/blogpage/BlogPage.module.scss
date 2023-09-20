@@ -2,5 +2,5 @@
 
 .container {
   // padding-top: $section-padding;
-  padding-top: calc($header-height + $header-padding);
+  padding-top: calc($header-height + $header-padding + $section-padding);
 }

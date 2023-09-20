@@ -46,9 +46,13 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
   );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
 
   useEffect(() => {
     setHeaderStickyState(false);
+    setChangeStickyIsAllowed(true)
     const header = document.querySelector(".main-header-g");
     if (header) {
       header.classList.remove("hide");

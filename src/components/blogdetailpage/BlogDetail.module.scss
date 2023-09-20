@@ -4,8 +4,7 @@
   // padding-top: calc($header-height + 40px);
   // padding-top: calc($header_padding + 30px);
 //  padding-top: $section-padding;
-  padding-top: calc($header-height + $header-padding);
-
+  padding-top: calc($header-height + $header-padding + $section-padding);
   &-header {
     font-size: 36px;
     font-weight: 600;

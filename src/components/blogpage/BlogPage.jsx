@@ -16,10 +16,14 @@ const BlogPage = ({ blogsData }) => {
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
   );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
   //Khi tới các section homepage, cho ẩn header chính để hiện section header
   //nên cần set lại xuất hiện
   useEffect(() => {
     setHeaderStickyState(false);
+    setChangeStickyIsAllowed(true)
     const header = document.querySelector(".main-header-g");
     if (header) {
       header.classList.remove("hide");

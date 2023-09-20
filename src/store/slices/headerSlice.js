@@ -5,6 +5,7 @@ export const createHeaderSlice = (set) => ({
   headerCanChangeColor: true, //Header được đổi màu hay khôn
   bottomNavIsShown: true, //Nút nav (contact) ở dưới hiện hay không
   headerIsSticky: true, //Menu có sticky hay không
+  changeStickyIsAllowed: true,
   setToDark: () => set({ isDark: true }), //->Header sang đen
   setToLight: () => set({ isDark: false }), //->Header sang trắng
   hideHeaderBtn: () => set({ headerBtnIsShown: false }), //->Ẩn các nút trên Header
@@ -16,4 +17,6 @@ export const createHeaderSlice = (set) => ({
   setBottomNavIsShown: (statePayload) =>
     set({ bottomNavIsShown: statePayload }), // Set nút contact bên dưới mở hay
   setHeaderStickyState: (statePayload) => set({ headerIsSticky: statePayload }),
+  setChangeStickyIsAllowed: (statePayload) =>
+    set({ changeStickyIsAllowed: statePayload }),
 });

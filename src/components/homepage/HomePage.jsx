@@ -36,6 +36,9 @@ const HomePage = (allPosts) => {
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
   );
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
 
   //Lướt tới contact form
   const scrollToContactForm = () => {
@@ -60,6 +63,7 @@ const HomePage = (allPosts) => {
     setHeaderCanChangeColor();
     setToLight();
     setHeaderStickyState(true);
+    setChangeStickyIsAllowed(false)
   }, []);
 
   useEffect(() => {
