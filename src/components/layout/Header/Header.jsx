@@ -132,31 +132,6 @@ const Header = () => {
           }
         }
       }
-      // if (contactInforSection) {
-      //   const contactSectionTop = contactInforSection.offsetTop;
-      //   const contactSectionBottom =
-      //     contactSectionTop + contactInforSection.offsetHeight - headerHeight;
-
-      //   if (headerCanChangeColor) {
-      //     if (
-      //       headerScrollOffset >= contactSectionTop &&
-      //       headerScrollOffset <= contactSectionBottom
-      //     ) {
-      //       setIsDark(true);
-      //     } else {
-      //       setIsDark(false);
-      //     }
-
-      //     if (
-      //       bottomNavScrollOffset >= contactSectionTop &&
-      //       bottomNavScrollOffset <= contactSectionBottom
-      //     ) {
-      //       setBottomIsDark(true);
-      //     } else {
-      //       setBottomIsDark(false);
-      //     }
-      //   }
-      // }
 
       // Khi ở mobile, tìm đến section insight và thay đổi thành dark
       const insightSection = document.querySelector(".insights-section");
