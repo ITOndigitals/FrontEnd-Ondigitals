@@ -16,6 +16,7 @@ const Header = () => {
   const [bottomIsDark, setBottomIsDark] = useState(true);
   const [isOnMobile, setIsOnMobile] = useState(false);
   const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
+  const [subPageHeaderIsSticky, setSubPageHeaderIsSticky] = useState(false);
   const menuButtonClasses = `${classes["header-menu-btn"]} ${
     menuIsOpen ? classes["active"] : ""
   }`;
@@ -27,9 +28,11 @@ const Header = () => {
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
   const headerIsSticky = useBoundStore((state) => state.headerIsSticky);
+  const setToLight = useBoundStore((state) => state.setToLight);
   const changeStickyIsAllowed = useBoundStore(
     (state) => state.changeStickyIsAllowed
   );
+  const isInSubPage = useBoundStore((state) => state.isInSubPage);
 
   //Note: Chỉ khi biến headerCanChangeColor = true mới có thể chuyển màu
   const headerCanChangeColor = useBoundStore(
@@ -50,12 +53,13 @@ const Header = () => {
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
   );
+  const boxShadowModify = "0px 15px 39px -20px rgba(0,0,0,0.71)";
 
   //Khi có route thay đổi, đóng expanse menu
   useEffect(() => {
     const onRouteChange = () => {
       setMenuIsOpen(false);
-    }
+    };
 
     router.events.on("routeChangeComplete", onRouteChange);
 
@@ -76,12 +80,34 @@ const Header = () => {
         setMenuIsOpen(true);
       }
     }
+
+    const header = document.querySelector(".main-header-g");
+    if (menuIsOpen) {
+      if (subPageHeaderIsSticky) {
+        setTimeout(() => {
+          header.style.backgroundColor = "#3D1766";
+          header.style.boxShadow = boxShadowModify;
+        }, 800);
+      }
+    } else {
+      if (subPageHeaderIsSticky) {
+        setTimeout(() => {
+          header.style.backgroundColor = "transparent";
+          header.style.boxShadow = "none";
+        }, 100);
+      }
+    }
   };
 
   useEffect(() => {
     if (headerCanChangeColor) {
-      setIsDark(headerIsDark);
-      setBottomIsDark(headerIsDark);
+      if (subPageHeaderIsSticky) {
+        setIsDark(false);
+        setBottomIsDark(false);
+      } else {
+        setIsDark(headerIsDark);
+        setBottomIsDark(headerIsDark);
+      }
     }
     if (changeStickyIsAllowed) {
       if (menuIsOpen) {
@@ -214,6 +240,55 @@ const Header = () => {
     }
   }, [headerIsSticky]);
 
+  // handle scroll event
+  const handleScroll = (elTopOffset, elHeight) => {
+    if (window.scrollY > elTopOffset + elHeight) {
+      setSubPageHeaderIsSticky(true);
+    } else {
+      setSubPageHeaderIsSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    const header = document.querySelector(".main-header-g");
+    if (subPageHeaderIsSticky) {
+      setHeaderCanChangeColor(true);
+      setToLight();
+      setIsDark(false);
+      header.style.backgroundColor = "#3D1766";
+      header.style.boxShadow = boxShadowModify;
+    } else {
+      setIsDark(headerIsDark);
+      setBottomIsDark(headerIsDark);
+      header.style.backgroundColor = "transparent";
+      header.style.boxShadow = "none";
+    }
+  }, [subPageHeaderIsSticky]);
+
+  // Khi ở subpage, hiển thị lại header dưới dạng sticky và có background
+  useEffect(() => {
+    // Flow code chỉ hoạt động khi không hiển thị header dạng không background,
+    // biến headerIsSticky quản lý state của header dạng không background
+    if (!headerIsSticky && isInSubPage) {
+      const header = document
+        .querySelector(".main-header-g")
+        .getBoundingClientRect();
+
+      const handleScrollEvent = () => {
+        handleScroll(header.top, header.height * 2);
+      };
+
+      window.addEventListener("scroll", handleScrollEvent);
+
+      return () => {
+        window.removeEventListener("scroll", handleScrollEvent);
+      };
+    }
+    if (headerIsSticky && !isInSubPage) {
+      setSubPageHeaderIsSticky(false);
+    }
+  }, [headerIsSticky, isInSubPage]);
+
   return (
     <div>
       <ExpanseMenu
@@ -224,11 +299,13 @@ const Header = () => {
       <header
         className={`${classes["main-header"]} main-header-g ${
           isDark ? classes["main-header-dark"] : ""
-        } ${!headerIsSticky ? classes["main-header-no-sticky"] : ""}`}
+        } ${!headerIsSticky ? classes["main-header-no-sticky"] : ""} ${
+          subPageHeaderIsSticky ? classes["sticky-in-subpage"] : ""
+        } ${menuIsOpen ? classes["menu-open"] : ""}`}
       >
         <div className="container--big">
           <div className={classes["header-wrapper"]}>
-            <Link href="/">
+            <Link href="/" style={{pointerEvents: menuIsOpen ? "none" : "auto"}}>
               <Logo isVisible={!menuIsOpen} isDark={isDark} />
             </Link>
             <div

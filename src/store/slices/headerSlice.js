@@ -4,8 +4,9 @@ export const createHeaderSlice = (set) => ({
   expanseMenuIsOpen: false, //Menu có được mở hay không
   headerCanChangeColor: true, //Header được đổi màu hay khôn
   bottomNavIsShown: true, //Nút nav (contact) ở dưới hiện hay không
-  headerIsSticky: true, //Menu có sticky hay không
+  headerIsSticky: true, //Menu có sticky hay không, menu sticky này ở dạng không background
   changeStickyIsAllowed: true,
+  isInSubPage: false, //State cho thấy đây là trang không phải home page
   setToDark: () => set({ isDark: true }), //->Header sang đen
   setToLight: () => set({ isDark: false }), //->Header sang trắng
   hideHeaderBtn: () => set({ headerBtnIsShown: false }), //->Ẩn các nút trên Header
@@ -19,4 +20,5 @@ export const createHeaderSlice = (set) => ({
   setHeaderStickyState: (statePayload) => set({ headerIsSticky: statePayload }),
   setChangeStickyIsAllowed: (statePayload) =>
     set({ changeStickyIsAllowed: statePayload }),
+  setIsInSubPageState: (statePayload) => set({ isInSubPage: statePayload }),
 });
