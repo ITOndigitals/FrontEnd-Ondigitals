@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import IntroAboutUs from "./components/IntroAboutUs/IntroAboutUs";
 import { useBoundStore } from "@/store/useBoundStore";
+import BestDigitalMarketing from "./components/BestDigitalMarketing/BestDigitalMarketing";
+import StepDigitalMarketing from "./components/StepDigitalMarketing/StepDigitalMarketing";
+import OurTrustedPartner from "./components/OurTrustedPartner/OurTrustedPartner";
+import ExploreTheExperience from "./components/ExploreTheExperience/ExploreTheExperience";
+import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 
 const AboutUs = () => {
   const setToLight = useBoundStore((state) => state.setToLight);
@@ -32,6 +37,11 @@ const AboutUs = () => {
   return (
     <>
       <IntroAboutUs />
+      <BestDigitalMarketing />
+      <StepDigitalMarketing />
+      <OurTrustedPartner/>
+      <ExploreTheExperience/>
+      <NeedHelpDigitalGrowth/>
     </>
   );
 };

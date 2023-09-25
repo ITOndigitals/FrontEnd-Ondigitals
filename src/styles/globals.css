@@ -620,3 +620,31 @@ a {
   }
 }
 /* end preloader */
+/* start slider trang about us */
+.our-trusted-partner-slider {
+  padding: 0 30px !important;
+}
+.our-trusted-partner-slider .swiper-button-prev {
+  color: black !important;
+  left: 0;
+}
+.our-trusted-partner-slider .swiper-button-next {
+  color: black !important;
+  right: 0;
+}
+@media (max-width: 800px) {
+  .our-trusted-partner-slider {
+    padding: unset !important;
+  }
+}
+/* end slider trang about us */
+/* chỉnh màu slider lẻ trang about us */
+.slider-explore-page-about-us .swiper-slide:nth-child(even) .card-back-rating {
+  background-color: #cd0404;
+}
+.slider-explore-page-about-us
+  .swiper-slide:nth-child(even)
+  .card-front-service {
+  background-color: #cd0404;
+}
+/* chỉnh màu slider lẻ trang about us */

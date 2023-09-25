@@ -14,6 +14,7 @@ import "swiper/css/mousewheel";
 import { useEffect, useRef, useState } from "react";
 import SectionNavButtons from "../ui/Buttons/SectionNavButtons/SectionNavButtons";
 import { useBoundStore } from "@/store/useBoundStore";
+import CouterNumber from "../ui/CouterNumber/CouterNumber";
 
 const HomePage = (allPosts) => {
   const [isShowSectionSlide, setIsShowSectionSlide] = useState(true);
@@ -48,7 +49,22 @@ const HomePage = (allPosts) => {
     setHeaderCanChangeColor();
     setToLight();
   };
-
+  const CounterNumber = () => {
+    const elements = document.querySelectorAll(".number-trusted, .number-successful, .number-monthly");
+    const maxValues =[500,300,1000]
+    console.log(maxValues)
+    function runCounterForElement(currentValue, maxValue, element) {
+      if (currentValue <= maxValue) {
+        element.textContent = currentValue + "+";
+         setTimeout(()=> {
+          runCounterForElement(currentValue + 1, maxValue, element);
+        }, 1);
+      }
+    }
+    elements.forEach((element, index) => {
+      runCounterForElement(0, maxValues[index], element);
+    });
+  };
   //Lướt lên slider
   const scrollToSlider = () => {
     if (swiperRef.current) {
@@ -170,6 +186,9 @@ const HomePage = (allPosts) => {
     }
     if (swiper.activeIndex === 3) {
       setToLight();
+    }
+    if (swiper.activeIndex === 2) {
+      CounterNumber();
     }
     if (swiper.isEnd) {
       setBottomNavIsShown(false);

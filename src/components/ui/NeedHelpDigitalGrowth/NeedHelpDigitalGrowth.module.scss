@@ -1,0 +1,46 @@
+.help-digital-growth-main {
+  background-color: #6f1ab6;
+  height: auto;
+  padding: 2%;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      color: #fff;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px;
+    }
+    &__text {
+      color: #fff;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .help-digital-growth-main {
+    padding: 10%;
+    br{
+        display: none;
+    }
+    &__content {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      &__title {
+        text-align: center;
+      }
+      &__text{
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+  }
+}

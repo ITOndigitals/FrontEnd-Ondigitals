@@ -44,10 +44,12 @@ export default function NewAndInsightsSection({ data, NavButton }) {
                 640: {
                   slidesPerView: 1,
                   spaceBetween: 15,
+                  slidesPerGroup: 1,
                 },
                 768: {
                   slidesPerView: 2,
                   spaceBetween: 15,
+                  slidesPerGroup: 2,
                 },
                 1024: {
                   slidesPerView: 3,
