@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-export default function CounterNumber({ value }) {
+export default function CounterNumber({ value, classes, threshold }) {
+  const classname = classes;
   const [currentValue, setCurrentValue] = useState(0);
   useEffect(() => {
-    const partnerSections = document.querySelectorAll(".partner-section");
+    const partnerSections = document.querySelectorAll(`.${classname}`);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -24,10 +25,9 @@ export default function CounterNumber({ value }) {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.2,
+        threshold: threshold || 0.2,
       }
     );
-
     partnerSections.forEach((section) => {
       observer.observe(section);
     });

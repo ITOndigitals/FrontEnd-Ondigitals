@@ -42,7 +42,7 @@ export default function PartnerSection({ NavButton }) {
               <p
                 className={`${classes["homepagesectionpartner__content--number"]} number-trusted`}
               >
-                <CouterNumber value={500} />
+                <CouterNumber value={500} classes={"partner-section"} threshold={0.2} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
@@ -55,7 +55,7 @@ export default function PartnerSection({ NavButton }) {
               <p
                 className={`${classes["homepagesectionpartner__content--number"]} number-successful`}
               >
-                <CouterNumber value={300} />
+                <CouterNumber value={300} classes={"partner-section"} threshold={0.2} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
@@ -68,7 +68,7 @@ export default function PartnerSection({ NavButton }) {
               <p
                 className={`${classes["homepagesectionpartner__content--number"]} number-monthly`}
               >
-                <CouterNumber value={1000} />
+                <CouterNumber value={1000} classes={"partner-section"} threshold={0.2} />
               </p>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
