@@ -6,6 +6,7 @@ import StepDigitalMarketing from "./components/StepDigitalMarketing/StepDigitalM
 import OurTrustedPartner from "./components/OurTrustedPartner/OurTrustedPartner";
 import ExploreTheExperience from "./components/ExploreTheExperience/ExploreTheExperience";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
+import IntroducingOnDigitals from "./components/IntroducingOnDigitals/IntroducingOnDigitals";
 
 const AboutUs = () => {
   const setToLight = useBoundStore((state) => state.setToLight);
@@ -41,6 +42,7 @@ const AboutUs = () => {
   return (
     <>
       <IntroAboutUs />
+      <IntroducingOnDigitals/>
       <BestDigitalMarketing />
       <StepDigitalMarketing />
       <OurTrustedPartner/>

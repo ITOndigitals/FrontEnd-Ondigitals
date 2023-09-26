@@ -14,7 +14,6 @@ export default function CounterNumber({ value, classes, threshold }) {
                 setCurrentValue(currentValue + 1);
               }
             }, 1);
-
             return () => {
               observer.unobserve(entry.target);
               clearTimeout(couter);

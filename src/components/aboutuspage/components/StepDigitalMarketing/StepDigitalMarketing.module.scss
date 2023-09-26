@@ -2,7 +2,9 @@
 .step-digital-marketing {
   height: 100vh;
   background-color: #6f1ab6;
-  padding: 10% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .header {
     width: 50%;
     p {
@@ -105,6 +107,7 @@
 @media (max-width: 1200px) {
   .step-digital-marketing {
     height: auto;
+    padding: 10% 0;
     .header {
       width: 100%;
       p {

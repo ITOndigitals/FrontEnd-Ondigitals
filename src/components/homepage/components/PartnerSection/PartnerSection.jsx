@@ -39,11 +39,11 @@ export default function PartnerSection({ NavButton }) {
         >
           <div className={classes["homepagesectionpartner__content__colleft"]}>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p
+              <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-trusted`}
               >
                 <CouterNumber value={500} classes={"partner-section"} threshold={0.2} />
-              </p>
+              </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
@@ -52,11 +52,11 @@ export default function PartnerSection({ NavButton }) {
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p
+              <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-successful`}
               >
                 <CouterNumber value={300} classes={"partner-section"} threshold={0.2} />
-              </p>
+              </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
@@ -65,11 +65,11 @@ export default function PartnerSection({ NavButton }) {
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
-              <p
+              <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-monthly`}
               >
                 <CouterNumber value={1000} classes={"partner-section"} threshold={0.2} />
-              </p>
+              </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}

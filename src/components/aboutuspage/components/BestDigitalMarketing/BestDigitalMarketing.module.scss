@@ -2,7 +2,9 @@
 .main-section {
   background-color: #cd0404;
   height: 100vh;
-  padding: 10% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .header {
     width: 40%;
     p {
@@ -26,6 +28,7 @@
 @media (max-width:1200px) {
     .main-section {
         height: auto;
+        padding: 10% 0;
         .header{
             width: 100%;
             p{

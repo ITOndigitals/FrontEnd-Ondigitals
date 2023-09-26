@@ -18,123 +18,88 @@ export default function OurTrustedPartner() {
       alt: "areus-atelier",
     },
     {
-      id: 1,
+      id: 2,
+      src: "/assets/images/SectionHomepage/ducati.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 3,
+      src: "/assets/images/SectionHomepage/hantec.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 4,
+      src: "/assets/images/SectionHomepage/livingcare.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 5,
+      src: "/assets/images/SectionHomepage/tpcom.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 6,
+      src: "/assets/images/SectionHomepage/kundal.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 7,
       src: "/assets/images/SectionHomepage/areus-atelier.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
+      id: 8,
+      src: "/assets/images/SectionHomepage/ducati.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 9,
+      src: "/assets/images/SectionHomepage/hantec.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 10,
+      src: "/assets/images/SectionHomepage/livingcare.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 11,
+      src: "/assets/images/SectionHomepage/tpcom.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 12,
+      src: "/assets/images/SectionHomepage/kundal.png",
+      alt: "areus-atelier",
+    },
+    {
+      id: 13,
       src: "/assets/images/SectionHomepage/areus-atelier.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
+      id: 14,
+      src: "/assets/images/SectionHomepage/ducati.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
+      id: 15,
+      src: "/assets/images/SectionHomepage/hantec.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
+      id: 16,
+      src: "/assets/images/SectionHomepage/livingcare.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
+      id: 17,
+      src: "/assets/images/SectionHomepage/tpcom.png",
       alt: "areus-atelier",
     },
     {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
+      id: 18,
+      src: "/assets/images/SectionHomepage/kundal.png",
       alt: "areus-atelier",
     },
   ];
@@ -167,10 +132,10 @@ export default function OurTrustedPartner() {
               }}
               breakpoints={{
                 100: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                    slidesPerGroup: 1,
-                  },
+                  slidesPerView: 1,
+                  spaceBetween: 0,
+                  slidesPerGroup: 1,
+                },
                 390: {
                   slidesPerView: 2,
                   spaceBetween: 0,
@@ -195,11 +160,14 @@ export default function OurTrustedPartner() {
               modules={[Navigation, Autoplay]}
               className="our-trusted-partner-slider"
             >
-              {slides.map((slide, index) => (
-                <SwiperSlide key={index}>
+              {slides.map((slide, slideIndex) => (
+                <SwiperSlide key={slideIndex}>
                   <div className={classes["item-image-slide"]}>
                     {slide.map((item, itemIndex) => (
-                      <OurTrustedPartnerImage key={itemIndex} data={item} />
+                      <OurTrustedPartnerImage
+                        key={`${slideIndex}-${itemIndex}`}
+                        data={item}
+                      />
                     ))}
                   </div>
                 </SwiperSlide>
