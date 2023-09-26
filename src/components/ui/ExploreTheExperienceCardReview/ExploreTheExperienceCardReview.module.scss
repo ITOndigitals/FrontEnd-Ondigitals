@@ -1,7 +1,7 @@
 /* styles/card.module.css */
 .card-review {
   width: 100%;
-  min-height: 410px;
+  min-height: 440px;
   perspective: 1000px;
   cursor: pointer;
 }
@@ -28,7 +28,7 @@
     padding: 16px;
     background-color: #fff;
     border-radius: 16px 16px 0px 0px;
-    min-height: 190px;
+    min-height: 215px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -212,7 +212,7 @@
 }
 @media (max-width: 1200px) {
   .card-review {
-    min-height: 450px;
+    min-height: 470px;
   }
 }
 @media (max-width: 380px) {

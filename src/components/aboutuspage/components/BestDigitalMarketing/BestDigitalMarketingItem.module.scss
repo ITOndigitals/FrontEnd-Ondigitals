@@ -7,8 +7,9 @@
   align-items: center;
   height: auto;
   padding: 10px;
+  border: 1px solid #cd0404;
+  border-radius: 16px;
   &:hover {
-    border-radius: 16px;
     border: 1px solid #ff0032;
     .title {
       padding-left: 8px;

@@ -1,7 +1,6 @@
 .our-trusted-partner {
   background-color: #fff;
   height: 100vh;
-  padding: 10% 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +54,7 @@
 @media (max-width: 1200px) {
   .our-trusted-partner {
     height: auto;
+    padding: 10% 0;
     .header-section {
       width: 100%;
       p {

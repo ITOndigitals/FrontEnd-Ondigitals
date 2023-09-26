@@ -12,8 +12,10 @@ import ButtonNoBorder from "../Buttons/ButtonNoBorder/ButtonNoBorder";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function ExploreTheExperienceCardReview({data}) {
+  if (!data) {
+    return <div>Loading....</div>;
+  }
   const dataCard = data;
-  console.log(dataCard)
   const [isFlipped, setIsFlipped] = useState(false);
   const handleClick = () => {
     setIsFlipped(!isFlipped);
@@ -118,7 +120,7 @@ export default function ExploreTheExperienceCardReview({data}) {
           <div className={`${classes["card-back__rating"]} card-back-rating`}>
             <div className={classes["card-back__rating__point"]}>
               <p className={classes["card-back__rating__point--text"]}>
-                Rating: 5.0
+               {`Rating: ${dataCard.pointRating}`}
               </p>
               <div className={classes["card-back__rating__point--icon"]}>
                 <IconStar
@@ -141,6 +143,11 @@ export default function ExploreTheExperienceCardReview({data}) {
                   width={24}
                   height={24}
                 />
+                 <IconStar
+                  color={"rgba(255, 0, 50, 1)"}
+                  width={24}
+                  height={24}
+                />
               </div>
             </div>
             <hr />
@@ -150,19 +157,19 @@ export default function ExploreTheExperienceCardReview({data}) {
                 className={classes["card-back__rating__detail--point"]}
               >
                 <p>Quality:</p>
-                <p>5.0</p>
+                <p>{dataCard.pointRating}</p>
               </div>
               <div className={classes["card-back__rating__detail--point"]}>
                 <p>Schedule:</p>
-                <p>5.0</p>
+                <p>{dataCard.pointRating}</p>
               </div>
               <div className={classes["card-back__rating__detail--point"]}>
                 <p>Cost:</p>
-                <p>5.0</p>
+                <p>{dataCard.pointRating}</p>
               </div>
               <div className={classes["card-back__rating__detail--point"]}>
                 <p>Willing to Refer:</p>
-                <p>5.0</p>
+                <p>{dataCard.pointRating}</p>
               </div>
             </div>
           </div>

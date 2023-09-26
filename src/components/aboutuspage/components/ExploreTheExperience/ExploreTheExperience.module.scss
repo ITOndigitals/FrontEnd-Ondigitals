@@ -1,6 +1,8 @@
 .explore-the-experience {
   height: 100vh;
-  padding: 5% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #3d1766;
   .header {
     display: flex;
@@ -27,11 +29,30 @@
     padding-top: 5%;
   }
 }
-@media (max-height:1200px) {
-    .explore-the-experience {
-        height: auto;
-        padding: 10% 0;
-
-    }
-
+@media (max-width: 1200px) {
+  .explore-the-experience {
+    height: auto;
+    padding: 10% 0;
+  }
 }
+@media (max-width: 600px) {
+  .explore-the-experience {
+    height: auto;
+    padding: 10% 0;
+    .header {
+      flex-wrap: wrap;
+      gap: 15px;
+      &__text {
+        &__title {
+          width: 100%;
+        }
+      }
+      &__btn {
+       width: 100%;
+       display: flex;
+       justify-content: flex-end;
+      }
+    }
+  }
+}
+

@@ -190,15 +190,14 @@ export default function ExploreTheExperience() {
             <Swiper
               mousewheel={true}
               modules={[Mousewheel]}
-              loop={true}
               autoplay={{
-                delay: 2500000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               breakpoints={{
                 640: {
                   slidesPerView: 1,
-                  spaceBetween: 0,
+                  spaceBetween: 15,
                   slidesPerGroup: 1,
                 },
                 700: {
