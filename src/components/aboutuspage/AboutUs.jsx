@@ -22,10 +22,14 @@ const AboutUs = () => {
   const setChangeStickyIsAllowed = useBoundStore(
     (state) => state.setChangeStickyIsAllowed
   );
+  const setIsInSubPageState = useBoundStore(
+    (state) => state.setIsInSubPageState
+  );
 
   useEffect(() => {
     setHeaderStickyState(false);
     setChangeStickyIsAllowed(true);
+    setIsInSubPageState(true);
     const header = document.querySelector(".main-header-g");
     if (header) {
       setHeaderCanChangeColor();

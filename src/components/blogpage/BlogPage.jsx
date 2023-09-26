@@ -19,11 +19,15 @@ const BlogPage = ({ blogsData }) => {
   const setChangeStickyIsAllowed = useBoundStore(
     (state) => state.setChangeStickyIsAllowed
   );
+  const setIsInSubPageState = useBoundStore(
+    (state) => state.setIsInSubPageState
+  );
   //Khi tới các section homepage, cho ẩn header chính để hiện section header
   //nên cần set lại xuất hiện
   useEffect(() => {
     setHeaderStickyState(false);
-    setChangeStickyIsAllowed(true)
+    setChangeStickyIsAllowed(true);
+    setIsInSubPageState(true);
     const header = document.querySelector(".main-header-g");
     if (header) {
       header.classList.remove("hide");

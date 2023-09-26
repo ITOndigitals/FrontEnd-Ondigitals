@@ -40,6 +40,9 @@ const HomePage = (allPosts) => {
   const setChangeStickyIsAllowed = useBoundStore(
     (state) => state.setChangeStickyIsAllowed
   );
+  const setIsInSubPageState = useBoundStore(
+    (state) => state.setIsInSubPageState
+  );
 
   //Lướt tới contact form
   const scrollToContactForm = () => {
@@ -50,13 +53,15 @@ const HomePage = (allPosts) => {
     setToLight();
   };
   const CounterNumber = () => {
-    const elements = document.querySelectorAll(".number-trusted, .number-successful, .number-monthly");
-    const maxValues =[500,300,1000]
-    console.log(maxValues)
+    const elements = document.querySelectorAll(
+      ".number-trusted, .number-successful, .number-monthly"
+    );
+    const maxValues = [500, 300, 1000];
+    console.log(maxValues);
     function runCounterForElement(currentValue, maxValue, element) {
       if (currentValue <= maxValue) {
         element.textContent = currentValue + "+";
-         setTimeout(()=> {
+        setTimeout(() => {
           runCounterForElement(currentValue + 1, maxValue, element);
         }, 1);
       }
@@ -79,7 +84,8 @@ const HomePage = (allPosts) => {
     setHeaderCanChangeColor();
     setToLight();
     setHeaderStickyState(true);
-    setChangeStickyIsAllowed(false)
+    setChangeStickyIsAllowed(false);
+    setIsInSubPageState(false);
   }, []);
 
   useEffect(() => {

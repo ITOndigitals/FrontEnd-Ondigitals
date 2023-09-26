@@ -7,11 +7,25 @@
   top: $header-padding;
   width: 100%;
   height: $header-height;
+  transition: all 0.5s ease;
   &-no-sticky {
     top: 0;
     position: absolute;
     margin-top: $header-padding;
   }
+  &.sticky-in-subpage {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    height: calc($header-height + 14px);
+    display: flex;
+    align-items: center;
+    animation: smoothScroll 1s forwards;
+  }
+  // &.menu-open {
+  //   background-color: transparent;
+  // }
 }
 .header {
   &-wrapper {
@@ -109,5 +123,15 @@
     &-btn {
       display: none;
     }
+  }
+}
+
+@keyframes smoothScroll {
+  0% {
+    transform: translateY(calc(($header-height + 14px) * -1));
+  }
+
+  100% {
+    transform: translateY(0px);
   }
 }

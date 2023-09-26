@@ -1,7 +1,7 @@
 @import ".././../../../styles/variables";
 @import ".././../../../styles/mixins";
 .section-contact-form {
-  background-color: #3D1766;
+  background-color: #3d1766;
   padding-top: calc($header-height + $header-padding + $section-padding);
   height: 100vh;
   position: relative;
@@ -121,7 +121,7 @@
 @media (max-width: 1024px) {
   .section-contact-form {
     height: auto;
-
+    padding-top: calc($section-padding);
     &__header {
       padding-top: 14%;
       &__notification {
@@ -205,6 +205,12 @@
         }
       }
     }
+  }
+}
+@media (max-width: 400px) {
+  .section-contact-form {
+    height: auto;
+    padding-top: calc($header-height + $section-padding);
   }
 }
 @media (max-width: 320px) {

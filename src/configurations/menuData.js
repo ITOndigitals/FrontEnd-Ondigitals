@@ -25,7 +25,7 @@ export const menuItems = [
   {
     id: 1,
     name: "About us",
-    href: "",
+    href: "/about-us",
   },
   {
     id: 2,
