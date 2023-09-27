@@ -16,7 +16,7 @@ import SectionNavButtons from "../ui/Buttons/SectionNavButtons/SectionNavButtons
 import { useBoundStore } from "@/store/useBoundStore";
 import CouterNumber from "../ui/CouterNumber/CouterNumber";
 
-const HomePage = (allPosts) => {
+const HomePage = ({ allPosts, dataHomepage }) => {
   const [isShowSectionSlide, setIsShowSectionSlide] = useState(true);
   const swiperRef = useRef(null);
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -57,7 +57,6 @@ const HomePage = (allPosts) => {
       ".number-trusted, .number-successful, .number-monthly"
     );
     const maxValues = [500, 300, 1000];
-    console.log(maxValues);
     function runCounterForElement(currentValue, maxValue, element) {
       if (currentValue <= maxValue) {
         element.textContent = currentValue + "+";
@@ -255,6 +254,7 @@ const HomePage = (allPosts) => {
           </SwiperSlide>
           <SwiperSlide>
             <PartnerSection
+              data={dataHomepage}
               NavButton={
                 <SectionNavButtons
                   color="white"
@@ -293,7 +293,7 @@ const HomePage = (allPosts) => {
         <>
           <IntroSection />
           <ServiceSection />
-          <PartnerSection />
+          <PartnerSection data={dataHomepage} />
           <CaseStudySection />
           <NewAndInsightsSection data={allPosts} />
         </>

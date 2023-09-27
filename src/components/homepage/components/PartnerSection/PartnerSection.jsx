@@ -9,7 +9,17 @@ import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorde
 import CouterNumber from "@/components/ui/CouterNumber/CouterNumber";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-export default function PartnerSection({ NavButton }) {
+export default function PartnerSection({ data, NavButton }) {
+  const { clients, pages } = data;
+  console.log(data);
+  const sectionHomepage = pages.nodes[0] || {};
+  const {
+    session3BellowText,
+    session3SecondTitle,
+    session3Title,
+    session3GroupNumberClient,
+  } = sectionHomepage.homePageInputContent || {};
+  const itemImage = clients.nodes;
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
 
@@ -32,7 +42,7 @@ export default function PartnerSection({ NavButton }) {
       {!isOnMobile && <SectionHeader />}
       <div className="container">
         <p className={`${classes["homepagesectionpartner__title"]} appear`}>
-          YOUR PARTNER in digital growth
+          {session3Title}
         </p>
         <div
           className={`${classes["homepagesectionpartner__content"]} appear-slow`}
@@ -42,39 +52,51 @@ export default function PartnerSection({ NavButton }) {
               <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-trusted`}
               >
-                <CouterNumber value={500} classes={"partner-section"} threshold={0.2} />
+                <CouterNumber
+                  value={session3GroupNumberClient.number1}
+                  classes={"partner-section"}
+                  threshold={0.2}
+                />
               </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                TRUSTED CLIENTS
+                {session3GroupNumberClient.text1}
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
               <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-successful`}
               >
-                <CouterNumber value={300} classes={"partner-section"} threshold={0.2} />
+                <CouterNumber
+                  value={session3GroupNumberClient.number2}
+                  classes={"partner-section"}
+                  threshold={0.2}
+                />
               </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                SUCCESSFUL CAMPAIGNS
+                {session3GroupNumberClient.text2}
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
               <div
                 className={`${classes["homepagesectionpartner__content--number"]} number-monthly`}
               >
-                <CouterNumber value={1000} classes={"partner-section"} threshold={0.2} />
+                <CouterNumber
+                  value={session3GroupNumberClient.number3}
+                  classes={"partner-section"}
+                  threshold={0.2}
+                />
               </div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                MONTHLY VIEWS
+                {session3GroupNumberClient.text3}
               </p>
             </div>
           </div>
@@ -86,77 +108,24 @@ export default function PartnerSection({ NavButton }) {
                 classes["homepagesectionpartner__content__colright--text"]
               }
             >
-              notable clients
+              {session3SecondTitle}
             </p>
             <div
               className={
                 classes["homepagesectionpartner__content__colrightimage"]
               }
             >
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/areus-atelier.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo Atelier "
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/renault.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo Renault "
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/tpcom.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo TPcoms"
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/ducati.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo Ducati"
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/hantec.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo Hantec"
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/livingcare.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo LivingCare"
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/kundal.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo kundal"
-                />
-              </div>
-              <div className={`${divImage} pulse-grow`}>
-                <Image
-                  src="/assets/images/SectionHomepage/passion-wine.png"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="Logo passion-wine"
-                />
-              </div>
+              {itemImage &&
+                itemImage.map((item) => (
+                  <div className={`${divImage} pulse-grow`}>
+                    <Image
+                      src={item.featuredImage.node?.sourceUrl}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      alt={item.title}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -164,7 +133,7 @@ export default function PartnerSection({ NavButton }) {
           className={`${classes["homepagesectionpartner__below"]} appear-slow-more`}
         >
           <div className={`${classes["homepagesectionpartner__below__text"]} `}>
-            We offer advanced digital solutions tailored to your needs.
+            {session3BellowText}
           </div>
           <ButtonNoBorder
             href="#"

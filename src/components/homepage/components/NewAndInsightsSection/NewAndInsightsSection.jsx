@@ -9,8 +9,7 @@ import NewPostCard from "./NewPostCard";
 import BlogCard from "@/components/ui/BlogCard/BlogCard";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 export default function NewAndInsightsSection({ data, NavButton }) {
-  const listPosts = data.allPosts;
-
+  const listPosts = data;
   return (
     <>
       <section
@@ -60,7 +59,7 @@ export default function NewAndInsightsSection({ data, NavButton }) {
               modules={[Navigation, Pagination, Autoplay, FreeMode]}
               className="news-insights-swiper "
             >
-              {listPosts.map((post) => (
+              { listPosts && listPosts.map((post) => (
                 <SwiperSlide key={post.id}>
                   <BlogCard data={post} isForSlider />
                   {/* <NewPostCard data={post} /> */}
