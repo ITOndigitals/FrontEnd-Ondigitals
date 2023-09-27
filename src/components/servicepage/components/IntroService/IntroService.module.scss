@@ -1,0 +1,108 @@
+.intro-service {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cd0404;
+  position: relative;
+  &__content {
+    width: 50%;
+    &__title {
+      color: #fff;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px;
+      margin-bottom: 20px;
+    }
+    &__text {
+      p {
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .scroll-msg {
+    color: white;
+    width: 100%;
+    right: 0;
+    position: absolute;
+    bottom: 20%;
+    &__item {
+      position: absolute;
+      width: 150px;
+      height: 46px;
+      transform: rotate(-90deg) translateY(50%);
+      right: 0;
+    }
+    &__line {
+      width: 110%;
+      overflow: hidden;
+      p {
+        margin-bottom: 10px;
+        width: 100%;
+        overflow: hidden;
+        transform: translateX(-90%);
+        height: 1px;
+        background-color: white;
+        position: relative;
+        right: -100%;
+        animation: expandWidth 3s linear infinite;
+      }
+    }
+    & p:first-child {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      text-align: right;
+      padding-right: 4px;
+    }
+    & p:last-child {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+  }
+
+  @keyframes expandWidth {
+    0% {
+      width: 10%;
+    }
+    100% {
+      width: 110%;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .intro-service {
+    height: auto;
+    padding: 10% 0;
+    padding-bottom: 30%;
+    &__content {
+      width: 100%;
+      &__title {
+        text-align: center;
+      }
+      &__text {
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .intro-service {
+    height: 100vh !important;
+  }
+}
+@media (max-width: 390px) {
+  .intro-service {
+    height: auto;
+    padding-bottom: 60%;
+  }
+}

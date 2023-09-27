@@ -1,0 +1,40 @@
+.case-study-card {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover {
+    .case-study-card__overlay {
+      opacity: 1;
+    }
+  }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    &__content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: start;
+      margin-left: 10%;
+      gap: 30px;
+      padding: 10% 0;
+      &__tag {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}

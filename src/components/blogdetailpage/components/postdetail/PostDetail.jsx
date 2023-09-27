@@ -14,7 +14,7 @@ export default function PostDetail({ data, applyMarkDown }) {
   const handleScrollToTop = () => {
     if (postDetailRef.current) {
       const offsetTop = postDetailRef.current.offsetTop;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      window.scrollTo({ top: offsetTop - 75, behavior: "smooth" });
     }
   };
   //useEffect sau là khâu chuẩn bị dữ liệu cho Table Of Content
@@ -86,7 +86,7 @@ export default function PostDetail({ data, applyMarkDown }) {
         <h1 className={classes["title-post-detail"]}>{post.title}</h1>
         <div className={classes["day-and-tag-post-detail"]}>
           <div className={classes["tag-post-detail"]}>
-            <Tag type={1} name={"SEO Tip"} href=""/>
+            <Tag type={1} name={"SEO Tip"} href="" />
             <Tag type={3} name={"Content Marketing"} href="" />
             <Tag type={2} name={"Digital Marketing"} href="" />
           </div>

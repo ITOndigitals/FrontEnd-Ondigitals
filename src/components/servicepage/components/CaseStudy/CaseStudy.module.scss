@@ -1,0 +1,14 @@
+.case-study{
+    height: auto;
+    background-color: #3D1766;
+    padding: 10% 0;
+    &__main{
+        &__content{
+            display: flex;
+            justify-content: space-between;
+            &__item{
+                width: 48%;
+            }
+        }
+    }
+}
