@@ -1,0 +1,100 @@
+.all-service-ondigitals {
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 0;
+  &__title {
+    width: 50%;
+    p {
+      color: #131114;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 40px;
+    }
+  }
+  &__card {
+    display: flex;
+    row-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 10%;
+    &__item {
+      width: 32%;
+      .final-card {
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 16px;
+        border: 1px solid #131114;
+        box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.1),
+          9px 14px 16px 0px rgba(0, 0, 0, 0.09),
+          20px 31px 22px 0px rgba(0, 0, 0, 0.05),
+          35px 55px 26px 0px rgba(0, 0, 0, 0.01),
+          55px 86px 29px 0px rgba(0, 0, 0, 0);
+        &__content {
+          height: 150px;
+          display: flex;
+          flex-direction: column;
+          justify-content:center;
+          color: #131114;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 28px;
+          svg {
+            transform: rotate(90deg);
+          }
+          @media (max-width: 480px) {
+            height: 195px;
+          }
+          @media (max-width: 330px) {
+            height: 220px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .all-service-ondigitals {
+    &__title {
+      width: 100%;
+      text-align: center;
+    }
+    &__card {
+      row-gap: 20px;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .all-service-ondigitals {
+    &__title {
+      width: 100%;
+      text-align: center;
+      p {
+        color: #131114;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+      }
+    }
+    &__card {
+      &__item {
+        width: 48%;
+      }
+    }
+  }
+}
+@media (max-width: 310px) {
+  .all-service-ondigitals {
+    &__card {
+      &__item {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -180,7 +180,7 @@ export default function OurTrustedPartner() {
                 <CounterNumber
                   value={500}
                   classes={"our-trusted-partner"}
-                  threshold={0.5}
+                  threshold={0.1}
                 />
                 <p
                   className={classes["footer-section__content__item__text"]}
@@ -193,7 +193,7 @@ export default function OurTrustedPartner() {
                 <CounterNumber
                   value={300}
                   classes={"our-trusted-partner"}
-                  threshold={0.5}
+                  threshold={0.1}
                 />
                 <p
                   className={classes["footer-section__content__item__text"]}
@@ -206,7 +206,7 @@ export default function OurTrustedPartner() {
                 <CounterNumber
                   value={1000}
                   classes={"our-trusted-partner"}
-                  threshold={0.5}
+                  threshold={0.1}
                 />
                 <p
                   className={classes["footer-section__content__item__text"]}
