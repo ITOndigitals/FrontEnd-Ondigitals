@@ -10,6 +10,14 @@
     20px 31px 22px 0px rgba(0, 0, 0, 0.05),
     35px 55px 26px 0px rgba(0, 0, 0, 0.01), 55px 86px 29px 0px rgba(0, 0, 0, 0);
   overflow: hidden;
+  &.final {
+    border: 1px solid #131114;
+    .service-card__content { 
+      &__title {
+        color: #131114;
+      }
+    }
+  }
   &__content {
     height: 150px;
     display: flex;
@@ -34,12 +42,17 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
+    &.hide {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
   }
   &:hover {
     .service-card__content {
       &__title {
         bottom: 0;
-        transform: translateY(0); /* Ban đầu ẩn bên dưới */
+        transform: translateY(0);
       }
     }
     .service-card__button {
@@ -51,8 +64,6 @@
 @media (max-width: 480px) {
   .service-card {
     &__content {
-      height: 195px;
-      transform: translateY(45%);
       &__title {
         color: #fff;
         font-size: 19px;
@@ -66,8 +77,6 @@
 @media (max-width: 330px) {
   .service-card {
     &__content {
-      height: 220px;
-      transform: translateY(40%);
       &__title {
         color: #fff;
         font-size: 17px;

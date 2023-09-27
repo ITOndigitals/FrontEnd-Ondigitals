@@ -16,7 +16,7 @@ const ReadMoreSlider = ({ data }) => {
       }}
       freeMode={true}
       autoplay={{
-        delay: 2500000,
+        delay: 25000,
         disableOnInteraction: false,
       }}
       breakpoints={{

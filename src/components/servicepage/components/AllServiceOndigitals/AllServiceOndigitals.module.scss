@@ -25,6 +25,7 @@
       width: 32%;
       .final-card {
         height: 100%;
+        position: relative;
         cursor: pointer;
         background-color: #fff;
         border-radius: 16px;
@@ -37,7 +38,9 @@
           35px 55px 26px 0px rgba(0, 0, 0, 0.01),
           55px 86px 29px 0px rgba(0, 0, 0, 0);
         &__content {
-          
+          position: absolute;
+          transform: translateY(100%);
+          bottom: 34%;
           color: #131114;
           font-size: 20px;
           font-style: normal;
