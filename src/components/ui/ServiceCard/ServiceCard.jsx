@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ServiceCard.module.scss";
 import Link from "next/link";
+import ExploreButton from "../Buttons/ExploreButton/ExploreButton";
 
 export default function ServiceCard({ title, color, href }) {
   return (
@@ -11,11 +12,12 @@ export default function ServiceCard({ title, color, href }) {
       >
         <div className={classes["service-card__content"]}>
           <div className={classes["service-card__content__title"]}>
-            <p>{title}</p>
+            <div>{title}</div>
           </div>
-          <div className={classes["service-card__content__button"]}>
-            <p>How it works</p>
-          </div>
+        </div>
+        <div></div>
+        <div className={classes["service-card__button"]}>
+          <ExploreButton>How it works</ExploreButton>
         </div>
       </div>
     </Link>

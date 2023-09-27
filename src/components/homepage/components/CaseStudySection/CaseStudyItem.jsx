@@ -3,6 +3,7 @@ import classes from "./CaseStudyItem.module.scss";
 import Link from "next/link";
 
 import { Maven_Pro } from "next/font/google";
+import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -51,7 +52,7 @@ const CaseStudyItem = ({ item, index }) => {
           <p className={classes["item-description-name"]}>{item.name}</p>
           <div
             className={classes["item-description-wrapper"]}
-            style={{ fontFamily: MavenPro.style.fontFamily}}
+            style={{ fontFamily: MavenPro.style.fontFamily }}
           >
             <ul className={classes["item-description-wrapper-list"]}>
               {item.descriptions.map((item, index) => (
@@ -60,9 +61,9 @@ const CaseStudyItem = ({ item, index }) => {
             </ul>
             <div>{item.year}</div>
           </div>
-          <div href="#" className={classes["item-description__explore"]}>
-            Explore
-          </div>
+          <Link href="#" className={classes["item-description__explore"]}>
+            <ExploreButton>Explore</ExploreButton>
+          </Link>
         </div>
       </Link>
     </li>

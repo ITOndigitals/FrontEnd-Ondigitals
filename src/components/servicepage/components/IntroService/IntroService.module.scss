@@ -1,3 +1,5 @@
+@import "../../../../styles/variables";
+
 .intro-service {
   height: 100vh;
   display: flex;
@@ -5,6 +7,7 @@
   align-items: center;
   background-color: #cd0404;
   position: relative;
+  padding-top: calc($header-height + $header-padding + $section-padding);
   &__content {
     width: 50%;
     &__title {
@@ -80,29 +83,18 @@
 @media (max-width: 1200px) {
   .intro-service {
     height: auto;
-    padding: 10% 0;
-    padding-bottom: 30%;
+    padding-bottom: calc($header-height + $section-padding);
     &__content {
-      width: 100%;
-      &__title {
-        text-align: center;
-      }
-      &__text {
-        p {
-          text-align: center;
-        }
-      }
+      width: 80%;
     }
-  }
-}
-@media (max-width: 600px) {
-  .intro-service {
-    height: 100vh !important;
+    .scroll-msg {
+      bottom: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 @media (max-width: 390px) {
   .intro-service {
     height: auto;
-    padding-bottom: 60%;
   }
 }

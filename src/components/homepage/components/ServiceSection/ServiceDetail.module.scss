@@ -63,26 +63,6 @@
       margin: 20px 0;
       color: $neutral-900;
     }
-    &__explore {
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 600;
-      position: relative;
-      padding: 2%;
-      color: $neutral-900;
-      &::before {
-        top: 50%;
-        transform: translateY(-50%);
-        position: absolute;
-        content: "";
-        width: 30px;
-        height: 30px;
-        border: 1px solid $neutral-900;
-        opacity: 0.4;
-        border-radius: 100%;
-        left: 0;
-      }
-    }
   }
   &-image {
     position: relative;

@@ -30,7 +30,7 @@ export const menuItems = [
   {
     id: 2,
     name: "Services",
-    href: "",
+    href: "/service",
   },
   {
     id: 3,

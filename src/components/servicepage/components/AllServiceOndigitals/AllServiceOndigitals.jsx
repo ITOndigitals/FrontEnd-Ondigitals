@@ -9,7 +9,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const dataCard = [
   {
     id: 1,
-    title: "Search Engine Optimization (SEO)",
+    title: <p>Search Engine <br/> Optimization (SEO)</p>,
     color: "#3D1766",
     link: "#",
   },
