@@ -27,7 +27,7 @@ const dataCard = [
   },
   {
     id: 4,
-    title: <p>Website / <br/> E-commerce <br/> Design & Development</p>,
+    title: <p>Website / E-commerce <br/> Design & Development</p>,
     color: "#CD0404",
     link: "#",
   },
@@ -119,22 +119,6 @@ export default function AllServiceOndigitals() {
               />
             </div>
           ))}
-          {/* <div className={classes["all-service-ondigitals__card__item"]}>
-            <div className={classes["final-card"]}>
-              <div className={classes["final-card__content"]}>
-                <p>Need special help?</p>
-                <ButtonNoBorder
-                  href="#"
-                  textSize="md"
-                  RightIcon={
-                    <ArrowRight width={24} height={24} color="#131114" />
-                  }
-                >
-                  Tell us
-                </ButtonNoBorder>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>

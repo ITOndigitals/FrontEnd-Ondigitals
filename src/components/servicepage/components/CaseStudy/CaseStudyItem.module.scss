@@ -1,0 +1,69 @@
+.item {
+  height: 361px;
+  grid-column: span 1 / span 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  &-active {
+    opacity: 0;
+    filter: brightness(0.75);
+    transition: opacity 0.2s;
+  }
+  &:hover {
+    .item-active {
+      opacity: 1;
+    }
+    .tag-list {
+      opacity: 1;
+      visibility: visible;
+      .tag-item {
+        pointer-events: all;
+      }
+    }
+    .explore-btn {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+  &-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__main-title {
+      text-transform: uppercase;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 36px;
+    }
+    .tag-list {
+      opacity: 0;
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.2s;
+      .tag-item {
+        pointer-events: none;
+        width: fit-content;
+      }
+      .tag-item:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  .explore-btn {
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}

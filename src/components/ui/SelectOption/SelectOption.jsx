@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import classes from "./SelectOption.module.scss";
 import { DownNavIcon } from "../Icons/ListIcon";
 
-const SelectOption = ({ options, label, name }) => {
+const SelectOption = ({ options, label, color }) => {
   const [choosenItemId, setChoosenItemId] = useState(options[0].id);
   const [choosenItemName, setChoosenItemName] = useState(options[0].name);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
@@ -38,19 +38,27 @@ const SelectOption = ({ options, label, name }) => {
 
   return (
     <div className={classes.select}>
-      <div className={classes["select-label"]}>{label}</div>
+      <div
+        className={classes["select-label"]}
+        style={{ color: color ? color : "black" }}
+      >
+        {label}
+      </div>
       <div className={classes["select-wrapper"]} ref={optionsRef}>
         <div
-          style={{ borderWidth: dropdownIsOpen ? "2px" : "1px" }}
+          style={{ borderWidth: "1px", borderColor: color ? color : "black"}}
           className={classes["select-name"]}
           onClick={() => {
             setDropdownIsOpen((oldState) => !oldState);
           }}
         >
-          <div className={classes["select-name__content"]}>
+          <div
+            className={classes["select-name__content"]}
+            style={{ color: color ? color : "black" }}
+          >
             {choosenItemName}
           </div>
-          <DownNavIcon width="24" height="24" color="black" />
+          <DownNavIcon width="24" height="24" color={color ? color : "black"} />
         </div>
         <ul
           className={`${classes["select-list"]} ${
