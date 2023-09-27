@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
 export const getDataForNewAndInsightsSection = async () => {
-  const endpoint = "https://kimlongdiep.com/graphql";
+  const endpoint = "https://api.ondigitals.com/graphql";
   const query = gql`
     {
       posts(first: 9) {
@@ -29,7 +29,7 @@ export const getDataForNewAndInsightsSection = async () => {
   }
 };
 export const SearchPostsByKey = async ({ key }) => {
-  const endpoint = "https://kimlongdiep.com/graphql";
+  const endpoint = "https://api.ondigitals.com/graphql";
   const query = gql`
     query GetPosts($search: String!) {
       posts(where: { search: $search }) {
@@ -60,7 +60,7 @@ export const SearchPostsByKey = async ({ key }) => {
   }
 };
 export const GetPostDetailBySlug = async (slug) => {
-  const endpoint = "https://kimlongdiep.com/graphql";
+  const endpoint = "https://api.ondigitals.com/graphql";
   const query = gql`
     query GetPost($slug: String!) {
       postBy(slug: $slug) {
