@@ -1,4 +1,3 @@
-import Link from "next/link";
 import classes from "./ServiceSection.module.scss";
 import ServiceOptionsList from "./ServiceOptionsList";
 import ServiceDetail from "./ServiceDetail";
