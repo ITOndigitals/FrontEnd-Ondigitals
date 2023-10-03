@@ -7,6 +7,7 @@ import { Maven_Pro } from "next/font/google";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import { IconChevronLeft, UpNavIcon } from "@/components/ui/Icons/ListIcon";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
 export default function PostDetail({ data, applyMarkDown }) {
   const post = data;
@@ -17,6 +18,9 @@ export default function PostDetail({ data, applyMarkDown }) {
       window.scrollTo({ top: offsetTop - 75, behavior: "smooth" });
     }
   };
+  console.log(
+    parse(post.content).findIndex((item) => item === "[divider height=”30″]")
+  );
   //useEffect sau là khâu chuẩn bị dữ liệu cho Table Of Content
   useEffect(() => {
     const headingElements = document.querySelectorAll("h2, h3, h4");
@@ -106,8 +110,9 @@ export default function PostDetail({ data, applyMarkDown }) {
         <div
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        ></div>
+        >
+          {parse(post.content)}
+        </div>
         <div className={classes["post-detail-footer"]}>
           <hr />
           <div className={classes["post-detail-footer-button"]}>

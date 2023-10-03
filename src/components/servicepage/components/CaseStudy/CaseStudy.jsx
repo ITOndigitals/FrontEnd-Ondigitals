@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./CaseStudy.module.scss";
 import CaseStudiesFilters from "../CaseStudiesFilters/CaseStudiesFilters";
 import CaseStudyList from "./CaseStudyList";
