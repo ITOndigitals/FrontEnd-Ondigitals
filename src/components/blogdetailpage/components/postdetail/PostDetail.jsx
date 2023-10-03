@@ -9,7 +9,11 @@ import { IconChevronLeft, UpNavIcon } from "@/components/ui/Icons/ListIcon";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function PostDetail({ data, applyMarkDown }) {
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   const post = data;
+  const parse = require("html-react-parser");
   const postDetailRef = useRef(null);
   const handleScrollToTop = () => {
     if (postDetailRef.current) {
@@ -25,7 +29,6 @@ export default function PostDetail({ data, applyMarkDown }) {
       let subLevel = 1;
       let innerSubLevel = 1;
       const markdown = [];
-
       for (let i = 0; i < headingElements.length; i++) {
         const headingElement = headingElements[i];
         const headingContent = headingElement.textContent
@@ -106,8 +109,9 @@ export default function PostDetail({ data, applyMarkDown }) {
         <div
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        ></div>
+        >
+          {parse(post.content)}
+        </div>
         <div className={classes["post-detail-footer"]}>
           <hr />
           <div className={classes["post-detail-footer-button"]}>

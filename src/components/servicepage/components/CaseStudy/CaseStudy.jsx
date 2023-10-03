@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./CaseStudy.module.scss";
 import { Maven_Pro } from "next/font/google";
 import CaseStudyCard from "@/components/ui/CaseStudyCard/CaseStudyCard";
+import ButtonSearch from "@/components/ui/Buttons/ButtonsSearch/ButtonSearch";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 export default function CaseStudy() {
   return (
@@ -16,7 +17,7 @@ export default function CaseStudy() {
               <CaseStudyCard />
             </div>
             <div className={classes["case-study__main__content__item"]}>
-              <CaseStudyCard />
+              <ButtonSearch/>
             </div>
           </div>
         </div>

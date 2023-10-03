@@ -15,7 +15,7 @@ const dataSimple = [
       "On Digitals adheres to the timetable and deadlines and has a well-organized working process.",
     position: "Founder & Managing Director,Taylor Made Beauty Ltd",
     name: "Nikki Taylor",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "SEO & PPC Service for Personal Care Product Manufacturer",
     serviceContent:
       "On Digitals provides ongoing SEO services for a personal care product manufacturer. The team is responsible for SEO audit, keyword study, content generation, and link-building procedures.",
@@ -32,7 +32,7 @@ const dataSimple = [
       "On Digital stands apart due to their dynamic and flexible working style. They sought to provide the best service.",
     position: "Wastewater Engineer Kim Hoang Hiep",
     name: "Thanh Chi Nguyen",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Thanh Chi Nguyen.png",
     titleService:
       "Web Design & Digital Marketing for Environmental Consultancy",
     serviceContent:
@@ -50,7 +50,7 @@ const dataSimple = [
       "The most impressive aspect about them is their ability to complete tasks on schedule.",
     position: "CEO Guernsey",
     name: "Jared Stigge",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Truong Pham 1.png",
     titleService: "Web Dev & Design for Design Architecture & Consulting Firm",
     serviceContent:
       "On Digitals delivered a user-friendly interface that fully met the client's expectations. The team's project management skills were exemplary, allowing them to complete tasks on schedule effectively.",
@@ -67,7 +67,7 @@ const dataSimple = [
       "Our traffic has increased dramatically since we started with them.",
     position: "Regional Sales & Marketing Manager Cement Company",
     name: "Truong Pham",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "SEO Campaign for Vietnamese Cement Company",
     serviceContent:
       "A new construction company was expanding nationally across Vietnam, competing against long-established brands. They hired On Digitals to increase their brand awareness by improving their SEO rank in Vietnam.",
@@ -84,7 +84,7 @@ const dataSimple = [
       "Their competence, quality of work, and reliability make them stand out.",
     position: "CEO DFE",
     name: "Ellison Carroll",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "Content Marketing for Education Firm",
     serviceContent:
       "On Digitals has provided content marketing and blogging services for an education firm. The goal is to publish the platforms on the popular website and the client's niche.",
@@ -101,7 +101,7 @@ const dataSimple = [
       "They provided us a form that was used for easier updates and share important information.",
     position: "Marketing Assistant Manager Luxury Automotive Company",
     name: "Marvin McKinney",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "Web Dev for Luxury Automotive Company",
     serviceContent:
       "A luxury automotive company engaged with On Digitals to build and develop their website. Their goal was to improve site traffic and enhance its customer journey.",
@@ -117,7 +117,7 @@ const dataSimple = [
     contentReview: "Their team was skillful and strategic.",
     position: "Marketing Head Self-Help Podcast",
     name: "My Hien Tran",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "Influencer Marketing Services for Self-Help Podcast",
     serviceContent:
       "On Digitals provided influencer marketing efforts for a self-help podcast. After an intensive research phase, they came up with a list of popular influencers for the client to choose from.",
@@ -134,7 +134,7 @@ const dataSimple = [
       "We were impressed by the professionalism of the team and how they handled the project.",
     position: "CEO Frozen Food Brand",
     name: "Fekete Csanád",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "E-Commerce Website Design for Frozen Food Brand",
     serviceContent:
       "On Digitals created and designed the storefront of a frozen food brand's online shop. The design was expected to be simple and intuitive. The team also added a payment gateway and other third-party services.",
@@ -151,7 +151,7 @@ const dataSimple = [
       "We have found On Digitals to be very accommodating and understanding as our project has developed.",
     position: "President Cantera Concrete Company",
     name: "Brent Dostal",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/111.png",
+    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Nikki Taylor.png",
     titleService: "SEO & PPC for Concrete Company",
     serviceContent:
       "On Digitals provided SEO and PPC services for a concrete company. The team managed the client's website optimization and Google Ads campaigns.",

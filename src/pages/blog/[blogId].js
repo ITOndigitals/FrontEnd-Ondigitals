@@ -1,33 +1,36 @@
 import BlogDetail from "@/components/blogdetailpage/BlogDetail";
 import {
+  GetListSlugPosts,
   GetPostDetailBySlug,
   getDataForNewAndInsightsSection,
 } from "../api/graphql";
 
-const BlogDetailPage = ({ allPosts, dataPostDetail }) => {
+export async function getStaticPaths() {
+  const posts = await GetListSlugPosts();
+  const paths = posts.map((post) => ({
+    params: { blogId: post.slug },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+export async function getStaticProps({ params }) {
+  const dataPostDetail = await GetPostDetailBySlug(params.blogId);
+  const relatedPosts = await getDataForNewAndInsightsSection();
+  return {
+    props: {
+      dataPostDetail,
+      relatedPosts,
+      
+    },
+  };
+}
+const BlogDetailPage = ({ dataPostDetail, relatedPosts }) => {
   return (
     <>
-      <BlogDetail relatedPosts={allPosts} postDetail={dataPostDetail} />
+      <BlogDetail postDetail={dataPostDetail} relatedPosts={relatedPosts} />
     </>
   );
 };
-
-const redirectTo404 = (res) => {
-  res.writeHead(302, { Location: "/404" });
-  res.end();
-};
-
-export const getServerSideProps = async (context) => {
-  const { query, res } = context;
-  const postId = query.blogId;
-  const dataPostDetail = await GetPostDetailBySlug(postId);
-  if (!dataPostDetail) {
-    redirectTo404(res);
-    return { props: {} };
-  }
-
-  const allPosts = await getDataForNewAndInsightsSection();
-  return { props: { allPosts, dataPostDetail } };
-};
-
 export default BlogDetailPage;

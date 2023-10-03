@@ -11,7 +11,7 @@ import { Maven_Pro } from "next/font/google";
 import ButtonNoBorder from "../Buttons/ButtonNoBorder/ButtonNoBorder";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-export default function ExploreTheExperienceCardReview({data}) {
+export default function ExploreTheExperienceCardReview({ data }) {
   if (!data) {
     return <div>Loading....</div>;
   }
@@ -36,13 +36,13 @@ export default function ExploreTheExperienceCardReview({data}) {
             <div className={classes["person-info"]}>
               <div className={classes["person-info__text"]}>
                 <p className={classes["person-info__text--name"]}>
-                 {dataCard.name}
+                  {dataCard.name}
                 </p>
                 <p
                   style={{ fontFamily: MavenPro.style.fontFamily }}
                   className={classes["person-info__text--position"]}
                 >
-                 {dataCard.position}
+                  {dataCard.position}
                 </p>
               </div>
               <div className={classes["person-info__image"]}>
@@ -55,11 +55,13 @@ export default function ExploreTheExperienceCardReview({data}) {
               </div>
             </div>
           </div>
-          <div className={`${classes["card-front__service"]} card-front-service`}>
-            <p className={classes["title-service"]}>
-              SEO & PPC Service for Personal Care Product Manufacturer
-            </p>
-            <hr />
+          <div
+            className={`${classes["card-front__service"]} card-front-service`}
+          >
+            <div className={classes["title-service"]}>
+              <p>{dataCard.titleService}</p>
+            </div>
+            <hr style={{ width: "100%" }} />
             <div className={classes["content-service"]}>
               <div className={classes["content-service__project-infor"]}>
                 <p className={classes["content-service__project-infor--title"]}>
@@ -120,7 +122,7 @@ export default function ExploreTheExperienceCardReview({data}) {
           <div className={`${classes["card-back__rating"]} card-back-rating`}>
             <div className={classes["card-back__rating__point"]}>
               <p className={classes["card-back__rating__point--text"]}>
-               {`Rating: ${dataCard.pointRating}`}
+                {`Rating: ${dataCard.pointRating}`}
               </p>
               <div className={classes["card-back__rating__point--icon"]}>
                 <IconStar
@@ -143,7 +145,7 @@ export default function ExploreTheExperienceCardReview({data}) {
                   width={24}
                   height={24}
                 />
-                 <IconStar
+                <IconStar
                   color={"rgba(255, 0, 50, 1)"}
                   width={24}
                   height={24}

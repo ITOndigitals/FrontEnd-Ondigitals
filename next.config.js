@@ -7,7 +7,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
   images: {
-    domains: ["api.ondigitals.com","kimlongdiep.com"],
+    domains: ["api.ondigitals.com","kimlongdiep.com","s3-alpha-sig.figma.com"],
   },
 };
 

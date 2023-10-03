@@ -1,6 +1,7 @@
 import { request, gql } from "graphql-request";
+import { endPointApi } from "./endpoint";
 export const getDataForNewAndInsightsSection = async () => {
-  const endpoint = "https://api.ondigitals.com/graphql";
+  const endpoint = endPointApi;
   const query = gql`
     {
       posts(first: 9) {
@@ -29,7 +30,7 @@ export const getDataForNewAndInsightsSection = async () => {
   }
 };
 export const SearchPostsByKey = async ({ key }) => {
-  const endpoint = "https://api.ondigitals.com/graphql";
+  const endpoint = endPointApi;
   const query = gql`
     query GetPosts($search: String!) {
       posts(where: { search: $search }) {
@@ -60,7 +61,7 @@ export const SearchPostsByKey = async ({ key }) => {
   }
 };
 export const GetPostDetailBySlug = async (slug) => {
-  const endpoint = "https://api.ondigitals.com/graphql";
+  const endpoint = endPointApi;
   const query = gql`
     query GetPost($slug: String!) {
       postBy(slug: $slug) {
@@ -90,7 +91,7 @@ export const GetPostDetailBySlug = async (slug) => {
 };
 
 export const GetDataHomepage = async () => {
-  const endpoint = "https://api.ondigitals.com/graphql";
+  const endpoint = endPointApi;
   const query = gql`
     query get_content_front_page {
       pages(where: { title: "Homepage" }) {
@@ -185,5 +186,25 @@ export const GetDataHomepage = async () => {
   } catch (error) {
     console.error("Error fetching data", error);
     return {};
+  }
+};
+export const GetListSlugPosts = async () => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetListSlugPosts {
+      posts(first: 10000) {
+        nodes {
+          slug
+          postId
+        }
+      }
+    }
+  `;
+  try {
+    const data = await request(endpoint, query);
+    return data.posts.nodes;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
   }
 };

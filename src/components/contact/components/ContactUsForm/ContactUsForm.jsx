@@ -7,13 +7,18 @@ import { validationSchema } from "../../../../until/validationForm";
 import Button from "@/components/ui/Buttons/Button/Button";
 import {
   ArrowRight,
+  IconDanger,
   IconSuccess,
 } from "@/components/ui/Icons/ListIcon";
 import Note from "@/components/ui/Note/Note";
 import { Maven_Pro } from "next/font/google";
+import { SendEmailContactForm } from "@/until/sendEmail";
+import { useMutation } from "@apollo/client";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
-
 export default function ContactUsForm() {
+  const [sendEmailMutation, { loading, error }] =
+    useMutation(SendEmailContactForm);
+  const [isSuccess, setIsSuccess] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,9 +28,20 @@ export default function ContactUsForm() {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
-  function handleSubmit(values) {
-    console.log(values);
-    formik.resetForm();
+  async function handleSubmit(values) {
+    try {
+      const { data } = await sendEmailMutation({
+        variables: {
+          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> <h4 style="color: black;">Email: ${values.email}</h4>  <strong style="color: black;">Message: ${values.message}</strong>  `,
+          subject: "Thông báo có khách hàng mới",
+        },
+      });
+      console.log(data);
+      formik.resetForm();
+      setIsSuccess(true);
+    } catch (mutationError) {
+      console.error(mutationError);
+    }
   }
 
   return (
@@ -38,19 +54,41 @@ export default function ContactUsForm() {
           <div
             className={classes["section-contact-form__header__notification"]}
           >
-            <Note
-              content="Message sent! 
+            {loading && (
+              <div className="loader-main">
+                <div className="loader"></div>
+              </div>
+            )}
+            {isSuccess && (
+              <Note
+                content="Message sent! 
              Thank you for contacting us.
              We will reach out to you soon."
-              backgroundColor="#5CFFAE"
-              icon={
-                <IconSuccess
-                  width={24}
-                  height={24}
-                  color="rgba(19, 17, 20, 1)"
-                />
-              }
-            />
+                backgroundColor="#5CFFAE"
+                icon={
+                  <IconSuccess
+                    width={24}
+                    height={24}
+                    color="rgba(19, 17, 20, 1)"
+                  />
+                }
+              />
+            )}
+            {error && (
+              <Note
+                content="Something went wrong! 
+                We couldn't receive your message.
+                Please wait and try again."
+                backgroundColor="rgba(255, 82, 82, 1)"
+                icon={
+                  <IconDanger
+                    width={24}
+                    height={24}
+                    color="rgba(19, 17, 20, 1)"
+                  />
+                }
+              />
+            )}
           </div>
         </div>
         <div className={`${classes["contact-section"]} `}>
@@ -129,7 +167,7 @@ export default function ContactUsForm() {
                       <ArrowRight width={24} height={24} color="#FFF" />
                     }
                   >
-                    Send us a message
+                    {loading ? "Sending message..." : "Send us a message"}
                   </Button>
                 </div>
               </div>

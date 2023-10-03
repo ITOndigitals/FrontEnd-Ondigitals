@@ -28,7 +28,7 @@
     padding: 16px;
     background-color: #fff;
     border-radius: 16px 16px 0px 0px;
-    min-height: 215px;
+    min-height: 205px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -66,6 +66,11 @@
         position: relative;
         width: 84px;
         height: 84px;
+        overflow: hidden;
+        img{
+          object-fit: cover;
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -73,6 +78,10 @@
     background-color: #6f1ab6;
     padding: 16px;
     border-radius: 0px 0px 16px 16px;
+    min-height: 230px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     .title-service {
       color: #fff;
       text-align: center;
@@ -80,6 +89,7 @@
       font-style: normal;
       font-weight: 600;
       line-height: 26px;
+    
     }
     .content-service {
       display: flex;
