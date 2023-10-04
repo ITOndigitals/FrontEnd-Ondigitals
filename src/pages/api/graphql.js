@@ -1,4 +1,5 @@
 import { request, gql } from "graphql-request";
+
 export const getDataForNewAndInsightsSection = async () => {
   const endpoint = "https://api.ondigitals.com/graphql";
   const query = gql`
