@@ -30,6 +30,7 @@ export const getDataForNewAndInsightsSection = async () => {
     return [];
   }
 };
+
 export const SearchPostsByKey = async ({ key }) => {
   const endpoint = endPointApi;
   const query = gql`
@@ -61,6 +62,7 @@ export const SearchPostsByKey = async ({ key }) => {
     return [];
   }
 };
+
 export const GetPostDetailBySlug = async (slug) => {
   const endpoint = endPointApi;
   const query = gql`
@@ -189,6 +191,7 @@ export const GetDataHomepage = async () => {
     return {};
   }
 };
+
 export const GetListSlugPosts = async () => {
   const endpoint = endPointApi;
   const query = gql`

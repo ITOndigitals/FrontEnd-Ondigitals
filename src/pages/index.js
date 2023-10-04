@@ -4,6 +4,7 @@ import {
   getDataForNewAndInsightsSection,
 } from "./api/graphql";
 import Head from "next/head";
+import { useQuery } from "@apollo/client";
 const parse = require("html-react-parser");
 
 export default function Home({ allPosts, dataHomepage }) {
