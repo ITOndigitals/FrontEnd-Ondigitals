@@ -14,7 +14,9 @@ import Note from "@/components/ui/Note/Note";
 import { Maven_Pro } from "next/font/google";
 import { SendEmailContactForm } from "@/until/sendEmail";
 import { useMutation } from "@apollo/client";
+import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+
 export default function ContactUsForm() {
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
@@ -28,6 +30,7 @@ export default function ContactUsForm() {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
+  
   async function handleSubmit(values) {
     try {
       const { data } = await sendEmailMutation({
@@ -55,11 +58,9 @@ export default function ContactUsForm() {
             className={classes["section-contact-form__header__notification"]}
           >
             {loading && (
-              <div className="loader-main">
-                <div className="loader"></div>
-              </div>
+              <LoadingSpinner/>
             )}
-            {isSuccess && (
+            {isSuccess && !loading &&(
               <Note
                 content="Message sent! 
              Thank you for contacting us.

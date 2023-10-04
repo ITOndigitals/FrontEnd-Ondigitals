@@ -8,6 +8,7 @@ export default function Blog({ allPosts }) {
     </>
   );
 }
+
 export const getServerSideProps = async () => {
   const allPosts = await getDataForNewAndInsightsSection();
   return { props: { allPosts } };
