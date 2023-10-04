@@ -111,7 +111,7 @@ const TableOfContent = ({ markdown }) => {
         </ul>
       </div>
       <div className={classes.line}></div>
-      <p className={classes["socials-heading"]}>SHARE THIS POST</p>
+      <p className={classes["socials-heading"]}>SHARE THIS POST</p> 
       <ul className={classes.socials}>
         {socialsSharingData.map((item, index) => (
           <li key={index}>

@@ -10,7 +10,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const CaseStudyItem = ({ item, href }) => {
   return (
     <li className={classes.item}>
-      <div href={href}>
+      <div href={href} className={classes["item-wrapper"]}>
         <Image
           src={item.image}
           fill
@@ -37,8 +37,8 @@ const CaseStudyItem = ({ item, href }) => {
             </p>
           </div>
           <ul className={classes["tag-list"]}>
-            {item.tags.map((item) => (
-              <Link href="#" className={classes["tag-item"]}>
+            {item.tags.map((item, index) => (
+              <Link href="#" className={classes["tag-item"]} key={index}>
                 <Tag type={item.type} name={item.name} />
               </Link>
             ))}

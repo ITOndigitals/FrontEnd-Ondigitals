@@ -1,5 +1,6 @@
 import { request, gql } from "graphql-request";
 import { endPointApi } from "./endpoint";
+
 export const getDataForNewAndInsightsSection = async () => {
   const endpoint = endPointApi;
   const query = gql`
