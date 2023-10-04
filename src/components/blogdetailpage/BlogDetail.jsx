@@ -10,6 +10,7 @@ import { Maven_Pro } from "next/font/google";
 import Button from "../ui/Buttons/Button/Button";
 import { ArrowRight } from "../ui/Icons/ListIcon";
 import TableOfContent from "./components/TableOfContent/TableOfContent";
+import { getDataForNewAndInsightsSection } from "@/pages/api/graphql";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -130,5 +131,5 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     </div>
   );
 };
-
 export default BlogDetail;
+

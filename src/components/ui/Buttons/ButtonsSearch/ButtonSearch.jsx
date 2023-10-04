@@ -17,9 +17,6 @@ export default function ButtonSearch({ onSearch, color}) {
     formik.setFieldValue("text", "");
   };
   async function handleSubmit(searchValue) {
-    const postId = 3848; 
-    const searchedPost = await GetPostById({ postId });
-
     console.log(searchedPost);
     onSearch(searchValue);
     formik.resetForm();
@@ -69,7 +66,6 @@ export default function ButtonSearch({ onSearch, color}) {
               value={formik.values.text}
               required
               autoComplete="off"
-              autoFocus
             />
             {!isSearchIcon && formik.values.text && (
               <svg

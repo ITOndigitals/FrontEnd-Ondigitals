@@ -165,7 +165,6 @@ export default function CaseStudy() {
   const onSearchHandler = (searchKeyword) => {
     console.log(searchKeyword);
   };
-
   return (
     <section className={classes["case-study"]}>
       <div className="container">
