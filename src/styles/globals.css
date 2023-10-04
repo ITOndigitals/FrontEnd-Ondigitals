@@ -385,6 +385,26 @@ a {
   border: solid 1px #4c4552;
 }
 
+.custom-pagination--l button {
+  box-shadow: none !important;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 12.5px;
+  color: #dcc7ed;
+  @media (max-width: 576px) {
+    margin: 0 2px;
+  }
+}
+
+.custom-pagination--l ol li button{
+  border: solid 1px #dcc7ed;
+}
+
+.custom-pagination--l .wd-icon-fill{
+  fill: #dcc7ed !important;
+}
+/* End Pagination */
+
 /* START MEDIA QUERIES */
 @media (max-width: 1280px) {
   .container,

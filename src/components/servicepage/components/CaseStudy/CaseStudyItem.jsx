@@ -18,14 +18,6 @@ const CaseStudyItem = ({ item, href }) => {
           alt="case-study-image"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <Image
-          src={item.activeImage}
-          className={classes["item-active"]}
-          fill
-          style={{ objectFit: "cover" }}
-          alt="case-study-image"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
         <div className={classes["item-content"]}>
           <div>
             <p className={classes["item-content__main-title"]}>{item.name}</p>
