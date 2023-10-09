@@ -9,7 +9,7 @@ export default function Blog({ allPosts }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const allPosts = await getDataForNewAndInsightsSection();
+export const getServerSideProps = async ({locale}) => {
+  const allPosts = await getDataForNewAndInsightsSection(locale);
   return { props: { allPosts } };
 };
