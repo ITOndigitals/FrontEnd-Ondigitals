@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import classes from "./CustomPagination.module.scss";
 
-const CustomPagination = ({ onChangePage }) => {
+const CustomPagination = ({ onChangePage, isLight }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [pageRange, setPageRange] = useState(5);
   const resultCount = 10;
@@ -31,6 +31,8 @@ const CustomPagination = ({ onChangePage }) => {
     };
   }, []);
 
+  const activeStateClass = isLight ? classes["active--light"] : classes.active;
+
   return (
     <Pagination
       onPageChange={(pageNumber) => {
@@ -39,19 +41,22 @@ const CustomPagination = ({ onChangePage }) => {
       }}
       aria-label="Pagination"
       lastPage={lastPage}
-      className="custom-pagination"
+      className={!isLight ? "custom-pagination" : "custom-pagination--l"}
       rangeSize={pageRange}
     >
       <Pagination.Controls>
         <Pagination.JumpToFirstButton aria-label="First" />
-        <Pagination.StepToPreviousButton aria-label="Previous" />
+        <Pagination.StepToPreviousButton
+          aria-label="Previous"
+          className={classes["step-btn"]}
+        />
         <Pagination.PageList>
           {({ state }) =>
             state.range.map((pageNumber) => (
               <Pagination.PageListItem key={pageNumber}>
                 <Pagination.PageButton
                   className={
-                    pageNumber === currentPageNumber ? classes.active : ""
+                    pageNumber === currentPageNumber ? activeStateClass : ""
                   }
                   aria-label={`Page ${pageNumber}`}
                   pageNumber={pageNumber}
@@ -60,7 +65,10 @@ const CustomPagination = ({ onChangePage }) => {
             ))
           }
         </Pagination.PageList>
-        <Pagination.StepToNextButton aria-label="Next" />
+        <Pagination.StepToNextButton
+          aria-label="Next"
+          className={classes["step-btn"]}
+        />
         <Pagination.JumpToLastButton aria-label="Last" />
       </Pagination.Controls>
       <Pagination.AdditionalDetails shouldHideDetails>

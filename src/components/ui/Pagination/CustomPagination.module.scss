@@ -3,4 +3,12 @@
 .active {
   background-color: $primary-dark !important;
   color: white !important;
+  &--light {
+    background-color: $primary-light !important;
+    color: white !important;
+  }
+}
+
+.step-btn {
+  background-color: transparent !important;
 }

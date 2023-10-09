@@ -4,6 +4,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import localFont from "next/font/local";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import usePageLoading from "@/hooks/usePageLoading";
+import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 
 config.autoAddCss = false;
@@ -13,8 +15,10 @@ const client = new ApolloClient({
 });
 
 export default function App({ Component, pageProps }) {
+  const isLoading = usePageLoading();
   return (
     <>
+      {isLoading && <LoadingSpinner hasOverlay />}
       <ApolloProvider client={client}>
         <Layout className={fixelFont.className}>
           <Component {...pageProps} />

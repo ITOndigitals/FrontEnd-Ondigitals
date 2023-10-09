@@ -320,8 +320,7 @@ const Header = () => {
                 isDark ? classes["dark-header"] : ""
               }`}
             >
-              <Link
-                href="#"
+              <div
                 className={`${classes["header-btn"]} ${
                   menuIsOpen || !headerBtnIsShown
                     ? classes["header-btn--hidden"]
@@ -329,7 +328,6 @@ const Header = () => {
                 }`}
               >
                 <div className={classes["header-btn__wrapper"]}>
-                  <FontAwesomeIcon icon={faLanguage} />
                   {otherLocales.map((locale, localeIndex) => {
                     const { pathname, query } = router;
                     return (
@@ -338,13 +336,18 @@ const Header = () => {
                         href={{ pathname, query }}
                         locale={locale}
                         onClick={() => changeLocale(locale)}
+                        className={classes["header-btn__wrapper-locale"]}
                       >
+                        <FontAwesomeIcon
+                          icon={faLanguage}
+                          color={`${isDark ? "black" : "white"}`}
+                        />
                         {locale}
                       </Link>
                     );
                   })}
                 </div>
-              </Link>
+              </div>
               <Link
                 href="#"
                 className={`${classes["header-btn"]} ${
