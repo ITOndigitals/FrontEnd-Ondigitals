@@ -1,0 +1,33 @@
+.over-view {
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  &__left {
+    padding-top: 5%;
+    width: 45%;
+    &__content {
+      &__title {
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+        margin-bottom: 85px;
+      }
+      &__text {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+  &__right {
+    width: 45%;
+    &__image {
+      position: relative;
+      height: 100vh;
+    }
+  }
+}

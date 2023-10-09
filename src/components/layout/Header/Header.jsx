@@ -288,7 +288,11 @@ const Header = () => {
       setSubPageHeaderIsSticky(false);
     }
   }, [headerIsSticky, isInSubPage]);
-
+  const { locales, locale: activeLocale } = router;
+  const otherLocales = locales.filter((locale) => locale !== activeLocale);
+  const changeLocale = (locale) => {
+    document.cookie = `LANGUAGE-ODS=${locale}`;
+  };
   return (
     <div>
       <ExpanseMenu
@@ -305,7 +309,10 @@ const Header = () => {
       >
         <div className="container--big">
           <div className={classes["header-wrapper"]}>
-            <Link href="/" style={{pointerEvents: menuIsOpen ? "none" : "auto"}}>
+            <Link
+              href="/"
+              style={{ pointerEvents: menuIsOpen ? "none" : "auto" }}
+            >
               <Logo isVisible={!menuIsOpen} isDark={isDark} />
             </Link>
             <div
@@ -323,7 +330,19 @@ const Header = () => {
               >
                 <div className={classes["header-btn__wrapper"]}>
                   <FontAwesomeIcon icon={faLanguage} />
-                  <span>English</span>
+                  {otherLocales.map((locale, localeIndex) => {
+                    const { pathname, query } = router;
+                    return (
+                      <Link
+                        key={localeIndex}
+                        href={{ pathname, query }}
+                        locale={locale}
+                        onClick={() => changeLocale(locale)}
+                      >
+                        {locale}
+                      </Link>
+                    );
+                  })}
                 </div>
               </Link>
               <Link
