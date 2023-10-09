@@ -9,12 +9,14 @@ export async function getStaticPaths() {
   const posts = await GetListSlugPosts();
   const paths = posts.map((post) => ({
     params: { blogId: post.slug },
+    locale: post.language.code.toLowerCase(),
   }));
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
+
 export async function getStaticProps({ params }) {
   const dataPostDetail = await GetPostDetailBySlug(params.blogId);
   const relatedPosts = await getDataForNewAndInsightsSection();
@@ -22,7 +24,6 @@ export async function getStaticProps({ params }) {
     props: {
       dataPostDetail,
       relatedPosts,
-      
     },
   };
 }

@@ -10,6 +10,7 @@ const client = new ApolloClient({
   uri: "https://api.ondigitals.com/graphql",
   cache: new InMemoryCache(),
 });
+
 export default function App({ Component, pageProps }) {
   return (
     <>

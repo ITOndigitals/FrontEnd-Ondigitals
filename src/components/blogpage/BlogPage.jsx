@@ -5,10 +5,14 @@ import BlogsHeader from "./components/BlogsHeader/BlogsHeader";
 import BlogList from "./components/BlogsListing/BlogList";
 import BlogFooter from "./components/BlogsFooter/BlogFooter";
 import { SearchPostsByKey } from "@/pages/api/graphql";
+import { useRouter } from "next/router";
 
 const BlogPage = ({ blogsData }) => {
   const setToDark = useBoundStore((state) => state.setToDark);
   const [renderData, setRenderData] = useState(blogsData);
+  useEffect(() => {
+    setRenderData(blogsData);
+  }, [blogsData]);
   const headerIsDark = useBoundStore((state) => state.isDark);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -44,7 +48,6 @@ const BlogPage = ({ blogsData }) => {
     const searchedPosts = await SearchPostsByKey({ key: searchValue.text });
     setRenderData(searchedPosts);
   };
-
   return (
     <div className={`container ${classes.container}`}>
       <BlogsHeader />

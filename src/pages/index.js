@@ -4,12 +4,11 @@ import {
   getDataForNewAndInsightsSection,
 } from "./api/graphql";
 import Head from "next/head";
-const parse = require("html-react-parser");
 
 export default function Home({ allPosts, dataHomepage }) {
   const { pages } = dataHomepage;
-  const fullHeadHTML = pages.nodes[0]?.seo.fullHead;
-
+  const fullHeadHTML = pages?.nodes[0]?.seo.fullHead;
+  const parse = require("html-react-parser");
   return (
     <>
       <Head>{parse(fullHeadHTML)}</Head>
@@ -17,9 +16,9 @@ export default function Home({ allPosts, dataHomepage }) {
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const allPosts = await getDataForNewAndInsightsSection();
+export const getServerSideProps = async ({ locale }) => {
+  const language = locale.toUpperCase();
+  const allPosts = await getDataForNewAndInsightsSection(language);
   const dataHomepage = await GetDataHomepage();
-  return { props: { allPosts, dataHomepage} };
+  return { props: { allPosts, dataHomepage } };
 };

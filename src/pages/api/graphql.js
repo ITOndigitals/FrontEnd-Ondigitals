@@ -1,11 +1,11 @@
 import { request, gql } from "graphql-request";
 import { endPointApi } from "./endpoint";
 
-export const getDataForNewAndInsightsSection = async () => {
+export const getDataForNewAndInsightsSection = async (language) => {
   const endpoint = endPointApi;
   const query = gql`
-    {
-      posts(first: 9) {
+    query GetPosts($language: LanguageCodeFilterEnum!) {
+      posts(where: { language: $language }, first: 9) {
         nodes {
           id
           title
@@ -22,8 +22,9 @@ export const getDataForNewAndInsightsSection = async () => {
       }
     }
   `;
+  const variables = { language };
   try {
-    const data = await request(endpoint, query);
+    const data = await request(endpoint, query, variables);
     return data.posts.nodes;
   } catch (error) {
     console.error("Error fetching data", error);
@@ -72,6 +73,12 @@ export const GetPostDetailBySlug = async (slug) => {
         postId
         excerpt
         content
+        translations {
+          language {
+            code
+          }
+          slug
+        }
         featuredImage {
           node {
             sourceUrl
@@ -193,10 +200,14 @@ export const GetListSlugPosts = async () => {
   const endpoint = endPointApi;
   const query = gql`
     query GetListSlugPosts {
-      posts(first: 10000) {
+      posts(first: 100) {
         nodes {
           slug
           postId
+          language {
+            locale
+            code
+          }
         }
       }
     }
