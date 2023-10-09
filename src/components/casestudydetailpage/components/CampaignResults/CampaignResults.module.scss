@@ -1,0 +1,8 @@
+@import "../../../../styles/variables";
+
+.campaign-results {
+  &.primary-light {
+    background-color: $primary-light;
+  }
+  padding: 96px 0;
+}
