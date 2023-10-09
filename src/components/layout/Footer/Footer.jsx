@@ -10,7 +10,9 @@ import classes from "./Footer.module.scss";
 import { Maven_Pro } from "next/font/google";
 import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+
 export default function Footer() {
+  console.log(MavenPro)
   return (
     <footer className={classes["footer"]}>
       <div className="container">
