@@ -23,10 +23,22 @@
       align-items: flex-start;
       padding: 20px;
       text-align: center;
-      &.purple-theme {
+      // Start Color theme options
+      &.primary-theme {
         background-color: $primary-dark;
         color: white;
+        .intro-case-study-detail-heading {
+          background-color: $primary-light;
+        }
       }
+      &.red-theme {
+        background-color: $red-dark;
+        color: white;
+        .intro-case-study-detail-heading {
+          background-color: $red-light;
+        }
+      }
+      // End Color theme options
       hr {
         margin: 20px 0;
         width: 100%;
@@ -34,7 +46,6 @@
     }
     &-heading {
       width: 100%;
-      background-color: $primary-light;
       padding: 10px 0px;
       border-radius: 16px;
       &__title {
@@ -57,8 +68,19 @@
         font-weight: 400;
         line-height: 24px;
         padding: 6px 0;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:last-child {
           padding-bottom: 0;
+        }
+        &-dot {
+          margin-right: 8px;
+          width: 8px;
+          height: 8px;
+          background-color: white;
+          border-radius: 50%;
         }
       }
     }

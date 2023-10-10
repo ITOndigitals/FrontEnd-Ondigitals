@@ -2,21 +2,31 @@
 @import "../../../../styles/functions";
 
 .over-view {
-  height: 100vh;
   display: flex;
   color: #fff;
   justify-content: space-between;
   align-items: center;
-  &.purple-theme {
+  // Start theme colors
+  &.primary-theme {
     background-color: $primary-dark;
   }
+  &.red-theme {
+    background-color: $red-dark;
+  }
+  &.black-theme {
+    background-color: $neutral-100;
+  }
+  // End theme colors
   &__layout {
     display: grid;
+    // height: 100%;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
   &__left {
     display: flex;
     align-items: center;
+    padding-left: 13%;
+    padding-right: 20px;
     &__content {
       &__title {
         font-size: 36px;
@@ -46,11 +56,43 @@
       position: relative;
       width: 447px;
       width: 100%;
-      &.kuldal {
+      &.inner-size {
         left: 50%;
+        margin: 60px 0;
         transform: translateX(-50%);
         width: zoom_ratio(447px);
         height: zoom_ratio(650px);
+      }
+      &.full-size {
+        width: 100%;
+        height: 650px;
+      }
+    }
+  }
+}
+
+@media (min-width: 2500px) {
+  .over-view {
+    justify-content: center;
+    &__left {
+      padding-left: 0;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .over-view {
+    &__left {
+      padding-left: 20px;
+      &.no-full {
+        padding-left: 20px;
+      }
+    }
+    &__right {
+      &__image {
+        &.full-size {
+          height: zoom_ratio(650px);
+        }
       }
     }
   }
@@ -59,12 +101,17 @@
 @media (max-width: 1100px) {
   .over-view {
     &__right {
-      &__image {
+      &__image.inner-size {
         width: 100%;
         height: 650px;
         left: 50%;
-        &.kuldal {
+        &.inner-size {
           width: zoom_ratio(447px, 0.7);
+          height: zoom_ratio(650px, 0.7);
+        }
+      }
+      &__image {
+        &.full-size {
           height: zoom_ratio(650px, 0.7);
         }
       }
@@ -75,7 +122,7 @@
 @media (max-width: 768px) {
   .over-view {
     height: auto;
-    padding: 30px 0;
+    padding-top: 30px;
     &__left {
       &__content {
         text-align: center;
@@ -101,13 +148,30 @@
     &__right {
       grid-column: span 12 / span 12 !important;
       position: relative;
-      &__image {
+      &__image.inner-size {
         width: 100%;
         height: 650px;
         left: 50%;
-        &.kuldal {
+        &.inner-size {
           width: 250px;
           height: 348px;
+        }
+      }
+      &__image {
+        &.full-size {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .over-view {
+    &__right {
+      &__image {
+        &.full-size {
+          height: zoom_ratio(650px, 0.4);
         }
       }
     }
