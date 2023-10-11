@@ -7,7 +7,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 // Các configuration dựa trên biến config layout
 const DUMMY_LAYOUT_CONFIGS = [6, 6];
 // const isKulDal = false;
-const isFullSize = true;
+const isFullSize = false;
 const logoList = [
   {
     src: "https://s3-alpha-sig.figma.com/img/9fdc/cc3d/fe13e4a1906584219f34a8f79998ef17?Expires=1698019200&Signature=m41UoHBJMmW~YO7FhshmoShaFkMU3ZJMZsZmk~UQIG0h0qlEemwdsItFWF~OFoSCNh4tylEsPlQYPchWWHdmGCEWHpBuK6ZpZsGadc4hpWf6M9rxnuzw886hK0602QwAEblN8s0v8O8hAvW9QcFnDPsf-RH69VBFRUlkyPgGzPZJCrxpw94VpDG0Am4ZeZ~0uI5XDYLB0DYzQBR3c0xKU0DKA~jHOpcXBIEwD3tPjHdFF6bV2cr8uY5jspNrdXuJyp77U-EaKFWMWR9fhcJFt79lb6jhLYYw~40x~ASSjt7K5tlmqdalwgvO0gwQGA4wDw66ZkMOplOfO8BCOu2Imw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -20,10 +20,10 @@ const carImg =
   "/assets/images/CaseStudy/z2448687871484_b29658f9b6d904d7cd06a12e2703e2fb-e1619083201721 1.png";
 
 // const rightImage = "/assets/images/CaseStudy/kld1 1.png";
-const rightImage = carImg;
+// const rightImage = carImg;
 
-// const rightImage =
-//   "https://s3-alpha-sig.figma.com/img/390a/b4d5/e4fa8a8a92d27408eab008dea2afed27?Expires=1698019200&Signature=iYlzy8XDakA-u9pL4gp-LvMNILFKb4qMWzlJdVp8Ee4YY2lhOZGqhib3O5tz2UuorKWY4obkXVAzKO6yxSnKGCxBGOW91-YOix8HPZGzDxT1l4FswRzpTnSEqXWg3Hotqi8sd494btFanBKJdTegeEoAv0ck~9u1BKbpk9223GkMLkpL~JBQ8GhfihAE~0DyODq6vHb82YN4yuHv5hWv85QRMXrZ4Sp9BFo5MFyVpJFnn7Ui7HXN~i-Mv-9r7h1txCaQ0IIeXx1AbtPwfWHFuALLnoc7D0pAQ0YYZMx9eS3adlMRts3XMKKaDczLjX2RmRd4137y8FDTqaihFshlRQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+const rightImage =
+  "https://s3-alpha-sig.figma.com/img/390a/b4d5/e4fa8a8a92d27408eab008dea2afed27?Expires=1698019200&Signature=iYlzy8XDakA-u9pL4gp-LvMNILFKb4qMWzlJdVp8Ee4YY2lhOZGqhib3O5tz2UuorKWY4obkXVAzKO6yxSnKGCxBGOW91-YOix8HPZGzDxT1l4FswRzpTnSEqXWg3Hotqi8sd494btFanBKJdTegeEoAv0ck~9u1BKbpk9223GkMLkpL~JBQ8GhfihAE~0DyODq6vHb82YN4yuHv5hWv85QRMXrZ4Sp9BFo5MFyVpJFnn7Ui7HXN~i-Mv-9r7h1txCaQ0IIeXx1AbtPwfWHFuALLnoc7D0pAQ0YYZMx9eS3adlMRts3XMKKaDczLjX2RmRd4137y8FDTqaihFshlRQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 export default function OverViewCaseStudyDetail() {
   // const caseStudyCardTheme = classes["primary-theme"];

@@ -2,9 +2,6 @@
 @import "../../../../styles/functions";
 
 .campaign-results {
-  &.primary-light {
-    background-color: $primary-light;
-  }
   padding: 96px 0;
   .campaign-container {
     display: grid;
@@ -97,7 +94,7 @@
           content: "";
           width: 60px;
           height: 60px;
-          background-color: red;
+          background-color: currentColor;
           border-radius: 50%;
           position: absolute;
           top: 75%;

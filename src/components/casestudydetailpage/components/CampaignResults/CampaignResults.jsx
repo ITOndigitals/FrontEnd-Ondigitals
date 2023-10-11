@@ -15,17 +15,17 @@ const DUMMY_CAMPAIGNS = [
     items: ["Manage Social Media Channels", "Create content to drive sales"],
   },
 ];
-const DUMMY_THEME = "primary-light";
+const DUMMY_BG_COLOR = "#CD0404";
+const DUMMY_CIRCLE_COLOR = "#6F1AB6";
 
 const StudyImg =
   "https://s3-alpha-sig.figma.com/img/5d4b/2a79/7666c577a2fbc182a37376e3ec5c7a77?Expires=1698019200&Signature=TyjPmPltgiRdInh8LeSeBlA0JjIT-kA-idIz6q5Ax98lkqQSchln6~AfpHXpXEdzr5kh1ZT3mD50FGd1Y1HCuBnXNhOiYfmvvmRo07X6-7JftJsq7aceO-pmEmfYVPBk~trazyhGuCufif7sbWvgnxJLASTpPPBIkIVz9gbFNiXyItWLnqai2MTGfnG-V8HsBt7kbW1mz~OpWoFXw2xBLS4HX9ODu6OqBCj2RX5JM14Mn6ZkZhKx0qRR9y3gWR1e6TzOhfZYZisdVz5jOq29OmfjK6avxBiZMm0alRsQoZ~w8tW0ckgEKDLSMHl~KYiFJ1Ir9mW86tzmS4hR~vwclA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 const CampaignResults = () => {
-  const colorTheme = DUMMY_THEME;
-
   return (
     <section
-      className={`${classes["campaign-results"]} ${classes[`${colorTheme}`]}`}
+      className={classes["campaign-results"]}
+      style={{ backgroundColor: DUMMY_BG_COLOR }}
     >
       <div className="container">
         <div className={classes["campaign-container"]}>
@@ -84,7 +84,10 @@ const CampaignResults = () => {
             <div className={classes["campaign-results-fig"]}>
               <div className={classes["campaign-results-fig__stroke"]}>
                 <OdsStroke width="100%" height="100%" />
-                <div className={classes["campaign-results-fig__circle"]}></div>
+                <div
+                  className={classes["campaign-results-fig__circle"]}
+                  style={{ color: DUMMY_CIRCLE_COLOR }}
+                ></div>
               </div>
               <div className={classes["campaign-results-fig__image"]}>
                 <Image

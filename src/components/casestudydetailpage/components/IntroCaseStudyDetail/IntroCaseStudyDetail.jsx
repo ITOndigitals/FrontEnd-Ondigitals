@@ -4,7 +4,7 @@ import { Maven_Pro } from "next/font/google";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const DUMMY_IMG_SRC =
-  "https://s3-alpha-sig.figma.com/img/1b43/abeb/43a81b5b45fad391bd8d77acdefdd273?Expires=1698019200&Signature=KyqiymrcY8MuioaldgwcO-oUV~Z2qsyL89StZwkIM9JtfWa6Ex9uRjn5-GKAFqtwoG54UhMgw7o3gKApg0twhOEwiF0WVK1pdgq3Xb0~9Ftil5rONOdGIZwAtufhOIRLv99V-5TMQiA5qTHHuc8AvttW-jS2C~qhF~Eekr0MrIJN-WTd~RvGAHGDOb4abs3oNo86f2IYdaUpi8rBDv6urmiS9drPPFfejpXLorDvkNjc4fiabQx4M4tSK69g8twGEGnBT0~wuOQcL44cYCnTRnPC0K01M0yvDFBN1Z5iAfg1UQ4edJq5yY7f0BPyH229DJWihJTk7WjGsoM9uMRzlQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+  "https://s3-alpha-sig.figma.com/img/755a/396d/96c81517448b7c9cd9de901b7015d23f?Expires=1698019200&Signature=LRljep1JyqaXOZRLFmXAjERaMzY1ojWYYAWTmG6CEXB12~huVoez-DrwQC5Ere~UfqLgSuROqIw8aLWJqsROVRdujdIZiZIwRExedNmGh6N6TjeRPiU~4945DeMZiScxOZSICU8aT4J1ITWqVpPFMMASXRdsOoA~NDx1OqlLdl~eNqqdITj4uVRsu8bcby39-Pz4aP6AyEjYtRd3bIKXOsIbpluI7CABk-FKaixhTXd3djClozPhK3SWSCAvysH7qYTEE~I6mhOn3PUyWpIUQBJEsnorq0UNP70nZ4jPS2n~EPB2q93WSiYY4KSWy-qPzZkHDeJHLdi1wmD5LD8RRQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 // const DUMMY_IMG_SRC =
 //   "https://s3-alpha-sig.figma.com/img/e3b4/d923/927eac33fa99e0bb296867fcbec62a9e?Expires=1698019200&Signature=oDq-qTNBobrp~A2Q0G0NpjxY0ydHuytPL8M9I5zyBUB1CVyU67OgKxculgieSnKSnwGkhPpogAoo1mqcRfcRbrfM6Ytwv9Pitt9Hrd3bQJkxFQCQBIwG0cDLs0oGtIEUPtPXnY6EG8M1QXuLSQ1Oyo1PwuMaKxUwAzNqM0WenG1Ag2iyg5nBtZ2OFZznk2v4yn8c8HAGha7DknhIsl7Oh~B7Wb~mKeL18ha3aOGA3MWPgZnyCGbEJurNhcFo-WfwzFzG47o7CYEyg-7anTK~yJWIif5H4d~9cPAhZ9CwIV7Lb6oHIwsuK1gAnjejj7F8nJLSqRCQRzob-UiSsZpULw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
