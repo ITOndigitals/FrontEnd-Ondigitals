@@ -3,6 +3,7 @@ import IntroCaseStudyDetail from "./components/IntroCaseStudyDetail/IntroCaseStu
 import OverViewCaseStudyDetail from "./components/OverViewCaseStudyDetail/OverViewCaseStudyDetail";
 import CampaignResults from "./components/CampaignResults/CampaignResults";
 import { useBoundStore } from "@/store/useBoundStore";
+import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
 
 export default function CaseStudyDetail() {
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -38,7 +39,8 @@ export default function CaseStudyDetail() {
     <>
       <IntroCaseStudyDetail />
       <OverViewCaseStudyDetail />
-      <CampaignResults/>
+      <CampaignResults />
+      <CaseStudyKLD />
     </>
   );
 }
