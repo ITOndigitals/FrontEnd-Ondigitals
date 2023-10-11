@@ -75,6 +75,9 @@ export const GetPostDetailBySlug = async (slug) => {
         postId
         excerpt
         content
+        language {
+          slug
+        }
         translations {
           language {
             code

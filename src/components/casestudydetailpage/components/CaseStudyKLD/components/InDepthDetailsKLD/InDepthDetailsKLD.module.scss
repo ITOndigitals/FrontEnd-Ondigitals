@@ -1,0 +1,219 @@
+.in-depth-detail {
+  height: 100vh;
+  background: #cd0404;
+  display: flex;
+  align-items: center;
+  justify-content: center   ;
+  color: #fff;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    &__left {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      &__title {
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+      }
+      &__text {
+        &__content {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+          ul {
+            list-style: inside;
+            margin-left: 10px;
+            margin-top: 10px;
+          }
+        }
+        &__title {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 26px;
+          margin-bottom: 12px;
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #6f1ab6;
+            border-radius: 50%;
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+    &__right {
+      width: 65%;
+      display: flex;
+      &__imagephone {
+        position: relative;
+        width: 45%;
+        height: 378px;
+        img {
+          object-fit: cover;
+        }
+      }
+      &__imagelaptop {
+        position: relative;
+        width: 55%;
+        height: 365px;
+        img {
+          top: 30% !important;
+          left: -35% !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .in-depth-detail {
+    height: auto;
+    background: #cd0404;
+    padding: 10% 0;
+    &__content {
+      flex-wrap: wrap;
+      &__left {
+        width: 100%;
+        gap: 50px;
+      }
+      &__right {
+        width: 100%;
+        margin: 5% 0;
+        height: auto;
+        &__imagephone {
+          position: relative;
+          width: 45%;
+          height: 378px;
+        }
+        &__imagelaptop {
+          position: relative;
+          width: 55%;
+          height: 365px;
+          img {
+            top: 35% !important;
+            left: -35% !important;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 700px) {
+  .in-depth-detail {
+    height: auto;
+    background: #cd0404;
+    padding: 10% 0;
+    &__content {
+      flex-wrap: wrap;
+      &__left {
+        width: 100%;
+        gap: 50px;
+      }
+      &__right {
+        width: 100%;
+        margin: 5% 0;
+        height: auto;
+        &__imagephone {
+          position: relative;
+          width: 45%;
+          height: 200px;
+          img {
+            object-fit: contain;
+          }
+        }
+        &__imagelaptop {
+          position: relative;
+          width: 55%;
+          height: 210px;
+          img {
+            top: 25% !important;
+            left: -50% !important;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 510px) {
+  .in-depth-detail {
+    height: auto;
+    background: #cd0404;
+    padding: 10% 0;
+    &__content {
+      flex-wrap: wrap;
+      &__left {
+        width: 100%;
+        gap: 50px;
+      }
+      &__right {
+        width: 100%;
+        margin: 5% 0;
+        height: auto;
+        &__imagephone {
+          position: relative;
+          width: 45%;
+          height: 200px;
+          img {
+            object-fit: cover;
+          }
+        }
+        &__imagelaptop {
+          position: relative;
+          width: 55%;
+          height: 210px;
+          img {
+            top: 30% !important;
+            left: -35% !important;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 320px) {
+  .in-depth-detail {
+    height: auto;
+    background: #cd0404;
+    padding: 10% 0;
+    &__content {
+      flex-wrap: wrap;
+      &__left {
+        width: 100%;
+        gap: 50px;
+      }
+      &__right {
+        width: 100%;
+        margin: 10% 0;
+        height: auto;
+        &__imagephone {
+          position: relative;
+          width: 45%;
+          height: 200px;
+          img {
+            object-fit: cover;
+          }
+        }
+        &__imagelaptop {
+          position: relative;
+          width: 55%;
+          height: 210px;
+          img {
+            top: 35% !important;
+            left: -30% !important;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}

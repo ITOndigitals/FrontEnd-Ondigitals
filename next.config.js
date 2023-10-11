@@ -22,6 +22,7 @@ const nextConfig = {
       "api.ondigitals.com",
       "kimlongdiep.com",
       "s3-alpha-sig.figma.com",
+      "res.cloudinary.com"
     ],
   },
   i18n: i18nConfig,

@@ -16,19 +16,19 @@ export default function PostDetail({ data, applyMarkDown }) {
   }
   const post = data;
   const router = useRouter();
-  const test = data.translations[0]?.language.code;
-  const test1 = router.locale.toUpperCase();
-  const newSlug = data.translations[0]?.slug
-  console.log(post);
-  useEffect(() => {
-    if (test === test1) {
-      router.push(
-        `/blog/link-baiting`,
-      );
-    }
-  }, [router.locale]);
+  const currentLanguage = router.locale.toUpperCase();
 
-  const parse = require("html-react-parser");
+  const matchingTranslation = data.translations.find(
+    (translation) => translation.language.code === currentLanguage
+  );
+  useEffect(() => {
+    if (matchingTranslation) {
+      router.push(`/blog/${matchingTranslation.slug}`);
+    } else if(router.locale !== post.language.slug) {
+      router.push("/");
+    }
+  }, [router.locale, data.translations]);
+
   const postDetailRef = useRef(null);
   const handleScrollToTop = () => {
     if (postDetailRef.current) {
