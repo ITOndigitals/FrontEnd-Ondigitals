@@ -17,9 +17,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
+  const language = locale.toUpperCase();
   const dataPostDetail = await GetPostDetailBySlug(params.blogId);
-  const relatedPosts = await getDataForNewAndInsightsSection();
+  const relatedPosts = await getDataForNewAndInsightsSection(language);
   return {
     props: {
       dataPostDetail,
