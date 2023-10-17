@@ -100,10 +100,27 @@
   }
 }
 
+@media (max-width: 768px) {
+  .intro-case-study-detail {
+    &-wrapper {
+      padding-bottom: 20vh;
+    }
+    &-card {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
 @media (max-width: 450px) {
   .intro-case-study-detail {
     &-wrapper {
       padding-bottom: 10%;
+    }
+    &-heading__title {
+      font-size: 36px !important;
+      line-height: 40px !important;
     }
   }
 }

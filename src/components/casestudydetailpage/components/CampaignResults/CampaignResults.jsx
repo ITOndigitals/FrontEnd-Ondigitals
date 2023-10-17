@@ -19,7 +19,7 @@ const DUMMY_BG_COLOR = "#CD0404";
 const DUMMY_CIRCLE_COLOR = "#6F1AB6";
 
 const StudyImg =
-  "https://s3-alpha-sig.figma.com/img/5d4b/2a79/7666c577a2fbc182a37376e3ec5c7a77?Expires=1698019200&Signature=TyjPmPltgiRdInh8LeSeBlA0JjIT-kA-idIz6q5Ax98lkqQSchln6~AfpHXpXEdzr5kh1ZT3mD50FGd1Y1HCuBnXNhOiYfmvvmRo07X6-7JftJsq7aceO-pmEmfYVPBk~trazyhGuCufif7sbWvgnxJLASTpPPBIkIVz9gbFNiXyItWLnqai2MTGfnG-V8HsBt7kbW1mz~OpWoFXw2xBLS4HX9ODu6OqBCj2RX5JM14Mn6ZkZhKx0qRR9y3gWR1e6TzOhfZYZisdVz5jOq29OmfjK6avxBiZMm0alRsQoZ~w8tW0ckgEKDLSMHl~KYiFJ1Ir9mW86tzmS4hR~vwclA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+  "https://s3-alpha-sig.figma.com/img/1112/0849/8c9222aef186de79b58a4b9b70c1a126?Expires=1698624000&Signature=Xxk17SAB4MkEivTtnuNJ9DjzNMI3gSLLF2Ydj~jBBMqYLdvMP31d5SsAAzMd67q3NjTuIe4-rjwurWYwmZGPnR5ndzz5Kp8dhrrnYxu71nVHgtCgOD22QKrJ~gz9SRKY3I8532hKTzEQDfNk3VJcKPSyTfdaPtzYtUeug-rZQK-kDlOrFDjowf7zhk6-5bpM4ngueLn16kmK6XtB5~TX5Bv48zZ9aFarqeCwCRf0xex7Rv7Zh~voJqLzNJgcPnPjFgmkwj4Fbs0z6a7EXPKBtqENehyxDNNwBVEwg9FjCwor055MggvC6MZnQKgsr4zLDP~Y43-LXnMOr8KUZLaYtw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 const CampaignResults = () => {
   return (

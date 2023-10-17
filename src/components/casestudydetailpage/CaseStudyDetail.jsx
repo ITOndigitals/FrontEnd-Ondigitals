@@ -4,6 +4,10 @@ import OverViewCaseStudyDetail from "./components/OverViewCaseStudyDetail/OverVi
 import CampaignResults from "./components/CampaignResults/CampaignResults";
 import { useBoundStore } from "@/store/useBoundStore";
 import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
+import CaseStudyKundal from "./components/CaseStudyKundal/CaseStudyKundal";
+import CaseStudyDucati from "./components/CaseStudyDucati/CaseStudyDucati";
+
+const DUMMY_EXTEND_COMPONENTS_TYPE = 3;
 
 export default function CaseStudyDetail() {
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -35,12 +39,16 @@ export default function CaseStudyDetail() {
     setToLight();
   }, [headerIsDark]);
 
+  const extendComponentType = DUMMY_EXTEND_COMPONENTS_TYPE;
+
   return (
     <>
       <IntroCaseStudyDetail />
       <OverViewCaseStudyDetail />
       <CampaignResults />
-      <CaseStudyKLD />
+      {extendComponentType === 0 && <CaseStudyKundal/>}
+      {extendComponentType === 2 && <CaseStudyKLD />}
+      {extendComponentType === 3 && <CaseStudyDucati/>}
     </>
   );
 }

@@ -7,7 +7,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 // Các configuration dựa trên biến config layout
 const DUMMY_LAYOUT_CONFIGS = [6, 6];
 // const isKulDal = false;
-const isFullSize = false;
+const isFullSize = true;
 const logoList = [
   {
     src: "https://s3-alpha-sig.figma.com/img/9fdc/cc3d/fe13e4a1906584219f34a8f79998ef17?Expires=1698019200&Signature=m41UoHBJMmW~YO7FhshmoShaFkMU3ZJMZsZmk~UQIG0h0qlEemwdsItFWF~OFoSCNh4tylEsPlQYPchWWHdmGCEWHpBuK6ZpZsGadc4hpWf6M9rxnuzw886hK0602QwAEblN8s0v8O8hAvW9QcFnDPsf-RH69VBFRUlkyPgGzPZJCrxpw94VpDG0Am4ZeZ~0uI5XDYLB0DYzQBR3c0xKU0DKA~jHOpcXBIEwD3tPjHdFF6bV2cr8uY5jspNrdXuJyp77U-EaKFWMWR9fhcJFt79lb6jhLYYw~40x~ASSjt7K5tlmqdalwgvO0gwQGA4wDw66ZkMOplOfO8BCOu2Imw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -23,7 +23,7 @@ const carImg =
 // const rightImage = carImg;
 
 const rightImage =
-  "https://s3-alpha-sig.figma.com/img/390a/b4d5/e4fa8a8a92d27408eab008dea2afed27?Expires=1698019200&Signature=iYlzy8XDakA-u9pL4gp-LvMNILFKb4qMWzlJdVp8Ee4YY2lhOZGqhib3O5tz2UuorKWY4obkXVAzKO6yxSnKGCxBGOW91-YOix8HPZGzDxT1l4FswRzpTnSEqXWg3Hotqi8sd494btFanBKJdTegeEoAv0ck~9u1BKbpk9223GkMLkpL~JBQ8GhfihAE~0DyODq6vHb82YN4yuHv5hWv85QRMXrZ4Sp9BFo5MFyVpJFnn7Ui7HXN~i-Mv-9r7h1txCaQ0IIeXx1AbtPwfWHFuALLnoc7D0pAQ0YYZMx9eS3adlMRts3XMKKaDczLjX2RmRd4137y8FDTqaihFshlRQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+  "https://s3-alpha-sig.figma.com/img/ff59/4c31/c55c898b1c9bea08b9ac399c65cfe003?Expires=1698624000&Signature=PXxmHQ0DTK0vAJO3-PchnO22gj4ol46h8fpgJs1sdCYqv7I7p5cLZ4TK8SUJuKJRLYh1x0LO9FcyIIgvxDLzM~4SoyeLS6JzyJ6Azchtj5bWTCRIUfPgFjB80BCYKI~oKKQVwmEHrTuBB9JbHtvBhg4iqq91uwHT15pEYgr~W0Q7badCurg2u1xCdk9CtIMj5fTdTOi4zR-D72uJJJo7e8luMLPQz1-XmT6hM1VE28voUGf8kCw7MowwG-UJvfNTjwqE~Ny0CzNoFXVyKohVGTcLX8a-HQjrdLCQD4EDCQHecS765IYG0kx8ik-TsRkwRqoRUetdS2z-BA8Dm47V3Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 export default function OverViewCaseStudyDetail() {
   // const caseStudyCardTheme = classes["primary-theme"];
@@ -50,18 +50,23 @@ export default function OverViewCaseStudyDetail() {
                 className={classes["over-view__left__content__text"]}
                 style={{ fontFamily: MavenPro.style.fontFamily }}
               >
-                Guardian is a retail chain that offers health and beauty
-                products in Vietnam, including Kundal - a Korean brand that
-                specializes in natural and eco-friendly hair and body care
-                products.
+                Ducati is a high-class Italian motorcycle-manufacturer, owned by
+                the Volkswagen Group - one of the world's leading manufacturers
+                of automobiles and commercial vehicles.
               </p>
               <p
                 className={classes["over-view__left__content__text"]}
                 style={{ fontFamily: MavenPro.style.fontFamily }}
               >
-                Here in this campaign, with stunning visuals and highly
-                interactive content, On Digitals helped Guardian Vietnam
-                introduce and promote Kundal brand to Vietnamese market.
+                At the beginning of 2020, CT-Wearnes Vietnam became the
+                exclusive brand distributor of Ducati in Vietnam.
+              </p>
+              <p
+                className={classes["over-view__left__content__text"]}
+                style={{ fontFamily: MavenPro.style.fontFamily }}
+              >
+                On Digitals helped design and develop a fully functional website
+                to showcase and promote Ducati products to Vietnamese audience.
               </p>
               <ul className={classes["over-view__left__content__logo"]}>
                 {logoList.map((item, index) => (
@@ -74,7 +79,7 @@ export default function OverViewCaseStudyDetail() {
                       src={item.src}
                       fill
                       alt="case-study-logo"
-                      objectFit="cover"
+                      style={{ objectFit: "cover" }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </li>
@@ -99,7 +104,7 @@ export default function OverViewCaseStudyDetail() {
               src={rightImage}
               fill
               alt="case-study-image"
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>

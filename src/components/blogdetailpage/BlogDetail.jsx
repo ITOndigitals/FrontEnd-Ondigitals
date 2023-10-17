@@ -7,10 +7,8 @@ import TopRightArrow from "../ui/Icons/TopRightArrow";
 import ReadMoreSlider from "./components/ReadMoreSlider/ReadMoreSlider";
 import PostDetail from "./components/postdetail/PostDetail";
 import { Maven_Pro } from "next/font/google";
-import Button from "../ui/Buttons/Button/Button";
-import { ArrowRight } from "../ui/Icons/ListIcon";
 import TableOfContent from "./components/TableOfContent/TableOfContent";
-import { getDataForNewAndInsightsSection } from "@/pages/api/graphql";
+import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -106,28 +104,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
           <ReadMoreSlider data={relatedPosts} />
         </section>
       </div>
-      <section className={classes["blog-detail-contact-banner"]}>
-        <div className="container">
-          <div className={classes["blog-detail-contact-banner-wrapper"]}>
-            <p className={classes["blog-detail-contact-banner-heading"]}>
-              NEED HELP <br /> with digital growth?
-            </p>
-            <p
-              className={classes["blog-detail-contact-banner-desc"]}
-              style={{ fontFamily: MavenPro.style.fontFamily }}
-            >
-              Tell us about your business challenge and let's discuss together
-            </p>
-            <Button
-              href="#"
-              className="btn-contact-form"
-              RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
-            >
-              Send us a message
-            </Button>
-          </div>
-        </div>
-      </section>
+      <NeedHelpDigitalGrowth/>
     </div>
   );
 };
