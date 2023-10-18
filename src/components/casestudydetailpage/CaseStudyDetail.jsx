@@ -8,7 +8,7 @@ import CaseStudyKundal from "./components/CaseStudyKundal/CaseStudyKundal";
 import CaseStudyDucati from "./components/CaseStudyDucati/CaseStudyDucati";
 import CaseStudyPassion from "./components/CaseStudyPassion/CaseStudyPassion";
 
-const DUMMY_EXTEND_COMPONENTS_TYPE = 2;
+const DUMMY_EXTEND_COMPONENTS_TYPE = 4;
 
 export default function CaseStudyDetail() {
   const setToDark = useBoundStore((state) => state.setToDark);

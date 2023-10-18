@@ -127,11 +127,12 @@ export const GetListSlugPosts = async () => {
     return null;
   }
 };
-export const GetDataHomepage = async (id) => {
+export const GetDataHomepage = async (id, languageCode) => {
   const endpoint = endPointApi;
+  console.log();
   const query = gql`
-    query getDataHomePage($id: Int!) {
-      pages(where: {id: $id}) {
+    query getDataHomePage($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
+      pages(where: { id: $id }) {
         nodes {
           slug
           pageId
@@ -175,7 +176,7 @@ export const GetDataHomepage = async (id) => {
             serviceSectionDesc
             serviceSectionTextButton
             serviceSectionTitle
-            session3ButtonBellow
+            partnerSectionTextButton
           }
           translations {
             language {
@@ -197,22 +198,34 @@ export const GetDataHomepage = async (id) => {
           }
         }
       }
-      services {
+      services(
+        where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
+      ) {
         nodes {
           slug
           title
           editorBlocks {
-          ... on CoreParagraph {
+            ... on CoreParagraph {
               attributes {
                 content
               }
+            }
+          }
+          serviceHomepage {
+            color
+            secondaryColor
+            name
+          }
+          featuredImage {
+            node {
+              sourceUrl
             }
           }
         }
       }
     }
   `;
-  const variables = { id };
+  const variables = { id, languageCode };
   try {
     const data = await request(endpoint, query, variables);
     return data;

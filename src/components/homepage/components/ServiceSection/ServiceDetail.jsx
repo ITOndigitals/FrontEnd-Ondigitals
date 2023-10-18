@@ -9,7 +9,8 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ServiceDetail = ({ context }) => {
   const contentRef = useRef(null);
-  const colorClass = classes[`${context.activeColor}`];
+  const activeColor = context.activeColor;
+  // const colorClass = classes[`${context.activeColor}`];
 
   useEffect(() => {
     const serviceDetailElement = contentRef.current;
@@ -25,7 +26,8 @@ const ServiceDetail = ({ context }) => {
 
   return (
     <div
-      className={`${classes["service-details"]} ${colorClass} appear-from-down-slow`}
+      className={`${classes["service-details"]} appear-from-down-slow`}
+      style={{ backgroundColor: activeColor }}
     >
       <div className={classes["service-details-header"]}></div>
       <div className={classes["service-details-content"]} ref={contentRef}>
@@ -39,9 +41,7 @@ const ServiceDetail = ({ context }) => {
           >
             {context.content}
           </div>
-          <Link
-            href="#"
-          >
+          <Link href="#">
             <ExploreButton>Explore</ExploreButton>
           </Link>
         </div>

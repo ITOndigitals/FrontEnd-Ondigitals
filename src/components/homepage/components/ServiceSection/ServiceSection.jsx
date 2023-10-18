@@ -6,180 +6,48 @@ import AnimatedLines from "./AnimatedLines";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
+const parse = require("html-react-parser");
 
-const DUMMY_SERVICES = [
-  {
-    id: 1,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 1",
-    activeColor: "primary-dark",
-    secondaryActiveColor: "primary-light",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 2",
-    activeColor: "primary-light",
-    secondaryActiveColor: "primary-dark",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 3",
-    activeColor: "red-light",
-    secondaryActiveColor: "red-dark",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 4",
-    activeColor: "red-dark",
-    secondaryActiveColor: "red-light",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 5",
-    activeColor: "primary-dark",
-    secondaryActiveColor: "primary-light",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 6",
-    activeColor: "primary-light",
-    secondaryActiveColor: "primary-dark",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 8,
-    name: "SEO",
-    title: "Search Engine Optimization (SEO) 7",
-    activeColor: "red-light",
-    secondaryActiveColor: "red-dark",
-    image: "/assets/images/partials/service-seo.png",
-    content: (
-      <div>
-        <p>
-          From the 2020s, an ever-increasing number of people, from C-Level
-          employees to consumers, are using the web to search answers for their
-          problems.
-        </p>
-        <p>
-          Will your site be there at the first result to offer your products and
-          services to solve their immediate needs? If not, your competitors are
-          probably getting all those valuable leads...
-        </p>
-      </div>
-    ),
-  },
-];
-
-const ServiceSection = ({ NavButton }) => {
-  const services = DUMMY_SERVICES;
-  const [renderServices, setRenderServices] = useState(services);
-  const [currentActiveService, setCurrentActiveService] = useState(services[0]);
+const ServiceSection = ({ NavButton, data }) => {
+  // const [services, setServices] = useState([]);
+  const [sectionsHeader, setSectionsHeader] = useState();
+  const [renderServices, setRenderServices] = useState([]);
+  const [currentActiveService, setCurrentActiveService] = useState();
   const [isOnMobile, setIsOnMobile] = useState(false);
 
-  //Set active for the first item
+  const { nodes: serviceList } = data ? data.services : [];
+  const { serviceSectionTitle, serviceSectionDesc, serviceSectionTextButton } =
+    data.pages.nodes[0].homePageInputContent || {};
+  console.log(
+    serviceSectionTitle,
+    serviceSectionDesc,
+    serviceSectionTextButton
+  );
+  
   useEffect(() => {
-    const data = [...renderServices].map((item, index) => {
-      if (index === 0) {
-        return { ...item, isActive: true };
-      }
-      return { ...item, isActive: false };
-    });
-    setRenderServices(data);
-  }, []);
+    if (serviceList.length > 0) {
+      const renderServices = serviceList.map((item, index) => {
+        return {
+          id: index,
+          name: item.serviceHomepage.name,
+          title: item.title,
+          isActive: index === 0,
+          activeColor: item.serviceHomepage.color,
+          secondaryActiveColor: item.serviceHomepage.color,
+          image: item.featuredImage.node.sourceUrl,
+          content: (
+            <div>
+              {item.editorBlocks.slice(0, 2).map((item, index) => (
+                <p key={index}>{parse(item.attributes.content)}</p>
+              ))}
+            </div>
+          ),
+        };
+      });
+      setRenderServices(renderServices);
+      setCurrentActiveService(renderServices[0]);
+    }
+  }, [serviceList]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -199,6 +67,7 @@ const ServiceSection = ({ NavButton }) => {
     //Find and active Item
     const itemIndex = renderServices.findIndex((item) => item.id === itemId);
     const item = { ...renderServices[itemIndex], isActive: true };
+    console.log(item);
     setCurrentActiveService(item);
     let renderData = [...renderServices].map((item) => {
       return { ...item, isActive: false };
@@ -216,12 +85,12 @@ const ServiceSection = ({ NavButton }) => {
             <p
               className={`${classes["service-header-title"]} appear-from-down`}
             >
-              We offer The best DIGITAL SERVICES
+              {serviceSectionTitle}
             </p>
             <p
               className={`${classes["service-header-desc"]} appear-from-down-slow`}
             >
-              For the persistent growth and creativity of ambitious brands
+              {serviceSectionDesc}
             </p>
             <ButtonNoBorder
               className="appear-from-down-slow"
@@ -230,7 +99,7 @@ const ServiceSection = ({ NavButton }) => {
                 <TopRightArrow width={24} height={24} color="#131114" />
               }
             >
-              VIEW FULL SOLUTION
+              {serviceSectionTextButton}
             </ButtonNoBorder>
           </div>
           <div className={classes["service-grid__spacer"]}></div>
@@ -238,7 +107,9 @@ const ServiceSection = ({ NavButton }) => {
             items={renderServices}
             onChangeActiveItem={changeActiveItemHandler}
           />
-          <ServiceDetail context={currentActiveService} />
+          {currentActiveService && (
+            <ServiceDetail context={currentActiveService} />
+          )}
         </div>
       </div>
       <AnimatedLines />

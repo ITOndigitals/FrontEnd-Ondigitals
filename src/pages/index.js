@@ -19,24 +19,25 @@ export default function Home({ allPosts, dataHomepage }) {
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const allPosts = await getDataForNewAndInsightsSection(language);
-  const test = await GetDataFooter(44677);
+  // const test = await GetDataFooter(44677);
   const idHomepageEnglish = 44418;
-  const data = await GetDataHomepage(idHomepageEnglish);
+  const data = await GetDataHomepage(idHomepageEnglish, language);
   const translation = data.pages.nodes[0]?.translations.find(
     (translation) => translation.language.code === language
   );
 
   if (translation) {
+    const languageCode = translation.language.code
     return {
       props: {
         allPosts,
-        dataHomepage: await GetDataHomepage(translation.pageId),
-        test,
+        dataHomepage: await GetDataHomepage(translation.pageId, languageCode),
+        // test,
       },
     };
   } else {
     return {
-      props: { allPosts, dataHomepage: data, test },
+      props: { allPosts, dataHomepage: data },
     };
   }
 };

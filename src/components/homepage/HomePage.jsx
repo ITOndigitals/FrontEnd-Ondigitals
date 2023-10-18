@@ -244,6 +244,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           </SwiperSlide>
           <SwiperSlide>
             <ServiceSection
+              data={dataHomePages}
               NavButton={
                 <SectionNavButtons
                   color="black"
@@ -294,7 +295,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       {!isShowSectionSlide && swiperRef.current.swiper && (
         <>
           <IntroSection data={dataHomePages} />
-          <ServiceSection />
+          <ServiceSection data={dataHomePages} />
           <PartnerSection data={dataHomePages} />
           <CaseStudySection />
           <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />

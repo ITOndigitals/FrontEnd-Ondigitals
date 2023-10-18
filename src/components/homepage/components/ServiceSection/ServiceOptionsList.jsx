@@ -3,13 +3,14 @@ import classes from "./ServiceOptionsList.module.scss";
 import ServiceOptionItem from "./ServiceOptionItem";
 
 const ServiceOptionsList = ({ items, onChangeActiveItem }) => {
+  //Needs error boundaries
   return (
     <ul className={`${classes["services"]} appear-from-down-slow`}>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <ServiceOptionItem
           item={item}
           isActive={item.isActive}
-          key={item.id}
+          key={index}
           onChangeActiveItem={onChangeActiveItem}
         />
       ))}
