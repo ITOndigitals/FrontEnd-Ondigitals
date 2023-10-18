@@ -6,8 +6,9 @@ import { useBoundStore } from "@/store/useBoundStore";
 import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
 import CaseStudyKundal from "./components/CaseStudyKundal/CaseStudyKundal";
 import CaseStudyDucati from "./components/CaseStudyDucati/CaseStudyDucati";
+import CaseStudyPassion from "./components/CaseStudyPassion/CaseStudyPassion";
 
-const DUMMY_EXTEND_COMPONENTS_TYPE = 3;
+const DUMMY_EXTEND_COMPONENTS_TYPE = 4;
 
 export default function CaseStudyDetail() {
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -49,6 +50,7 @@ export default function CaseStudyDetail() {
       {extendComponentType === 0 && <CaseStudyKundal/>}
       {extendComponentType === 2 && <CaseStudyKLD />}
       {extendComponentType === 3 && <CaseStudyDucati/>}
+      {extendComponentType === 4 && <CaseStudyPassion/>}
     </>
   );
 }

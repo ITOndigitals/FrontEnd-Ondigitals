@@ -109,6 +109,11 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 0;
+      &__content-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     &-right {
       grid-column: span 12 / span 12;

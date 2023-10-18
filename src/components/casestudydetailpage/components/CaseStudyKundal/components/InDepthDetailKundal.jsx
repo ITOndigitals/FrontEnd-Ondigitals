@@ -1,6 +1,5 @@
 import Image from "next/image";
 import classes from "./InDepthDetailKundal.module.scss";
-import { Maven_Pro } from "next/font/google";
 import CaseStudyListItemContent from "@/components/ui/CaseStudyListItem/CaseStudyListItemContent";
 
 const DUMMY_INDEPTH_CONTENT = [
