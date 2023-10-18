@@ -89,6 +89,7 @@
           width: 100%;
           display: flex;
           justify-content: center;
+          margin-top: 10px;
           &__image {
             position: relative;
             width: zoom_ratio(680px, 0.8);

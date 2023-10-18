@@ -17,6 +17,7 @@ import { useBoundStore } from "@/store/useBoundStore";
 import CouterNumber from "../ui/CouterNumber/CouterNumber";
 
 const HomePage = ({ allPosts, dataHomepage }) => {
+  const dataHomePages = dataHomepage;
   const [isShowSectionSlide, setIsShowSectionSlide] = useState(true);
   const swiperRef = useRef(null);
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -239,7 +240,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           speed={1500}
         >
           <SwiperSlide>
-            <IntroSection />
+            <IntroSection data={dataHomePages} />
           </SwiperSlide>
           <SwiperSlide>
             <ServiceSection
@@ -254,7 +255,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           </SwiperSlide>
           <SwiperSlide>
             <PartnerSection
-              data={dataHomepage}
+              data={dataHomePages}
               NavButton={
                 <SectionNavButtons
                   color="white"
@@ -278,6 +279,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           <SwiperSlide>
             <NewAndInsightsSection
               data={allPosts}
+              dataHomepage={dataHomePages}
               NavButton={
                 <SectionNavButtons
                   color="black"
@@ -291,11 +293,11 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       )}
       {!isShowSectionSlide && swiperRef.current.swiper && (
         <>
-          <IntroSection />
+          <IntroSection data={dataHomePages} />
           <ServiceSection />
-          <PartnerSection data={dataHomepage} />
+          <PartnerSection data={dataHomePages} />
           <CaseStudySection />
-          <NewAndInsightsSection data={allPosts} />
+          <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
         </>
       )}
       <ContactSection

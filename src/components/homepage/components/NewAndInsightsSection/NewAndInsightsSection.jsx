@@ -8,8 +8,19 @@ import classes from "./NewAndInsightsSection.module.scss";
 import NewPostCard from "./NewPostCard";
 import BlogCard from "@/components/ui/BlogCard/BlogCard";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
-export default function NewAndInsightsSection({ data, NavButton }) {
+export default function NewAndInsightsSection({
+  data,
+  NavButton,
+  dataHomepage,
+}) {
   const listPosts = data;
+  const { pages } = dataHomepage;
+  const {
+    newSectionTitle,
+    newSectionTextReadFull,
+    newSectionTextButton,
+    newSectionTextDesc,
+  } = pages.nodes[0].homePageInputContent || {};
   return (
     <>
       <section
@@ -18,10 +29,10 @@ export default function NewAndInsightsSection({ data, NavButton }) {
         <div className="container">
           <div className={`${classes["section-new-insights__title"]} appear`}>
             <p className={`${classes["section-new-insights__title--left"]}`}>
-              News & Insights
+              {newSectionTitle}
             </p>
             <p className={`${classes["section-new-insights__title--right"]}`}>
-              Get update with latest Digital news and insights
+              {newSectionTextDesc}
             </p>
           </div>
           <div
@@ -59,12 +70,13 @@ export default function NewAndInsightsSection({ data, NavButton }) {
               modules={[Navigation, Pagination, Autoplay, FreeMode]}
               className="news-insights-swiper "
             >
-              { listPosts && listPosts.map((post) => (
-                <SwiperSlide key={post.id}>
-                  <BlogCard data={post} isForSlider />
-                  {/* <NewPostCard data={post} /> */}
-                </SwiperSlide>
-              ))}
+              {listPosts &&
+                listPosts.map((post) => (
+                  <SwiperSlide key={post.id}>
+                    <BlogCard data={post} isForSlider />
+                    {/* <NewPostCard data={post} /> */}
+                  </SwiperSlide>
+                ))}
             </Swiper>
             <div className={`${classes["button-discover-more"]}`}>
               <ButtonNoBorder
@@ -95,7 +107,7 @@ export default function NewAndInsightsSection({ data, NavButton }) {
                   </svg>
                 }
               >
-                Discover more
+                {newSectionTextButton}
               </ButtonNoBorder>
             </div>
           </div>

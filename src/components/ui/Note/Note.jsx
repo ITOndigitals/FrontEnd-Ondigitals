@@ -18,7 +18,7 @@ export default function Note({ isSuccess, icon, backgroundColor, content }) {
     <>
       <div
         className={`${classes["notification"]} ${!isShown ? classes.hide : ""}`}
-        style={{ backgroundColor: `${backgroundColor}` }}
+        style={{ backgroundColor: `${backgroundColor}`, width:"100%" }}
       >
         {icon}
         <p>{content}</p>

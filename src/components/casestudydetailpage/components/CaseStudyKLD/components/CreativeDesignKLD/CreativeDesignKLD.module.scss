@@ -1,13 +1,12 @@
 @import "../../../../../../styles/functions";
 
 .creative-design {
-  height: 100vh;
+  height: auto;
   background: #131114;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1% 0;
-  padding-bottom: 5%;
+  padding: 1% 0 10% 0;
   color: #fff;
   &__content {
     display: flex;

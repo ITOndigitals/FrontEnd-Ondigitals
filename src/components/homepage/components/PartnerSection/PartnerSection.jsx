@@ -11,15 +11,14 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function PartnerSection({ data, NavButton }) {
   const { clients, pages } = data;
-  console.log(data);
-  const sectionHomepage = pages.nodes[0] || {};
+  const dataPartnerSection = pages.nodes[0] || {};
   const {
-    session3BellowText,
-    session3SecondTitle,
-    session3Title,
-    session3GroupNumberClient,
-  } = sectionHomepage.homePageInputContent || {};
-  const itemImage = clients.nodes;
+    partnerSectionTitle,
+    partnerSectionDesc,
+    partnerSectionTitleImage,
+    partnerSectionGroupNumberClient,
+  } = dataPartnerSection.homePageInputContent || {};
+  const itemImage = clients.nodes || [];
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
 
@@ -42,7 +41,7 @@ export default function PartnerSection({ data, NavButton }) {
       {!isOnMobile && <SectionHeader />}
       <div className="container">
         <p className={`${classes["homepagesectionpartner__title"]} appear`}>
-          {session3Title}
+          {partnerSectionTitle}
         </p>
         <div
           className={`${classes["homepagesectionpartner__content"]} appear-slow`}
@@ -53,7 +52,7 @@ export default function PartnerSection({ data, NavButton }) {
                 className={`${classes["homepagesectionpartner__content--number"]} number-trusted`}
               >
                 <CouterNumber
-                  value={session3GroupNumberClient.number1}
+                  value={partnerSectionGroupNumberClient.number1}
                   classes={"partner-section"}
                   threshold={0.2}
                 />
@@ -62,7 +61,7 @@ export default function PartnerSection({ data, NavButton }) {
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                {session3GroupNumberClient.text1}
+                {partnerSectionGroupNumberClient.text1}
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
@@ -70,7 +69,7 @@ export default function PartnerSection({ data, NavButton }) {
                 className={`${classes["homepagesectionpartner__content--number"]} number-successful`}
               >
                 <CouterNumber
-                  value={session3GroupNumberClient.number2}
+                  value={partnerSectionGroupNumberClient.number2}
                   classes={"partner-section"}
                   threshold={0.2}
                 />
@@ -79,7 +78,7 @@ export default function PartnerSection({ data, NavButton }) {
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                {session3GroupNumberClient.text2}
+                {partnerSectionGroupNumberClient.text2}
               </p>
             </div>
             <div className={classes["homepagesectionpartner__content__item"]}>
@@ -87,7 +86,7 @@ export default function PartnerSection({ data, NavButton }) {
                 className={`${classes["homepagesectionpartner__content--number"]} number-monthly`}
               >
                 <CouterNumber
-                  value={session3GroupNumberClient.number3}
+                  value={partnerSectionGroupNumberClient.number3}
                   classes={"partner-section"}
                   threshold={0.2}
                 />
@@ -96,7 +95,7 @@ export default function PartnerSection({ data, NavButton }) {
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["homepagesectionpartner__content--text"]}
               >
-                {session3GroupNumberClient.text3}
+                {partnerSectionGroupNumberClient.text3}
               </p>
             </div>
           </div>
@@ -108,7 +107,7 @@ export default function PartnerSection({ data, NavButton }) {
                 classes["homepagesectionpartner__content__colright--text"]
               }
             >
-              {session3SecondTitle}
+              {partnerSectionTitleImage}
             </p>
             <div
               className={
@@ -122,7 +121,7 @@ export default function PartnerSection({ data, NavButton }) {
                       src={item.featuredImage.node?.sourceUrl}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      alt={item.title}
+                      alt={item.featuredImage.node?.title}
                     />
                   </div>
                 ))}
@@ -133,7 +132,7 @@ export default function PartnerSection({ data, NavButton }) {
           className={`${classes["homepagesectionpartner__below"]} appear-slow-more`}
         >
           <div className={`${classes["homepagesectionpartner__below__text"]} `}>
-            {session3BellowText}
+            {partnerSectionDesc}
           </div>
           <ButtonNoBorder
             href="#"
