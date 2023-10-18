@@ -16,6 +16,7 @@
     0px 166px 67px 0px rgba(0, 0, 0, 0.01), 0px 260px 73px 0px rgba(0, 0, 0, 0);
   &.hide {
     opacity: 0;
+    display: none !important;
   }
   p {
     color: #131114;

@@ -1,17 +1,17 @@
 import HomePage from "@/components/homepage/HomePage";
 import {
+  GetDataFooter,
   GetDataHomepage,
   getDataForNewAndInsightsSection,
 } from "./api/graphql";
 import Head from "next/head";
+
 const parse = require("html-react-parser");
+
 export default function Home({ allPosts, dataHomepage }) {
-  const { pages } = dataHomepage;
-  const fullHeadHTML = pages?.nodes[0]?.seo.fullHead;
-  const parse = require("html-react-parser");
   return (
     <>
-      <Head>{parse(fullHeadHTML)}</Head>
+      {/* <Head>{parse(fullHeadHTML)}</Head> */}
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />
     </>
   );
@@ -19,6 +19,24 @@ export default function Home({ allPosts, dataHomepage }) {
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const allPosts = await getDataForNewAndInsightsSection(language);
-  const dataHomepage = await GetDataHomepage();
-  return { props: { allPosts, dataHomepage } };
+  const test = await GetDataFooter(44677);
+  const idHomepageEnglish = 44418;
+  const data = await GetDataHomepage(idHomepageEnglish);
+  const translation = data.pages.nodes[0]?.translations.find(
+    (translation) => translation.language.code === language
+  );
+
+  if (translation) {
+    return {
+      props: {
+        allPosts,
+        dataHomepage: await GetDataHomepage(translation.pageId),
+        test,
+      },
+    };
+  } else {
+    return {
+      props: { allPosts, dataHomepage: data, test },
+    };
+  }
 };

@@ -13,6 +13,9 @@ import {
 } from "@/components/ui/Icons/ListIcon";
 import Note from "@/components/ui/Note/Note";
 import { Maven_Pro } from "next/font/google";
+import { useMutation } from "@apollo/client";
+import { SendEmailContactForm } from "@/until/sendEmail";
+import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ContactSection = React.forwardRef((props, ref) => {
@@ -33,6 +36,9 @@ const ContactSection = React.forwardRef((props, ref) => {
     };
   }, []);
 
+  const [sendEmailMutation, { loading, error }] =
+    useMutation(SendEmailContactForm);
+  const [isSuccess, setIsSuccess] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -42,9 +48,20 @@ const ContactSection = React.forwardRef((props, ref) => {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
-  function handleSubmit(values) {
-    console.log(values);
-    formik.resetForm();
+  async function handleSubmit(values) {
+    try {
+      const { data } = await sendEmailMutation({
+        variables: {
+          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> <h4 style="color: black;">Email: ${values.email}</h4>  <strong style="color: black;">Message: ${values.message}</strong>  `,
+          subject: "Thông báo có khách hàng mới",
+        },
+      });
+      console.log(data);
+      formik.resetForm();
+      setIsSuccess(true);
+    } catch (mutationError) {
+      console.error(mutationError);
+    }
   }
 
   return (
@@ -110,32 +127,43 @@ const ContactSection = React.forwardRef((props, ref) => {
                 classes["contact-section__columLeft__form__buttonAndNote"]
               }
             >
-              <Note
-                content="Message sent! 
+              <div
+                className={
+                  classes["contact-section__columLeft__form__buttonAndNote--detail"]
+                }
+              >
+                {loading && <LoadingSpinner />}
+                {isSuccess && !loading && (
+                  <Note
+                    content="Message sent! 
              Thank you for contacting us.
              We will reach out to you soon."
-                backgroundColor="#5CFFAE"
-                icon={
-                  <IconSuccess
-                    width={24}
-                    height={24}
-                    color="rgba(19, 17, 20, 1)"
+                    backgroundColor="#5CFFAE"
+                    icon={
+                      <IconSuccess
+                        width={24}
+                        height={24}
+                        color="rgba(19, 17, 20, 1)"
+                      />
+                    }
                   />
-                }
-              />
-              {/* <Note
-                content="Something went wrong! 
+                )}
+                {error && (
+                  <Note
+                    content="Something went wrong! 
                 We couldn't receive your message.
                 Please wait and try again."
-                backgroundColor="#FF5252"
-                icon={
-                  <IconDanger
-                    width={24}
-                    height={24}
-                    color="rgba(255, 255, 255, 1)"
+                    backgroundColor="rgba(255, 82, 82, 1)"
+                    icon={
+                      <IconDanger
+                        width={24}
+                        height={24}
+                        color="rgba(19, 17, 20, 1)"
+                      />
+                    }
                   />
-                }
-              /> */}
+                )}
+              </div>
               <div
                 className={
                   classes[
@@ -147,7 +175,7 @@ const ContactSection = React.forwardRef((props, ref) => {
                   className="btn-contact-form"
                   RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
                 >
-                  Send us a message
+                  {loading ? "Sending message..." : "Send us a message"}
                 </Button>
                 <span style={{ fontFamily: MavenPro.style.fontFamily }}>
                   (*) Required field. See our Privacy Policy

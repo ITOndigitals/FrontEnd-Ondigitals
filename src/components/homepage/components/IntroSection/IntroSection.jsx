@@ -4,14 +4,21 @@ import { Maven_Pro } from "next/font/google";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const IntroSection = () => {
+const IntroSection = ({ data }) => {
+  const { pages } = data;
+  const {
+    introSectionTextDescription,
+    introSectionTextHello,
+    introSectionTextScrollDown1,
+    introSectionTextScrollDown2,
+  } = pages.nodes[0].homePageInputContent || {};
   return (
     <section className={`${classes.intro} intro-section`}>
       <div className="container relative">
         <div className={classes["intro-layout"]}>
           <div className={classes["intro-layout-item"]}>
             <p className={`${classes["intro-greeting"]} appear`}>
-              Hello, We Are
+              {introSectionTextHello}
             </p>
             <div
               className={`${classes["intro-brand-img-container"]} appear-slow`}
@@ -19,8 +26,8 @@ const IntroSection = () => {
               <Image
                 className={classes["intro-brand-img"]}
                 fill
-                src="/assets/images/ui/ondigitals.png"
-                alt="brand_name"
+                src="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
+                alt="Ondigitals"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -28,17 +35,17 @@ const IntroSection = () => {
               className={`${classes["intro-description"]} appear-slow-more`}
               style={{ fontFamily: MavenPro.style.fontFamily }}
             >
-              Thinking inside the box
+              {introSectionTextDescription}
             </p>
           </div>
           <div className={classes["intro-layout-item"]}>
             <div className={`${classes["intro-layout-item-img"]} appear-slow`}>
               <Image
-                src="/assets/images/partials/intro-bg.png"
+                src="https://api.ondigitals.com/wp-content/uploads/2023/09/intro-bg.webp"
                 fill
-                alt="intro-img"
+                alt="Ondigitals"
                 placeholder="blur"
-                blurDataURL={"/assets/images/partials/intro-bg.png"}
+                blurDataURL="https://api.ondigitals.com/wp-content/uploads/2023/09/intro-bg.webp"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -47,12 +54,12 @@ const IntroSection = () => {
       </div>
       <div className={`${classes["scroll-msg"]} container--big`}>
         <div className={classes["scroll-msg__item"]}>
-          <p>SCROLL DOWN</p>
+          <p>{introSectionTextScrollDown1}</p>
           <div className={classes["scroll-msg__line"]}>
             <p></p>
           </div>
           <p style={{ fontFamily: MavenPro.style.fontFamily }}>
-            to discover more
+           {introSectionTextScrollDown2}
           </p>
         </div>
       </div>

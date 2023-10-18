@@ -11,7 +11,7 @@ const CaseStudyItem = ({ item, index }) => {
   const itemClasses = `${classes.item} ${classes[`item-${index + 1}`]}`;
   return (
     <li className={itemClasses}>
-      <Link href="#">
+      {/* <Link href="#"> */}
         <div className={classes["item-image-wrapper"]}>
           <div className={classes["stroke-wrapper"]}>
             <svg
@@ -65,7 +65,7 @@ const CaseStudyItem = ({ item, index }) => {
             <ExploreButton>Explore</ExploreButton>
           </Link>
         </div>
-      </Link>
+      {/* </Link> */}
     </li>
   );
 };

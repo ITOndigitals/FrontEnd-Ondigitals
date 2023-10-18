@@ -4,6 +4,8 @@ import OverViewCaseStudyDetail from "./components/OverViewCaseStudyDetail/OverVi
 import CampaignResults from "./components/CampaignResults/CampaignResults";
 import { useBoundStore } from "@/store/useBoundStore";
 import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
+import CaseStudyRenault from "./components/CaseStudyRenault/CaseStudyRenault";
+import WebsiteDesignKLD from "./components/CaseStudyKLD/components/WebsiteDesignKLD/WebsiteDesignKLD";
 
 export default function CaseStudyDetail() {
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -38,9 +40,10 @@ export default function CaseStudyDetail() {
   return (
     <>
       <IntroCaseStudyDetail />
-      <OverViewCaseStudyDetail />
+      {/* <OverViewCaseStudyDetail />
       <CampaignResults />
-      <CaseStudyKLD />
+      <CaseStudyKLD /> */}
+      <CaseStudyRenault/>
     </>
   );
 }
