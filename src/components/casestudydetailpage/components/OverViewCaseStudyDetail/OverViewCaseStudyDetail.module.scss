@@ -6,17 +6,6 @@
   color: #fff;
   justify-content: space-between;
   align-items: center;
-  // Start theme colors
-  &.primary-theme {
-    background-color: $primary-dark;
-  }
-  &.red-theme {
-    background-color: $red-dark;
-  }
-  &.black-theme {
-    background-color: $neutral-100;
-  }
-  // End theme colors
   &__layout {
     display: grid;
     // height: 100%;

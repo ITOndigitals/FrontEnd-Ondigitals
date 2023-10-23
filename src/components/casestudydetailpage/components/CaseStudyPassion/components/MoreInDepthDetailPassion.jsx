@@ -10,7 +10,7 @@ const DUMMY_INDEPTH_CONTENT = [
       "Product image design",
       "Post design following the brand's guidelines and agreed concepts",
       "Advertising post design",
-      "Digital promotion banner design",
+      "Digital promotion banner design", 
     ],
   },
 ];
@@ -34,6 +34,7 @@ const MoreInDepthDetailPassion = () => {
               {content.map((listItem, index) => {
                 return (
                   <CaseStudyListItemContent
+                    key={index}
                     content={listItem}
                     dotColor={listItem.dotColor}
                     index={index}

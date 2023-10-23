@@ -23,22 +23,7 @@
       align-items: flex-start;
       padding: 20px;
       text-align: center;
-      // Start Color theme options
-      &.primary-theme {
-        background-color: $primary-dark;
-        color: white;
-        .intro-case-study-detail-heading {
-          background-color: $primary-light;
-        }
-      }
-      &.red-theme {
-        background-color: $red-dark;
-        color: white;
-        .intro-case-study-detail-heading {
-          background-color: $red-light;
-        }
-      }
-      // End Color theme options
+      color: white;
       hr {
         margin: 20px 0;
         width: 100%;

@@ -45,6 +45,7 @@ const InDepthDetailPassion = () => {
               {content.map((listItem, index) => {
                 return (
                   <CaseStudyListItemContent
+                    key={index}
                     content={listItem}
                     dotColor={listItem.dotColor}
                     index={index}
