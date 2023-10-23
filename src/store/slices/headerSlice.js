@@ -17,8 +17,10 @@ export const createHeaderSlice = (set) => ({
     set({ expanseMenuIsOpen: expanseState }), // Set menu có mở hay không
   setBottomNavIsShown: (statePayload) =>
     set({ bottomNavIsShown: statePayload }), // Set nút contact bên dưới mở hay
-  setHeaderStickyState: (statePayload) => set({ headerIsSticky: statePayload }),
+  setHeaderStickyState: (statePayload) => set({ headerIsSticky: statePayload }), // Set Sticky state
   setChangeStickyIsAllowed: (statePayload) =>
-    set({ changeStickyIsAllowed: statePayload }),
+    set({ changeStickyIsAllowed: statePayload }), // Cho phép set Sticky hay không
   setIsInSubPageState: (statePayload) => set({ isInSubPage: statePayload }),
+  // Sub page là những trang con như case study, header sẽ kiểm tra đang trong subpage và
+  // áp dụng sticky header
 });

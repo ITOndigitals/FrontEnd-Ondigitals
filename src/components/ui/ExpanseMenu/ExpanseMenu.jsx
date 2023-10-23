@@ -16,11 +16,29 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
       }}
     >
       <div className={classes["menu-list-wrapper"]}>
-        <div className={`container--big ${classes["menu-list-wrapper-inner"]}`}>
+        <div
+          className={`container--big ${classes["menu-list-wrapper-inner"]}`}
+          style={{ overflowY: "auto" }}
+        >
           <ul
             className={`${classes["menu-list"]}`}
             style={{ transitionDelay: isActive ? "0.8s" : "0.2s" }}
           >
+            {menu.map((item, index) => (
+              <li className={classes["menu-list-item"]} key={index}>
+                <Link
+                  href={item.href}
+                  className={classes["menu-list-item__link"]}
+                >
+                  <div>{item.name}</div>
+                  <div
+                    className={`${classes["menu-list-item__circle"]} ${
+                      classes[`circle-${index}`]
+                    }`}
+                  ></div>
+                </Link>
+              </li>
+            ))}
             {menu.map((item, index) => (
               <li className={classes["menu-list-item"]} key={index}>
                 <Link

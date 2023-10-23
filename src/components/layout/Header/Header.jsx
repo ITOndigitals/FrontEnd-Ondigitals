@@ -23,7 +23,6 @@ const Header = () => {
   const bottomNavIsShownState = useBoundStore(
     (state) => state.bottomNavIsShown
   );
-  // const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
   const headerIsDark = useBoundStore((state) => state.isDark);
   const headerBtnIsShown = useBoundStore((state) => state.headerBtnIsShown);
   const showHeaderBtn = useBoundStore((state) => state.showHeaderBtn);
@@ -47,8 +46,6 @@ const Header = () => {
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
   );
-  // const setToDark = useBoundStore((state) => state.setToDark);
-  // const setToLight = useBoundStore((state) => state.setToLight);
   const router = useRouter();
   const setHeaderStickyState = useBoundStore(
     (state) => state.setHeaderStickyState
@@ -81,6 +78,7 @@ const Header = () => {
       }
     }
 
+    // Handle sự kiện cho header, khi bật menu thì ẩn, khi ẩn menu thì xuất hiện
     const header = document.querySelector(".main-header-g");
     if (menuIsOpen) {
       if (subPageHeaderIsSticky) {
@@ -215,7 +213,6 @@ const Header = () => {
       if (headerCanChangeColor) {
         setIsOnMobile(window.innerWidth < 1280);
         const header = document.querySelector(".main-header-g");
-        // setIsDark(false);
         showHeaderBtn();
         header.classList.remove("hide");
       }
@@ -249,6 +246,7 @@ const Header = () => {
     }
   };
 
+  // handle tùy chỉnh headerIsSticky
   useEffect(() => {
     const header = document.querySelector(".main-header-g");
     if (subPageHeaderIsSticky) {
