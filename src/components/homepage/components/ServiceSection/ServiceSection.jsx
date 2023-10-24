@@ -18,12 +18,6 @@ const ServiceSection = ({ NavButton, data }) => {
   const { nodes: serviceList } = data ? data.services : [];
   const { serviceSectionTitle, serviceSectionDesc, serviceSectionTextButton } =
     data.pages.nodes[0].homePageInputContent || {};
-  console.log(
-    serviceSectionTitle,
-    serviceSectionDesc,
-    serviceSectionTextButton
-  );
-  
   useEffect(() => {
     if (serviceList.length > 0) {
       const renderServices = serviceList.map((item, index) => {

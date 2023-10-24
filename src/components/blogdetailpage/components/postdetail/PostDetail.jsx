@@ -24,7 +24,7 @@ export default function PostDetail({ data, applyMarkDown }) {
   useEffect(() => {
     if (matchingTranslation) {
       router.push(`/blog/${matchingTranslation.slug}`);
-    } else if(router.locale !== post.language.slug) {
+    } else if (router.locale !== post.language.slug) {
       router.push("/");
     }
   }, [router.locale, data.translations]);

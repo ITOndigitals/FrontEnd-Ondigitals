@@ -1,13 +1,18 @@
 import React from "react";
 import BlogPage from "@/components/blogpage/BlogPage";
-import { getDataForNewAndInsightsSection } from "../api/graphql";
+import { SearchPostsByKey, getDataForNewAndInsightsSection } from "../api/graphql";
 
-export default function Blog({ allPosts }) {
-  return <BlogPage blogsData={allPosts} />;
+export default function Blog({ allPosts, datapost }) {
+  console.log(datapost);
+  const onSearch = (item) => {
+    console.log(item);
+  };
+  return <BlogPage blogsData={allPosts} onSearch={onSearch} />;
 }
 
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const allPosts = await getDataForNewAndInsightsSection(language);
-  return { props: { allPosts } };
+  const datapost = await SearchPostsByKey("test1111111", language);
+  return { props: { allPosts, datapost } };
 };

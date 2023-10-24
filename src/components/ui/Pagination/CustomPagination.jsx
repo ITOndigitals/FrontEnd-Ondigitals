@@ -22,7 +22,6 @@ const CustomPagination = ({ onChangePage, isLight }) => {
         setPageRange(5);
       }
     };
-
     window.addEventListener("resize", handleResize);
     handleResize();
 

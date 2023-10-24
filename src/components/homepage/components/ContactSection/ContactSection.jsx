@@ -16,12 +16,19 @@ import { Maven_Pro } from "next/font/google";
 import { useMutation } from "@apollo/client";
 import { SendEmailContactForm } from "@/until/sendEmail";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
+import Link from "next/link";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ContactSection = React.forwardRef((props, ref) => {
-  const { NavButton } = props;
+  const { NavButton, data } = props;
   const [isOnMobile, setIsOnMobile] = useState(false);
-
+  const {
+    contactFormTitle,
+    contactFormDecs,
+    contactFormTextButton,
+    contactFormTextRequiredField,
+    linkPrivacyPolicy,
+  } = data.pages.nodes[0].homePageInputContent;
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -56,7 +63,6 @@ const ContactSection = React.forwardRef((props, ref) => {
           subject: "Thông báo có khách hàng mới",
         },
       });
-      console.log(data);
       formik.resetForm();
       setIsSuccess(true);
     } catch (mutationError) {
@@ -129,7 +135,9 @@ const ContactSection = React.forwardRef((props, ref) => {
             >
               <div
                 className={
-                  classes["contact-section__columLeft__form__buttonAndNote--detail"]
+                  classes[
+                    "contact-section__columLeft__form__buttonAndNote--detail"
+                  ]
                 }
               >
                 {loading && <LoadingSpinner />}
@@ -175,10 +183,17 @@ const ContactSection = React.forwardRef((props, ref) => {
                   className="btn-contact-form"
                   RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
                 >
-                  {loading ? "Sending message..." : "Send us a message"}
+                  {loading
+                    ? `${contactFormTextButton} ...`
+                    : `${contactFormTextButton}`}
                 </Button>
                 <span style={{ fontFamily: MavenPro.style.fontFamily }}>
-                  (*) Required field. See our Privacy Policy
+                  {`${contactFormTextRequiredField} `}
+                  {linkPrivacyPolicy ? (
+                    <Link href={linkPrivacyPolicy.url}>
+                      {linkPrivacyPolicy.title}
+                    </Link>
+                  ) : null}
                 </span>
               </div>
             </div>
@@ -196,10 +211,8 @@ const ContactSection = React.forwardRef((props, ref) => {
             />
           </div>
           <div className={classes["contact-section__columRight__text"]}>
-            <p>LET'S TALK</p>
-            <p>
-              Tell us about your business challenge and let's discuss together.
-            </p>
+            <p>{contactFormTitle}</p>
+            <p>{contactFormDecs}</p>
           </div>
         </div>
       </div>

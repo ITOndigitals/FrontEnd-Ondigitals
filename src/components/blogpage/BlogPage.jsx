@@ -7,7 +7,7 @@ import BlogFooter from "./components/BlogsFooter/BlogFooter";
 import { SearchPostsByKey } from "@/pages/api/graphql";
 import { useRouter } from "next/router";
 
-const BlogPage = ({ blogsData }) => {
+const BlogPage = ({ blogsData, onSearch }) => {
   const setToDark = useBoundStore((state) => state.setToDark);
   const [renderData, setRenderData] = useState(blogsData);
   useEffect(() => {
@@ -50,7 +50,7 @@ const BlogPage = ({ blogsData }) => {
   };
   return (
     <div className={`container ${classes.container}`}>
-      <BlogsHeader />
+      <BlogsHeader onSearch={onSearch} />
       <BlogList blogsData={renderData} />
       <BlogFooter onChangePage={onChangePageHandler} />
     </div>

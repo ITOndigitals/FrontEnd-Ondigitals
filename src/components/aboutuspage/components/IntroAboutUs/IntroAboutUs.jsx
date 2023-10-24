@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import classes from "./IntroAboutUs.module.scss";
-import backgroundImg from "../../../../../public/assets/images/backgrounds/about-us-bg.png";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
 
@@ -33,8 +32,8 @@ const IntroAboutUs = () => {
           style={{
             width: "100%",
             height: "100%",
-            backgroundImage: `url(${backgroundImg.src}`,
             backgroundSize: "cover",
+            backgroundImage: `url("https://s3-alpha-sig.figma.com/img/50f6/7998/07e469ad8e38f75aab4f180bb40a9542?Expires=1699228800&Signature=cOS7VLBp2pSJInUCSs9zhTm~t541foyFKKS9DqoEYNOwpCKmfFiMxlXGkTfjXx~J-ePAh34QJz01IWyIsO1ywYAzUOsKynWoKmiDH6UnJGfMytHYnwk8ArG1req8c0tcwPYP3-B23zYWozsv-84L8z8hGicgTufZoa5EX8VmzyYWheMeXLc-ScqYxUua0Sk77Zt55mKb6Q2lizaOjNpnBYqp6HZVwNzGg9YemdfLOp5wYZjIX7UOxHPmhrt8qsdDeMs6Een5NZWX~t95F9HogJhsMj1m2CJiEhBNzp7JArQUNVenQHWdrwrX~gscDwyz8FdEfVH6hV2i89Phfw2RAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4")`,
             mixBlendMode: "hard-light",
             opacity: "0.2",
           }}

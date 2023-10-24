@@ -12,6 +12,7 @@
   font-weight: 600;
   line-height: 24px;
   cursor: pointer;
+
 }
 .button {
   @include button;
@@ -21,4 +22,6 @@
   border-radius: 32px;
   border: 2px solid #cd0404;
   background: #3d1766;
+  justify-content: space-around;
+
 }

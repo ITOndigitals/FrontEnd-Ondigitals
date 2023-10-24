@@ -35,6 +35,21 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                   ></div>
                 </Link>
               </li>
+            ))}{" "}
+            {menu.map((item, index) => (
+              <li className={classes["menu-list-item"]} key={index}>
+                <Link
+                  href={item.href}
+                  className={classes["menu-list-item__link"]}
+                >
+                  <div>{item.name}</div>
+                  <div
+                    className={`${classes["menu-list-item__circle"]} ${
+                      classes[`circle-${index}`]
+                    }`}
+                  ></div>
+                </Link>
+              </li>
             ))}
           </ul>
           <ul

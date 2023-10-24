@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, locale }) {
   const language = locale.toUpperCase();
-  const dataPostDetail = await GetPostDetailBySlug(params.blogId);
+  const dataPostDetail = await GetPostDetailBySlug(params.blogId, language);
   const relatedPosts = await getDataForNewAndInsightsSection(language);
   return {
     props: {

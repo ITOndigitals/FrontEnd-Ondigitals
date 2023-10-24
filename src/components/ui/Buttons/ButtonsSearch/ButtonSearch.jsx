@@ -15,6 +15,7 @@ export default function ButtonSearch({ onSearch, color }) {
     if (searchValue !== "") {
       onSearch(searchValue);
       handleClick();
+      setSearchValue("")
     }
   };
 
