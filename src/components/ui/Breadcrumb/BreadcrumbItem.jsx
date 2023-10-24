@@ -3,6 +3,7 @@ import classes from "./BreadcrumbItem.module.scss";
 import { Maven_Pro } from "next/font/google";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
 const BreadcrumbItem = ({ item, order }) => {
   return (
@@ -10,7 +11,7 @@ const BreadcrumbItem = ({ item, order }) => {
       {order > 0 && (
         <div className={`${classes.circle} ${classes[`order-${order}`]}`} />
       )}
-      <Link href={item.link}>{item.title}</Link>
+      <Link href={item.url}>{parse(item.title)}</Link>
     </li>
   );
 };

@@ -32,11 +32,11 @@ export const getDataForNewAndInsightsSection = async (language) => {
   }
 };
 
-export const SearchPostsByKey = async ({ key }) => {
+export const SearchPostsByKey = async (key, language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetPosts($search: String!) {
-      posts(where: { search: $search }) {
+    query GetPosts($key: String!, $language: LanguageCodeFilterEnum!) {
+      posts(where: { search: $key, language: $language}) {
         nodes {
           id
           title
@@ -53,26 +53,26 @@ export const SearchPostsByKey = async ({ key }) => {
       }
     }
   `;
-
+  const variables = { key, language };
   try {
-    const variables = { search: key };
     const data = await request(endpoint, query, variables);
-    return data.posts.nodes;
+    return data;
   } catch (error) {
     console.error("Error fetching data", error);
-    return [];
+    return (data = await request(endpoint, query, variables));
   }
 };
 
-export const GetPostDetailBySlug = async (slug) => {
+export const GetPostDetailBySlug = async (slug, language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetPost($slug: String!) {
+    query GetPost($slug: String!, $language: LanguageCodeFilterEnum!) {
       postBy(slug: $slug) {
         id
         title
         date
         postId
+        slug
         excerpt
         content
         language {
@@ -91,12 +91,35 @@ export const GetPostDetailBySlug = async (slug) => {
         }
         link
       }
+      allBlogsContent(where: { language: $language }) {
+        nodes {
+          textBlogandBlogDetail {
+            blogsDecs
+            blogsTitle
+            breadcrumHome {
+              title
+              url
+            }
+            breadcrumPage {
+              title
+              url
+            }
+            breadcrumPageDetail {
+              title
+              url
+            }
+            breadcrumTitleBlogDetail
+            textButton
+            textReadMore
+          }
+        }
+      }
     }
   `;
-  const variables = { slug };
+  const variables = { slug, language };
   try {
     const data = await request(endpoint, query, variables);
-    return data.postBy;
+    return data;
   } catch (error) {
     console.error("Error fetching data", error);
     return null;
@@ -129,7 +152,6 @@ export const GetListSlugPosts = async () => {
 };
 export const GetDataHomepage = async (id, languageCode) => {
   const endpoint = endPointApi;
-  console.log();
   const query = gql`
     query getDataHomePage($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pages(where: { id: $id }) {
@@ -177,6 +199,14 @@ export const GetDataHomepage = async (id, languageCode) => {
             serviceSectionTextButton
             serviceSectionTitle
             partnerSectionTextButton
+            contactFormDecs
+            contactFormTextButton
+            contactFormTextRequiredField
+            contactFormTitle
+            linkPrivacyPolicy {
+              url
+              title
+            }
           }
           translations {
             language {
@@ -192,6 +222,7 @@ export const GetDataHomepage = async (id, languageCode) => {
         nodes {
           featuredImage {
             node {
+              id
               sourceUrl
               title
             }
@@ -223,6 +254,32 @@ export const GetDataHomepage = async (id, languageCode) => {
           }
         }
       }
+      allCaseStudy {
+        nodes {
+          case_studyId
+          title
+          slug
+           caseStudyHomepage {
+            caseStudyTextButton
+            caseStudyTitle
+            caseStudyTextButtonItem
+            caseStudyYear
+          }
+          editorBlocks {
+            ... on CoreParagraph {
+              attributes {
+                content
+              }
+            }
+          }
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
     }
   `;
   const variables = { id, languageCode };
@@ -238,7 +295,7 @@ export const GetDataFooter = async (id) => {
   const endpoint = endPointApi;
   const query = gql`
     query getDataFooter($id: Int!) {
-      pages(where: {id: $id}) {
+      pages(where: { id: $id }) {
         nodes {
           pageId
           language {

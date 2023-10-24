@@ -165,8 +165,9 @@
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    min-height: 170px;
     &-name {
       margin-bottom: 8px;
       text-align: center;

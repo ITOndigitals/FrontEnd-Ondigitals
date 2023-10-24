@@ -18,6 +18,9 @@ import CouterNumber from "../ui/CouterNumber/CouterNumber";
 
 const HomePage = ({ allPosts, dataHomepage }) => {
   const dataHomePages = dataHomepage;
+  const { number1, number2, number3 } =
+    dataHomePages.pages.nodes[0].homePageInputContent
+      .partnerSectionGroupNumberClient || [];
   const [isShowSectionSlide, setIsShowSectionSlide] = useState(true);
   const swiperRef = useRef(null);
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -57,7 +60,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
     const elements = document.querySelectorAll(
       ".number-trusted, .number-successful, .number-monthly"
     );
-    const maxValues = [500, 300, 1000];
+    const maxValues = [number1, number2, number3];
     function runCounterForElement(currentValue, maxValue, element) {
       if (currentValue <= maxValue) {
         element.textContent = currentValue + "+";
@@ -268,6 +271,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           </SwiperSlide>
           <SwiperSlide>
             <CaseStudySection
+            data = {dataHomePages}
               NavButton={
                 <SectionNavButtons
                   color="white"
@@ -297,11 +301,12 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           <IntroSection data={dataHomePages} />
           <ServiceSection data={dataHomePages} />
           <PartnerSection data={dataHomePages} />
-          <CaseStudySection />
+          <CaseStudySection data={dataHomePages} />
           <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
         </>
       )}
       <ContactSection
+        data={dataHomePages}
         ref={contactFormRef}
         NavButton={
           <SectionNavButtons

@@ -14,7 +14,7 @@
 @media (max-width: 1200px) {
   .case-study {
     &-list {
-      grid-column-gap: 40px;
+      gap: 40px;
     }
   }
 }

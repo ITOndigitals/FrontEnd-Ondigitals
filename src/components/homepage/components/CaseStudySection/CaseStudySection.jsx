@@ -41,9 +41,11 @@ const DUMMY_CASE_STUDY = [
   },
 ];
 
-const CaseStudySection = ({ NavButton }) => {
+const CaseStudySection = ({ NavButton, data }) => {
   const [isOnMobile, setIsOnMobile] = useState(false);
-
+  const { allCaseStudy, pages } = data;
+  const { caseStudySessionTitle, caseStudySessionButtonText } =
+    pages.nodes[0].homePageInputContent || {};
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -63,18 +65,20 @@ const CaseStudySection = ({ NavButton }) => {
       {!isOnMobile && <SectionHeader />}
       <div className="container">
         <div className={`${classes["case-study-header"]} appear-from-down`}>
-          <h2 className={classes["case-study-header__heading"]}>Case Study</h2>
+          <h2 className={classes["case-study-header__heading"]}>
+            {caseStudySessionTitle}
+          </h2>
           <ButtonNoBorder
             href="#"
             textSize="md"
             RightIcon={<TopRightArrow width={24} height={24} color="#ffffff" />}
           >
-            VIEW ALL
+            {caseStudySessionButtonText}
           </ButtonNoBorder>
         </div>
       </div>
       <div className="container-no-pd appear-from-down-slow-more">
-        <CaseStudiesList items={DUMMY_CASE_STUDY} />
+        <CaseStudiesList items={allCaseStudy} />
       </div>
       {NavButton && NavButton}
     </section>

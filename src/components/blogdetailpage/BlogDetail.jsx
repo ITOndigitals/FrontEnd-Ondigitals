@@ -12,30 +12,27 @@ import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGr
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const DUMMY_BREADCRUMB_DATA = [
-  {
-    id: 1,
-    link: "#",
-    title: "Home",
-  },
-  {
-    id: 2,
-    link: "#",
-    title: "News & Insights",
-  },
-  {
-    id: 3,
-    link: "#",
-    title: "Insights",
-  },
-  {
-    id: 4,
-    link: "#",
-    title: "Best SEO Strategies: 10 steps to reach your target a",
-  },
-];
-
 const BlogDetail = ({ relatedPosts, postDetail }) => {
+  const { postBy, allBlogsContent } = postDetail;
+  const titlePostDetail = {
+    title: postBy.title,
+    url: postBy.slug,
+  };
+  const {
+    breadcrumTitleBlogDetail,
+    breadcrumHome,
+    breadcrumPage,
+    breadcrumPageDetail,
+    textButton,
+    textReadMore
+  } = allBlogsContent.nodes[0].textBlogandBlogDetail || null;
+  const DUMMY_BREADCRUMB_DATA = [
+    breadcrumHome,
+    breadcrumPage,
+    breadcrumPageDetail,
+    titlePostDetail,
+  ];
+
   const [markdown, setMarkdown] = useState();
   const headerIsDark = useBoundStore((state) => state.isDark);
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -70,7 +67,9 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   return (
     <div className={classes["blog-detail"]}>
       <div className="container">
-        <p className={classes["blog-detail-header"]}>Insights</p>
+        <p className={classes["blog-detail-header"]}>
+          {breadcrumTitleBlogDetail}
+        </p>
         <div className={classes["blog-detail-breadcrumbs"]}>
           <Breadcrumb data={DUMMY_BREADCRUMB_DATA} />
         </div>
@@ -80,16 +79,13 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
           </div>
           <div className={classes["blog-detail-content__spacer"]}></div>
           <div className={classes["blog-detail-content__main"]}>
-            <PostDetail
-              data={postDetail}
-              applyMarkDown={applyMarkDownHandler}
-            />
+            <PostDetail data={postBy} applyMarkDown={applyMarkDownHandler} />
           </div>
         </section>
         <section className={classes["blog-detail-read-more"]}>
           <div className={classes["blog-detail-read-more__heading"]}>
             <p className={classes["blog-detail-read-more__heading-content"]}>
-              Read more
+              {textReadMore}
             </p>
             <ButtonNoBorder
               href="#"
@@ -98,15 +94,14 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
                 <TopRightArrow width={24} height={24} color="#131114" />
               }
             >
-              VIEW ALL
+              {textButton}
             </ButtonNoBorder>
           </div>
           <ReadMoreSlider data={relatedPosts} />
         </section>
       </div>
-      <NeedHelpDigitalGrowth/>
+      <NeedHelpDigitalGrowth />
     </div>
   );
 };
 export default BlogDetail;
-

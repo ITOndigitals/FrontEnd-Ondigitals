@@ -120,3 +120,29 @@ export const GET_FOOTER_DATA = gql`
   }
 `;
 
+export const GET_TEST = gql`
+  query getDataFooteR {
+    pageBy(pageId: 44514) {
+      id
+      title
+      editorBlocks(flat: false) {
+        ... on CoreGroup {
+          anchor
+          innerBlocks {
+            ... on CoreImage {
+              attributes {
+                alt
+                src
+              }
+            }
+            ... on CoreParagraph {
+              attributes {
+                content
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

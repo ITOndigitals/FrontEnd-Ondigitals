@@ -1,12 +1,12 @@
 import CaseStudyItem from "./CaseStudyItem";
-import classes from "./CaseStudiesList.module.scss"
+import classes from "./CaseStudiesList.module.scss";
 
 const CaseStudiesList = ({ items }) => {
   return (
     <div className={classes["case-study-wrapper"]}>
       <ul className={classes["case-study-list"]}>
-        {items.map((item, index) => (
-          <CaseStudyItem item={item} key={item.id} index={index}/>
+        {items.nodes.map((item, index) => (
+          <CaseStudyItem item={item} key={item.case_studyId} index={index} />
         ))}
       </ul>
     </div>
@@ -14,3 +14,4 @@ const CaseStudiesList = ({ items }) => {
 };
 
 export default CaseStudiesList;
+

@@ -17,6 +17,7 @@ export default function PartnerSection({ data, NavButton }) {
     partnerSectionDesc,
     partnerSectionTitleImage,
     partnerSectionGroupNumberClient,
+    partnerSectionTextButton,
   } = dataPartnerSection.homePageInputContent || {};
   const itemImage = clients.nodes || [];
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
@@ -116,7 +117,7 @@ export default function PartnerSection({ data, NavButton }) {
             >
               {itemImage &&
                 itemImage.map((item) => (
-                  <div className={`${divImage} pulse-grow`}>
+                  <div key={item.featuredImage.node?.id} className={`${divImage}`}>
                     <Image
                       src={item.featuredImage.node?.sourceUrl}
                       fill
@@ -140,7 +141,7 @@ export default function PartnerSection({ data, NavButton }) {
             color="white"
             RightIcon={<FontAwesomeIcon icon={faArrowRight} color="white" />}
           >
-            See our process
+            {partnerSectionTextButton}
           </ButtonNoBorder>
           {/* <a className={classes["homepagesectionpartner__below__button"]}>
             See our process <FontAwesomeIcon icon={faArrowRight} />
