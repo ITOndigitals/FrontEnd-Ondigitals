@@ -11,21 +11,25 @@ export default function SeoContentRenault() {
         <div className={classes["seo-content-renault__content"]}>
           <div className={classes["seo-content-renault__content__left"]}>
             <div
-              className={classes["seo-content-renault__content__left__imagemain"]}
+              className={
+                classes["seo-content-renault__content__left__imagemain"]
+              }
             >
               <Image
-                src="https://s3-alpha-sig.figma.com/img/244d/3b19/44ea4049d5718ad68853ee7bb72ff45f?Expires=1698019200&Signature=Rmg2jrv71dTyAG1MKU80qtpUrANb5c2Xx7C1cdKuHMgLbsj3rmNiMXe3SARdk4RymUYWmkWjkTZCvMYenbg59CJJon53rMpnb3BsyC-tgG1qYRdUK~gyqDn2puVsdfKp505Wv2VCHvRZXPfA3~Jw4EUhs94~iNSp5a-NMSFm7mLGzEPUNlUwmk40sGHcyPnde83e1EN13G4dnAKIq8ZAD3MMgCtB8JxXUiV3Uh8EadMJQ7OYb2qonVGngr1SsIZGcy~bcOUB61bda5Hw3e83~z3MTPnt8~Unp83nydbR7fn4-5HIo3C6KpkOChNMmtVdy2WndMLOtVVU-o4NNPo~sw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                src="https://s3-alpha-sig.figma.com/img/8e78/0ae4/9246092699794477508b11379174a87b?Expires=1699228800&Signature=eW7Ov6oNXvdHX~kPGBGc-WMq20x0xrpa098QidrS5Z7dfPSTWVDE5ZuzlJjviy07zY9TaadXzCZhb74h1-UeFwJMWP8S73f9GhXP8EkgR3Vd6m9yoUUeJ8nvJBiMf~1MdCGgJ3M4nFGpwg5FGDFkZQyjoNwsXpS23Z3oFRck-olrn2FOEd76sSTty3INOQtfMjvgYL1mqGGdBqrPqvVeIzVLvq9ETvC4a3D3dpy8ffJrpGV5zQmFD~W67JcCuCuFE2oT8V9AIY2u7BjfvqLm9VoiW4MFxxty6mYAGg0DRbPH7P9evxGSL-rkd5lF8TbzFhPOAjxhTzhETrPVTf9u~g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                 alt="text"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
               />
               <div
                 className={
-                  classes["seo-content-renault__content__left__imagemain__phone"]
+                  classes[
+                    "seo-content-renault__content__left__imagemain__card"
+                  ]
                 }
               >
                 <Image
-                  src="https://s3-alpha-sig.figma.com/img/5cf0/ae4f/1523f2d15ac5855d2de8b5f038e78716?Expires=1698019200&Signature=qblIqBT-A2yrNoJSJXTf8WP7t-kqJql7zRYxiqotBr7viUNa~V7Zu2Bmg4qyfDUPwkGqT3v1tj~p-XVZkUHiQOvaunSahjPP8vkmnPvhqTSnCoST77ejEKzR~-OUN2DPNfYDi9iFQHPrYochvCtIMD6I-xjQxZmX68QHRgpZpqrA4qFRPcsLGX8AbfZdrH~o1Z5HXv66kUQ4fc31eFr90VQmxGSp6gQdE~Zt4DcWevpwxPbfLTOGUz03-nYWNN9J9qM7trTC00X10xeOq7XCR9nbjlx1ogaVgOIOVwu5bIMkyrJB837EVvmMQMnGx3ZxNFtfcpq~PX0oeLhK0nnZAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                  src="https://s3-alpha-sig.figma.com/img/46f3/f5f0/fe87b0f794128700fcd574c622d88e3d?Expires=1699228800&Signature=kmGkwRzDIviEMEYgGlhFBhztxazVjgIjjtlxeUf4IVdWe6xJMmeGvC0OXz8lThJKNl8nJKzEH06fOZgDsjHbZuJVtgSzsBrh3tAyMUHcj~ubmFxMbBF7DYU7CT-np8nPk0dH9aLceT4mHueioXEfO02O2HQr7cqtHfHLlN8QusUxNYUrntV0Ebh5c8f0MAtrZ8R-EpSvVk0r17aZXt6Xa3UAjxU16K8IM1Y6Q8ysxpqmuoMIHBM8-2hA8JFj0-xC04A3cyWOVxEZwsTBUYYm8Em3gCHzyrItqQbxMxPfkI0sbHPZV~hsfWMOm0UB32yiZXI344gGCPNzdR5AMeUBaQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                   alt="text"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -34,9 +38,6 @@ export default function SeoContentRenault() {
             </div>
           </div>
           <div className={classes["seo-content-renault__content__right"]}>
-            <p className={classes["seo-content-renault__content__right__title"]}>
-              In-depth Details
-            </p>
             <div
               style={{ fontFamily: MavenPro.style.fontFamily }}
               className={classes["seo-content-renault__content__right__text"]}
@@ -46,20 +47,15 @@ export default function SeoContentRenault() {
                   classes["seo-content-renault__content__right__text__title"]
                 }
               >
-                Website Design & Development
+                SEO Content Creation
               </p>
               <div
                 className={
                   classes["seo-content-renault__content__right__text__content"]
                 }
               >
-                <ul>
-                  <li>Full-Stack Website Development</li>
-                  <li>
-                    UX/UI Optimization through a Vietnamese audience-oriented
-                    lens
-                  </li>
-                </ul>
+                Keyword research & Content development for the arrival of 2 new
+                car models: ARKANA, KAPTURE in 2 languages: English & Vietnamese
               </div>
             </div>
           </div>

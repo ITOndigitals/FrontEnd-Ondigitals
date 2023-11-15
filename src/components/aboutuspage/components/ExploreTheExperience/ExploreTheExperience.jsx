@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Mousewheel } from "swiper/modules";
+import { Mousewheel, Pagination } from "swiper/modules";
 const dataSimple = [
   {
     id: 1,
@@ -32,7 +32,8 @@ const dataSimple = [
       "On Digital stands apart due to their dynamic and flexible working style. They sought to provide the best service.",
     position: "Wastewater Engineer Kim Hoang Hiep",
     name: "Thanh Chi Nguyen",
-    avatar: "/assets/images/PageAboutUs/ExploreTheExperience/Thanh Chi Nguyen.png",
+    avatar:
+      "/assets/images/PageAboutUs/ExploreTheExperience/Thanh Chi Nguyen.png",
     titleService:
       "Web Design & Digital Marketing for Environmental Consultancy",
     serviceContent:
@@ -163,7 +164,10 @@ const dataSimple = [
       "On Digitals generated 32% more high-quality leads and elevated the client's rankings for 300 competitive keywords. The team's accommodating and empathetic approach fostered a positive partnership. Their commitment to understanding the business and personalized approach was commendable.",
   },
 ];
-export default function ExploreTheExperience() {
+export default function ExploreTheExperience({ data }) {
+  const { sectionExploreTheExperience, allCardReviews } = data;
+  const { titleSection, buttonLink } = sectionExploreTheExperience;
+  const dataCardReviews = allCardReviews.nodes;
   return (
     <>
       <section className={classes["explore-the-experience"]}>
@@ -171,25 +175,28 @@ export default function ExploreTheExperience() {
           <div className={classes["header"]}>
             <div className={classes["header__text"]}>
               <p className={classes["header__text__title"]}>
-                Explore the Experience
+                {titleSection && titleSection}
               </p>
             </div>
             <div className={classes["header__btn"]}>
               <ButtonNoBorder
-                href="#"
+                href={buttonLink?.url}
                 textSize="md"
                 RightIcon={
                   <TopRightArrow width={24} height={24} color="#fff" />
                 }
               >
-                VIEW ALL
+                {buttonLink.title}
               </ButtonNoBorder>
             </div>
           </div>
           <div className={classes["main-content"]}>
             <Swiper
-              mousewheel={true}
-              modules={[Mousewheel]}
+              // mousewheel={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Mousewheel, Pagination]}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -213,9 +220,9 @@ export default function ExploreTheExperience() {
               }}
               className="slider-explore-page-about-us"
             >
-              {dataSimple.map((data) => (
-                <SwiperSlide key={data.id}>
-                  <ExploreTheExperienceCardReview data={data} />
+              {dataCardReviews.map((data) => (
+                <SwiperSlide key={data.card_reviewId}>
+                  <ExploreTheExperienceCardReview data={data?.cardReview} />
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -8,7 +8,29 @@ import ExploreTheExperience from "./components/ExploreTheExperience/ExploreTheEx
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import IntroducingOnDigitals from "./components/IntroducingOnDigitals/IntroducingOnDigitals";
 
-const AboutUs = () => {
+const AboutUs = ({ data }) => {
+  const { pageBy, allCardReviews } = data;
+  const {
+    backgroundImage,
+    imageLogo,
+    textDescription,
+    textHeading,
+    sectionBestDigitalmarketing,
+    sectionIntroducingOndigitals,
+    sectionStepDigitalMarketing,
+    sectionOurTrustedPartner,
+    sectionExploreTheExperience,
+  } = pageBy?.pageAboutUs;
+  const dataIntro = {
+    backgroundImage,
+    imageLogo,
+    textDescription,
+    textHeading,
+  };
+  const dataExploreTheExperience = {
+    sectionExploreTheExperience,
+    allCardReviews,
+  };
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -41,13 +63,21 @@ const AboutUs = () => {
 
   return (
     <>
-      <IntroAboutUs />
-      <IntroducingOnDigitals/>
-      <BestDigitalMarketing />
-      <StepDigitalMarketing />
-      <OurTrustedPartner/>
-      <ExploreTheExperience/>
-      <NeedHelpDigitalGrowth/>
+      <IntroAboutUs data={dataIntro} />
+      {sectionIntroducingOndigitals && (
+        <IntroducingOnDigitals data={sectionIntroducingOndigitals} />
+      )}
+      {sectionBestDigitalmarketing && (
+        <BestDigitalMarketing data={sectionBestDigitalmarketing} />
+      )}
+      {sectionStepDigitalMarketing && (
+        <StepDigitalMarketing data={sectionStepDigitalMarketing} />
+      )}
+      {sectionOurTrustedPartner && (
+        <OurTrustedPartner data={sectionOurTrustedPartner} />
+      )}
+      <ExploreTheExperience data={dataExploreTheExperience} />
+      <NeedHelpDigitalGrowth />
     </>
   );
 };

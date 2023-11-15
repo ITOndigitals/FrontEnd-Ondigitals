@@ -11,7 +11,7 @@ const CustomPagination = ({ onChangePage, isLight }) => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [pageRange, setPageRange] = useState(5);
   const resultCount = 10;
-  const totalCount = 100;
+  const totalCount = 20;
   const lastPage = getLastPage(resultCount, totalCount);
 
   useEffect(() => {

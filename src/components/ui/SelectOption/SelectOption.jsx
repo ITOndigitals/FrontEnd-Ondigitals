@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import classes from "./SelectOption.module.scss";
 import { DownNavIcon } from "../Icons/ListIcon";
 
-const SelectOption = ({ options, label, color }) => {
+const SelectOption = ({ options, label, color, handleSort}) => {
   const [choosenItemId, setChoosenItemId] = useState(options[0].id);
   const [choosenItemName, setChoosenItemName] = useState(options[0].name);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
@@ -26,6 +26,10 @@ const SelectOption = ({ options, label, color }) => {
 
   const onChooseOption = (event) => {
     const value = +event.target.value;
+    const dataKey = event.target.getAttribute("data-key");
+    {
+      dataKey && handleSort(dataKey);
+    }
     if (value === choosenItemId) {
       setDropdownIsOpen(false);
       return;
@@ -46,7 +50,7 @@ const SelectOption = ({ options, label, color }) => {
       </div>
       <div className={classes["select-wrapper"]} ref={optionsRef}>
         <div
-          style={{ borderWidth: "1px", borderColor: color ? color : "black"}}
+          style={{ borderWidth: "1px", borderColor: color ? color : "black" }}
           className={classes["select-name"]}
           onClick={() => {
             setDropdownIsOpen((oldState) => !oldState);
@@ -70,7 +74,8 @@ const SelectOption = ({ options, label, color }) => {
               onClick={onChooseOption}
               key={item.id}
               className={classes["select-list-item"]}
-              value={item.id}
+              value={item?.id}
+              data-key={item?.dataKey}
             >
               {item.name}
             </li>

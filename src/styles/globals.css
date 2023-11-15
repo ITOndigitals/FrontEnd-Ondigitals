@@ -396,11 +396,11 @@ a {
   }
 }
 
-.custom-pagination--l ol li button{
+.custom-pagination--l ol li button {
   border: solid 1px #dcc7ed;
 }
 
-.custom-pagination--l .wd-icon-fill{
+.custom-pagination--l .wd-icon-fill {
   fill: #dcc7ed !important;
 }
 /* End Pagination */
@@ -573,3 +573,21 @@ a {
   background-color: #cd0404;
 }
 /* chỉnh màu slider lẻ trang service detail */
+
+/* chỉnh màu nút dot slider about us */
+.slider-explore-page-about-us {
+  padding-bottom: 5% !important;
+}
+.slider-explore-page-about-us .swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+}
+.slider-explore-page-about-us
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: red;
+}
+.slider-explore-page-about-us .swiper-pagination {
+  top: 96% !important;
+}
+/* chỉnh màu nút dot slider about us */

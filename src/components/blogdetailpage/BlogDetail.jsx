@@ -11,12 +11,11 @@ import TableOfContent from "./components/TableOfContent/TableOfContent";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
-
 const BlogDetail = ({ relatedPosts, postDetail }) => {
-  const { postBy, allBlogsContent } = postDetail;
+  const { postBy, allBlogsContent } = postDetail || {};
   const titlePostDetail = {
-    title: postBy.title,
-    url: postBy.slug,
+    title: postBy?.title,
+    url: postBy?.slug,
   };
   const {
     breadcrumTitleBlogDetail,
@@ -24,7 +23,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     breadcrumPage,
     breadcrumPageDetail,
     textButton,
-    textReadMore
+    textReadMore,
   } = allBlogsContent.nodes[0].textBlogandBlogDetail || null;
   const DUMMY_BREADCRUMB_DATA = [
     breadcrumHome,

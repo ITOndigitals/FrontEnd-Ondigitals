@@ -39,18 +39,19 @@ const DataTest = [
       "Our pricing is guaranteed affordable based on current market trends and competition",
   },
 ];
-export default function BestDigitalMarketing() {
+export default function BestDigitalMarketing({ data }) {
+  const { titleSection, listItem } = data[0];
   return (
     <>
       <section className={classes["main-section"]}>
         <div className="container">
           <div className={classes["header"]}>
-            <p>What makes us THE BEST Digital Marketing Agency</p>
+            <p>{titleSection && titleSection}</p>
           </div>
           <div className={classes["main-content"]}>
             <div className={classes["list-reason-item"]}>
-              {DataTest.map((data) => (
-                <BestDigitalMarketingItem key={data.id} item={data} />
+              { listItem && listItem.map((data,index) => (
+                <BestDigitalMarketingItem key={index} item={data} />
               ))}
             </div>
           </div>

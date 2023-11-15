@@ -39,7 +39,6 @@ export default function ContactUsForm() {
           subject: "Thông báo có khách hàng mới",
         },
       });
-      console.log(data);
       formik.resetForm();
       setIsSuccess(true);
     } catch (mutationError) {

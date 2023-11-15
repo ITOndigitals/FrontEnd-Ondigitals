@@ -45,7 +45,7 @@
       justify-content: space-between;
       align-items: center;
       &__text {
-        width: 50%;
+        width: 60%;
         &--name {
           color: #131114;
           font-size: 18px;
@@ -67,7 +67,7 @@
         width: 84px;
         height: 84px;
         overflow: hidden;
-        img{
+        img {
           object-fit: cover;
           border-radius: 50%;
         }
@@ -89,7 +89,7 @@
       font-style: normal;
       font-weight: 600;
       line-height: 26px;
-    
+      min-height: 52px;
     }
     .content-service {
       display: flex;
@@ -139,6 +139,10 @@
           font-style: normal;
           font-weight: 400;
           line-height: 16px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 6;
+          overflow: hidden;
         }
       }
     }
@@ -225,6 +229,15 @@
     min-height: 470px;
   }
 }
+@media (max-width: 1024px) and (min-width: 700px)  {
+  .card-front {
+    &__infor {
+      .text-review {
+        min-height: 92px;
+      }
+    }
+  }
+}
 @media (max-width: 380px) {
   .card-review {
     min-height: 470px;
@@ -236,7 +249,7 @@
   }
 }
 @media (max-width: 300px) {
-    .card-review {
-      min-height: 640px;
-    }
+  .card-review {
+    min-height: 640px;
   }
+}

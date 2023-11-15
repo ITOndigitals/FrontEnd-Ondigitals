@@ -2,8 +2,9 @@
     .image-item{
         border-radius: 50%;
         position: relative;
-        border: 2px solid red;
+        border: 3px solid red;
         width: 90px;
         height: 90px;
+        overflow: hidden;
     }
 }

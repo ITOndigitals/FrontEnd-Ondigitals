@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import IntroService from "./components/IntroService/IntroService";
 import AllServiceOndigitals from "./components/AllServiceOndigitals/AllServiceOndigitals";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
-import CaseStudy from "./components/CaseStudy/CaseStudy";
 import { useBoundStore } from "@/store/useBoundStore";
+import CaseStudyServicePage from "./components/CaseStudy/CaseStudy";
 
-export default function ServicePage() {
+export default function ServicePage({ data }) {
+  const { pageBy, services } = data;
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -38,9 +39,9 @@ export default function ServicePage() {
 
   return (
     <>
-      <IntroService />
-      <AllServiceOndigitals />
-      <CaseStudy />
+      <IntroService data={pageBy} />
+      <AllServiceOndigitals data={data} />
+      <CaseStudyServicePage />
       <NeedHelpDigitalGrowth />
     </>
   );

@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
@@ -21,6 +21,11 @@ export async function getStaticProps({ params, locale }) {
   const language = locale.toUpperCase();
   const dataPostDetail = await GetPostDetailBySlug(params.blogId, language);
   const relatedPosts = await getDataForNewAndInsightsSection(language);
+  if (!dataPostDetail?.postBy) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
       dataPostDetail,
@@ -29,6 +34,7 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 const BlogDetailPage = ({ dataPostDetail, relatedPosts }) => {
+  console.log(dataPostDetail);
   return (
     <>
       <BlogDetail postDetail={dataPostDetail} relatedPosts={relatedPosts} />

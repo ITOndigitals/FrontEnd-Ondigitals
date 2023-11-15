@@ -7,6 +7,7 @@ import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
 import CaseStudyKundal from "./components/CaseStudyKundal/CaseStudyKundal";
 import CaseStudyDucati from "./components/CaseStudyDucati/CaseStudyDucati";
 import CaseStudyPassion from "./components/CaseStudyPassion/CaseStudyPassion";
+import CaseStudyRenault from "./components/CaseStudyRenault/CaseStudyRenault";
 
 const DUMMY_EXTEND_COMPONENTS_TYPE = 3;
 
@@ -47,10 +48,15 @@ export default function CaseStudyDetail() {
       <IntroCaseStudyDetail />
       <OverViewCaseStudyDetail />
       <CampaignResults />
-      {extendComponentType === 0 && <CaseStudyKundal/>}
+      <CaseStudyRenault />
+      <CaseStudyKLD />
+      <CaseStudyDucati />
+      <CaseStudyPassion />
+      <CaseStudyKundal/>
+      {/* {extendComponentType === 0 && <CaseStudyKundal/>}
       {extendComponentType === 2 && <CaseStudyKLD />}
       {extendComponentType === 3 && <CaseStudyDucati/>}
-      {extendComponentType === 4 && <CaseStudyPassion/>}
+      {extendComponentType === 4 && <CaseStudyPassion/>} */}
     </>
   );
 }

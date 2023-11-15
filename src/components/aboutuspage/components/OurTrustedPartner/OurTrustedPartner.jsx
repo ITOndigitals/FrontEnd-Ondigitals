@@ -10,99 +10,8 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-export default function OurTrustedPartner() {
-  const dataImage = [
-    {
-      id: 1,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 2,
-      src: "/assets/images/SectionHomepage/ducati.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 3,
-      src: "/assets/images/SectionHomepage/hantec.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 4,
-      src: "/assets/images/SectionHomepage/livingcare.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 5,
-      src: "/assets/images/SectionHomepage/tpcom.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 6,
-      src: "/assets/images/SectionHomepage/kundal.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 7,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 8,
-      src: "/assets/images/SectionHomepage/ducati.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 9,
-      src: "/assets/images/SectionHomepage/hantec.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 10,
-      src: "/assets/images/SectionHomepage/livingcare.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 11,
-      src: "/assets/images/SectionHomepage/tpcom.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 12,
-      src: "/assets/images/SectionHomepage/kundal.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 13,
-      src: "/assets/images/SectionHomepage/areus-atelier.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 14,
-      src: "/assets/images/SectionHomepage/ducati.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 15,
-      src: "/assets/images/SectionHomepage/hantec.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 16,
-      src: "/assets/images/SectionHomepage/livingcare.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 17,
-      src: "/assets/images/SectionHomepage/tpcom.png",
-      alt: "areus-atelier",
-    },
-    {
-      id: 18,
-      src: "/assets/images/SectionHomepage/kundal.png",
-      alt: "areus-atelier",
-    },
-  ];
+export default function OurTrustedPartner({ data }) {
+  const { titleSection, metricList, listImagePartners } = data[0];
   const createSlides = (dataImage, itemsPerSlide) => {
     const slides = [];
     for (let i = 0; i < dataImage.length; i += itemsPerSlide) {
@@ -112,7 +21,7 @@ export default function OurTrustedPartner() {
     return slides;
   };
   const itemsPerSlide = 2;
-  const slides = createSlides(dataImage, itemsPerSlide);
+  const slides = createSlides(listImagePartners, itemsPerSlide);
   return (
     <>
       <section
@@ -120,7 +29,7 @@ export default function OurTrustedPartner() {
       >
         <div className="container">
           <div className={classes["header-section"]}>
-            <p>Trusted by our Partners</p>
+            <h2>{titleSection && titleSection}</h2>
           </div>
           <div className={classes["content-section"]}>
             <Swiper
@@ -176,45 +85,24 @@ export default function OurTrustedPartner() {
           </div>
           <div className={classes["footer-section"]}>
             <div className={classes["footer-section__content"]}>
-              <div className={classes["footer-section__content__item"]}>
-                <CounterNumber
-                  value={500}
-                  classes={"our-trusted-partner"}
-                  threshold={0.1}
-                />
-                <p
-                  className={classes["footer-section__content__item__text"]}
-                  style={{ fontFamily: MavenPro.style.fontFamily }}
+              {metricList && metricList.map((item, index) => (
+                <div
+                  key={index}
+                  className={classes["footer-section__content__item"]}
                 >
-                  TRUSTED CLIENTS
-                </p>
-              </div>
-              <div className={classes["footer-section__content__item"]}>
-                <CounterNumber
-                  value={300}
-                  classes={"our-trusted-partner"}
-                  threshold={0.1}
-                />
-                <p
-                  className={classes["footer-section__content__item__text"]}
-                  style={{ fontFamily: MavenPro.style.fontFamily }}
-                >
-                  SUCCESSFUL CAMPAIGNS
-                </p>
-              </div>
-              <div className={classes["footer-section__content__item"]}>
-                <CounterNumber
-                  value={1000}
-                  classes={"our-trusted-partner"}
-                  threshold={0.1}
-                />
-                <p
-                  className={classes["footer-section__content__item__text"]}
-                  style={{ fontFamily: MavenPro.style.fontFamily }}
-                >
-                  MONTHLY VIEWS
-                </p>
-              </div>
+                  <CounterNumber
+                    value={item.number}
+                    classes={"our-trusted-partner"}
+                    threshold={0.1}
+                  />
+                  <p
+                    className={classes["footer-section__content__item__text"]}
+                    style={{ fontFamily: MavenPro.style.fontFamily }}
+                  >
+                    {item.textContent}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

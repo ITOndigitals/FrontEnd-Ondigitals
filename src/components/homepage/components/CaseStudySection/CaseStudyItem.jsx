@@ -6,10 +6,11 @@ import { Maven_Pro } from "next/font/google";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
 const CaseStudyItem = ({ item, index }) => {
-  const {title, caseStudyHomepage, editorBlocks, featuredImage } = item;
-  console.log(item);
+  const { title, caseStudyHomepage, editorBlocks, featuredImage, content } =
+    item;
   const itemClasses = `${classes.item} ${classes[`item-${index + 1}`]}`;
   return (
     <li className={itemClasses}>
@@ -56,11 +57,7 @@ const CaseStudyItem = ({ item, index }) => {
           className={classes["item-description-wrapper"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}
         >
-          <ul className={classes["item-description-wrapper-list"]}>
-            {editorBlocks.map((item, index) => (
-              <li key={index}>{item.attributes.content}</li>
-            ))}
-          </ul>
+          {parse(content)}
           <div>{caseStudyHomepage.caseStudyYear}</div>
         </div>
         <Link href="#" className={classes["item-description__explore"]}>

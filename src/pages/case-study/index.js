@@ -1,9 +1,10 @@
+import CaseStudyPage from "@/components/casestudypage/CaseStudyPage";
 import React from "react";
 
-export default function CaseStudy() {
+export default function PagesMainCaseStudy() {
   return (
     <>
-      <div>Hello</div>
+     <CaseStudyPage/>
     </>
   );
 }

@@ -8,7 +8,9 @@ const ButtonNoBorder = ({
   href,
   textSize,
   className,
-  color
+  color,
+  openInNewTab,
+  relNofollow
 }) => {
   return (
     <Link
@@ -16,9 +18,10 @@ const ButtonNoBorder = ({
         classes[`${textSize}`] ? classes[`${textSize}`] : ""
       }`}
       href={href}
-    >
-      {LeftIcon && LeftIcon}
-      <p style={{color: color}}>{children}</p>
+      target={openInNewTab ? "_blank" : "_self"} // Mở tab mới nếu openInNewTab là true
+      rel={relNofollow ? "nofollow" : null} // Thêm rel="nofollow" nếu relNofollow là true
+      >{LeftIcon && LeftIcon}
+      <p style={{ color: color }}>{children}</p>
       {RightIcon && RightIcon}
     </Link>
   );

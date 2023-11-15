@@ -5,41 +5,6 @@ import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useEffect, useState } from "react";
 
-const DUMMY_CASE_STUDY = [
-  {
-    id: 1,
-    name: "Client: Renault Vietnam",
-    descriptions: [
-      "Website Development",
-      "SEO Content Creation",
-      "Website Development",
-    ],
-    year: 2020,
-    image: "/assets/images/backgrounds/car.png",
-  },
-  {
-    id: 2,
-    name: "Client: Renault Vietnam",
-    descriptions: [
-      "Website Development",
-      "SEO Content Creation",
-      "Website Development",
-    ],
-    year: 2020,
-    image: "/assets/images/backgrounds/car.png",
-  },
-  {
-    id: 3,
-    name: "Client: Renault Vietnam",
-    descriptions: [
-      "Website Development",
-      "SEO Content Creation",
-      "Website Development",
-    ],
-    year: 2020,
-    image: "/assets/images/backgrounds/car.png",
-  },
-];
 
 const CaseStudySection = ({ NavButton, data }) => {
   const [isOnMobile, setIsOnMobile] = useState(false);

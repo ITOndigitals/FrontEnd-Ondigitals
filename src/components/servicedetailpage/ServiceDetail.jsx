@@ -4,9 +4,44 @@ import { useBoundStore } from "@/store/useBoundStore";
 import ContentServiceDetail from "./components/ContentServiceDetail/ContentServiceDetail";
 import ClientFeedbacks from "./components/ClientFeedbacks/ClientFeedbacks";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
+import { useRouter } from "next/router";
+import FAQServiceDetail from "./components/FAQServiceDetail/FAQServiceDetail";
 
-export default function ServiceDetail() {
+export default function ServiceDetail({ dataServiceDetail }) {
+  const router = useRouter();
+  const currentLanguage = router.locale.toUpperCase();
+  const { serviceBy, allCardReviews } = dataServiceDetail || {};
+
+  const {
+    layoutContentServiceDetail,
+    sectionContentDetail,
+    sectionClientFeedbacksServiceDetail,
+  } = serviceBy?.serviceHomepage || {};
+
+  const dataContentServiceDetail = layoutContentServiceDetail || [];
+
+  const dataFAQService = sectionContentDetail || [];
+
+  const dataClientFeedbacks = {
+    ...sectionClientFeedbacksServiceDetail,
+    ...allCardReviews,
+  };
+
+  if (serviceBy) {
+    const matchingTranslation = serviceBy.translations.find(
+      (translation) => translation.language.code === currentLanguage
+    );
+    useEffect(() => {
+      if (matchingTranslation) {
+        router.push(`/service/${matchingTranslation.slug}`);
+      } else if (router.locale !== serviceBy.language.slug) {
+        router.push("/");
+      }
+    }, [router.locale, serviceBy.translations]);
+  }
+
   const setToLight = useBoundStore((state) => state.setToLight);
+
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
   );
@@ -38,10 +73,14 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <IntroServiceDetail />
-      <ContentServiceDetail/>
-      <ClientFeedbacks/>
-      <NeedHelpDigitalGrowth/>
+      <IntroServiceDetail data={serviceBy} />
+      {dataContentServiceDetail &&
+        dataContentServiceDetail.map((item, index) => (
+          <ContentServiceDetail key={index} data={item} />
+        ))}
+      <ClientFeedbacks data={dataClientFeedbacks} />
+      {dataFAQService.length >= 1 && <FAQServiceDetail data={dataFAQService} />}
+      <NeedHelpDigitalGrowth />
     </>
   );
 }

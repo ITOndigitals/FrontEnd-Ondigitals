@@ -6,7 +6,11 @@ import localFont from "next/font/local";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import usePageLoading from "@/hooks/usePageLoading";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
+import { useRouter } from "next/router";
+import { Maven_Pro } from "next/font/google";
+
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
+const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 config.autoAddCss = false;
 const client = new ApolloClient({
@@ -16,11 +20,14 @@ const client = new ApolloClient({
 
 export default function App({ Component, pageProps }) {
   const isLoading = usePageLoading();
+  const { locale } = useRouter();
+  const selectedFont =
+    locale === "vi" ? MavenPro.className : fixelFont.className;
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}
       <ApolloProvider client={client}>
-        <Layout className={fixelFont.className}>
+        <Layout className={selectedFont}>
           <Component {...pageProps} />
         </Layout>
       </ApolloProvider>

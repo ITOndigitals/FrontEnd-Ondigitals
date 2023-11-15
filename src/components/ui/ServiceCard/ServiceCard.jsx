@@ -5,7 +5,7 @@ import ExploreButton from "../Buttons/ExploreButton/ExploreButton";
 
 export default function ServiceCard({ title, color, href, isFinal }) {
   return (
-    <Link href={href}>
+    <Link href={`/service/${href}`}>
       <div
         style={{ backgroundColor: color }}
         className={`${classes["service-card"]} ${

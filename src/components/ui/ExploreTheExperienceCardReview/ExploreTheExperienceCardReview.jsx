@@ -9,9 +9,34 @@ import {
 } from "../Icons/ListIcon";
 import { Maven_Pro } from "next/font/google";
 import ButtonNoBorder from "../Buttons/ButtonNoBorder/ButtonNoBorder";
+
+const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function ExploreTheExperienceCardReview({ data }) {
+  if (!data) {
+    return <div>Loading....</div>;
+  }
+  const { contentCardReview } = data || {};
+  const {
+    contentProjectSummary,
+    contentReview,
+    titleService,
+    titleProjectSummary,
+    titleProjectInfo,
+    position,
+    name,
+    detailProjectInfo,
+    avatar,
+  } = contentCardReview[0] || {}; // data card front
+  const {
+    feedbackContent,
+    feedbackTitle,
+    linkReadFull,
+    numberStart,
+    ratingDetails,
+    textPointRating,
+  } = contentCardReview[1] || {}; // data card back
   if (!data) {
     return <div>Loading....</div>;
   }
@@ -20,6 +45,26 @@ export default function ExploreTheExperienceCardReview({ data }) {
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
+  const iconComponents = {
+    1: <IconMonitor color={"#fff"} width={18} height={18} />,
+    2: <IconTag color={"#fff"} width={18} height={18} />,
+    3: <IconCalendar color={"#fff"} width={18} height={18} />,
+  };
+  const renderStars = (count) => {
+    const stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push(
+        <IconStar
+          key={i}
+          color={"rgba(255, 0, 50, 1)"}
+          width={24}
+          height={24}
+        />
+      );
+    }
+    return stars;
+  };
+
   return (
     <div
       className={`${classes["card-review"]} ${
@@ -30,27 +75,27 @@ export default function ExploreTheExperienceCardReview({ data }) {
       <div className={classes["card-review-main"]}>
         <div className={classes["card-front"]}>
           <div className={classes["card-front__infor"]}>
-            <p className={classes["text-review"]}>
-              {`"${dataCard.contentReview}"`}
-            </p>
+            <div className={classes["text-review"]}>
+              {contentReview && parse(contentReview)}
+            </div>
             <div className={classes["person-info"]}>
               <div className={classes["person-info__text"]}>
                 <p className={classes["person-info__text--name"]}>
-                  {dataCard.name}
+                  {name && name}
                 </p>
-                <p
+                <div
                   style={{ fontFamily: MavenPro.style.fontFamily }}
                   className={classes["person-info__text--position"]}
                 >
-                  {dataCard.position}
-                </p>
+                  {position && position}
+                </div>
               </div>
               <div className={classes["person-info__image"]}>
                 <Image
-                  src={dataCard.avatar}
+                  src={avatar?.sourceUrl}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt={dataCard.name}
+                  alt={avatar?.altText}
                 />
               </div>
             </div>
@@ -59,61 +104,49 @@ export default function ExploreTheExperienceCardReview({ data }) {
             className={`${classes["card-front__service"]} card-front-service`}
           >
             <div className={classes["title-service"]}>
-              <p>{dataCard.titleService}</p>
+              <p>{titleService && titleService}</p>
             </div>
             <hr style={{ width: "100%" }} />
             <div className={classes["content-service"]}>
               <div className={classes["content-service__project-infor"]}>
                 <p className={classes["content-service__project-infor--title"]}>
-                  Project Info
+                  {titleProjectInfo && titleProjectInfo}
                 </p>
                 <div
                   style={{ fontFamily: MavenPro.style.fontFamily }}
                   className={classes["content-service__project-infor--content"]}
                 >
-                  <p
-                    className={
-                      classes["content-service__project-infor--content--icon"]
-                    }
-                  >
-                    <IconMonitor color={"#fff"} width={18} height={18} />
-                    SEO, PPC
-                  </p>
-                  <p
-                    className={
-                      classes["content-service__project-infor--content--icon"]
-                    }
-                  >
-                    <IconTag color={"#fff"} width={18} height={18} />
-                    $50,000 to $199,999
-                  </p>
-                  <p
-                    className={
-                      classes["content-service__project-infor--content--icon"]
-                    }
-                  >
-                    <IconCalendar color={"#fff"} width={18} height={18} />
-                    Oct. 2022 - Ongoing
-                  </p>
+                  {detailProjectInfo &&
+                    detailProjectInfo.map((item, index) => (
+                      <p
+                        key={index}
+                        className={
+                          classes[
+                            "content-service__project-infor--content--icon"
+                          ]
+                        }
+                      >
+                        {iconComponents[item.numberTypeIcon] ||
+                          iconComponents[1]}
+                        {item.textContent}
+                      </p>
+                    ))}
                 </div>
               </div>
               <div className={classes["content-service__project-summary"]}>
                 <p
                   className={classes["content-service__project-summary--title"]}
                 >
-                  Project Summary
+                  {titleProjectSummary && titleProjectSummary}
                 </p>
-                <p
+                <div
                   className={
                     classes["content-service__project-summary--content"]
                   }
                   style={{ fontFamily: MavenPro.style.fontFamily }}
                 >
-                  On Digitals provides ongoing SEO services for a personal care
-                  product manufacturer. The team is responsible for SEO audit,
-                  keyword study, content generation, and link-building
-                  procedures.
-                </p>
+                  {detailProjectInfo && parse(contentProjectSummary)}
+                </div>
               </div>
             </div>
           </div>
@@ -122,76 +155,45 @@ export default function ExploreTheExperienceCardReview({ data }) {
           <div className={`${classes["card-back__rating"]} card-back-rating`}>
             <div className={classes["card-back__rating__point"]}>
               <p className={classes["card-back__rating__point--text"]}>
-                {`Rating: ${dataCard.pointRating}`}
+                {textPointRating}
               </p>
               <div className={classes["card-back__rating__point--icon"]}>
-                <IconStar
-                  color={"rgba(255, 0, 50, 1)"}
-                  width={24}
-                  height={24}
-                />
-                <IconStar
-                  color={"rgba(255, 0, 50, 1)"}
-                  width={24}
-                  height={24}
-                />
-                <IconStar
-                  color={"rgba(255, 0, 50, 1)"}
-                  width={24}
-                  height={24}
-                />
-                <IconStar
-                  color={"rgba(255, 0, 50, 1)"}
-                  width={24}
-                  height={24}
-                />
-                <IconStar
-                  color={"rgba(255, 0, 50, 1)"}
-                  width={24}
-                  height={24}
-                />
+                {renderStars(numberStart)}
               </div>
             </div>
             <hr />
             <div className={classes["card-back__rating__detail"]}>
-              <div
-                style={{ fontFamily: MavenPro.style.fontFamily }}
-                className={classes["card-back__rating__detail--point"]}
-              >
-                <p>Quality:</p>
-                <p>{dataCard.pointRating}</p>
-              </div>
-              <div className={classes["card-back__rating__detail--point"]}>
-                <p>Schedule:</p>
-                <p>{dataCard.pointRating}</p>
-              </div>
-              <div className={classes["card-back__rating__detail--point"]}>
-                <p>Cost:</p>
-                <p>{dataCard.pointRating}</p>
-              </div>
-              <div className={classes["card-back__rating__detail--point"]}>
-                <p>Willing to Refer:</p>
-                <p>{dataCard.pointRating}</p>
-              </div>
+              {ratingDetails &&
+                ratingDetails.map((item, index) => (
+                  <div
+                    key={index}
+                    style={{ fontFamily: MavenPro.style.fontFamily }}
+                    className={classes["card-back__rating__detail--point"]}
+                  >
+                    <p>{`${item?.textRating}:`}</p>
+                    <p>{item?.pointRating}</p>
+                  </div>
+                ))}
             </div>
           </div>
           <div className={classes["card-back__feedback"]}>
             <p className={classes["card-back__feedback__title"]}>
-              Feedback Summary
+              {feedbackTitle && feedbackTitle}
             </p>
-            <p
+            <div
               style={{ fontFamily: MavenPro.style.fontFamily }}
               className={classes["card-back__feedback__content"]}
             >
-              Thanks to On Digitals, the client's online visibility, search
-              engine rankings, organic search results, and website traffic have
-              experienced steady growth. The team's well-structured workflow and
-              open communication have been beneficial. They have been
-              accommodating, understanding, and responsive.
-            </p>
+              {feedbackContent && parse(feedbackContent)}
+            </div>
             <div className={classes["card-back__feedback__btn-read-full"]}>
-              <ButtonNoBorder color={"#131114"} href={"#"}>
-                Read full review
+              <ButtonNoBorder
+                color={"#131114"}
+                href={linkReadFull?.url}
+                openInNewTab={true}
+                relNofollow={true}
+              >
+                {linkReadFull?.title}
               </ButtonNoBorder>
             </div>
           </div>

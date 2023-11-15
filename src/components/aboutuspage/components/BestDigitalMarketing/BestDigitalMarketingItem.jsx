@@ -21,7 +21,7 @@ export default function BestDigitalMarketingItem({ item }) {
       <div className={classes["item-container"]}>
         <div className={classes["icon"]}>
           {(() => {
-            switch (item.id) {
+            switch (item.numberTypeIcon) {
               case 1:
                 return <IconSetting color={"#fff"} width={70} height={70} />;
               case 2:
@@ -30,7 +30,7 @@ export default function BestDigitalMarketingItem({ item }) {
                 );
               case 3:
                 return (
-                  <IconThoroughResearch color={"#fff"} width={70} height={70} />
+                  <IconLocalInsights color={"#fff"} width={70} height={70} />
                 );
               case 4:
                 return (
@@ -52,12 +52,12 @@ export default function BestDigitalMarketingItem({ item }) {
           })()}
         </div>
 
-        <p className={classes["title"]}>{item.title}</p>
+        <p className={classes["title"]}>{item?.titleItem}</p>
         <p
           className={classes["text"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}
         >
-          {item.content}
+          {item?.textContent}
         </p>
       </div>
     </>

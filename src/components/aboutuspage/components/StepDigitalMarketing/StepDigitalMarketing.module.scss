@@ -7,7 +7,7 @@
   align-items: center;
   .header {
     width: 50%;
-    p {
+    h2 {
       color: #fff;
       font-size: 36px;
       font-style: normal;
@@ -26,6 +26,7 @@
       flex-direction: column;
       align-items: center;
       z-index: 2;
+      width: 20%;
       &:hover {
         .step-label {
           opacity: 1;
@@ -79,8 +80,12 @@
         font-style: normal;
         font-weight: 400;
         line-height: 24px;
-        opacity: 0;
         transition: all 0.2s;
+        h3 {
+          font-weight: 400;
+          line-height: 24px;
+          min-height: 150px;
+        }
       }
       .step-title {
         color: #fff;
@@ -90,7 +95,6 @@
         font-weight: 600;
         line-height: 24px;
         margin-bottom: 8px;
-        opacity: 0;
         transition: all 0.2s;
       }
     }
@@ -137,6 +141,7 @@
       .step {
         position: relative;
         margin: 5% 0;
+        width: auto;
         .main-step-number {
           &::before {
             display: none;
@@ -145,6 +150,10 @@
         .step-label {
           position: absolute;
           opacity: 1;
+          h3 {
+            margin-top: 10px;
+            min-height: auto;
+          }
         }
         .step-title {
           position: absolute;

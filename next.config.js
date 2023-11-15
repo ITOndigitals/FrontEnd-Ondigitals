@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
-const i18nConfig = require("./src/pages/i18n");
+const i18nConfig = require("./i18n");
 
 const nextConfig = {
   async rewrites() {
     return [
+      // config slug posts language Vietnam
       {
         source: "/:locale/bai-viet/:slug*",
         destination: "/:locale/blog/:slug*",
@@ -20,6 +21,32 @@ const nextConfig = {
         destination: "/:locale/blog/",
         locale: false,
       },
+      // config slug service language Vietnam
+      {
+        source: "/:locale/dich-vu/:slug*",
+        destination: "/:locale/service/:slug*",
+        locale: false,
+      },
+      {
+        source: "/:locale/dich-vu/:slug*",
+        destination: "/:locale/service/:slug*",
+        locale: false,
+      },
+      {
+        source: "/:locale/%E6%9C%8D%E5%8A%A1/:slug*",
+        destination: "/:locale/service/:slug*",
+        locale: false,
+      },
+      {
+        source: "/:locale/dich-vu/",
+        destination: "/:locale/service/",
+        locale: false,
+      },
+      {
+        source: "/:locale/%E6%9C%8D%E5%8A%A1/",
+        destination: "/:locale/service/",
+        locale: false,
+      },
     ];
   },
 
@@ -32,7 +59,7 @@ const nextConfig = {
       "api.ondigitals.com",
       "kimlongdiep.com",
       "s3-alpha-sig.figma.com",
-      "res.cloudinary.com"
+      "res.cloudinary.com",
     ],
   },
   i18n: i18nConfig,

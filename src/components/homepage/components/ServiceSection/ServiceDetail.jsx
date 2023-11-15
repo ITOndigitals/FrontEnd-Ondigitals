@@ -4,11 +4,21 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { Maven_Pro } from "next/font/google";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
+import { useRouter } from "next/router";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ServiceDetail = ({ context }) => {
   const contentRef = useRef(null);
+  const localeBasePaths = {
+    en: "/service",
+    vi: "/dich-vu",
+    zh:"/服务"
+  };
+
+  const { locale } = useRouter();
+  const basePath = localeBasePaths[locale] || "/service";
+
   const activeColor = context.activeColor;
   // const colorClass = classes[`${context.activeColor}`];
 
@@ -41,7 +51,7 @@ const ServiceDetail = ({ context }) => {
           >
             {context.content}
           </div>
-          <Link href="#">
+          <Link href={`${basePath}/${context.slug}`} locale={locale}>
             <ExploreButton>Explore</ExploreButton>
           </Link>
         </div>
@@ -49,8 +59,6 @@ const ServiceDetail = ({ context }) => {
           <Image
             src={context.image}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            blurDataURL={context.image}
-            placeholder="blur"
             fill
             alt="service-logo"
           />

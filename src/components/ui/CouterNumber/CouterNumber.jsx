@@ -13,7 +13,7 @@ export default function CounterNumber({ value, classes, threshold }) {
               if (currentValue < value) {
                 setCurrentValue(currentValue + 1);
               }
-            }, 1);
+            }, 0.1);
             return () => {
               observer.unobserve(entry.target);
               clearTimeout(couter);

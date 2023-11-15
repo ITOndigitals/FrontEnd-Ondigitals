@@ -1,0 +1,94 @@
+@import "../../../../styles/variables";
+
+.intro-case-study {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(111, 26, 182, 1);
+  position: relative;
+  color: #fff;
+  &__content {
+    width: 50%;
+    &__title {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px; 
+      margin-bottom: 20px;
+    }
+    &__text {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; 
+    }
+  }
+  .scroll-msg {
+    width: 100%;
+    right: 0;
+    position: absolute;
+    bottom: 20%;
+    &__item {
+      position: absolute;
+      width: 150px;
+      height: 46px;
+      transform: rotate(-90deg) translateY(50%);
+      right: 0;
+    }
+    &__line {
+      width: 110%;
+      overflow: hidden;
+      p {
+        margin-bottom: 10px;
+        width: 100%;
+        overflow: hidden;
+        transform: translateX(-90%);
+        height: 1px;
+        background-color: white;
+        position: relative;
+        right: -100%;
+        animation: expandWidth 3s linear infinite;
+      }
+    }
+    & p:first-child {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      text-align: right;
+      padding-right: 4px;
+    }
+    & p:last-child {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+  }
+
+  @keyframes expandWidth {
+    0% {
+      width: 10%;
+    }
+    100% {
+      width: 110%;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .intro-service {
+    height: auto;
+    padding-bottom: calc($header-height + $section-padding);
+    &__content {
+      width: 80%;
+    }
+    .scroll-msg {
+      bottom: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+@media (max-width: 390px) {
+  .intro-service {
+    height: auto;
+  }
+}

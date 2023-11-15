@@ -37,18 +37,21 @@ const DUMMY_SORT_BY = [
   {
     id: 1,
     name: "Newest",
+    dataKey: "DESC",
   },
   {
     id: 2,
     name: "Oldest",
+    dataKey: "ASC",
   },
   {
     id: 3,
     name: "Most popular",
+    dataKey: "ASC",
   },
 ];
 
-const BlogsHeader = ({ onSearch }) => {
+const BlogsHeader = ({ onSearch, handleSort }) => {
   return (
     <div className={classes["blog-header"]}>
       <div className={classes["blog-header-left-item"]}>
@@ -68,7 +71,11 @@ const BlogsHeader = ({ onSearch }) => {
             <SelectOption options={DUMMY_CATEGORIES} label="category" />
           </div>
           <div className={classes["blog-header-right-item__option--mg"]}>
-            <SelectOption options={DUMMY_SORT_BY} label="sort by" />
+            <SelectOption
+              handleSort={handleSort}
+              options={DUMMY_SORT_BY}
+              label="sort by"
+            />
           </div>
           <div className={classes["blog-header-right-item__option__search"]}>
             <ButtonSearch onSearch={onSearch} />

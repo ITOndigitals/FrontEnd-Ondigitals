@@ -9,10 +9,10 @@ export default function OurTrustedPartnerImage({ data }) {
       <div className={classes["main-image"]}>
         <div className={classes["image-item"]}>
           <Image
-            src={dataImage.src}
+            src={dataImage.sourceUrl}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            alt={dataImage.alt}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            alt={dataImage.altText}
           />
         </div>
       </div>

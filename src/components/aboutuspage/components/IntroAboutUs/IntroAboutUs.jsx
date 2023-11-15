@@ -5,9 +5,14 @@ import { Maven_Pro } from "next/font/google";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const IntroAboutUs = () => {
+const IntroAboutUs = ({ data }) => {
   const [mousePosition, setMousePosition] = useState({ x: "50%", y: "50%" });
-
+  const {
+    backgroundImage,
+    imageLogo,
+    textDescription,
+    textHeading,
+  } = data;
   useEffect(() => {
     //Xác định tọa độ y điểm trên cùng của section và tọa độ điểm
     //y cuối cùng của section để đảm bảo backdrop không chạy ra ngoài
@@ -33,7 +38,7 @@ const IntroAboutUs = () => {
             width: "100%",
             height: "100%",
             backgroundSize: "cover",
-            backgroundImage: `url("https://s3-alpha-sig.figma.com/img/50f6/7998/07e469ad8e38f75aab4f180bb40a9542?Expires=1699228800&Signature=cOS7VLBp2pSJInUCSs9zhTm~t541foyFKKS9DqoEYNOwpCKmfFiMxlXGkTfjXx~J-ePAh34QJz01IWyIsO1ywYAzUOsKynWoKmiDH6UnJGfMytHYnwk8ArG1req8c0tcwPYP3-B23zYWozsv-84L8z8hGicgTufZoa5EX8VmzyYWheMeXLc-ScqYxUua0Sk77Zt55mKb6Q2lizaOjNpnBYqp6HZVwNzGg9YemdfLOp5wYZjIX7UOxHPmhrt8qsdDeMs6Een5NZWX~t95F9HogJhsMj1m2CJiEhBNzp7JArQUNVenQHWdrwrX~gscDwyz8FdEfVH6hV2i89Phfw2RAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4")`,
+            backgroundImage: `url(${backgroundImage?.sourceUrl})`,
             mixBlendMode: "hard-light",
             opacity: "0.2",
           }}
@@ -48,21 +53,23 @@ const IntroAboutUs = () => {
       </div>
       <div className={classes["about-us-content-wrapper"]}>
         <div className="container">
-          <p className={classes["about-us-top-heading"]}>We Are</p>
+          <p className={classes["about-us-top-heading"]}>
+            {textHeading && textHeading}
+          </p>
           <div className={classes["about-us-company-logo"]}>
             <Image
               fill
-              src="/assets/images/ui/ondigitals.png"
-              alt="brand_name"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority
+              src={imageLogo?.sourceUrl}
+              alt={imageLogo?.altText}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              priority 
             />
           </div>
           <p
             className={classes["about-us-bottom-heading"]}
             style={{ fontFamily: MavenPro.style.fontFamily }}
           >
-            Digital Marketing Agency based in Vietnam
+            {textDescription && textDescription}
           </p>
         </div>
       </div>

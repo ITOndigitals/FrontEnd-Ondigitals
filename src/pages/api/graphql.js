@@ -32,11 +32,60 @@ export const getDataForNewAndInsightsSection = async (language) => {
   }
 };
 
+export const getDataPageBlog = async (language, first, before, after, last) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetPosts(
+      $language: LanguageCodeFilterEnum!
+      $after: String
+      $before: String
+      $first: Int
+      $last: Int
+    ) {
+      posts(
+        where: { language: $language }
+        first: $first
+        before: $before
+        after: $after
+        last: $last
+      ) {
+        nodes {
+          id
+          title
+          date
+          slug
+          excerpt
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          link
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+      }
+    }
+  `;
+  const variables = { language, first, before, after, last };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data.posts;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+
 export const SearchPostsByKey = async (key, language) => {
   const endpoint = endPointApi;
   const query = gql`
     query GetPosts($key: String!, $language: LanguageCodeFilterEnum!) {
-      posts(where: { search: $key, language: $language}) {
+      posts(where: { search: $key, language: $language }) {
         nodes {
           id
           title
@@ -66,7 +115,10 @@ export const SearchPostsByKey = async (key, language) => {
 export const GetPostDetailBySlug = async (slug, language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetPost($slug: String!, $language: LanguageCodeFilterEnum!) {
+    query GetPostDetailBySlug(
+      $slug: String!
+      $language: LanguageCodeFilterEnum!
+    ) {
       postBy(slug: $slug) {
         id
         title
@@ -231,17 +283,12 @@ export const GetDataHomepage = async (id, languageCode) => {
       }
       services(
         where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
+        first: 7
       ) {
         nodes {
           slug
           title
-          editorBlocks {
-            ... on CoreParagraph {
-              attributes {
-                content
-              }
-            }
-          }
+          excerpt
           serviceHomepage {
             color
             secondaryColor
@@ -259,18 +306,12 @@ export const GetDataHomepage = async (id, languageCode) => {
           case_studyId
           title
           slug
-           caseStudyHomepage {
+          content
+          caseStudyHomepage {
             caseStudyTextButton
             caseStudyTitle
             caseStudyTextButtonItem
             caseStudyYear
-          }
-          editorBlocks {
-            ... on CoreParagraph {
-              attributes {
-                content
-              }
-            }
           }
           featuredImage {
             node {
@@ -291,122 +332,306 @@ export const GetDataHomepage = async (id, languageCode) => {
     return [];
   }
 };
-export const GetDataFooter = async (id) => {
+
+export const GetListSlugService = async () => {
   const endpoint = endPointApi;
   const query = gql`
-    query getDataFooter($id: Int!) {
-      pages(where: { id: $id }) {
+    query GetListSlugService {
+      services(first: 100) {
         nodes {
-          pageId
+          slug
+          serviceId
+          language {
+            locale
+            code
+          }
+        }
+      }
+    }
+  `;
+  try {
+    const data = await request(endpoint, query);
+    return data.services.nodes;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+
+export const GetServiceDetailBySlug = async (slug) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetServiceDetailBySlug($slug: String!) {
+      serviceBy(slug: $slug) {
+        content
+        title
+        translations {
+          language {
+            code
+          }
+          slug
+        }
+        language {
+          slug
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        serviceHomepage {
+          color
+          name
+          secondaryColor
+          titleBelowTextHeadingPageServiceDetail
+          sectionClientFeedbacksServiceDetail {
+            backgroundcolor
+            buttonLink {
+              title
+              url
+            }
+            headTitle
+            textBelowTitle
+          }
+          sectionContentDetail {
+            ... on Service_Servicehomepage_SectionContentDetail_ContentNoImage {
+              content
+              title
+            }
+            ... on Service_Servicehomepage_SectionContentDetail_ContentWithImage {
+              content
+              image {
+                altText
+                sourceUrl
+              }
+              title
+            }
+          }
+          layoutContentServiceDetail {
+            ... on Service_Servicehomepage_LayoutContentServiceDetail_SectionIntro {
+              backgroundColor
+              textLeft
+              textRight
+              textTitle
+              imageSectionIntro {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+      allCardReviews(
+        first: 3
+        where: { orderby: { field: DATE, order: DESC } }
+      ) {
+        nodes {
+          card_reviewId
+          cardReview {
+            contentCardReview {
+              ... on Card_review_Cardreview_ContentCardReview_CardFront {
+                contentProjectSummary
+                contentReview
+                titleService
+                titleProjectSummary
+                titleProjectInfo
+                position
+                name
+                fieldGroupName
+                detailProjectInfo {
+                  numberTypeIcon
+                  textContent
+                }
+                avatar {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Card_review_Cardreview_ContentCardReview_CardBack {
+                feedbackContent
+                feedbackTitle
+                linkReadFull {
+                  title
+                  url
+                }
+                numberStart
+                ratingDetails {
+                  fieldGroupName
+                  pointRating
+                  textRating
+                }
+                textPointRating
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  const variables = { slug };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
+  }
+};
+export const GetPageService = async (id, languageCode) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetPageService($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
+      pageBy(pageId: $id) {
+        title
+        content
+        pageService {
+          fieldGroupName
+          textScroll1
+          textScroll2
+          titleSectionIntro
+          titleSectionListService
+        }
+      }
+      services(
+        where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
+      ) {
+        nodes {
+          title
+          id
+          slug
+          serviceHomepage {
+            color
+          }
+        }
+      }
+    }
+  `;
+  const variables = { id, languageCode };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
+  }
+};
+export const GetPageAboutUs = async (id) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetPageAboutUs($id: Int!) {
+      pageBy(pageId: $id) {
+        pageAboutUs {
+          backgroundImage {
+            altText
+            sourceUrl
+          }
+          imageLogo {
+            altText
+            sourceUrl
+          }
+          textDescription
+          textHeading
+          sectionBestDigitalmarketing {
+            ... on Page_Pageaboutus_SectionBestDigitalmarketing_ContentSectionBestDigitalmarketing {
+              titleSection
+              listItem {
+                numberTypeIcon
+                textContent
+                titleItem
+              }
+            }
+          }
+          sectionIntroducingOndigitals {
+            ... on Page_Pageaboutus_SectionIntroducingOndigitals_IntroducingOndigitals {
+              textContent
+              imageRight {
+                altText
+                sourceUrl
+              }
+              titleSection
+            }
+          }
+          sectionOurTrustedPartner {
+            ... on Page_Pageaboutus_SectionOurTrustedPartner_ContentOurTrustedPartner {
+              titleSection
+              metricList {
+                number
+                textContent
+              }
+              listImagePartners {
+                altText
+                sourceUrl
+              }
+            }
+          }
+          sectionStepDigitalMarketing {
+            ... on Page_Pageaboutus_SectionStepDigitalMarketing_ContentStepDigitalMarketing {
+              titleSection
+              listSteps {
+                stepsContent
+                stepsNumber
+                titleSteps
+              }
+            }
+          }
+          sectionExploreTheExperience {
+            titleSection
+            buttonLink {
+              url
+              title
+            }
+          }
+        }
+        translations {
           language {
             slug
-            name
+            code
           }
-          footer {
-            address
-            column1Title
-            column2Title
-            column3Title
-            titleAddress
-            titleHotline
-            titleWorkTime
-            hotline
-            workTime
-            facebook {
-              title
-              url
+          pageId
+        }
+      }
+      allCardReviews(
+        first: 9
+        where: { orderby: { field: DATE, order: ASC } }
+      ) {
+        nodes {
+          card_reviewId
+          cardReview {
+            contentCardReview {
+              ... on Card_review_Cardreview_ContentCardReview_CardFront {
+                contentProjectSummary
+                contentReview
+                titleService
+                titleProjectSummary
+                titleProjectInfo
+                position
+                name
+                fieldGroupName
+                detailProjectInfo {
+                  numberTypeIcon
+                  textContent
+                }
+                avatar {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Card_review_Cardreview_ContentCardReview_CardBack {
+                feedbackContent
+                feedbackTitle
+                linkReadFull {
+                  title
+                  url
+                }
+                numberStart
+                ratingDetails {
+                  pointRating
+                  textRating
+                }
+                textPointRating
+              }
             }
-            instagram {
-              title
-              url
-            }
-            zalo {
-              title
-              url
-            }
-            linked {
-              title
-              url
-            }
-            link1 {
-              title
-              url
-            }
-            link2 {
-              title
-              url
-            }
-            link3 {
-              title
-              url
-            }
-            link4 {
-              title
-              url
-            }
-            link5 {
-              title
-              url
-            }
-            link6 {
-              title
-              url
-            }
-            link7 {
-              title
-              url
-            }
-            link8 {
-              title
-              url
-            }
-            link9 {
-              title
-              url
-            }
-            link10 {
-              title
-              url
-            }
-            link11 {
-              title
-              url
-            }
-            link12 {
-              title
-              url
-            }
-            link13 {
-              title
-              url
-            }
-            link14 {
-              title
-              url
-            }
-            linkExplore1 {
-              title
-              url
-            }
-            linkExplore2 {
-              title
-              url
-            }
-            linkExplore3 {
-              title
-              url
-            }
-            linkExplore4 {
-              title
-              url
-            }
-          }
-          translations {
-            language {
-              slug
-              name
-            }
-            pageId
           }
         }
       }
@@ -418,6 +643,6 @@ export const GetDataFooter = async (id) => {
     return data;
   } catch (error) {
     console.error("Error fetching data", error);
-    return [];
+    return null;
   }
 };

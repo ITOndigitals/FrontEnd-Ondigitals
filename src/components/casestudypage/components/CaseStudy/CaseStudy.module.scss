@@ -1,0 +1,50 @@
+.case-study {
+  height: auto;
+  background-color: #3d1766;
+  padding: 5% 0;
+  &-main {
+    &-head {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      &__content {
+        color: white;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 40px;
+      }
+      &__filter-wrapper {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .case-study {
+    &-main {
+      &-head {
+        &__filter-wrapper {
+          margin-top: 20px;
+          width: 100%;
+          justify-content: space-between;
+        }
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study {
+    &-main {
+      &-head {
+        &__filter-wrapper {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 .content-service-detail {
-  height: 100vh;
-  padding: 10% 0;
+  height: auto;
+  padding: 5% 0;
   background-color: #6f1ab6;
+  max-height: fit-content;
   &__title {
     color: #fff;
     font-size: 36px;
@@ -24,6 +25,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+    p{
+      margin-bottom: 10px;
+    }
+    ul{
+      list-style: inside;
+      margin-bottom: 10px;
+    }
     &__left {
       width: 30%;
       padding: 5% 0;
@@ -42,6 +50,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        img{
+          object-fit: cover;
+        }
       }
     }
     &__right {
@@ -53,6 +64,7 @@
 @media (max-width: 1000px) {
   .content-service-detail {
     height: auto;
+    padding: 10% 0;
     &__title {
       text-align: center;
       &__text {

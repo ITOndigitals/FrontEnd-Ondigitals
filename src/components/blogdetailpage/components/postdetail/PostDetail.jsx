@@ -97,9 +97,6 @@ export default function PostDetail({ data, applyMarkDown }) {
       applyMarkDown(markdown);
     }
   }, []);
-  if (!data) {
-    return null;
-  }
 
   return (
     <div ref={postDetailRef} className={classes["post-detail-container"]}>
@@ -128,7 +125,7 @@ export default function PostDetail({ data, applyMarkDown }) {
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}
         >
-          {parse(post.content)}
+          { post.content && parse(post.content)}
         </div>
         <div className={classes["post-detail-footer"]}>
           <hr />

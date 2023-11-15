@@ -23,17 +23,16 @@ const ServiceSection = ({ NavButton, data }) => {
       const renderServices = serviceList.map((item, index) => {
         return {
           id: index,
+          slug:item.slug,
           name: item.serviceHomepage.name,
           title: item.title,
           isActive: index === 0,
           activeColor: item.serviceHomepage.color,
           secondaryActiveColor: item.serviceHomepage.color,
-          image: item.featuredImage.node.sourceUrl,
+          image: item.featuredImage?.node.sourceUrl,
           content: (
             <div>
-              {item.editorBlocks.slice(0, 2).map((item, index) => (
-                <p key={index}>{parse(item.attributes.content)}</p>
-              ))}
+             {parse(item.excerpt)}
             </div>
           ),
         };
@@ -61,7 +60,6 @@ const ServiceSection = ({ NavButton, data }) => {
     //Find and active Item
     const itemIndex = renderServices.findIndex((item) => item.id === itemId);
     const item = { ...renderServices[itemIndex], isActive: true };
-    console.log(item);
     setCurrentActiveService(item);
     let renderData = [...renderServices].map((item) => {
       return { ...item, isActive: false };

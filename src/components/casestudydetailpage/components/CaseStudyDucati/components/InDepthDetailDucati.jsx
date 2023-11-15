@@ -16,7 +16,7 @@ const DUMMY_INDEPTH_CONTENT = [
 ];
 
 const rightImage =
-  "https://s3-alpha-sig.figma.com/img/ed75/84bc/be848ef02b38970e0ca935e117a6e213?Expires=1698624000&Signature=lkzjPxqkEU04q0DUbWwOyl247NgX1w3FxSyXnpRSFtumCrjDY0jcHOOa8I5r9CGZjabjIJ9gQOYZlcFE7lWllAZEDh6ieg48KRb80hrWCpbE2rA00F7kFVX7WdV69nWu7-t7zPn1UO9MzCjfEQeH3BwtVW7JyC-w5Toe~0ob2YOKwO-qiBy2jUCoMlP2ibVjvV1Uxxn-9jGv-jawQT3TyTwCTYr0PPlieaf6cxDzw1bIA2tWf9WSUSRSBgue9vyKHHIN9MzuAwicpeSkGWjJGX9cxo0Qktl3vB2edGrEoOGSG1PHFVa-23iaV5aWYzv9Q3~Uh22sGJbnR0HIWw4iAQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+  "https://s3-alpha-sig.figma.com/img/ed75/84bc/be848ef02b38970e0ca935e117a6e213?Expires=1699228800&Signature=QGnMrkMC3bhNwDJR7WKHSj7dmMNYbXAEprqidmBzpRX5fT6KeCepjq5U7pS2C4ZCYCuleeG9T23WizNlvQ1KR1TDEYj8At0P74Yiw2o3lXqLR7CxlPQacT3L4a0qELbL9LIM76FmUdmEYeRq6AVPOHTL2dkOY09knKD8JG7VfmNIsW2ytIil3wrL9BhOI9oc42FgY0Z~853kFxmdtC~jf6CgYzlvRSrYg79uN4jgNiBLDUgXV~zoZUwpaHH1352abFGZbGYcmd76pPASt9IsqgdlCuEQhmsoi9GuoDTlsYxMVHyPKdLYNw8ZO2zvvVrYR9KWhxzCQoU92JyW9GrFdg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
 
 const InDepthDetailDucati = () => {
   const content = DUMMY_INDEPTH_CONTENT;
@@ -51,8 +51,7 @@ const InDepthDetailDucati = () => {
                     src={rightImage}
                     fill
                     alt="case-study-detail"
-                    style={{ objectFit: "contain" }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                     priority
                   />
                 </div>

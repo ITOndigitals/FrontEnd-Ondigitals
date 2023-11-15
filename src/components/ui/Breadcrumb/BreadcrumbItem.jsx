@@ -11,7 +11,7 @@ const BreadcrumbItem = ({ item, order }) => {
       {order > 0 && (
         <div className={`${classes.circle} ${classes[`order-${order}`]}`} />
       )}
-      <Link href={item.url}>{parse(item.title)}</Link>
+      <Link href={item.url || "/"}>{item.title && parse(item.title)}</Link>
     </li>
   );
 };
