@@ -36,7 +36,7 @@ export default function OurTrustedPartner({ data }) {
               loop={true}
               navigation={true}
               autoplay={{
-                delay: 2500000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               breakpoints={{
@@ -45,10 +45,10 @@ export default function OurTrustedPartner({ data }) {
                   spaceBetween: 0,
                   slidesPerGroup: 1,
                 },
-                390: {
+                380: {
                   slidesPerView: 2,
                   spaceBetween: 0,
-                  slidesPerGroup: 3,
+                  slidesPerGroup: 2,
                 },
                 570: {
                   slidesPerView: 3,
@@ -56,12 +56,12 @@ export default function OurTrustedPartner({ data }) {
                   slidesPerGroup: 3,
                 },
                 768: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                   spaceBetween: 0,
-                  slidesPerGroup: 2,
+                  slidesPerGroup: 3,
                 },
                 1024: {
-                  slidesPerView: 8,
+                  slidesPerView: 5,
                   spaceBetween: 0,
                   slidesPerGroup: 2,
                 },

@@ -9,6 +9,7 @@ import ExpanseMenu from "@/components/ui/ExpanseMenu/ExpanseMenu";
 import { overlayOptions, menuItems } from "@/configurations/menuData";
 import { useBoundStore } from "../../../store/useBoundStore";
 import { useRouter } from "next/router";
+import SelectOptionLanguage from "@/components/ui/SelectOption/SelectOptionLanguages";
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -286,11 +287,6 @@ const Header = () => {
       setSubPageHeaderIsSticky(false);
     }
   }, [headerIsSticky, isInSubPage]);
-  const { locales, locale: activeLocale } = router;
-  const otherLocales = locales.filter((locale) => locale !== activeLocale);
-  const changeLocale = (locale) => {
-    document.cookie = `LANGUAGE-ODS=${locale}`;
-  };
   return (
     <div>
       <ExpanseMenu
@@ -326,24 +322,9 @@ const Header = () => {
                 }`}
               >
                 <div className={classes["header-btn__wrapper"]}>
-                  {otherLocales.map((locale, localeIndex) => {
-                    const { pathname, query } = router;
-                    return (
-                      <Link
-                        key={localeIndex}
-                        href={{ pathname, query }}
-                        locale={locale}
-                        onClick={() => changeLocale(locale)}
-                        className={classes["header-btn__wrapper-locale"]}
-                      >
-                        <FontAwesomeIcon
-                          icon={faLanguage}
-                          color={`${isDark ? "black" : "white"}`}
-                        />
-                        {locale}
-                      </Link>
-                    );
-                  })}
+                  <SelectOptionLanguage
+                    isDark={isDark}
+                  />
                 </div>
               </div>
               <Link

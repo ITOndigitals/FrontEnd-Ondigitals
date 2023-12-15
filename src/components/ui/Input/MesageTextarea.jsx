@@ -10,6 +10,7 @@ export default function MesageTextarea({
   value,
   errors,
   isSuccess,
+  title
 }) {
   return (
     <>
@@ -19,11 +20,11 @@ export default function MesageTextarea({
         } ${isSuccess ? "textare-contact-form-success" : ""}`}
       >
         <div style={{ position: "relative" }}>
-          <label htmlFor={name}>Message</label>
+          <label htmlFor={name}>{title || "Message"}</label>
           <textarea
             id={name}
             name={name}
-            placeholder={placeholder}
+            placeholder={placeholder || "Write message..."}
             onChange={onChange}
             onBlur={onBlur}
             value={value}

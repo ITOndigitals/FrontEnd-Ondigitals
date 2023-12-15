@@ -10,15 +10,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ServiceDetail = ({ context }) => {
   const contentRef = useRef(null);
-  const localeBasePaths = {
-    en: "/service",
-    vi: "/dich-vu",
-    zh:"/服务"
-  };
-
   const { locale } = useRouter();
-  const basePath = localeBasePaths[locale] || "/service";
-
   const activeColor = context.activeColor;
   // const colorClass = classes[`${context.activeColor}`];
 
@@ -51,7 +43,7 @@ const ServiceDetail = ({ context }) => {
           >
             {context.content}
           </div>
-          <Link href={`${basePath}/${context.slug}`} locale={locale}>
+          <Link href={context.slug} locale={locale}>
             <ExploreButton>Explore</ExploreButton>
           </Link>
         </div>

@@ -9,33 +9,17 @@ import classes from "./TableOfContent.module.scss";
 import Link from "next/link";
 import { Maven_Pro } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
-
-const socialsSharingData = [
-  {
-    href: "#",
-    icon: <FacebookIcon width="24" height="24" color="#3D1766" />,
-  },
-  {
-    href: "#",
-    icon: <LinkedIcon width="24" height="24" color="#3D1766" />,
-  },
-  {
-    href: "#",
-    icon: <XTwitterIcon width="24" height="24" color="#3D1766" />,
-  },
-  {
-    href: "#",
-    icon: <PinterestIcon width="24" height="24" color="#3D1766" />,
-  },
-];
 
 const TableOfContent = ({ markdown }) => {
   const [tableOfContentIsShown, setTableOfContentIsShown] = useState(true);
   const tocRef = useRef(null);
   const tocWrapperRef = useRef(null);
-
+  const { asPath, locale } = useRouter();
+  const fullCurrentPath = `http://localhost:3000/${locale}${asPath}`;
+  console.log(fullCurrentPath)
   const toggleShowTableOfContent = () => {
     setTableOfContentIsShown((oldState) => !oldState);
   };
@@ -74,6 +58,34 @@ const TableOfContent = ({ markdown }) => {
     };
   }, []);
 
+  const socialsSharingData = [
+    {
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        fullCurrentPath
+      )}`,
+
+      icon: <FacebookIcon width="24" height="24" color="#3D1766" />,
+    },
+    {
+      href: `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
+        fullCurrentPath
+      )}`,
+      icon: <LinkedIcon width="24" height="24" color="#3D1766" />,
+    },
+    {
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+        fullCurrentPath
+      )}`,
+      icon: <XTwitterIcon width="24" height="24" color="#3D1766" />,
+    },
+    {
+      href: `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(
+        fullCurrentPath
+      )}`,
+
+      icon: <PinterestIcon width="24" height="24" color="#3D1766" />,
+    },
+  ];
   return (
     <div className={classes.toc}>
       <div className={classes["toc-heading"]}>
@@ -111,11 +123,13 @@ const TableOfContent = ({ markdown }) => {
         </ul>
       </div>
       <div className={classes.line}></div>
-      <p className={classes["socials-heading"]}>SHARE THIS POST</p> 
+      <p className={classes["socials-heading"]}>SHARE THIS POST</p>
       <ul className={classes.socials}>
         {socialsSharingData.map((item, index) => (
           <li key={index}>
-            <Link href={item.href}>{item.icon}</Link>
+            <Link target="_blank" href={item.href}>
+              {item.icon}
+            </Link>
           </li>
         ))}
       </ul>

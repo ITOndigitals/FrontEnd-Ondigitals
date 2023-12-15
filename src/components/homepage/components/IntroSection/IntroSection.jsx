@@ -15,6 +15,7 @@ const IntroSection = ({ data }) => {
   return (
     <section className={`${classes.intro} intro-section`}>
       <div className="container relative">
+        <h1 style={{display:"none"}}>ONDIGITALS</h1>
         <div className={classes["intro-layout"]}>
           <div className={classes["intro-layout-item"]}>
             <p className={`${classes["intro-greeting"]} appear`}>

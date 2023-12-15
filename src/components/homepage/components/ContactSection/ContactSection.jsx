@@ -28,7 +28,9 @@ const ContactSection = React.forwardRef((props, ref) => {
     contactFormTextButton,
     contactFormTextRequiredField,
     linkPrivacyPolicy,
+    contentLabelForm,
   } = data.pages.nodes[0].homePageInputContent;
+  const [fieldName, fieldEmail, fieldMessage] = contentLabelForm || [];
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -79,10 +81,10 @@ const ContactSection = React.forwardRef((props, ref) => {
             onSubmit={formik.handleSubmit}
           >
             <Input
-              title={"Tell us about yourself (*)"}
+              title={fieldName?.textLable}
               type={"text"}
               fieldName={"name"}
-              placeholder={"Your name / Your company name..."}
+              placeholder={fieldName?.textPlaceholder}
               value={formik.values.name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -96,10 +98,10 @@ const ContactSection = React.forwardRef((props, ref) => {
               }
             />
             <Input
-              title={"Email (*)"}
+              title={fieldEmail?.textLable}
               type={"email"}
               fieldName={"email"}
-              placeholder={"Your email"}
+              placeholder={fieldEmail?.textPlaceholder}
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -114,8 +116,9 @@ const ContactSection = React.forwardRef((props, ref) => {
             />
 
             <MesageTextarea
+              title={fieldMessage?.textLable}
               name="message"
-              placeholder="Write message..."
+              placeholder={fieldMessage?.textPlaceholder}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.message}

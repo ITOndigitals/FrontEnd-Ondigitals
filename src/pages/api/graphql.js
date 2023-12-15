@@ -120,6 +120,9 @@ export const GetPostDetailBySlug = async (slug, language) => {
       $language: LanguageCodeFilterEnum!
     ) {
       postBy(slug: $slug) {
+        seo {
+          fullHead
+        }
         id
         title
         date
@@ -178,11 +181,14 @@ export const GetPostDetailBySlug = async (slug, language) => {
   }
 };
 
-export const GetListSlugPosts = async () => {
+export const GetListSlugPosts = async (language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetListSlugPosts {
-      posts(first: 100) {
+    query GetListSlugPosts($language: LanguageCodeFilterEnum!) {
+      posts(
+        where: { language: $language, orderby: { field: DATE, order: DESC } }
+        first: 100
+      ) {
         nodes {
           slug
           postId
@@ -194,12 +200,13 @@ export const GetListSlugPosts = async () => {
       }
     }
   `;
+  const variables = { language };
   try {
-    const data = await request(endpoint, query);
+    const data = await request(endpoint, query, variables);
     return data.posts.nodes;
   } catch (error) {
     console.error("Error fetching data", error);
-    return null;
+    return [];
   }
 };
 export const GetDataHomepage = async (id, languageCode) => {
@@ -215,6 +222,9 @@ export const GetDataHomepage = async (id, languageCode) => {
             code
             name
           }
+          seo {
+            fullHead
+          }
           homePageInputContent {
             caseStudySessionButtonText
             caseStudySessionTitle
@@ -224,6 +234,10 @@ export const GetDataHomepage = async (id, languageCode) => {
               sourceUrl
             }
             introSectionRightImage {
+              altText
+              sourceUrl
+            }
+            partnerSectionListImage {
               altText
               sourceUrl
             }
@@ -259,6 +273,10 @@ export const GetDataHomepage = async (id, languageCode) => {
               url
               title
             }
+            contentLabelForm {
+              textLable
+              textPlaceholder
+            }
           }
           translations {
             language {
@@ -270,20 +288,9 @@ export const GetDataHomepage = async (id, languageCode) => {
           }
         }
       }
-      clients {
-        nodes {
-          featuredImage {
-            node {
-              id
-              sourceUrl
-              title
-            }
-          }
-        }
-      }
       services(
         where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
-        first: 7
+        first: 4
       ) {
         nodes {
           slug
@@ -301,7 +308,7 @@ export const GetDataHomepage = async (id, languageCode) => {
           }
         }
       }
-      allCaseStudy {
+      allCaseStudy(where: { orderby: { field: DATE, order: DESC } }) {
         nodes {
           case_studyId
           title
@@ -365,6 +372,9 @@ export const GetServiceDetailBySlug = async (slug) => {
       serviceBy(slug: $slug) {
         content
         title
+        seo {
+          fullHead
+        }
         translations {
           language {
             code
@@ -385,14 +395,110 @@ export const GetServiceDetailBySlug = async (slug) => {
           name
           secondaryColor
           titleBelowTextHeadingPageServiceDetail
-          sectionClientFeedbacksServiceDetail {
-            backgroundcolor
-            buttonLink {
-              title
-              url
+          titleHeadingSectionFaq
+          sectionWho {
+            backgroundColor
+            color
+            projectCardShort {
+              listImageLogo {
+                altText
+                sourceUrl
+              }
+              mainImage {
+                altText
+                sourceUrl
+              }
+              textContent
             }
-            headTitle
-            textBelowTitle
+            textLeftHead
+            textRightHead
+          }
+          sectionWhat {
+            backgroundColor
+            contentLeft
+            contentRight
+            textTitle
+            mainImage {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhy {
+            backgroundColor
+            color
+            listCardWhy {
+              cardContent
+              cardTitle
+              mainImage {
+                altText
+                sourceUrl
+              }
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionHow {
+            cardStep {
+              cardContent
+              cardTitle
+              titleStep
+              iconCardStep
+            }
+            contentListSteps
+            contentPlatform {
+              contentTitle
+              iconImage {
+                altText
+                sourceUrl
+              }
+              platformGlobal {
+                content
+                listIconImage {
+                  altText
+                  sourceUrl
+                }
+                name
+              }
+              platformVietnam {
+                content
+                fieldGroupName
+                listSocialMedia {
+                  sourceUrl
+                  altText
+                }
+                name
+              }
+              textFooterPlatform
+              title
+            }
+            textLeftHead
+            textRightHead
+            titleListSteps
+            imageIcon {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhich {
+            backgroundColor
+            textHeadingRight
+            textHeadingLeft
+            layoutContentSectionWhich {
+              ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
+                textContent
+                title
+                imageCard {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutVideo {
+                content
+                title
+                urlVideo
+                videoDescription
+              }
+            }
           }
           sectionContentDetail {
             ... on Service_Servicehomepage_SectionContentDetail_ContentNoImage {
@@ -411,57 +517,15 @@ export const GetServiceDetailBySlug = async (slug) => {
           layoutContentServiceDetail {
             ... on Service_Servicehomepage_LayoutContentServiceDetail_SectionIntro {
               backgroundColor
+              color
               textLeft
               textRight
+              textHeadTitle
               textTitle
+              backgroundColorImage
               imageSectionIntro {
                 altText
                 sourceUrl
-              }
-            }
-          }
-        }
-      }
-      allCardReviews(
-        first: 3
-        where: { orderby: { field: DATE, order: DESC } }
-      ) {
-        nodes {
-          card_reviewId
-          cardReview {
-            contentCardReview {
-              ... on Card_review_Cardreview_ContentCardReview_CardFront {
-                contentProjectSummary
-                contentReview
-                titleService
-                titleProjectSummary
-                titleProjectInfo
-                position
-                name
-                fieldGroupName
-                detailProjectInfo {
-                  numberTypeIcon
-                  textContent
-                }
-                avatar {
-                  altText
-                  sourceUrl
-                }
-              }
-              ... on Card_review_Cardreview_ContentCardReview_CardBack {
-                feedbackContent
-                feedbackTitle
-                linkReadFull {
-                  title
-                  url
-                }
-                numberStart
-                ratingDetails {
-                  fieldGroupName
-                  pointRating
-                  textRating
-                }
-                textPointRating
               }
             }
           }
@@ -486,11 +550,19 @@ export const GetPageService = async (id, languageCode) => {
         title
         content
         pageService {
-          fieldGroupName
           textScroll1
           textScroll2
           titleSectionIntro
           titleSectionListService
+          sectionCaseStudy {
+            textBelowButton
+            textButton
+            title
+          }
+          sectionListServices {
+            textButtonLink
+            title
+          }
         }
       }
       services(
@@ -535,8 +607,12 @@ export const GetPageAboutUs = async (id) => {
           sectionBestDigitalmarketing {
             ... on Page_Pageaboutus_SectionBestDigitalmarketing_ContentSectionBestDigitalmarketing {
               titleSection
+              textFooterSection
               listItem {
-                numberTypeIcon
+                imageIcon {
+                  altText
+                  sourceUrl
+                }
                 textContent
                 titleItem
               }
@@ -638,6 +714,285 @@ export const GetPageAboutUs = async (id) => {
     }
   `;
   const variables = { id };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
+  }
+};
+export const GetSeoBlogPage = async (id) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetSeoBlogPage($id: Int!) {
+      pages(where: { id: $id }) {
+        nodes {
+          seo {
+            fullHead
+          }
+          translations {
+            pageId
+            language {
+              code
+              name
+            }
+          }
+        }
+      }
+    }
+  `;
+  const variables = { id };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data.pages;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+export const GetDataPageContact = async (id) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetDataPageContact($id: Int!) {
+      pageBy(pageId: $id) {
+        seo {
+          fullHead
+        }
+        pageContact {
+          contactForm {
+            contentForm {
+              textLable
+              textPlaceholder
+            }
+          }
+          sectionMap {
+            contentInfo {
+              textContent
+              title
+            }
+          }
+          textButton
+          textButtonSending
+          textColumLeft
+          title
+          titleColumLeft
+          contentNoteError
+          contentNoteSuccess
+          contentPrivacyPolicy
+        }
+        translations {
+          language {
+            code
+            name
+          }
+          pageId
+        }
+      }
+    }
+  `;
+  const variables = { id };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data.pageBy;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+export const GetListSlugServiceParent = async () => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetListSlugServiceParent {
+      serviceParents {
+        nodes {
+          slug
+          service_parentId
+          language {
+            locale
+            code
+          }
+        }
+      }
+    }
+  `;
+  try {
+    const data = await request(endpoint, query);
+    return data.serviceParents.nodes;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+export const GetServiceParentDetailBySlug = async (slug) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetServiceParentDetailBySlug($slug: String!) {
+      serviceParentBy(slug: $slug) {
+        content
+        title
+        seo {
+          fullHead
+        }
+        translations {
+          language {
+            code
+          }
+          slug
+        }
+        language {
+          slug
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        serviceHomepage {
+          color
+          name
+          secondaryColor
+          titleBelowTextHeadingPageServiceDetail
+          titleHeadingSectionFaq
+          sectionWho {
+            backgroundColor
+            color
+            projectCardShort {
+              listImageLogo {
+                altText
+                sourceUrl
+              }
+              mainImage {
+                altText
+                sourceUrl
+              }
+              textContent
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionWhat {
+            backgroundColor
+            contentLeft
+            contentRight
+            textTitle
+            mainImage {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhy {
+            backgroundColor
+            color
+            listCardWhy {
+              cardContent
+              cardTitle
+              mainImage {
+                altText
+                sourceUrl
+              }
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionHow {
+            cardStep {
+              cardContent
+              cardTitle
+              titleStep
+              iconCardStep
+            }
+            contentListSteps
+            contentPlatform {
+              contentTitle
+              iconImage {
+                altText
+                sourceUrl
+              }
+              platformGlobal {
+                content
+                listIconImage {
+                  altText
+                  sourceUrl
+                }
+                name
+              }
+              platformVietnam {
+                content
+                fieldGroupName
+                listSocialMedia {
+                  sourceUrl
+                  altText
+                }
+                name
+              }
+              textFooterPlatform
+              title
+            }
+            textLeftHead
+            textRightHead
+            titleListSteps
+            imageIcon {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhich {
+            backgroundColor
+            textHeadingRight
+            textHeadingLeft
+            layoutContentSectionWhich {
+              ... on Service_parent_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
+                textContent
+                title
+                imageCard {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Service_parent_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutVideo {
+                content
+                title
+                urlVideo
+                videoDescription
+              }
+            }
+          }
+          sectionContentDetail {
+            ... on Service_parent_Servicehomepage_SectionContentDetail_ContentNoImage {
+              content
+              title
+            }
+            ... on Service_parent_Servicehomepage_SectionContentDetail_ContentWithImage {
+              content
+              image {
+                altText
+                sourceUrl
+              }
+              title
+            }
+          }
+          layoutContentServiceDetail {
+            ... on Service_parent_Servicehomepage_LayoutContentServiceDetail_SectionIntro {
+              backgroundColor
+              color
+              textLeft
+              textRight
+              textHeadTitle
+              textTitle
+              backgroundColorImage
+              imageSectionIntro {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  const variables = { slug };
   try {
     const data = await request(endpoint, query, variables);
     return data;

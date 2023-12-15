@@ -14,9 +14,9 @@ export default function IntroducingOnDigitals({ data }) {
       <div className="container">
         <div className={classes["main-content"]}>
           <div className={classes["main-content__text"]}>
-            <p className={classes["main-content__text__title"]}>
+            <h2 className={classes["main-content__text__title"]}>
               {titleSection && titleSection}
-            </p>
+            </h2>
             <div
               style={{ fontFamily: MavenPro.style.fontFamily }}
               className={classes["main-content__text__detail"]}

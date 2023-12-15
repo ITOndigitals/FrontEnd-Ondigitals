@@ -7,12 +7,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const IntroAboutUs = ({ data }) => {
   const [mousePosition, setMousePosition] = useState({ x: "50%", y: "50%" });
-  const {
-    backgroundImage,
-    imageLogo,
-    textDescription,
-    textHeading,
-  } = data;
+  const { backgroundImage, imageLogo, textDescription, textHeading } = data;
   useEffect(() => {
     //Xác định tọa độ y điểm trên cùng của section và tọa độ điểm
     //y cuối cùng của section để đảm bảo backdrop không chạy ra ngoài
@@ -32,15 +27,16 @@ const IntroAboutUs = ({ data }) => {
 
   return (
     <div className={classes["about-us"]}>
+      <h1 style={{ display: "none" }}>ONDIGITALS</h1>
       <div className={`${classes.intro} intro`}>
         <div
-          style={{
+          style={{  
             width: "100%",
             height: "100%",
             backgroundSize: "cover",
             backgroundImage: `url(${backgroundImage?.sourceUrl})`,
-            mixBlendMode: "hard-light",
-            opacity: "0.2",
+            mixBlendMode: "color-burn",
+            opacity: "0.4",
           }}
         ></div>
         <div
@@ -62,7 +58,7 @@ const IntroAboutUs = ({ data }) => {
               src={imageLogo?.sourceUrl}
               alt={imageLogo?.altText}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-              priority 
+              priority
             />
           </div>
           <p

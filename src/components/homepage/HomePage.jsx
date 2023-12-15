@@ -130,6 +130,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
   // }, []);
 
   //Handle sự kiện lăn chuột
+
   useEffect(() => {
     if (!isShowSectionSlide) return; //Bỏ qua nếu không ở màn hình desktop
     const handleScrollWheel = (event) => {
@@ -271,7 +272,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           </SwiperSlide>
           <SwiperSlide>
             <CaseStudySection
-            data = {dataHomePages}
+              data={dataHomePages}
               NavButton={
                 <SectionNavButtons
                   color="white"

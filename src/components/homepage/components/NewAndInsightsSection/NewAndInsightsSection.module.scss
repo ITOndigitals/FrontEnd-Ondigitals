@@ -19,47 +19,28 @@
       }
     }
     .card-news-insights {
-      border-radius: 20px 20px 0px 0px;
+      border-radius: 20px 20px 20px 20px;
       background-color: #fff;
       position: relative;
       width: 100%;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-      &__button span {
-        color: #131114;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 26px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 8px;
-        align-self: stretch;
-      }
       &__content {
-        padding: 10px;
-        &--tag {
-          border-radius: 40px;
-          background: #3d1766;
+        padding: 16px 12px;
+        &__tag {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          color: #fff;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 16px;
-          width: auto;
-          height: auto;
-          padding: 6px 12px;
+          gap: 10px;
+          margin: 12px 0;
+          flex-wrap: wrap;
         }
         &__dayView {
           display: flex;
-          padding: 16px 0;
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
+          div {
+            margin: 0;
+          }
           p {
             color: var(--neutral-100, #131114);
             font-size: 12px;
@@ -70,15 +51,16 @@
         }
         &--titlePost {
           color: #131114;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 28px;
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
           overflow: hidden;
           text-align: start;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 20px;
+          min-height: 40px;
         }
         &--text {
           color: #131114;
@@ -97,14 +79,17 @@
       }
 
       &__image {
-        width: 100%;
-        height: 150px;
-        min-height: 150px;
-        overflow: hidden;
-        position: relative;
+        &__link {
+          width: 100%;
+          height: 244px;
+          min-height: 244px;
+          overflow: hidden;
+          position: relative;
+          display: block;
+        }
         img {
           object-fit: cover;
-          border-radius: 15px;
+          border-radius: 15px 15px 0 0;
         }
       }
     }
@@ -134,7 +119,7 @@
 @media (max-width: 1200px) {
   .section-new-insights {
     height: auto;
-    padding: calc($header_padding *2) 0;
+    padding: calc($header_padding * 2) 0;
 
     &__content {
       padding: 0px;

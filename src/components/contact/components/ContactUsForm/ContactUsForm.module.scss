@@ -1,5 +1,12 @@
 @import ".././../../../styles/variables";
 @import ".././../../../styles/mixins";
+.content-privacy-policy {
+  color: #dcc7ed;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
 .section-contact-form {
   background-color: #3d1766;
   padding-top: calc($header-height + $header-padding + $section-padding);
@@ -79,14 +86,6 @@
         font-weight: 700;
         line-height: 68px;
         display: inline;
-      }
-      .talk {
-        color: #fff;
-        font-size: 64px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 68px;
-        display: inline;
         position: relative;
         &::before {
           content: "";
@@ -95,11 +94,12 @@
           background-color: #6f1ab6;
           border-radius: 50%;
           position: absolute;
-          top: -50%;
-          right: -50%;
+          top: -30%;
+          right: -5%;
           z-index: -1;
         }
       }
+
       p:last-child {
         color: #fff;
         font-size: 28px;

@@ -4,7 +4,7 @@ import classes from "./BlogItem.module.scss";
 const BlogItem = ({ item }) => {
   return (
     <li className={classes.item}>
-      <BlogCard data={item} isForBlogPage/>
+      <BlogCard data={item} />
     </li>
   );
 };

@@ -7,22 +7,13 @@
   align-items: center;
   height: auto;
   padding: 10px;
-  border: 1px solid #cd0404;
   border-radius: 16px;
-  &:hover {
-    border: 1px solid #ff0032;
-    .title {
-      padding-left: 8px;
-      &::before {
-        opacity: 1 ;
-      }
-    }
-  }
+
   .icon {
     position: relative;
     display: inline-block;
-    width: 70px;
-    height: 70px;
+    width: 300px;
+    height: 300px;
   }
   .title {
     color: #fff;
@@ -34,19 +25,6 @@
     margin: 16px 0 8px 0;
     position: relative;
     display: inline-block;
-    &::before {
-      content: "";
-      position: absolute;
-      left: -20px;
-      top: 45%;
-      width: 16px;
-      height: 16px;
-      background-color:#3D1766;
-      border-radius: 50%;
-      transform: translate(0, -50%);
-      transition: transform 0.2s, opacity 0.2s;
-      opacity: 0;
-    }
   }
 
   .text {

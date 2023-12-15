@@ -9,131 +9,81 @@ import {
 import classes from "./Footer.module.scss";
 import { Maven_Pro } from "next/font/google";
 import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
-const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+import Link from "next/link";
 
-export default function Footer() {
+const parse = require("html-react-parser");
+const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const iconFont = {
+  facebook: faFacebook,
+  instagram: faInstagram,
+  linkedinIn: faLinkedinIn,
+};
+export default function Footer({ data }) {
+  if(!data){
+    return <div>Loading.....</div>
+  }
+  const { footerods, content } = data[0];
+  const { title, columExplore, columFollowUs, columService } = footerods;
+
   return (
     <footer className={classes["footer"]}>
       <div className="container">
         <div className={classes["footer__row"]}>
           <div className={classes["colum-1"]}>
             <div className={classes["image-logo-footer"]}>
-              <LogoFooter width={240} height={100} color={"#FFF"} />
+              <Link href="/">
+                <LogoFooter width={240} height={100} color={"#FFF"} />
+              </Link>
             </div>
             <div>
               <p
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["title__company__footer"]}
               >
-                ON DIGITALS COMPANY LIMITED
+                {title && title}
               </p>
-              <p>
-                <span>Address:</span> 7th floor, 75 Ho Hao Hon, Co Giang Ward,
-                District 1, Ho Chi Minh City
-              </p>
-              <p>
-                <span>Hotline:</span> 0906648177
-              </p>
-              <p>
-                <span>Work-time:</span> 9AM - 6PM (Monday to Friday)
-              </p>
+              {content && parse(content)}
             </div>
           </div>
           <div className={classes["colum-2"]}>
-            <p className={classes["colum__title"]}>SERVICES</p>
+            <p className={classes["colum__title"]}>{columService?.title}</p>
             <div className={classes["row__services"]}>
               <div
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["colum-2__left"]}
               >
-                <ul>
-                  <li>
-                    <a>SEO</a>
-                  </li>
-                  <li>
-                    <a>PPC</a>
-                  </li>
-                  <li>
-                    <a>Social Media</a>
-                  </li>
-                  <li>
-                    <a>Website / E-commerce</a>
-                  </li>
-                  <li>
-                    <a>Mobile App Development</a>
-                  </li>
-                  <li>
-                    <a>Creative Design</a>
-                  </li>
-                </ul>
+                {columService.listServiceLeft &&
+                  parse(columService.listServiceLeft)}
               </div>
               <div
                 style={{ fontFamily: MavenPro.style.fontFamily }}
                 className={classes["colum-2__right"]}
               >
-                <ul>
-                  <li>
-                    <a>Content Marketing</a>
-                  </li>
-                  <li>
-                    <a>Video Marketing</a>
-                  </li>
-                  <li>
-                    <a>KOL Marketing</a>
-                  </li>
-                  <li>
-                    <a>OOH Advertising</a>
-                  </li>
-                  <li>
-                    <a>TVC Advertising</a>
-                  </li>
-                  <li>
-                    <a>Telemarketing</a>
-                  </li>
-                  <li>
-                    <a>Email Marketing</a>
-                  </li>
-                  <li>
-                    <a>Event Marketing</a>
-                  </li>
-                </ul>
+                {columService.listServiceRight &&
+                  parse(columService.listServiceRight)}
               </div>
             </div>
           </div>
           <div className={classes["colum-3"]}>
             <div>
-              <p className={classes["colum__title"]}>EXPLORE</p>
-              <ul style={{ fontFamily: MavenPro.style.fontFamily }}>
-                <li>
-                  <a>About On Digitals</a>
-                </li>
-                <li>
-                  <a>Our Policy</a>
-                </li>
-                <li>
-                  <a>Case Study</a>
-                </li>
-                <li>
-                  <a>Blog</a>
-                </li>
-              </ul>
+              <p className={classes["colum__title"]}>{columExplore?.title}</p>
+              {columExplore.listExplore && parse(columExplore.listExplore)}
             </div>
           </div>
           <div className={classes["colum-4"]}>
-            <p className={classes["colum__title"]}>FOLLOW US</p>
+            <p className={classes["colum__title"]}>{columFollowUs?.title}</p>
             <div className={classes["icon__homepage--social"]}>
-              <a>
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a>
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
-              <a>
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </a>
-              <a>
+              {columFollowUs.listIcon &&
+                columFollowUs.listIcon.map((item, index) => (
+                  <Link href={item.linkIcon} key={index}>
+                    <FontAwesomeIcon
+                      icon={iconFont[item?.nameIconFortawesome]}
+                    />
+                  </Link>
+                ))}
+              <Link href={columFollowUs?.linkZalo}>
                 <IconZalo width={52} height={18} color={"#FFF"} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -141,5 +91,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

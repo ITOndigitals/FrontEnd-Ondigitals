@@ -4,7 +4,6 @@ import classes from "./BlogList.module.scss";
 import Image from "next/image";
 
 const BlogList = ({ blogsData, loading, error }) => {
-  console.log(blogsData);
   // if (loading) {
   //   return (
   //     <div  className={classes.check}>

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import classes from "./ExpanseMenu.module.scss";
+import Image from "next/image";
 
 const ExpanseMenu = ({ options, isActive, menu }) => {
   const delays = options.map((item) => item.delay);
@@ -16,6 +17,33 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
       }}
     >
       <div className={classes["menu-list-wrapper"]}>
+        <div className={classes["menu-list-wrapper__map"]}>
+          <div className={classes["menu-list-wrapper__image"]}>
+            <Image
+              fill
+              src="https://api.ondigitals.com/wp-content/uploads/2023/11/GLOBE.png"
+              alt="sadasdas"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              priority
+            />
+          </div>
+          <span className={classes["menu-list-wrapper__head-line"]}>
+            Leading Agency in South East Asia
+          </span>
+          <p className={classes["menu-list-wrapper__japan"]}>Japan </p>
+          <p className={classes["menu-list-wrapper__china"]}>China </p>
+          <p className={classes["menu-list-wrapper__thailand"]}>Thailand </p>
+          <p className={classes["menu-list-wrapper__taiwan"]}>Taiwan </p>
+          <p className={classes["menu-list-wrapper__vietnam"]}>Vietnam </p>
+          <p className={classes["menu-list-wrapper__philippines"]}>
+            Philippines{" "}
+          </p>
+          <p className={classes["menu-list-wrapper__malaysia"]}>Malaysia </p>
+          <p className={classes["menu-list-wrapper__singapore"]}>Singapore </p>
+          <p className={classes["menu-list-wrapper__indonesia"]}>Indonesia </p>
+          <p className={classes["menu-list-wrapper__australia"]}>Australia </p>
+        </div>
+
         <div
           className={`container--big ${classes["menu-list-wrapper-inner"]}`}
           style={{ overflowY: "auto" }}
@@ -30,37 +58,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                   href={item.href}
                   className={classes["menu-list-item__link"]}
                 >
-                  <div>{item.name}</div>
-                  <div
-                    className={`${classes["menu-list-item__circle"]} ${
-                      classes[`circle-${index}`]
-                    }`}
-                  ></div>
-                </Link>
-              </li>
-            ))}{" "}
-            {menu.map((item, index) => (
-              <li className={classes["menu-list-item"]} key={index}>
-                <Link
-                  href={item.href}
-                  className={classes["menu-list-item__link"]}
-                >
-                  <div>{item.name}</div>
-                  <div
-                    className={`${classes["menu-list-item__circle"]} ${
-                      classes[`circle-${index}`]
-                    }`}
-                  ></div>
-                </Link>
-              </li>
-            ))}
-            {menu.map((item, index) => (
-              <li className={classes["menu-list-item"]} key={index}>
-                <Link
-                  href={item.href}
-                  className={classes["menu-list-item__link"]}
-                >
-                  <div>{item.name}</div>
+                  <span>{item.name}</span>
                   <div
                     className={`${classes["menu-list-item__circle"]} ${
                       classes[`circle-${index}`]

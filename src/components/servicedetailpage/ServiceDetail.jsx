@@ -2,30 +2,32 @@ import React, { useEffect } from "react";
 import IntroServiceDetail from "./components/IntroServiceDetail/IntroServiceDetail";
 import { useBoundStore } from "@/store/useBoundStore";
 import ContentServiceDetail from "./components/ContentServiceDetail/ContentServiceDetail";
-import ClientFeedbacks from "./components/ClientFeedbacks/ClientFeedbacks";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useRouter } from "next/router";
 import FAQServiceDetail from "./components/FAQServiceDetail/FAQServiceDetail";
+import SectionWhy from "./components/SectionWhy/SectionWhy";
+import SectionWho from "./components/SectionWho/SectionWho";
+import SectionHow from "./components/SectionHow/SectionHow";
+import SectionWhich from "./components/SectionWhich/SectionWhich";
+import SectionWhat from "./components/SectionWhat/SectionWhat";
 
 export default function ServiceDetail({ dataServiceDetail }) {
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
-  const { serviceBy, allCardReviews } = dataServiceDetail || {};
-
+  const serviceBy = dataServiceDetail?.serviceBy || dataServiceDetail?.serviceParentBy || {};
   const {
     layoutContentServiceDetail,
     sectionContentDetail,
-    sectionClientFeedbacksServiceDetail,
+    titleHeadingSectionFaq,
+    sectionWho,
+    sectionWhat,
+    sectionWhy,
+    sectionHow,
+    sectionWhich,
   } = serviceBy?.serviceHomepage || {};
-
   const dataContentServiceDetail = layoutContentServiceDetail || [];
-
+  console.log(sectionWhich);
   const dataFAQService = sectionContentDetail || [];
-
-  const dataClientFeedbacks = {
-    ...sectionClientFeedbacksServiceDetail,
-    ...allCardReviews,
-  };
 
   if (serviceBy) {
     const matchingTranslation = serviceBy.translations.find(
@@ -33,7 +35,7 @@ export default function ServiceDetail({ dataServiceDetail }) {
     );
     useEffect(() => {
       if (matchingTranslation) {
-        router.push(`/service/${matchingTranslation.slug}`);
+        router.push(matchingTranslation.slug);
       } else if (router.locale !== serviceBy.language.slug) {
         router.push("/");
       }
@@ -78,8 +80,17 @@ export default function ServiceDetail({ dataServiceDetail }) {
         dataContentServiceDetail.map((item, index) => (
           <ContentServiceDetail key={index} data={item} />
         ))}
-      <ClientFeedbacks data={dataClientFeedbacks} />
-      {dataFAQService.length >= 1 && <FAQServiceDetail data={dataFAQService} />}
+      {sectionWho?.projectCardShort && <SectionWho data={sectionWho} />}
+      {sectionWhich?.textHeadingLeft && <SectionWhich data={sectionWhich} />}
+      {sectionWhat?.textTitle && <SectionWhat data={sectionWhat} />}
+      {sectionWhy?.listCardWhy && <SectionWhy data={sectionWhy} />}
+      {sectionHow?.cardStep && <SectionHow data={sectionHow} />}
+      {dataFAQService.length >= 1 && (
+        <FAQServiceDetail
+          data={dataFAQService}
+          titleHeading={titleHeadingSectionFaq}
+        />
+      )}
       <NeedHelpDigitalGrowth />
     </>
   );

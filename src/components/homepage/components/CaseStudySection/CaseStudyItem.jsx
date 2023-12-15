@@ -9,8 +9,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
 const CaseStudyItem = ({ item, index }) => {
-  const { title, caseStudyHomepage, editorBlocks, featuredImage, content } =
-    item;
+  const { title, caseStudyHomepage, featuredImage, content, slug } = item;
   const itemClasses = `${classes.item} ${classes[`item-${index + 1}`]}`;
   return (
     <li className={itemClasses}>
@@ -52,7 +51,7 @@ const CaseStudyItem = ({ item, index }) => {
         </div>
       </div>
       <div className={classes["item-description"]}>
-        <p className={classes["item-description-name"]}>{title}</p>
+        <h3 className={classes["item-description-name"]}>{title}</h3>
         <div
           className={classes["item-description-wrapper"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}
@@ -60,7 +59,10 @@ const CaseStudyItem = ({ item, index }) => {
           {parse(content)}
           <div>{caseStudyHomepage.caseStudyYear}</div>
         </div>
-        <Link href="#" className={classes["item-description__explore"]}>
+        <Link
+          href={slug || "/"}
+          className={classes["item-description__explore"]}
+        >
           <ExploreButton>
             {caseStudyHomepage.caseStudyTextButtonItem}
           </ExploreButton>

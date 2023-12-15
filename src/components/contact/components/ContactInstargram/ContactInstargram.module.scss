@@ -1,0 +1,94 @@
+.contact-instagram {
+  background: #f3e9fb;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5% 0;
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      color: #6f1ab6;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px;
+    }
+    &__text {
+      color: #131313;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin: 50px 0;
+
+    &__card-Instagram {
+      border-radius: 16px;
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 1200px) {
+  .contact-instagram {
+    &__content {
+      &__card-Instagram {
+        height: 250px;
+      }
+    }
+  }
+}
+@media (max-width: 825px) {
+  .contact-instagram {
+    &__head {
+      flex-wrap: wrap;
+      justify-content: center;
+      &__title {
+        text-align: center;
+        width: 100%;
+        padding-bottom: 10px;
+      }
+     
+    }
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+      &__card-Instagram {
+        height: 370px;
+      }
+    }
+  }
+}
+@media (max-width: 760px) {
+  .contact-instagram {
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+      &__card-Instagram {
+        height: 250px;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .contact-instagram {
+    &__content {
+      grid-template-columns: repeat(1, 1fr);
+      &__card-Instagram {
+        height: 300px;
+      }
+    }
+  }
+}

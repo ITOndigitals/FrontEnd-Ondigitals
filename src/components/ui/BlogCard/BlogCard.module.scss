@@ -3,54 +3,32 @@
 .blog-card-container {
   display: inline;
 }
-
 .blog-card {
-  border-radius: 20px 20px 0px 0px;
   background-color: #fff;
   position: relative;
-  width: 100%;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  &-slider {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  }
+  width: auto;
   &-blog-page {
     transition: all 0.3s;
-    height: 92%;
+    height: auto;
     overflow: hidden;
+    display: flex;
     &:hover {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
-        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-      height: 100%;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
   }
-  &__button span {
-    color: #131114;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
-  }
+
   &__content {
-    padding: 10px;
-    &__dayView {
+    padding: 24px;
+    width: 65%;
+    &__tag {
       display: flex;
-      padding-bottom: 16px;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      gap: 12px;
       &__item {
         margin-top: 6px;
       }
     }
     &--title-post {
-      color: #131114;
-      font-size: 16px;
       font-style: normal;
       font-weight: 600;
       line-height: 24px;
@@ -59,7 +37,9 @@
       -webkit-line-clamp: 2;
       overflow: hidden;
       text-align: start;
-      min-height: 48px;
+      color: #6f1ab6;
+      font-size: 20px;
+      line-height: 28px;
     }
     &--text {
       color: #131114;
@@ -77,15 +57,15 @@
     }
   }
   &__image {
-    width: 100%;
-    height: 170px;
-    min-height: 170px;
-    overflow: hidden;
-    position: relative;
+    width: 35%;
+    a {
+      height: 310px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
     img {
       object-fit: cover;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
     }
   }
   &__dateview-wrapper {
@@ -103,26 +83,64 @@
     }
   }
 }
-
-@media (max-width: 320px) {
-  .card-news-insights {
-    border-radius: 20px 20px 0px 0px;
-    background-color: #fff;
-    position: relative;
-    width: 100%;
-    &-slider {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 30px -3px,
-        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    }
+@media (max-width: 830px) {
+  .blog-card {
+    flex-wrap: wrap;
     &__content {
-      padding: 10px;
-
-      &__dayView {
-        justify-content: space-evenly;
-        p {
-          margin-top: 10px;
-          margin-right: 5px;
+      padding: 24px;
+      width:60%;
+      &__tag {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        &__item {
+          margin-top: 6px;
         }
+      }
+    }
+    &__image {
+      width: 40%;
+      a {
+        width: 100%;
+        height: 225px;
+        overflow: hidden;
+        position: relative;
+        display: block;
+      }
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .blog-card {
+    flex-wrap: wrap;
+    &__content {
+      padding: 24px;
+      width: 100%;
+      &__tag {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        &__item {
+          margin-top: 6px;
+        }
+      }
+    }
+    &__image {
+      width: 100%;
+      a {
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+        display: block;
+      }
+      img {
+        object-fit: contain;
       }
     }
   }

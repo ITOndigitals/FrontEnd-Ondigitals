@@ -12,11 +12,12 @@ import { Maven_Pro } from "next/font/google";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
-export default function FAQServiceDetail({ data }) {
+export default function FAQServiceDetail({ data, titleHeading }) {
+  const scrollRef = useRef(null);
+
   const [expandedItems, setExpandedItems] = useState(
     Array(data.length).fill(false)
   );
-  const scrollRef = useRef(null);
 
   const toggleItem = (index) => {
     const newExpandedItems = [...expandedItems];
@@ -43,7 +44,9 @@ export default function FAQServiceDetail({ data }) {
       className={classes["faq-service-detail"]}
     >
       <div className="container">
-        <h3 className={classes["faq-service-detail__heading"]}>How it works</h3>
+        <div className={classes["faq-service-detail__heading"]}>
+          {titleHeading && parse(titleHeading)}
+        </div>
         {data.map((item, index) => (
           <div key={index} className={classes["faq-service-detail__content"]}>
             <div

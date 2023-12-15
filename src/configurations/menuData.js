@@ -32,11 +32,11 @@ export const menuItems = [
     name: "Services",
     href: "/service",
   },
-  {
-    id: 3,
-    name: "Case study",
-    href: "",
-  },
+  // {
+  //   id: 3,
+  //   name: "Case study",
+  //   href: "",
+  // },
   {
     id: 4,
     name: "Blog",

@@ -1,7 +1,5 @@
 import classes from "./CaseStudy.module.scss";
-import CaseStudiesFilters from "../CaseStudiesFilters/CaseStudiesFilters";
 import CaseStudyList from "./CaseStudyList";
-import CustomPagination from "@/components/ui/Pagination/CustomPagination";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 
@@ -122,64 +120,6 @@ const DUMMY_CASE_STUDIES = [
       },
     ],
   },
-  {
-    id: 5,
-    name: "passion",
-    image:
-      "https://s3-alpha-sig.figma.com/img/302f/4cbf/7348a358d2fe9c6b872189bb36b7c98a?Expires=1696809600&Signature=T1e2BK4fT3xcz4tdNnE2RYN3g~hweRK5qN-Ewd6A5Ufy8ygQ0dTw1QVYcuBVrzRIg2FyUtMEMcTmdl6mG~uYGmQJSq2XAF619AD6y84IOjLc2FDbCmn-rTGPxoN0jJvfEBY~Kh5dr4WLwqUuFQxQTDy3JcI1gWgswxsMAwa6rx0UZdt-KZOeAxRmxaQwO7pj5NPDEbTYwlOnUiQfvyM6J5xLuvNLP5hsStclPLjqTmc-cENEZ2lmYxpQcLjVpXHoucg1xKrGXMvRvDvdArpH~IgOYGZfsSlLz~XwgUM0PiAfAyVVxa8z6ugMHhxzfJ7mnAbEt9vlQRcVUf~70xbA7g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    year: 2020,
-    tags: [
-      {
-        name: "Content Marketing",
-        type: 1,
-      },
-      {
-        name: "Facebook Ads",
-        type: 2,
-      },
-      {
-        name: "Graphic Design",
-        type: 3,
-      },
-      {
-        name: "KOL Marketing",
-        type: 4,
-      },
-      {
-        name: "Video Marketing",
-        type: 2,
-      },
-    ],
-  },
-  {
-    id: 6,
-    name: "korice",
-    image:
-      "https://s3-alpha-sig.figma.com/img/c6b7/4e73/bab2bc2fb354cd389b25661f9ab42e53?Expires=1697414400&Signature=S3ELzFE3JPlffJ6cOeZ~mhEhJSEIPBy2FJ0iJykdtn997Y8qs3Izz0InmLACk1zsFGD2ZoF9qQHV2OxXRA0Vsqodd3QH3jLcvU354~z9RmNdRhoaX1aR3Aa6Y4bNkE0E2prIiN~-FwynX8EFp5w3bGYEGFXo8Ct~7GT674bTlbxilTkc6RKD2XzXmRgdS5CawNkvd8SlT2tO2U9ch5~hpri846KuQ8TSEugF1gkuCTGC-t4qKg7CH7GJ5Ja3wy0oEvsmxfrp7WndV4R7rvKaEviaV28Tz-nDaB7Nqs6guBoqjO10ps8qshy8GyzYhcaZj5PKgHPWfOTA~J9dCoGuZA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    year: 2020,
-    tags: [
-      {
-        name: "Content Marketing",
-        type: 1,
-      },
-      {
-        name: "Facebook Ads",
-        type: 2,
-      },
-      {
-        name: "Graphic Design",
-        type: 3,
-      },
-      {
-        name: "KOL Marketing",
-        type: 4,
-      },
-      {
-        name: "Video Marketing",
-        type: 2,
-      },
-    ],
-  },
 ];
 
 export default function CaseStudyServicePage() {
@@ -212,7 +152,7 @@ export default function CaseStudyServicePage() {
                   <TopRightArrow width={24} height={24} color="#fff" />
                 }
               >
-                View
+                VIEW ALL
               </ButtonNoBorder>
             </div>
           </div>

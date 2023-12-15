@@ -19,12 +19,12 @@ export default function Input({
         errors != null ? "input-contact-form-error" : ""
       } ${isSuccess ? "input-contact-form-success" : ""}`}
     >
-      <label htmlFor={fieldName}>{title}</label>
+      <label htmlFor={fieldName}>{title || "Tell me about yourself(*)"}</label>
       <div style={{ position: "relative" }}>
         <input
           id={fieldName}
           type={type}
-          placeholder={placeholder}
+          placeholder={placeholder || "Your name / Your company name"}
           value={value}
           onChange={onChange}
           onBlur={onBlur}

@@ -1,0 +1,62 @@
+@import "../../../styles/variables";
+
+.select {
+  display: flex;
+  align-items: center;
+  position: relative;
+  .select-wrapper {
+    position: relative;
+    min-width: 150px;
+    cursor: pointer;
+    .select-name {
+      display: flex;
+      user-select: none;
+      &__content {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+      }
+    }
+    .select-list {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      transition: opacity 0.3s;
+      background-color: $neutral-900;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      z-index: $selection-index;
+      box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.7);
+      &.show {
+        opacity: 1;
+        visibility: visible;
+        width: 90%;
+      }
+      &-item {
+        padding: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        display: flex;
+        p {
+          margin-top: 3px;
+        }
+        &:hover {
+          background-color: $primary-dark;
+          a {
+            color: white !important;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .select {
+    justify-content: space-between;
+  }
+}

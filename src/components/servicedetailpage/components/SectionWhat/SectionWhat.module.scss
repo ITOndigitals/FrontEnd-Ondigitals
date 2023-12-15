@@ -1,0 +1,116 @@
+.section-what {
+  height: auto;
+  padding: 5% 0;
+  &__title {
+    color: #fff;
+    text-align: start;
+
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+    h2,
+    h3,
+    h4 {
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 52px;
+      display: block;
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5%;
+    color: #f6f8fa;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    p {
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: inside;
+      margin-bottom: 10px;
+    }
+    &__left {
+      width: 30%;
+      padding: 5% 0;
+    }
+    &__center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__image {
+        position: relative;
+        overflow: hidden;
+        height: 336px;
+        border-radius: 50%;
+        width: 336px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          object-fit: cover;
+        }
+      }
+    }
+    &__right {
+      width: 30%;
+      padding: 5% 0;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .section-what {
+    height: auto;
+    padding: 10% 0;
+    &__title {
+      &__text {
+        width: 100%;
+      }
+    }
+    &__content {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      &__left {
+        width: 100%;
+        text-align: center;
+        padding: unset;
+      }
+      &__right {
+        width: 100%;
+        text-align: center;
+        padding: unset;
+      }
+    }
+  }
+}
+@media (max-width: 330px) {
+  .section-what {
+    height: auto;
+    &__title {
+      font-size: 30px;
+    }
+    &__content {
+      &__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__image {
+          position: relative;
+          overflow: hidden;
+          height: 250px;
+          border-radius: 50%;
+          width: 250px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import PostDetail from "./components/postdetail/PostDetail";
 import { Maven_Pro } from "next/font/google";
 import TableOfContent from "./components/TableOfContent/TableOfContent";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
+import Link from "next/link";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const BlogDetail = ({ relatedPosts, postDetail }) => {
@@ -31,7 +32,6 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     breadcrumPageDetail,
     titlePostDetail,
   ];
-
   const [markdown, setMarkdown] = useState();
   const headerIsDark = useBoundStore((state) => state.isDark);
   const setToDark = useBoundStore((state) => state.setToDark);
@@ -73,32 +73,52 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
           <Breadcrumb data={DUMMY_BREADCRUMB_DATA} />
         </div>
         <section className={classes["blog-detail-content"]}>
-          <div className={classes["blog-detail-content__toc"]}>
-            {markdown && <TableOfContent markdown={markdown} />}
-          </div>
-          <div className={classes["blog-detail-content__spacer"]}></div>
           <div className={classes["blog-detail-content__main"]}>
             <PostDetail data={postBy} applyMarkDown={applyMarkDownHandler} />
           </div>
+          <div className={classes["blog-detail-content__toc"]}>
+            {markdown && <TableOfContent markdown={markdown} />}
+            <div className={classes["blog-detail-content__toc__newest-posts"]}>
+              <p
+                className={
+                  classes["blog-detail-content__toc__newest-posts__title"]
+                }
+              >
+                NEWEST POSTS
+              </p>
+              <ul
+                style={{ fontFamily: MavenPro.style.fontFamily }}
+                className={
+                  classes["blog-detail-content__toc__newest-posts__list"]
+                }
+              >
+                {relatedPosts &&
+                  relatedPosts.slice(0, 5).map((item) => (
+                    <Link key={item.id} href={item.slug}>
+                      <li>{item.title}</li>
+                    </Link>
+                  ))}
+              </ul>
+            </div>
+          </div>
         </section>
-        <section className={classes["blog-detail-read-more"]}>
+      </div>
+      <section className={classes["blog-detail-read-more"]}>
+        <div className="container">
           <div className={classes["blog-detail-read-more__heading"]}>
             <p className={classes["blog-detail-read-more__heading-content"]}>
               {textReadMore}
             </p>
-            <ButtonNoBorder
-              href="#"
-              textSize="md"
-              RightIcon={
-                <TopRightArrow width={24} height={24} color="#131114" />
-              }
-            >
-              {textButton}
-            </ButtonNoBorder>
           </div>
-          <ReadMoreSlider data={relatedPosts} />
-        </section>
-      </div>
+          <ul className={classes["blog-detail-read-more__listPosts"]}>
+            {relatedPosts.map((item) => (
+              <Link key={item.id} href={item.slug}>
+                <li>{item.title}</li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      </section>
       <NeedHelpDigitalGrowth />
     </div>
   );

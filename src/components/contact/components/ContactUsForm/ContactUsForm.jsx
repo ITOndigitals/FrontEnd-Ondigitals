@@ -15,9 +15,23 @@ import { Maven_Pro } from "next/font/google";
 import { SendEmailContactForm } from "@/until/sendEmail";
 import { useMutation } from "@apollo/client";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
+
+const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-export default function ContactUsForm() {
+export default function ContactUsForm({ data }) {
+  const {
+    textButton,
+    textButtonSending,
+    textColumLeft,
+    title,
+    titleColumLeft,
+    contentPrivacyPolicy,
+    contentNoteError,
+    contentNoteSuccess,
+    contactForm,
+  } = data;
+  const [fieldName, fieldEmail, fieldMessage] = contactForm.contentForm || [];
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -30,7 +44,7 @@ export default function ContactUsForm() {
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
-  
+
   async function handleSubmit(values) {
     try {
       const { data } = await sendEmailMutation({
@@ -51,19 +65,15 @@ export default function ContactUsForm() {
       <div className="container">
         <div className={classes["section-contact-form__header"]}>
           <h1 className={classes["section-contact-form__header__title"]}>
-            Contact us
+            {title && title}
           </h1>
           <div
             className={classes["section-contact-form__header__notification"]}
           >
-            {loading && (
-              <LoadingSpinner/>
-            )}
-            {isSuccess && !loading &&(
+            {loading && <LoadingSpinner />}
+            {isSuccess && !loading && (
               <Note
-                content="Message sent! 
-             Thank you for contacting us.
-             We will reach out to you soon."
+                content={contentNoteSuccess}
                 backgroundColor="#5CFFAE"
                 icon={
                   <IconSuccess
@@ -76,9 +86,7 @@ export default function ContactUsForm() {
             )}
             {error && (
               <Note
-                content="Something went wrong! 
-                We couldn't receive your message.
-                Please wait and try again."
+                content={contentNoteError}
                 backgroundColor="rgba(255, 82, 82, 1)"
                 icon={
                   <IconDanger
@@ -98,10 +106,10 @@ export default function ContactUsForm() {
               onSubmit={formik.handleSubmit}
             >
               <Input
-                title={"Tell us about yourself (*)"}
+                title={fieldName?.textLable}
                 type={"text"}
                 fieldName={"name"}
-                placeholder={"Your name / Your company name..."}
+                placeholder={fieldName?.textPlaceholder}
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -115,10 +123,10 @@ export default function ContactUsForm() {
                 }
               />
               <Input
-                title={"Email (*)"}
+                title={fieldEmail?.textLable}
                 type={"email"}
                 fieldName={"email"}
-                placeholder={"Your email"}
+                placeholder={fieldEmail?.textPlaceholder}
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -133,8 +141,9 @@ export default function ContactUsForm() {
               />
 
               <MesageTextarea
+                title={fieldMessage?.textLable}
                 name="message"
-                placeholder="Write message..."
+                placeholder={fieldMessage?.textPlaceholder}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.message}
@@ -167,24 +176,23 @@ export default function ContactUsForm() {
                       <ArrowRight width={24} height={24} color="#FFF" />
                     }
                   >
-                    {loading ? "Sending message..." : "Send us a message"}
+                    {loading ? textButtonSending : textButton}
                   </Button>
                 </div>
               </div>
-              <span style={{ fontFamily: MavenPro.style.fontFamily }}>
-                Please read and agree to our Privacy Policy before submitting
-                your inquiry. If you wish to opt out or have any concerns,
-                kindly contact us directly for assistance.
-              </span>
+              <div
+                className={classes["content-privacy-policy"]}
+                style={{ fontFamily: MavenPro.style.fontFamily }}
+              >
+                {contentPrivacyPolicy && parse(contentPrivacyPolicy)}
+              </div>
             </form>
           </div>
           <div className={classes["contact-section__columRight"]}>
             <div className={classes["contact-section__columRight__text"]}>
-              <p>LET'S TAL</p>
-              <p className={classes["talk"]}>K</p>
+              <p>{titleColumLeft && titleColumLeft}</p>
               <p style={{ fontFamily: MavenPro.style.fontFamily }}>
-                Tell us about your business challenge and let's discuss
-                together.
+                {textColumLeft && textColumLeft}
               </p>
             </div>
           </div>

@@ -10,7 +10,7 @@ import { GET_POSTS_BY_FILTER } from "@/pages/api/graphqlApollo";
 
 const BlogPage = ({ blogsData }) => {
   const { nodes, pageInfo } = blogsData;
-  const { hasNextPage } = pageInfo;
+  const { hasNextPage, endCursor } = pageInfo;
   const { locale } = useRouter();
   const language = locale.toUpperCase();
   const first = 12;
@@ -18,11 +18,8 @@ const BlogPage = ({ blogsData }) => {
   const [isNexPage, setIsNexPage] = useState(hasNextPage);
   const [orderBy, setOrderBy] = useState("DESC");
   const [keySearch, setKeySearch] = useState("");
-  const [isFilterPanigation, setIsFilterPanigation] = useState(
-    pageInfo.endCursor || ""
-  );
+  const [isFilterPanigation, setIsFilterPanigation] = useState(endCursor);
   const [isUseFilter, setIsUseFilter] = useState(false);
-  const setToDark = useBoundStore((state) => state.setToDaryk);
 
   // changel color header
   const headerIsDark = useBoundStore((state) => state.isDark);
@@ -38,6 +35,7 @@ const BlogPage = ({ blogsData }) => {
   const setIsInSubPageState = useBoundStore(
     (state) => state.setIsInSubPageState
   );
+  const { setToDark } = useBoundStore();
 
   useEffect(() => {
     setHeaderStickyState(false);
@@ -48,7 +46,7 @@ const BlogPage = ({ blogsData }) => {
       header.classList.remove("hide");
     }
     setHeaderCanChangeColor();
-    setToDark;
+    setToDark();
   }, [headerIsDark]);
 
   // call api
@@ -72,6 +70,7 @@ const BlogPage = ({ blogsData }) => {
 
   // function sort posts
   const handleSortPosts = (keySort) => {
+    console.log(keySearch);
     filterPosts({
       variables: {
         key: keySearch,
@@ -89,7 +88,7 @@ const BlogPage = ({ blogsData }) => {
   // handle panigation
   useEffect(() => {
     const listItems = document.querySelectorAll("#list-posts-ods li");
-    const lastListItem = listItems[listItems.length - 1];
+    const lastListItem = listItems[listItems.length - 2];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -109,11 +108,18 @@ const BlogPage = ({ blogsData }) => {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.5,
+        threshold: 0.3,
       }
     );
     if (lastListItem) {
       observer.observe(lastListItem);
+    }
+    if (!hasNextPage) {
+      return () => {
+        if (lastListItem) {
+          observer.unobserve(lastListItem);
+        }
+      };
     }
     return () => {
       if (lastListItem) {
@@ -125,33 +131,46 @@ const BlogPage = ({ blogsData }) => {
   // update posts data
   useEffect(() => {
     if (data) {
-      const { nodes, pageInfo } = data.posts;
-      setIsFilterPanigation(pageInfo.endCursor);
-      setIsNexPage(pageInfo.hasNextPage);
+      const dataPosts = data.posts;
+      const { nodes, pageInfo } = dataPosts;
+      const { endCursor, hasNextPage } = pageInfo;
+      setIsFilterPanigation(endCursor);
+      setIsNexPage(hasNextPage);
       if (isUseFilter && nodes.length > 0) {
         setRenderData(nodes);
         setIsUseFilter(false);
       }
       if (isNexPage && !isUseFilter) {
-        setRenderData([...renderData, ...nodes]);
+        setRenderData((prevData) => [...prevData, ...nodes]);
         setIsUseFilter(false);
       }
       if (!isNexPage) {
         setIsFilterPanigation("");
       }
       if (nodes.length === 0 && keySearch) {
-        setKeySearch("")
-        setRenderData([]);
+        if (renderData.length > 0) {
+          setRenderData((prevData) => [...prevData, ...nodes]);
+        } else {
+          setKeySearch("");
+          setRenderData([]);
+        }
       }
     }
   }, [data]);
 
   // update data when change lanuguage
   useEffect(() => {
-    console.log(4);
     setRenderData(nodes);
+    setIsFilterPanigation(endCursor);
   }, [nodes]);
 
+  useEffect(() => {
+    const nextElement = document.getElementById("__next");
+    if (nextElement) {
+      nextElement.style.backgroundColor = "#F6F8FA";
+    }
+  }, []);
+  console.log(renderData, keySearch);
   return (
     <div className={`container ${classes.container}`}>
       <BlogsHeader onSearch={onSearchPost} handleSort={handleSortPosts} />

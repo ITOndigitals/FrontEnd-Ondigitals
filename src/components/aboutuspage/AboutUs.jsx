@@ -67,16 +67,19 @@ const AboutUs = ({ data }) => {
       {sectionIntroducingOndigitals && (
         <IntroducingOnDigitals data={sectionIntroducingOndigitals} />
       )}
+      {sectionOurTrustedPartner && (
+        <OurTrustedPartner data={sectionOurTrustedPartner} />
+      )}
+      {dataExploreTheExperience && (
+        <ExploreTheExperience data={dataExploreTheExperience} />
+      )}
       {sectionBestDigitalmarketing && (
         <BestDigitalMarketing data={sectionBestDigitalmarketing} />
       )}
       {sectionStepDigitalMarketing && (
         <StepDigitalMarketing data={sectionStepDigitalMarketing} />
       )}
-      {sectionOurTrustedPartner && (
-        <OurTrustedPartner data={sectionOurTrustedPartner} />
-      )}
-      <ExploreTheExperience data={dataExploreTheExperience} />
+
       <NeedHelpDigitalGrowth />
     </>
   );

@@ -4,10 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10% 0;
+  padding: 5% 0;
   &__title {
     width: 50%;
-    p {
+    h2 {
       color: #131114;
       font-size: 36px;
       font-style: normal;
@@ -15,46 +15,47 @@
       line-height: 40px;
     }
   }
-  &__card {
+  &__card-main {
     display: flex;
     row-gap: 20px;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: 10%;
-    &__item {
-      width: 32%;
-      .final-card {
-        height: 100%;
-        position: relative;
-        cursor: pointer;
-        background-color: #fff;
-        border-radius: 16px;
-        padding: 16px;
-        border: 1px solid #131114;
-        position: relative;
-        box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.1),
-          9px 14px 16px 0px rgba(0, 0, 0, 0.09),
-          20px 31px 22px 0px rgba(0, 0, 0, 0.05),
-          35px 55px 26px 0px rgba(0, 0, 0, 0.01),
-          55px 86px 29px 0px rgba(0, 0, 0, 0);
-        &__content {
-          position: absolute;
-          transform: translateY(100%);
-          bottom: 34%;
-          color: #131114;
-          font-size: 20px;
+    padding-top: 5%;
+    &__container {
+      width: 100%;
+      height: auto;
+      background-color: #3d1766;
+      border-radius: 16px;
+      padding: 20px 32px;
+      box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.1),
+        9px 14px 16px 0px rgba(0, 0, 0, 0.09),
+        20px 31px 22px 0px rgba(0, 0, 0, 0.05),
+        35px 55px 26px 0px rgba(0, 0, 0, 0.01),
+        55px 86px 29px 0px rgba(0, 0, 0, 0);
+      &__title {
+        color: #fff;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 36px;
+      }
+      &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__text {
+          width: 20%;
+          color: #f6f8fa;
+          font-size: 16px;
           font-style: normal;
-          font-weight: 600;
-          line-height: 28px;
-          svg {
-            transform: rotate(90deg);
-          }
-          @media (max-width: 480px) {
-            height: 195px;
-          }
-          @media (max-width: 330px) {
-            height: 220px;
-          }
+          font-weight: 400;
+          line-height: 24px;
+        }
+        &__list-card-child{
+          width: 80%;
+          margin: 10px 0;
+          display: flex;
+          gap: 18px;
         }
       }
     }

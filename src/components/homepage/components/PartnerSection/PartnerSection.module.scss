@@ -13,12 +13,12 @@
     font-style: normal;
     font-weight: 600;
     line-height: 40px;
-    padding-bottom: 55px;
+    padding-bottom: 5%;
   }
   &__below {
     display: flex;
     justify-content: space-between;
-    padding-top: 10%;
+    padding-top: 5%;
     flex-wrap: wrap;
     &__button {
       color: #fff;
@@ -45,13 +45,14 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  align-items: center;
   gap: 50px;
   &__colrightmain {
     transform: translateY(-25px);
   }
   &__image {
-    height: 100px;
-    width: 100px;
+    height: 140px;
+    width: 140px;
     position: relative;
   }
   &__image img {
@@ -60,15 +61,15 @@
     height: 100%;
     &:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-      border: 3px solid #6F1AB6;
+      border: 3px solid #6f1ab6;
     }
   }
 
   &__colrightimage {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 30px 90px;
+    gap: 30px 120px;
   }
   &__colright--text {
     color: #fff;
@@ -125,20 +126,30 @@
     }
   }
   .homepagesectionpartner__content {
-    margin: 0 20px;
+    margin: 0;
+    align-items: center;
     &__colrightimage {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
       gap: 30px 50px;
+      place-items: center;
     }
   }
 }
-@media (max-width: 330px) {
+@media (max-width: 380px) {
   .homepagesectionpartner__content {
-    margin: unset;
+    &__colright--text {
+      text-align: center;
+      padding: 0 10px;
+    }
+    &__image {
+      height: 100px;
+      width: 100px;
+    }
     &__colrightimage {
-      gap: 30px 20px !important;
+      place-items: center;
+      gap: 20px 10px !important;
     }
   }
 }

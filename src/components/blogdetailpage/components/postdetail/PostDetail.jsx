@@ -23,7 +23,7 @@ export default function PostDetail({ data, applyMarkDown }) {
   );
   useEffect(() => {
     if (matchingTranslation) {
-      router.push(`/blog/${matchingTranslation.slug}`);
+      router.push(matchingTranslation.slug);
     } else if (router.locale !== post.language.slug) {
       router.push("/");
     }
@@ -112,15 +112,7 @@ export default function PostDetail({ data, applyMarkDown }) {
             <DateAndViews createDate={post.date} views={500} />
           </div>
         </div>
-        <div className={classes["image-main-post-detail"]}>
-          <Image
-            src={post.featuredImage?.node.sourceUrl}
-            fill
-            alt={post.title}
-            blurDataURL={post.featuredImage?.node.sourceUrl}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
+       
         <div
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}

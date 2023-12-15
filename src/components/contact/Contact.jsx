@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import ContactUsForm from "./components/ContactUsForm/ContactUsForm";
 import ContactInfo from "./components/ContactInfo/ContactInfo";
 import { useBoundStore } from "@/store/useBoundStore";
+import ContactInstargram from "./components/ContactInstargram/ContactInstargram";
 
-export default function Contact() {
+export default function Contact({ data }) {
+  const { sectionMap } = data;
+
   //Khi tới các section homepage, cho ẩn header chính để hiện section header
   //nên cần set lại xuất hiện
   const setToLight = useBoundStore((state) => state.setToLight);
@@ -38,8 +41,9 @@ export default function Contact() {
 
   return (
     <>
-      <ContactUsForm />
-      <ContactInfo />
+      <ContactUsForm data={data} />
+      <ContactInfo data={sectionMap} />
+      <ContactInstargram />
     </>
   );
 }

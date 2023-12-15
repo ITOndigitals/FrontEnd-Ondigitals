@@ -1,31 +1,26 @@
 import React from "react";
 import classes from "./ServiceCard.module.scss";
 import Link from "next/link";
-import ExploreButton from "../Buttons/ExploreButton/ExploreButton";
+import Image from "next/image";
 
-export default function ServiceCard({ title, color, href, isFinal }) {
+export default function ServiceCard() {
   return (
-    <Link href={`/service/${href}`}>
-      <div
-        style={{ backgroundColor: color }}
-        className={`${classes["service-card"]} ${
-          isFinal ? classes["final"] : ""
-        }`}
-      >
-        <div className={classes["service-card__content"]}>
-          <div className={classes["service-card__content__title"]}>
-            <div>{title}</div>
+    <div className={classes["service-card"]}>
+      <div className={classes["service-card__content"]}>
+        <div className={classes["service-card__content__title"]}>
+          <p>Social Media Marketing</p>
+        </div>
+        <div className={classes["service-card__content__image"]}>
+          <div className={classes["service-card__content__image__main"]}>
+            <Image
+              fill
+              src="https://api.ondigitals.com/wp-content/uploads/2023/09/SEO.png"
+              alt="ods"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            />
           </div>
         </div>
-        <div></div>
-        <div
-          className={`${classes["service-card__button"]} ${
-            isFinal ? classes.hide : ""
-          }`}
-        >
-          <ExploreButton>How it works</ExploreButton>
-        </div>
       </div>
-    </Link>
+    </div>
   );
 }

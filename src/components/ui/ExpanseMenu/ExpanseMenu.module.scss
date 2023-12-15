@@ -12,6 +12,13 @@
   .menu-social__item:nth-child(n):not(:last-child) {
     margin-right: 24px;
   }
+  svg {
+    path {
+      &:hover {
+        fill: rgba(171, 139, 212, 1);
+      }
+    }
+  }
 }
 
 .wrapper {
@@ -39,10 +46,105 @@
     padding-top: calc($header-padding + 40px);
     padding-bottom: calc($header-padding + 10px);
     text-align: right;
+    display: flex;
+    overflow: hidden;
+    &__image {
+      position: absolute;
+      width: 60%;
+      height: 120vh;
+      img {
+        top: -16% !important;
+        left: -8% !important;
+      }
+    }
+    &__head-line {
+      position: absolute;
+      top: 45%;
+      left: 40%;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 36px;
+      width: 303px;
+      text-align: start;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 2;
+      &:hover {
+        color: rgba(171, 139, 212, 1);
+        transform: scale(1.1);
+      }
+    }
+    &__japan {
+      position: absolute;
+      top: 38%;
+      left: 27.5%;
+    }
+    &__china {
+      position: absolute;
+      top: 47%;
+      left: 20.5%;
+    }
+    &__thailand {
+      position: absolute;
+      top: 53%;
+      left: 15.5%;
+    }
+    &__taiwan {
+      position: absolute;
+      top: 51%;
+      left: 25%;
+    }
+    &__vietnam {
+      position: absolute;
+      top: 57%;
+      left: 17%;
+    }
+    &__philippines {
+      position: absolute;
+      top: 60%;
+      left: 24%;
+    }
+    &__malaysia {
+      position: absolute;
+      top: 69%;
+      left: 15.5%;
+    }
+    &__singapore {
+      position: absolute;
+      top: 72.5%;
+      left: 17%;
+    }
+    &__indonesia {
+      position: absolute;
+      top: 74.5%;
+      left: 25%;
+    }
+    &__australia {
+      position: absolute;
+      top: 83.5%;
+      left: 27.5%;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 24px;
+      z-index: 2;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        color: rgba(171, 139, 212, 1);
+        transform: scale(1.5);
+      }
+    }
+
     &-inner {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-evenly;
       height: 100%;
       padding-right: 28px;
       &::-webkit-scrollbar {
@@ -51,8 +153,8 @@
       }
     }
     .menu-list {
-      font-size: 48px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 600;
       line-height: 52px;
       opacity: 0;
       transform: translateY(-30px);
@@ -68,8 +170,14 @@
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          div {
+          span {
             color: white;
+            transition: all 0.5s;
+
+            &:hover {
+              color: rgba(171, 139, 212, 1);
+              transform: scale(1.2) translateX(-20px);
+            }
           }
         }
         &__circle {
@@ -111,7 +219,15 @@
     }
   }
 }
-
+@media (max-width: 1200px) {
+  .wrapper {
+    .menu-list-wrapper {
+      &__map {
+        display: none;
+      }
+    }
+  }
+}
 @media (max-width: 360px) {
   .wrapper {
     .menu-list-wrapper {

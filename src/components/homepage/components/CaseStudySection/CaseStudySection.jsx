@@ -4,7 +4,7 @@ import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorde
 import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useEffect, useState } from "react";
-
+import { useRouter } from "next/router";
 
 const CaseStudySection = ({ NavButton, data }) => {
   const [isOnMobile, setIsOnMobile] = useState(false);
@@ -24,7 +24,12 @@ const CaseStudySection = ({ NavButton, data }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  const { locale } = useRouter();
+  const languagePaths = {
+    en: "/case-study",
+    vi: "/du-an",
+  };
+  const basePath = languagePaths[locale] || "/case-study";
   return (
     <section className={`${classes["case-study"]} case-study-section`}>
       {!isOnMobile && <SectionHeader />}
@@ -34,7 +39,7 @@ const CaseStudySection = ({ NavButton, data }) => {
             {caseStudySessionTitle}
           </h2>
           <ButtonNoBorder
-            href="#"
+            href={basePath}
             textSize="md"
             RightIcon={<TopRightArrow width={24} height={24} color="#ffffff" />}
           >

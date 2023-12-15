@@ -11,7 +11,7 @@
   &-no-sticky {
     top: 0;
     position: absolute;
-    margin-top: $header-padding;
+    margin-top: 20px;
   }
   &.sticky-in-subpage {
     position: fixed;

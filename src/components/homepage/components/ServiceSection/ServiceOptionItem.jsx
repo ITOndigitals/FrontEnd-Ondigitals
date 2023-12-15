@@ -12,14 +12,14 @@ const ServiceOptionItem = ({ item, isActive, onChangeActiveItem }) => {
 
   return (
     <li className={itemClasses}>
-      <button
+      <h3
         className={classes["item-wrapper"]}
         style={{ backgroundColor: activeColor, borderColor: borderColor }}
         onClick={changeActiveItemHandler.bind(this, item.id)}
       >
         <p className={classes["item-wrapper__name"]}>{item.name}</p>
         <div className={classes["item-wrapper__status"]}></div>
-      </button>
+      </h3>
     </li>
   );
 };

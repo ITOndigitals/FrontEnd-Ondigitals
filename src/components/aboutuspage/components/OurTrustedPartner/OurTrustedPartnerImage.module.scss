@@ -1,10 +1,30 @@
-.main-image{
-    .image-item{
-        border-radius: 50%;
-        position: relative;
-        border: 3px solid red;
-        width: 90px;
-        height: 90px;
-        overflow: hidden;
+.main-image {
+  cursor: pointer;
+  .image-item {
+    border-radius: 50%;
+    position: relative;
+    border: 3px solid rgba(61, 23, 102, 1);
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    background-color: #fff;
+    &:hover {
+      border: 4.5px solid rgba(205, 4, 4, 1);
     }
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .main-image {
+    .image-item {
+      border-radius: 50%;
+      position: relative;
+      border: 3px solid rgba(61, 23, 102, 1);
+      width: 130px;
+      height: 130px;
+    }
+  }
 }

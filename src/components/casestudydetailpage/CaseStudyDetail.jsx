@@ -47,11 +47,11 @@ export default function CaseStudyDetail() {
     <>
       <IntroCaseStudyDetail />
       <OverViewCaseStudyDetail />
+      {/* <CaseStudyPassion/>
       <CampaignResults />
       <CaseStudyRenault />
       <CaseStudyKLD />
-      <CaseStudyDucati />
-      <CaseStudyPassion />
+      <CaseStudyDucati /> */}
       <CaseStudyKundal/>
       {/* {extendComponentType === 0 && <CaseStudyKundal/>}
       {extendComponentType === 2 && <CaseStudyKLD />}

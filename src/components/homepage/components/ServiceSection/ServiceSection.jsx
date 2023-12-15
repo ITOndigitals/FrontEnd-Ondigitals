@@ -6,6 +6,7 @@ import AnimatedLines from "./AnimatedLines";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
+import { useRouter } from "next/router";
 const parse = require("html-react-parser");
 
 const ServiceSection = ({ NavButton, data }) => {
@@ -23,18 +24,14 @@ const ServiceSection = ({ NavButton, data }) => {
       const renderServices = serviceList.map((item, index) => {
         return {
           id: index,
-          slug:item.slug,
+          slug: item.slug,
           name: item.serviceHomepage.name,
           title: item.title,
           isActive: index === 0,
           activeColor: item.serviceHomepage.color,
           secondaryActiveColor: item.serviceHomepage.color,
           image: item.featuredImage?.node.sourceUrl,
-          content: (
-            <div>
-             {parse(item.excerpt)}
-            </div>
-          ),
+          content: <div>{parse(item.excerpt)}</div>,
         };
       });
       setRenderServices(renderServices);
@@ -68,17 +65,23 @@ const ServiceSection = ({ NavButton, data }) => {
     setRenderServices(renderData);
   };
 
+  const { locale } = useRouter();
+  const languagePaths = {
+    en: "/service",
+    vi: "/dich-vu",
+  };
+  const basePath = languagePaths[locale] || "/service";
   return (
     <section className={`${classes["service"]} service-section`}>
       {!isOnMobile && <SectionHeader isDark />}
       <div className="container">
         <div className={classes["service-grid"]}>
           <div className={classes["service-header"]}>
-            <p
+            <h2
               className={`${classes["service-header-title"]} appear-from-down`}
             >
               {serviceSectionTitle}
-            </p>
+            </h2>
             <p
               className={`${classes["service-header-desc"]} appear-from-down-slow`}
             >
@@ -86,7 +89,7 @@ const ServiceSection = ({ NavButton, data }) => {
             </p>
             <ButtonNoBorder
               className="appear-from-down-slow"
-              href="#"
+              href={basePath}
               RightIcon={
                 <TopRightArrow width={24} height={24} color="#131114" />
               }

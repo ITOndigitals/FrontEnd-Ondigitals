@@ -18,8 +18,8 @@ export default function PartnerSection({ data, NavButton }) {
     partnerSectionTitleImage,
     partnerSectionGroupNumberClient,
     partnerSectionTextButton,
+    partnerSectionListImage
   } = dataPartnerSection.homePageInputContent || {};
-  const itemImage = clients.nodes || [];
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
 
@@ -41,9 +41,9 @@ export default function PartnerSection({ data, NavButton }) {
     <section className={`${classes["homepagesectionpartner"]} partner-section`}>
       {!isOnMobile && <SectionHeader />}
       <div className="container">
-        <p className={`${classes["homepagesectionpartner__title"]} appear`}>
+        <h2 className={`${classes["homepagesectionpartner__title"]} appear`}>
           {partnerSectionTitle}
-        </p>
+        </h2>
         <div
           className={`${classes["homepagesectionpartner__content"]} appear-slow`}
         >
@@ -103,26 +103,27 @@ export default function PartnerSection({ data, NavButton }) {
           <div
             className={classes["homepagesectionpartner__content__colrightmain"]}
           >
-            <p
+            <h3
               className={
                 classes["homepagesectionpartner__content__colright--text"]
               }
             >
               {partnerSectionTitleImage}
-            </p>
+            </h3>
             <div
-              className={
-                classes["homepagesectionpartner__content__colrightimage"]
-              }
+              className={`${classes["homepagesectionpartner__content__colrightimage"]}`}
             >
-              {itemImage &&
-                itemImage.map((item) => (
-                  <div key={item.featuredImage.node?.id} className={`${divImage}`}>
+              {partnerSectionListImage &&
+                partnerSectionListImage.map((item,index) => (
+                  <div
+                    key={index}
+                    className={`${divImage} hvr-float-shadow`}
+                  >
                     <Image
-                      src={item.featuredImage.node?.sourceUrl}
+                      src={item?.sourceUrl}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      alt={item.featuredImage.node?.title}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                      alt={item?.altText}
                     />
                   </div>
                 ))}

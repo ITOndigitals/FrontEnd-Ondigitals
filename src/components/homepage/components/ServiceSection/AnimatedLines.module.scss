@@ -6,6 +6,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    animation: marquee 15s linear infinite;
   }
   &-item {
     display: flex;
@@ -36,6 +37,16 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
     }
   }
 }

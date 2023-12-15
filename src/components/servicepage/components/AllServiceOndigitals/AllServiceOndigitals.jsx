@@ -1,177 +1,106 @@
 import React from "react";
 import classes from "./AllServiceOndigitals.module.scss";
 import ServiceCard from "@/components/ui/ServiceCard/ServiceCard";
-
-const dataCard = [
-  {
-    id: 1,
-    title: (
-      <p>
-        Search Engine <br /> Optimization (SEO)
-      </p>
-    ),
-    color: "#3D1766",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: (
-      <p>
-        Pay Per <br /> Click(PPC)
-      </p>
-    ),
-    color: "#6F1AB6",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: (
-      <p>
-        Social Media <br /> Marketing
-      </p>
-    ),
-    color: "#FF0032",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: (
-      <p>
-        Website / E-commerce <br /> Design & Development
-      </p>
-    ),
-    color: "#CD0404",
-    link: "#",
-  },
-  {
-    id: 5,
-    title: (
-      <p>
-        Mobile App <br /> Design & Development
-      </p>
-    ),
-    color: "#131114",
-    link: "#",
-  },
-  {
-    id: 6,
-    title: (
-      <p>
-        Content <br /> Marketing
-      </p>
-    ),
-    color: "#3D1766",
-    link: "#",
-  },
-  {
-    id: 7,
-    title: (
-      <p>
-        KOL <br /> Marketing
-      </p>
-    ),
-    color: "#6F1AB6",
-    link: "#",
-  },
-  {
-    id: 8,
-    title: (
-      <p>
-        Creative <br /> Design
-      </p>
-    ),
-    color: "#FF0032",
-    link: "#",
-  },
-  {
-    id: 9,
-    title: (
-      <p>
-        OOH <br /> Advertising
-      </p>
-    ),
-    color: "rgba(205, 4, 4, 1)",
-    link: "#",
-  },
-  {
-    id: 10,
-    title: (
-      <p>
-        TVC <br /> Advertising
-      </p>
-    ),
-    color: "rgba(19, 17, 20, 1)",
-    link: "#",
-  },
-  {
-    id: 11,
-    title: <p>Telemarketing</p>,
-    color: "rgba(61, 23, 102, 1)",
-    link: "#",
-  },
-  {
-    id: 12,
-    title: (
-      <p>
-        Email <br /> Marketing
-      </p>
-    ),
-    color: "rgba(111, 26, 182, 1)",
-    link: "#",
-  },
-  {
-    id: 13,
-    title: (
-      <p>
-        PR Event <br /> Marketing
-      </p>
-    ),
-    color: "rgba(255, 0, 50, 1)",
-    link: "#",
-  },
-  {
-    id: 14,
-    title: (
-      <p>
-        Video <br /> Marketing
-      </p>
-    ),
-    color: "rgba(205, 4, 4, 1)",
-    link: "#",
-  },
-  {
-    id: 15,
-    title: (
-      <p>
-        Need special help? <br /> Tell us ↓
-      </p>
-    ),
-    link: "#",
-    isFinal: true,
-  },
-];
+import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay, FreeMode } from "swiper/modules";
 export default function AllServiceOndigitals({ data }) {
   const { pageBy, services } = data;
+  const { sectionCaseStudy, sectionListServices } = pageBy.pageService;
+  console.log(data);
   return (
     <section className={classes["all-service-ondigitals"]}>
       <div className="container">
         <div className={classes["all-service-ondigitals__title"]}>
-          <p>{pageBy.pageService.titleSectionListService}</p>
+          <h2>{sectionListServices.title}</h2>
         </div>
-        <div className={classes["all-service-ondigitals__card"]}>
-          {services.nodes.map((item) => (
-            <div
-              key={item.id}
-              className={classes["all-service-ondigitals__card__item"]}
+        <div className={classes["all-service-ondigitals__card-main"]}>
+          <div
+            className={classes["all-service-ondigitals__card-main__container"]}
+          >
+            <h3
+              className={
+                classes["all-service-ondigitals__card-main__container__title"]
+              }
             >
-              <ServiceCard
-                isFinal={item.isFinal ? true : false}
-                title={item.title}
-                color={item.serviceHomepage.color}
-                href={item.slug}
-              />
+              Search Engine Optimization (SEO)
+            </h3>
+            <div
+              className={
+                classes["all-service-ondigitals__card-main__container__content"]
+              }
+            >
+              <p
+                className={
+                  classes[
+                    "all-service-ondigitals__card-main__container__content__text"
+                  ]
+                }
+              >
+                Unlock the power of your brand with transformative digital
+                content strategies
+              </p>
+              <div
+                className={
+                  classes[
+                    "all-service-ondigitals__card-main__container__content__list-card-child"
+                  ]
+                }
+              >
+                <Swiper
+                  cssMode={true}
+                  loop={true}
+                  navigation={true}
+                  freeMode={true}
+                  autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 15,
+                      slidesPerGroup: 1,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 15,
+                      slidesPerGroup: 2,
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                      spaceBetween: 15,
+                      slidesPerGroup: 1,
+                    },
+                  }}
+                  modules={[Navigation, Autoplay, FreeMode]}
+                  className="list-card-services-page"
+                >
+                  <SwiperSlide>
+                    <ServiceCard />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <ServiceCard />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <ServiceCard />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <ServiceCard />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <ServiceCard />
+                  </SwiperSlide>
+                </Swiper>
+              </div>
             </div>
-          ))}
+            <div>
+              <ExploreButton>How it works</ExploreButton>
+            </div>
+          </div>
         </div>
       </div>
     </section>

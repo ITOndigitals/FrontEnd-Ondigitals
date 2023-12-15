@@ -1,10 +1,11 @@
 /* BestDigitalMarketingItem.module.scss */
 .step-digital-marketing {
-  height: 100vh;
-  background-color: #6f1ab6;
+  height: auto;
+  background-color: #3d1766;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5% 0;
   .header {
     width: 50%;
     h2 {
@@ -19,31 +20,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10% 0;
+    padding-top: 5%;
     position: relative;
+    li:nth-child(odd) {
+      .step-number {
+        background-color: #ff0032;
+      }
+    }
+    li:nth-child(even) {
+      .step-number {
+        background-color: rgba(111, 26, 182, 1);
+      }
+    }
     .step {
       display: flex;
       flex-direction: column;
       align-items: center;
       z-index: 2;
       width: 20%;
-      &:hover {
-        .step-label {
-          opacity: 1;
-        }
-        .step-title {
-          opacity: 1;
-        }
-        .step-number {
-          background-color: #ff0032;
-        }
-      }
       .main-step-number {
         position: relative;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 10px 0;
         &::before {
           content: "";
           position: absolute;
@@ -73,6 +74,7 @@
         }
       }
       .step-label {
+        min-height: 200px;
         margin-top: 8px;
         color: #fff;
         text-align: center;
@@ -84,7 +86,7 @@
         h3 {
           font-weight: 400;
           line-height: 24px;
-          min-height: 150px;
+          font-size: medium;
         }
       }
       .step-title {
@@ -108,6 +110,27 @@
     background-color: #fff;
   }
 }
+@media (min-width: 1200px) {
+  .step-digital-marketing {
+    .step-container {
+      li:nth-child(even) {
+        flex-direction: column-reverse;
+      }
+      li:nth-child(odd) {
+        .step-title{
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+      }
+      .step {
+        .step-title {
+          min-height: 200px;
+        }
+      }
+    }
+  }
+}
 @media (max-width: 1200px) {
   .step-digital-marketing {
     height: auto;
@@ -116,6 +139,49 @@
       width: 100%;
       p {
         text-align: center;
+      }
+    }
+    .step-container {
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+        width: 20%;
+        .main-step-number {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+        .step-number {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #3d1766;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          p {
+            color: #fff;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 40px;
+            padding-top: 6px;
+          }
+        }
       }
     }
   }
@@ -162,7 +228,7 @@
         &:nth-child(odd) {
           .step-title {
             text-align: right;
-            top: -10%;
+            top: -80%;
             transform: translateY(-50%) translateX(-100%);
             left: -20%;
             width: 500%;
@@ -178,7 +244,7 @@
         &:nth-child(even) {
           .step-title {
             text-align: left;
-            top: -10%;
+            top: -80%;
             transform: translateY(-50%) translateX(20%);
             left: 20%;
             width: 500%;
@@ -231,7 +297,7 @@
         margin: 16% 0;
         &:nth-child(odd) {
           .step-title {
-            top: -50%;
+            top: -80%;
             width: 300%;
           }
           .step-label {
@@ -240,7 +306,7 @@
         }
         &:nth-child(even) {
           .step-title {
-            top: -50%;
+            top: -80%;
             width: 300%;
             left: 60%;
           }
@@ -269,7 +335,7 @@
         margin: 16% 0;
         &:nth-child(odd) {
           .step-title {
-            top: -50%;
+            top: -80%;
             width: 200%;
           }
           .step-label {
@@ -278,7 +344,7 @@
         }
         &:nth-child(even) {
           .step-title {
-            top: -50%;
+            top: -80%;
             width: 200%;
             left: 80%;
           }

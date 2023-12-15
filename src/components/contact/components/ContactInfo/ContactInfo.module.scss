@@ -2,23 +2,24 @@
 
 .contact-section {
   padding: 55px 0 176px 0;
+  h2 {
+    color: #3d1766;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px;
+    margin-bottom: 14px;
+  }
 }
-
 .contact-infor {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
   &__content {
     grid-column: span 1 / span 1;
-    &-heading {
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 36px;
-      margin-bottom: 28px;
-      p:first-child {
-        color: $primary-dark;
-      }
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &-infor {
       &-item:nth-child(n):not(:last-child) {
         margin-bottom: 24px;
@@ -101,9 +102,11 @@
 
 @media (max-width: 1024px) {
   .contact-section {
-    padding: calc($header_padding*2) 0;
+    padding: 5% 0;
+    h2{
+      text-align: center;
+    }
   }
-
   .contact-infor {
     &__content {
       grid-column: span 2 / span 2;
@@ -118,6 +121,7 @@
       &-wrapper {
         width: 100%;
         text-align: center;
+        margin-bottom: 5%;
       }
       &-infor {
         &-item {

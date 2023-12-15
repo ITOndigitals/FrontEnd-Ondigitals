@@ -1,15 +1,15 @@
-.item {
-  grid-column: span 3 / span 3;
-}
+// .item {
+//   grid-column: span 3 / span 3;
+// }
 
-@media (max-width: 1024px) {
-  .item {
-    grid-column: span 6 / span 6;
-  }
-}
+// @media (max-width: 1024px) {
+//   .item {
+//     grid-column: span 6 / span 6;
+//   }
+// }
 
-@media (max-width: 480px) {
-  .item {
-    grid-column: span 12 / span 12;
-  }
-}
+// @media (max-width: 480px) {
+//   .item {
+//     grid-column: span 12 / span 12;
+//   }
+// }

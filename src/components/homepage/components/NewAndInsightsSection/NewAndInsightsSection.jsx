@@ -8,11 +8,13 @@ import classes from "./NewAndInsightsSection.module.scss";
 import NewPostCard from "./NewPostCard";
 import BlogCard from "@/components/ui/BlogCard/BlogCard";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
+import { useRouter } from "next/router";
 export default function NewAndInsightsSection({
   data,
   NavButton,
   dataHomepage,
 }) {
+  const { locale } = useRouter();
   const listPosts = data;
   const { pages } = dataHomepage;
   const {
@@ -21,6 +23,13 @@ export default function NewAndInsightsSection({
     newSectionTextButton,
     newSectionTextDesc,
   } = pages.nodes[0].homePageInputContent || {};
+
+  const languagePaths = {
+    en: "/blog",
+    vi: "/bai-viet",
+  };
+
+  const basePath = languagePaths[locale] || "/blog";
   return (
     <>
       <section
@@ -28,9 +37,9 @@ export default function NewAndInsightsSection({
       >
         <div className="container">
           <div className={`${classes["section-new-insights__title"]} appear`}>
-            <p className={`${classes["section-new-insights__title--left"]}`}>
+            <h2 className={`${classes["section-new-insights__title--left"]}`}>
               {newSectionTitle}
-            </p>
+            </h2>
             <p className={`${classes["section-new-insights__title--right"]}`}>
               {newSectionTextDesc}
             </p>
@@ -73,14 +82,13 @@ export default function NewAndInsightsSection({
               {listPosts &&
                 listPosts.map((post) => (
                   <SwiperSlide key={post.id}>
-                    <BlogCard data={post} isForSlider />
-                    {/* <NewPostCard data={post} /> */}
+                    <NewPostCard data={post} />
                   </SwiperSlide>
                 ))}
             </Swiper>
             <div className={`${classes["button-discover-more"]}`}>
               <ButtonNoBorder
-                href="#"
+                href={basePath}
                 textSize="md"
                 RightIcon={
                   <svg
