@@ -10,6 +10,8 @@ import { Maven_Pro } from "next/font/google";
 import TableOfContent from "./components/TableOfContent/TableOfContent";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import Link from "next/link";
+import { GET_POSTS_BY_TAG } from "@/pages/api/graphqlApollo";
+import { useLazyQuery } from "@apollo/client";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const BlogDetail = ({ relatedPosts, postDetail }) => {
@@ -18,6 +20,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     title: postBy?.title,
     url: postBy?.slug,
   };
+  const idPost = postBy?.categories?.nodes[0].categoryId;
   const {
     breadcrumTitleBlogDetail,
     breadcrumHome,
@@ -62,7 +65,16 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const applyMarkDownHandler = (markdownData) => {
     setMarkdown(markdownData);
   };
-
+  const [filterPostsByTag, { loading, error, data }] =
+    useLazyQuery(GET_POSTS_BY_TAG);
+  useEffect(() => {
+    filterPostsByTag({
+      variables: {
+        categoryId: idPost,
+      },
+    });
+  }, []);
+  let dataPostReadMore = data?.posts?.nodes;
   return (
     <div className={classes["blog-detail"]}>
       <div className="container">
@@ -110,13 +122,18 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
               {textReadMore}
             </p>
           </div>
-          <ul className={classes["blog-detail-read-more__listPosts"]}>
-            {relatedPosts.map((item) => (
-              <Link key={item.id} href={item.slug}>
-                <li>{item.title}</li>
-              </Link>
-            ))}
-          </ul>
+          {loading ? (
+           <div>Loading...</div>
+          ) : (
+            <ul className={classes["blog-detail-read-more__listPosts"]}>
+              {dataPostReadMore &&
+                dataPostReadMore.map((item) => (
+                  <Link key={item.id} href={item.slug}>
+                    <li>{item.title}</li>
+                  </Link>
+                ))}
+            </ul>
+          )}
         </div>
       </section>
       <NeedHelpDigitalGrowth />

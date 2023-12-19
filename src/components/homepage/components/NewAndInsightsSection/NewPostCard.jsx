@@ -10,16 +10,23 @@ import { useRouter } from "next/router";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function NewPostCard({ data }) {
-  const post = data;
   const { locale } = useRouter();
+  const post = data;
   const isoDate = post.date;
+  const tagCategory = data?.categories?.nodes;
+  const idPost = post?.postId;
+  const viewPost = (idPost % 41) + 10
   return (
     <>
       <div
         className={`${classes["card-news-insights"]} card-news-insights-container`}
       >
         <div className={classes["card-news-insights__image"]}>
-          <Link className={classes["card-news-insights__image__link"]} href={post.slug} locale={locale}>
+          <Link
+            className={classes["card-news-insights__image__link"]}
+            href={post.slug}
+            locale={locale}
+          >
             <Image
               src={post?.featuredImage?.node.sourceUrl}
               fill
@@ -41,14 +48,21 @@ export default function NewPostCard({ data }) {
             style={{ fontFamily: MavenPro.style.fontFamily }}
             className={classes["card-news-insights__content__tag"]}
           >
-            <Tag type={4} name="Web Development" href="#" />
-            <Tag type={4} name="SEO" href="#" />
+            {tagCategory &&
+              tagCategory.map((item, index) => (
+                <Tag
+                  key={index}
+                  name={item.name}
+                  href={item.slug}
+                  backgroundColor={item.description}
+                />
+              ))}
           </div>
           <div
             style={{ fontFamily: MavenPro.style.fontFamily }}
             className={classes["card-news-insights__content__dayView"]}
           >
-            <DateAndViews createDate={isoDate} views={500} />
+            <DateAndViews createDate={isoDate} views={viewPost} />
           </div>
         </div>
       </div>

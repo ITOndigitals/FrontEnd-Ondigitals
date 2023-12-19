@@ -6,7 +6,7 @@ import { useBoundStore } from "@/store/useBoundStore";
 import CaseStudyServicePage from "./components/CaseStudy/CaseStudy";
 
 export default function ServicePage({ data }) {
-  const { pageBy, services } = data;
+  const { pageBy } = data;
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -41,7 +41,7 @@ export default function ServicePage({ data }) {
     <>
       <IntroService data={pageBy} />
       <AllServiceOndigitals data={data} />
-      <CaseStudyServicePage />
+      {/* <CaseStudyServicePage /> */}
       <NeedHelpDigitalGrowth />
     </>
   );

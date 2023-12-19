@@ -2,8 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import classes from "./SelectOption.module.scss";
 import { DownNavIcon } from "../Icons/ListIcon";
 
-const SelectOption = ({ options, label, color, handleSort}) => {
-  const [choosenItemId, setChoosenItemId] = useState(options[0].id);
+const SelectOption = ({ options, label, color, handleSort }) => {
+  if (!options) {
+    return <div>Loading...</div>;
+  }
+  const [choosenItemId, setChoosenItemId] = useState(
+    options[0]?.id || options[0]?.categoryId
+  );
   const [choosenItemName, setChoosenItemName] = useState(options[0].name);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const optionsRef = useRef(null);
@@ -25,6 +30,7 @@ const SelectOption = ({ options, label, color, handleSort}) => {
   }, []);
 
   const onChooseOption = (event) => {
+    console.log("hello")
     const value = +event.target.value;
     const dataKey = event.target.getAttribute("data-key");
     {
@@ -34,8 +40,11 @@ const SelectOption = ({ options, label, color, handleSort}) => {
       setDropdownIsOpen(false);
       return;
     }
-    const foundedItemIdx = options.findIndex((option) => option.id === value);
-    setChoosenItemName(options[foundedItemIdx].name);
+    const foundedItemIdx = options.findIndex(
+      (option) => option?.id === value || option?.categoryId === value
+    );
+    console.log(value)
+    setChoosenItemName(options[foundedItemIdx]?.name);
     setChoosenItemId(value);
     setDropdownIsOpen(false);
   };
@@ -75,7 +84,7 @@ const SelectOption = ({ options, label, color, handleSort}) => {
               key={item.id}
               className={classes["select-list-item"]}
               value={item?.id}
-              data-key={item?.dataKey}
+              data-key={item?.dataKey || item?.categoryId}
             >
               {item.name}
             </li>

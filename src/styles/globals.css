@@ -1,5 +1,4 @@
 /* Reset CSS */
-@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;800&display=swap");
 body,
 h1,
 h2,
@@ -656,8 +655,8 @@ sup{
 }
 /* hiệu ứng hover cho ảnh ở trang about us và home page */
 .list-card-services-page {
-  padding-right: 5% !important;
-  padding-left: 6% !important;
+  padding-right: 45px !important;
+  padding-left: 45px !important;
 }
 /* slider list card page servicehome */
 .list-card-services-page .swiper-button-prev::after {

@@ -1,10 +1,15 @@
 import Image from "next/image";
 import classes from "./Logo.module.scss";
+import Link from "next/link";
 
 const Logo = ({ isVisible, isDark }) => {
-  if(isDark) {
+  if (isDark) {
     return (
-      <div
+      <Link
+        onClick={() => {
+          window.location.href = "/";
+        }}
+        href="/"
         className={classes["logo-container"]}
         style={{
           visibility: isVisible ? "visible" : "hidden",
@@ -19,11 +24,15 @@ const Logo = ({ isVisible, isDark }) => {
           blurDataURL={"/assets/images/ui/Logo-dark.png"}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-      </div>
+      </Link>
     );
   }
   return (
-    <div
+    <Link
+      onClick={() => {
+        window.location.href = "/";
+      }}
+      href="/"
       className={classes["logo-container"]}
       style={{
         visibility: isVisible ? "visible" : "hidden",
@@ -38,7 +47,7 @@ const Logo = ({ isVisible, isDark }) => {
         blurDataURL={"/assets/images/ui/Logo.png"}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-    </div>
+    </Link>
   );
 };
 

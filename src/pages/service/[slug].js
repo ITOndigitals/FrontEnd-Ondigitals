@@ -12,7 +12,6 @@ const parse = require("html-react-parser");
 
 export default function ServiceParent({ serviceData, dataFooter }) {
   const dataHead = serviceData.serviceParentBy.seo.fullHead;
-  console.log(serviceData)
   return (
     <>
       <Header />

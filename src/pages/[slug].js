@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   GetListSlugService,
   GetServiceDetailBySlug,
@@ -20,7 +20,14 @@ export default function DynamicDetailPage({
   blogData,
   relatedPosts,
   dataFooter,
+  notFound,
 }) {
+  const { locale } = useRouter();
+  useEffect(() => {
+    if (notFound) {
+      window.location.href = `/${locale}`;
+    }
+  }, [notFound]);
   if (serviceData) {
     const dataHead = serviceData.serviceBy.seo.fullHead;
     return (
@@ -81,6 +88,7 @@ export async function getStaticProps({ params, locale }) {
   const serviceData = await GetServiceDetailBySlug(params.slug);
   const blogData = await GetPostDetailBySlug(params.slug, language);
   const dataFooter = await getTranslatedDataFooter(language);
+  const notFound = true;
   if (serviceData && serviceData.serviceBy) {
     return {
       props: {
@@ -101,9 +109,8 @@ export async function getStaticProps({ params, locale }) {
     };
   } else {
     return {
-      redirect: {
-        destination: `/${locale}`,
-        permanent: false,
+      props: {
+        notFound,
       },
     };
   }

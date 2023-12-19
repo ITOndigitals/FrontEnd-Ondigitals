@@ -14,7 +14,6 @@ export default function ButtonSearch({ onSearch, color }) {
     }
   };
   const handleClickBtn = () => {
-    console.log(inputRef);
     if (inputRef.current) {
       inputRef.current.focus();
     }

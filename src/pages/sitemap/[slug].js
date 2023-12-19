@@ -24,7 +24,6 @@ export async function getServerSideProps({ res, params: { slug } }) {
   }
   let pageUrls = await getSitemapPageUrls({ type, page });
   if (!pageUrls?.length) {
-    console.log(pageUrls);
     return {
       notFound: true,
     };

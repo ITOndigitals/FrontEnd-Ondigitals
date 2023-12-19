@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Maven_Pro } from "next/font/google";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
 import { useRouter } from "next/router";
+import { getLanguagePathService } from "../../../../../utils/languageSlug";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -26,6 +27,7 @@ const ServiceDetail = ({ context }) => {
     };
   }, [context.content]);
 
+  const basePath = getLanguagePathService(locale);
   return (
     <div
       className={`${classes["service-details"]} appear-from-down-slow`}
@@ -43,7 +45,7 @@ const ServiceDetail = ({ context }) => {
           >
             {context.content}
           </div>
-          <Link href={context.slug} locale={locale}>
+          <Link href={`${basePath}/${context.slug}`} locale={locale}>
             <ExploreButton>Explore</ExploreButton>
           </Link>
         </div>

@@ -1,6 +1,10 @@
 import SelectOption from "@/components/ui/SelectOption/SelectOption";
 import classes from "./BlogsHeader.module.scss";
 import ButtonSearch from "@/components/ui/Buttons/ButtonsSearch/ButtonSearch";
+import { GET_CATEGORY_POST } from "@/pages/api/graphqlApollo";
+import { useLazyQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const DUMMY_CATEGORIES = [
   {
@@ -51,7 +55,19 @@ const DUMMY_SORT_BY = [
   },
 ];
 
-const BlogsHeader = ({ onSearch, handleSort }) => {
+const BlogsHeader = ({ onSearch, handleSort, filterCategory }) => {
+  const { locale } = useRouter();
+  const [getCategoryBlog, { loading, error, data }] =
+    useLazyQuery(GET_CATEGORY_POST);
+  useEffect(() => {
+    getCategoryBlog({
+      variables: {
+        language: locale.toUpperCase(),
+      },
+    });
+  }, []);
+  const dataCategory = data?.categories?.nodes;
+  console.log(dataCategory);
   return (
     <div className={classes["blog-header"]}>
       <div className={classes["blog-header-left-item"]}>
@@ -68,7 +84,11 @@ const BlogsHeader = ({ onSearch, handleSort }) => {
         </div> */}
         <div className={classes["blog-header-right-item__option"]}>
           <div className={classes["blog-header-right-item__option--no-mg"]}>
-            <SelectOption options={DUMMY_CATEGORIES} label="category" />
+            <SelectOption
+              options={dataCategory && dataCategory}
+              label="category"
+              handleSort={filterCategory}
+            />
           </div>
           <div className={classes["blog-header-right-item__option--mg"]}>
             <SelectOption

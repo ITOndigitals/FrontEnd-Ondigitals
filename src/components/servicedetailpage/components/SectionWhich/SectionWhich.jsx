@@ -18,7 +18,6 @@ export default function SectionWhich({ data }) {
     layoutContentSectionWhich,
   } = data;
   const isUseVideo = layoutContentSectionWhich[0]?.urlVideo;
-  console.log(layoutContentSectionWhich);
   return (
     <section
       style={{ backgroundColor: backgroundColor ? backgroundColor : "#6F1AB6" }}

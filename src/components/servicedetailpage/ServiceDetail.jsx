@@ -26,7 +26,6 @@ export default function ServiceDetail({ dataServiceDetail }) {
     sectionWhich,
   } = serviceBy?.serviceHomepage || {};
   const dataContentServiceDetail = layoutContentServiceDetail || [];
-  console.log(sectionWhich);
   const dataFAQService = sectionContentDetail || [];
 
   if (serviceBy) {

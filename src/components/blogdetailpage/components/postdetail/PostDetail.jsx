@@ -17,7 +17,9 @@ export default function PostDetail({ data, applyMarkDown }) {
   const post = data;
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
-
+  const tagCategory = data?.categories?.nodes;
+  const idPost = post?.postId;
+  const viewPost = (idPost % 41) + 10;
   const matchingTranslation = data.translations.find(
     (translation) => translation.language.code === currentLanguage
   );
@@ -104,20 +106,26 @@ export default function PostDetail({ data, applyMarkDown }) {
         <h1 className={classes["title-post-detail"]}>{post.title}</h1>
         <div className={classes["day-and-tag-post-detail"]}>
           <div className={classes["tag-post-detail"]}>
-            <Tag type={1} name={"SEO Tip"} href="" />
-            <Tag type={3} name={"Content Marketing"} href="" />
-            <Tag type={2} name={"Digital Marketing"} href="" />
+            {tagCategory &&
+              tagCategory.map((item, index) => (
+                <Tag
+                  key={index}
+                  name={item.name}
+                  href={item.slug}
+                  backgroundColor={item.description}
+                />
+              ))}
           </div>
           <div>
-            <DateAndViews createDate={post.date} views={500} />
+            <DateAndViews createDate={post.date} views={viewPost} />
           </div>
         </div>
-       
+
         <div
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}
         >
-          { post.content && parse(post.content)}
+          {post.content && parse(post.content)}
         </div>
         <div className={classes["post-detail-footer"]}>
           <hr />

@@ -14,6 +14,9 @@ const BlogCard = ({ data }) => {
   const post = data;
   const { locale } = useRouter();
   const isoDate = post.date;
+  const tagCategory = data?.categories?.nodes;
+  const idPost = post?.postId;
+  const viewPost = (idPost % 41) + 10;
   const containerClasses = `${classes["blog-card"]} ${classes["blog-card-blog-page"]}`;
   return (
     <>
@@ -49,11 +52,17 @@ const BlogCard = ({ data }) => {
                 {post?.excerpt && parse(post.excerpt)}
               </Link>
             </div>
-            <DateAndViews createDate={isoDate} views={500} />
-
+            <DateAndViews createDate={isoDate} views={viewPost} />
             <div className={classes["blog-card__content__tag"]}>
-              <Tag type={4} name="Web Development" href="#" />
-              <Tag type={4} name="Web Development" href="#" />
+              {tagCategory &&
+                tagCategory.map((item, index) => (
+                  <Tag
+                    key={index}
+                    name={item.name}
+                    href={item.slug}
+                    backgroundColor={item.description}
+                  />
+                ))}
             </div>
             {/* <Link
               className={classes["blog-card__button"]}

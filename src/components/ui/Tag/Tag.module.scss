@@ -10,16 +10,4 @@
   border-radius: 40px;
   display: table-cell;
   vertical-align: middle;
-  &.type-1 {
-    background-color: $primary-dark;
-  }
-  &.type-2 {
-    background-color: $primary-light;
-  }
-  &.type-3 {
-    background-color: $red-light;
-  }
-  &.type-4 {
-    background-color: $red-dark;
-  }
 }

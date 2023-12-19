@@ -70,7 +70,6 @@ const BlogPage = ({ blogsData }) => {
 
   // function sort posts
   const handleSortPosts = (keySort) => {
-    console.log(keySearch);
     filterPosts({
       variables: {
         key: keySearch,
@@ -170,10 +169,16 @@ const BlogPage = ({ blogsData }) => {
       nextElement.style.backgroundColor = "#F6F8FA";
     }
   }, []);
-  console.log(renderData, keySearch);
+  const filterCategory = (idCategory) => {
+    console.log(idCategory);
+  };
   return (
     <div className={`container ${classes.container}`}>
-      <BlogsHeader onSearch={onSearchPost} handleSort={handleSortPosts} />
+      <BlogsHeader
+        onSearch={onSearchPost}
+        handleSort={handleSortPosts}
+        filterCategory={filterCategory}
+      />
       <BlogList blogsData={renderData} loading={loading} error={error} />
       {/* <BlogFooter onChangePage={onChangePageHandler} /> */}
     </div>

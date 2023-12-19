@@ -1,18 +1,20 @@
 import Link from "next/link";
 import classes from "./Tag.module.scss";
-// Type is around 6 values
-const Tag = ({ type, name, href }) => {
-  if (href) {
-    return (
-      <Link href={href} className={`${classes.tag} ${classes[`type-${type}`]}`}>
-        {name}
-      </Link>
-    );
-  }
+import { useRouter } from "next/router";
+import { getLanguagePathService } from "../../../../utils/languageSlug";
+const Tag = ({ backgroundColor, name, href }) => {
+  const { locale } = useRouter();
+  const basePath = getLanguagePathService(locale);
   return (
-    <div href={href} className={`${classes.tag} ${classes[`type-${type}`]}`}>
+    <Link
+      style={{
+        backgroundColor: backgroundColor ? backgroundColor : "#3D1766",
+      }}
+      href={`${basePath}/${href}`}
+      className={`${classes.tag}`}
+    >
       {name}
-    </div>
+    </Link>
   );
 };
 

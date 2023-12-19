@@ -11,6 +11,7 @@ export const getDataForNewAndInsightsSection = async (language) => {
           title
           date
           slug
+          postId
           excerpt
           featuredImage {
             node {
@@ -18,6 +19,14 @@ export const getDataForNewAndInsightsSection = async (language) => {
             }
           }
           link
+          categories {
+            nodes {
+              slug
+              name
+              description
+              categoryId
+            }
+          }
         }
       }
     }
@@ -55,12 +64,21 @@ export const getDataPageBlog = async (language, first, before, after, last) => {
           date
           slug
           excerpt
+          postId
           featuredImage {
             node {
               sourceUrl
             }
           }
           link
+          categories {
+            nodes {
+              slug
+              name
+              description
+              categoryId
+            }
+          }
         }
         pageInfo {
           endCursor
@@ -145,6 +163,14 @@ export const GetPostDetailBySlug = async (slug, language) => {
           }
         }
         link
+        categories {
+          nodes {
+            slug
+            name
+            description
+            categoryId
+          }
+        }
       }
       allBlogsContent(where: { language: $language }) {
         nodes {
@@ -288,9 +314,8 @@ export const GetDataHomepage = async (id, languageCode) => {
           }
         }
       }
-      services(
+      serviceParents(
         where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
-        first: 4
       ) {
         nodes {
           slug
@@ -565,15 +590,28 @@ export const GetPageService = async (id, languageCode) => {
           }
         }
       }
-      services(
-        where: { orderby: { order: ASC, field: DATE }, language: $languageCode }
+      serviceParents(
+        where: { language: $languageCode, orderby: { field: DATE, order: ASC } }
       ) {
         nodes {
+          excerpt
           title
-          id
           slug
+          id
           serviceHomepage {
             color
+            secondaryColor
+          }
+          categories {
+            nodes {
+              categoryId
+            }
+          }
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
       }

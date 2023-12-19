@@ -4,7 +4,6 @@ import { GetPageService } from "../api/graphql";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import { getTranslatedDataFooter } from "../api/graphqlHeaderFooter";
-const parse = require("html-react-parser");
 
 export default function index({ data, dataFooter }) {
   return (

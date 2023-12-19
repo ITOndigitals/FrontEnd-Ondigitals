@@ -24,7 +24,6 @@ export default function SectionHow({ data }) {
     textRightHead,
     titleListSteps,
   } = data;
-  console.log(contentPlatform);
   const {
     contentTitle,
     iconImage,

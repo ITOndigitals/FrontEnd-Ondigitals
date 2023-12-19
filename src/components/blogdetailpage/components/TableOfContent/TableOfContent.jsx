@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Maven_Pro } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { frontendUrl } from "../../../../../utils/variables";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -18,8 +19,7 @@ const TableOfContent = ({ markdown }) => {
   const tocRef = useRef(null);
   const tocWrapperRef = useRef(null);
   const { asPath, locale } = useRouter();
-  const fullCurrentPath = `http://localhost:3000/${locale}${asPath}`;
-  console.log(fullCurrentPath)
+  const fullCurrentPath = `${frontendUrl}${locale}${asPath}`;
   const toggleShowTableOfContent = () => {
     setTableOfContentIsShown((oldState) => !oldState);
   };

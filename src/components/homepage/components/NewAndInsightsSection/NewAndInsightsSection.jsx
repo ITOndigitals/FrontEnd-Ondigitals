@@ -9,6 +9,7 @@ import NewPostCard from "./NewPostCard";
 import BlogCard from "@/components/ui/BlogCard/BlogCard";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import { useRouter } from "next/router";
+import { getLanguagePathBlog } from "../../../../../utils/languageSlug";
 export default function NewAndInsightsSection({
   data,
   NavButton,
@@ -17,6 +18,7 @@ export default function NewAndInsightsSection({
   const { locale } = useRouter();
   const listPosts = data;
   const { pages } = dataHomepage;
+  const basePath = getLanguagePathBlog(locale);
   const {
     newSectionTitle,
     newSectionTextReadFull,
@@ -24,12 +26,6 @@ export default function NewAndInsightsSection({
     newSectionTextDesc,
   } = pages.nodes[0].homePageInputContent || {};
 
-  const languagePaths = {
-    en: "/blog",
-    vi: "/bai-viet",
-  };
-
-  const basePath = languagePaths[locale] || "/blog";
   return (
     <>
       <section

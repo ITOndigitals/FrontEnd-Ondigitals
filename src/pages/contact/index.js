@@ -8,7 +8,6 @@ import Head from "next/head";
 const parse = require("html-react-parser");
 
 export default function ContactUs({ updatedData, dataFooter }) {
-  console.log(updatedData)
   if (!updatedData) {
     return <div>Loading...</div>;
   }

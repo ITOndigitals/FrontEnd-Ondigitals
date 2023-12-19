@@ -16,7 +16,6 @@ export default function IntroService({ data }) {
             <p>{titleSectionIntro && parse(titleSectionIntro)}</p>
           </div>
           <div
-            style={{ fontFamily: MavenPro.style.fontFamily }}
             className={classes["intro-service__content__text"]}
           >
             {content && parse(content)}
@@ -28,7 +27,7 @@ export default function IntroService({ data }) {
             <div className={classes["scroll-msg__line"]}>
               <p></p>
             </div>
-            <p style={{ fontFamily: MavenPro.style.fontFamily }}>
+            <p>
               {textScroll2 && textScroll2}
             </p>
           </div>

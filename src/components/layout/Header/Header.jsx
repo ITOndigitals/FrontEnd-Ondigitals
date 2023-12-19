@@ -303,12 +303,7 @@ const Header = () => {
       >
         <div className="container--big">
           <div className={classes["header-wrapper"]}>
-            <Link
-              href="/"
-              style={{ pointerEvents: menuIsOpen ? "none" : "auto" }}
-            >
               <Logo isVisible={!menuIsOpen} isDark={isDark} />
-            </Link>
             <div
               className={`${classes["header-wrapper-fn"]} ${
                 isDark ? classes["dark-header"] : ""
@@ -322,9 +317,7 @@ const Header = () => {
                 }`}
               >
                 <div className={classes["header-btn__wrapper"]}>
-                  <SelectOptionLanguage
-                    isDark={isDark}
-                  />
+                  <SelectOptionLanguage isDark={isDark} />
                 </div>
               </div>
               <Link

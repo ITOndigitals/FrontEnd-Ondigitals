@@ -7,6 +7,7 @@ import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorde
 import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useRouter } from "next/router";
+import { getLanguagePathService } from "../../../../../utils/languageSlug";
 const parse = require("html-react-parser");
 
 const ServiceSection = ({ NavButton, data }) => {
@@ -16,7 +17,7 @@ const ServiceSection = ({ NavButton, data }) => {
   const [currentActiveService, setCurrentActiveService] = useState();
   const [isOnMobile, setIsOnMobile] = useState(false);
 
-  const { nodes: serviceList } = data ? data.services : [];
+  const { nodes: serviceList } = data ? data.serviceParents : [];
   const { serviceSectionTitle, serviceSectionDesc, serviceSectionTextButton } =
     data.pages.nodes[0].homePageInputContent || {};
   useEffect(() => {
@@ -64,13 +65,9 @@ const ServiceSection = ({ NavButton, data }) => {
     renderData[itemIndex] = item;
     setRenderServices(renderData);
   };
-
   const { locale } = useRouter();
-  const languagePaths = {
-    en: "/service",
-    vi: "/dich-vu",
-  };
-  const basePath = languagePaths[locale] || "/service";
+  const basePath = getLanguagePathService(locale);
+
   return (
     <section className={`${classes["service"]} service-section`}>
       {!isOnMobile && <SectionHeader isDark />}
