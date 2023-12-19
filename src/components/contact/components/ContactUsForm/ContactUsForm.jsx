@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import classes from "./ContactUsForm.module.scss";
 import MesageTextarea from "@/components/ui/Input/MesageTextarea";
 import Input from "@/components/ui/Input/Input";
-import { validationSchema } from "../../../../until/validationForm";
+import { validationSchema } from "../../../../../utils/validationForm";
 import Button from "@/components/ui/Buttons/Button/Button";
 import {
   ArrowRight,
@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/Icons/ListIcon";
 import Note from "@/components/ui/Note/Note";
 import { Maven_Pro } from "next/font/google";
-import { SendEmailContactForm } from "@/until/sendEmail";
 import { useMutation } from "@apollo/client";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
+import { SendEmailContactForm } from "../../../../../utils/sendEmail";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
