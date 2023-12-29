@@ -12,7 +12,10 @@ import Footer from "@/components/layout/Footer/Footer";
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
 import BlogDetail from "@/components/blogdetailpage/BlogDetail";
 import { useRouter } from "next/router";
-import { getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "./api/graphqlHeaderFooter";
 const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
@@ -21,6 +24,7 @@ export default function DynamicDetailPage({
   relatedPosts,
   dataFooter,
   notFound,
+  dataHeader,
 }) {
   const { locale } = useRouter();
   useEffect(() => {
@@ -32,7 +36,7 @@ export default function DynamicDetailPage({
     const dataHead = serviceData.serviceBy.seo.fullHead;
     return (
       <>
-        <Header />
+        <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
         <ServiceDetail dataServiceDetail={serviceData} />
         <Footer data={dataFooter} />
@@ -45,7 +49,7 @@ export default function DynamicDetailPage({
     return (
       <>
         <Head>{dataHead && parse(dataHead)}</Head>
-        <Header />
+        <Header data={dataHeader} />
         <BlogDetail postDetail={blogData} relatedPosts={relatedPosts} />
         <Footer data={dataFooter} />
       </>
@@ -88,12 +92,14 @@ export async function getStaticProps({ params, locale }) {
   const serviceData = await GetServiceDetailBySlug(params.slug);
   const blogData = await GetPostDetailBySlug(params.slug, language);
   const dataFooter = await getTranslatedDataFooter(language);
+  const dataHeader = await getDataMenu(language);
   const notFound = true;
   if (serviceData && serviceData.serviceBy) {
     return {
       props: {
         serviceData,
         dataFooter,
+        dataHeader,
       },
       revalidate: 8640,
     };
@@ -104,6 +110,7 @@ export async function getStaticProps({ params, locale }) {
         blogData,
         relatedPosts,
         dataFooter,
+        dataHeader,
       },
       revalidate: 8640,
     };

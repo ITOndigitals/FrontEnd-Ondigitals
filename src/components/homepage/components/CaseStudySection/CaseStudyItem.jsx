@@ -60,7 +60,7 @@ const CaseStudyItem = ({ item, index }) => {
           <div>{caseStudyHomepage.caseStudyYear}</div>
         </div>
         <Link
-          href={slug || "/"}
+          href={"/"}
           className={classes["item-description__explore"]}
         >
           <ExploreButton>

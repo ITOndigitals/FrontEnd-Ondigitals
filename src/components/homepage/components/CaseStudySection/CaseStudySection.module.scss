@@ -2,6 +2,9 @@
 @import "../../../../styles/mixins";
 
 .case-study {
+  a {
+    pointer-events: none;
+  }
   background-color: $primary-dark;
   @include section;
   flex-direction: column;
@@ -33,11 +36,9 @@
 @media (max-width: 1024px) {
   .case-study {
     height: auto;
-    padding: calc($header_padding *2) 0;
+    padding: calc($header_padding * 2) 0;
   }
 }
-
-
 
 @media (max-width: 680px) {
   .case-study {

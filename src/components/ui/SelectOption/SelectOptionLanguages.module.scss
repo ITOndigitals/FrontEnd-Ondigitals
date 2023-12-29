@@ -6,7 +6,7 @@
   position: relative;
   .select-wrapper {
     position: relative;
-    min-width: 150px;
+    min-width: 120px;
     cursor: pointer;
     .select-name {
       display: flex;
@@ -58,5 +58,27 @@
 @media (max-width: 1024px) {
   .select {
     justify-content: space-between;
+  }
+}
+@media (max-width: 600px) {
+  .select {
+    path{
+      fill: #fff !important;
+      stroke: #fff !important;
+
+    }
+    .select-wrapper {
+      .select-name {
+        display: flex;
+        user-select: none;
+        &__content {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 26px;
+          color: #fff !important;
+        }
+      }
+    }
   }
 }

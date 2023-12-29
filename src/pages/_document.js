@@ -10,6 +10,7 @@ export default function Document() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <body>
         <Main />

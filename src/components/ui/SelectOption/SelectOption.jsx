@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./SelectOption.module.scss";
 import { DownNavIcon } from "../Icons/ListIcon";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const SelectOption = ({ options, label, color, handleSort }) => {
   if (!options) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
   const [choosenItemId, setChoosenItemId] = useState(
     options[0]?.id || options[0]?.categoryId
@@ -30,7 +31,6 @@ const SelectOption = ({ options, label, color, handleSort }) => {
   }, []);
 
   const onChooseOption = (event) => {
-    console.log("hello")
     const value = +event.target.value;
     const dataKey = event.target.getAttribute("data-key");
     {
@@ -43,7 +43,6 @@ const SelectOption = ({ options, label, color, handleSort }) => {
     const foundedItemIdx = options.findIndex(
       (option) => option?.id === value || option?.categoryId === value
     );
-    console.log(value)
     setChoosenItemName(options[foundedItemIdx]?.name);
     setChoosenItemId(value);
     setDropdownIsOpen(false);

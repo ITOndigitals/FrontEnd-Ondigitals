@@ -58,7 +58,7 @@
         display: flex;
         justify-content: flex-end;
         div:first-child {
-          width: 40%;
+          width: 44%;
           button {
             justify-content: space-between;
           }
@@ -121,7 +121,7 @@
     }
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
   .section-contact-form {
     height: auto;
     padding-top: calc($section-padding);
@@ -176,7 +176,7 @@
     }
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .section-contact-form {
     height: auto;
     &__header {
@@ -192,7 +192,7 @@
       &__form {
         &__buttonAndNote {
           div:first-child {
-            width: 100%;
+            width: 60%;
             button {
               justify-content: space-between;
             }
@@ -214,6 +214,21 @@
   .section-contact-form {
     height: auto;
     padding-top: calc($header-height + $section-padding);
+  }
+  .contact-section {
+    &__columLeft {
+      &__form {
+        &__buttonAndNote {
+          div:first-child {
+            width: 100%;
+            button {
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+
   }
 }
 @media (max-width: 320px) {

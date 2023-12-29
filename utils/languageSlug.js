@@ -1,14 +1,14 @@
 export const getLanguagePathService = (locale) => {
   const languagePaths = {
     en: "/services",
-    vi: "/dich-vu",
+    vi: "/services",
   };
   return languagePaths[locale] || "/services";
 };
 export const getLanguagePathBlog = (locale) => {
   const languagePaths = {
     en: "/digital-news",
-    vi: "/tin-tuc",
+    vi: "/digital-news",
   };
   return languagePaths[locale] || "/digital-news";
 };

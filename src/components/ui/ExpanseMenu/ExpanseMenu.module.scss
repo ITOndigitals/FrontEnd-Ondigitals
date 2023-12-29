@@ -154,16 +154,31 @@
     }
     .menu-list {
       font-size: 28px;
-      font-weight: 600;
+      font-weight: 400;
       line-height: 52px;
       opacity: 0;
       transform: translateY(-30px);
       transition: all 0.3s;
       &-item {
-        padding: 15px 0;
+        padding: 5px 0;
         width: fit-content;
         height: fit-content;
         margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        ul {
+          visibility: hidden;
+          height: 0;
+          transition: all 0.5s ease;
+        }
+        &__services ul {
+          opacity: 1;
+          height: 100%;
+          visibility: unset;
+          transition: all 0.5s ease;
+        }
+
         &__link {
           width: fit-content;
           height: fit-content;
@@ -173,16 +188,35 @@
           span {
             color: white;
             transition: all 0.5s;
-
             &:hover {
               color: rgba(171, 139, 212, 1);
-              transform: scale(1.2) translateX(-20px);
+              transform: scale(1.15) translateX(-20px);
+              font-weight: 600;
+            }
+          }
+          svg {
+            margin-left: 24px;
+          }
+          &__child {
+            display: flex;
+            flex-direction: column;
+            a {
+              margin-top: 10px;
+              margin-right: 54px;
+              color: #fff;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 26px;
+              &:hover {
+                color: rgba(171, 139, 212, 1);
+              }
             }
           }
         }
         &__circle {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           margin-left: 24px;
           &.circle-0 {
@@ -200,6 +234,19 @@
           &.circle-4 {
             background-color: #fff;
           }
+        }
+      }
+      &__emailContact {
+        color: #fff;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        transform: unset !important;
+        margin-bottom: 21px;
+        display: block;
+        &:hover {
+          color: rgba(171, 139, 212, 1);
         }
       }
     }
@@ -232,10 +279,6 @@
   .wrapper {
     .menu-list-wrapper {
       .menu-list {
-        margin-top: 20px;
-        font-size: 38px;
-        font-weight: 700;
-        line-height: 40px;
         &-item {
           &__circle {
             width: 20px;

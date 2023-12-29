@@ -53,7 +53,6 @@ const SelectOptionLanguage = ({ isDark, color }) => {
         onClick={() => {
           setDropdownIsOpen(true);
         }}
-        
       >
         <div
           style={{ borderWidth: "1px", borderColor: color ? color : "black" }}
@@ -84,7 +83,7 @@ const SelectOptionLanguage = ({ isDark, color }) => {
           }`}
         >
           {otherLocales.map((locale, localeIndex) => {
-            const { pathname, query } = useRouter;
+            const { pathname, query } = useRouter();
             const FlagIcon = getFlagIcon(locale);
             return (
               <li key={localeIndex} className={classes["select-list-item"]}>

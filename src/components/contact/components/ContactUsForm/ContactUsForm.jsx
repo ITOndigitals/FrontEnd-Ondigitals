@@ -31,7 +31,7 @@ export default function ContactUsForm({ data }) {
     contentNoteSuccess,
     contactForm,
   } = data;
-  const [fieldName, fieldEmail, fieldMessage] = contactForm.contentForm || [];
+  const [fieldName, fieldEmail,fieldPhone, fieldMessage] = contactForm.contentForm || [];
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -40,6 +40,7 @@ export default function ContactUsForm({ data }) {
       name: "",
       message: "",
       email: "",
+      phone: "",
     },
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
@@ -49,8 +50,15 @@ export default function ContactUsForm({ data }) {
     try {
       const { data } = await sendEmailMutation({
         variables: {
-          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> <h4 style="color: black;">Email: ${values.email}</h4>  <strong style="color: black;">Message: ${values.message}</strong>  `,
-          subject: "Thông báo có khách hàng mới",
+          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> 
+          <h4 style="color: black;">Email: ${values.email}</h4>  
+          <h4 style="color: black;">
+            <a href="tel:${values.phone}" style="color: black;">
+              Phone Number: ${values.phone}
+            </a>
+          </h4>
+          <strong style="color: black;">Message: ${values.message}</strong>  `,
+          subject: "Thông báo có người liên hệ",
         },
       });
       formik.resetForm();
@@ -139,7 +147,23 @@ export default function ContactUsForm({ data }) {
                   formik.touched.email && !formik.errors.email ? true : false
                 }
               />
-
+              <Input
+                title={fieldPhone?.textLable}
+                type={"tel"}
+                fieldName={"phone"}
+                placeholder={fieldPhone?.textPlaceholder}
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                errors={
+                  formik.touched.phone && formik.errors.phone
+                    ? formik.errors.phone
+                    : null
+                }
+                isSuccess={
+                  formik.touched.phone && !formik.errors.phone ? true : false
+                }
+              />
               <MesageTextarea
                 title={fieldMessage?.textLable}
                 name="message"

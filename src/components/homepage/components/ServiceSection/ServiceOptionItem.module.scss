@@ -71,9 +71,12 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .item {
-    margin: 4px 0;
+    width: 45%;
+    p{
+      text-align: center;
+    }
     &-wrapper {
       padding: 6px;
     }

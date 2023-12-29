@@ -22,10 +22,11 @@
     justify-content: space-between;
     padding-top: 5%;
     &__container {
+      background-origin: content-box;
       background-position: right;
       background-repeat: no-repeat;
       background-size: contain;
-      background-blend-mode: soft-light;
+      background-blend-mode: hard-light;
       width: 100%;
       height: auto;
       border-radius: 16px;

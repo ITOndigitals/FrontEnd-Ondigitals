@@ -11,10 +11,15 @@ import SectionHow from "./components/SectionHow/SectionHow";
 import SectionWhich from "./components/SectionWhich/SectionWhich";
 import SectionWhat from "./components/SectionWhat/SectionWhat";
 
-export default function ServiceDetail({ dataServiceDetail }) {
+export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
+  console.log(isUsePageId);
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
-  const serviceBy = dataServiceDetail?.serviceBy || dataServiceDetail?.serviceParentBy || {};
+  const serviceBy =
+    dataServiceDetail?.serviceBy ||
+    dataServiceDetail?.serviceParentBy ||
+    dataServiceDetail.pageBy ||
+    {};
   const {
     layoutContentServiceDetail,
     sectionContentDetail,
@@ -28,15 +33,15 @@ export default function ServiceDetail({ dataServiceDetail }) {
   const dataContentServiceDetail = layoutContentServiceDetail || [];
   const dataFAQService = sectionContentDetail || [];
 
-  if (serviceBy) {
-    const matchingTranslation = serviceBy.translations.find(
+  if (serviceBy && !isUsePageId) {
+    const matchingTranslation = serviceBy.translations?.find(
       (translation) => translation.language.code === currentLanguage
     );
     useEffect(() => {
       if (matchingTranslation) {
         router.push(matchingTranslation.slug);
-      } else if (router.locale !== serviceBy.language.slug) {
-        router.push("/");
+      } else if (router.locale !== serviceBy.language?.slug) {
+        window.location.href = "/";
       }
     }, [router.locale, serviceBy.translations]);
   }

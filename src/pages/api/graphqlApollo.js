@@ -7,6 +7,7 @@ export const GET_POSTS_BY_FILTER = gql`
     $after: String!
     $language: LanguageCodeFilterEnum!
     $order: OrderEnum!
+    $idCategory: Int!
   ) {
     posts(
       after: $after
@@ -14,6 +15,7 @@ export const GET_POSTS_BY_FILTER = gql`
       where: {
         search: $key
         language: $language
+        categoryId: $idCategory
         orderby: { field: DATE, order: $order }
       }
     ) {
@@ -23,9 +25,18 @@ export const GET_POSTS_BY_FILTER = gql`
         date
         excerpt
         slug
+        postId
         featuredImage {
           node {
             sourceUrl
+          }
+        }
+        categories {
+          nodes {
+            slug
+            name
+            description
+            categoryId
           }
         }
         link
@@ -64,7 +75,7 @@ export const GET_CATEGORY_POST = gql`
 `;
 export const GET_LIST_SERVICES_BY_CATEGORY = gql`
   query GetCategoryPost($ID: Int!) {
-    services(where: {categoryId: $ID, orderby: {field: DATE, order: ASC}}) {
+    services(where: { categoryId: $ID, orderby: { field: DATE, order: ASC } }) {
       nodes {
         serviceHomepage {
           name

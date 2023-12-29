@@ -6,18 +6,24 @@ import classes from "./Header.module.scss";
 import BottomNavigator from "../BottomNavigator/BottomNavigator";
 import Link from "next/link";
 import ExpanseMenu from "@/components/ui/ExpanseMenu/ExpanseMenu";
-import { overlayOptions, menuItems } from "@/configurations/menuData";
+import { overlayOptions } from "@/configurations/menuData";
 import { useBoundStore } from "../../../store/useBoundStore";
 import { useRouter } from "next/router";
 import SelectOptionLanguage from "@/components/ui/SelectOption/SelectOptionLanguages";
+import PopupForm from "@/components/ui/PopupForm/PopupForm";
 
-const Header = () => {
+const Header = ({ data }) => {
+  if (!data) {
+    return null;
+  }
+  const { header } =data?.updatedData;
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [bottomIsDark, setBottomIsDark] = useState(true);
   const [isOnMobile, setIsOnMobile] = useState(false);
   const [bottomNavIsShown, setBottomNavIsShown] = useState(true);
   const [subPageHeaderIsSticky, setSubPageHeaderIsSticky] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const menuButtonClasses = `${classes["header-menu-btn"]} ${
     menuIsOpen ? classes["active"] : ""
   }`;
@@ -287,12 +293,15 @@ const Header = () => {
       setSubPageHeaderIsSticky(false);
     }
   }, [headerIsSticky, isInSubPage]);
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
   return (
     <div>
       <ExpanseMenu
         options={overlayOptions}
         isActive={menuIsOpen}
-        menu={menuItems} //prop menu lưu data về menu, khi có api đa ngôn ngữ thì sửa lại
+        menu={data} //prop menu lưu data về menu, khi có api đa ngôn ngữ thì sửa lại
       />
       <header
         className={`${classes["main-header"]} main-header-g ${
@@ -302,33 +311,42 @@ const Header = () => {
         } ${menuIsOpen ? classes["menu-open"] : ""}`}
       >
         <div className="container--big">
-          <div className={classes["header-wrapper"]}>
-              <Logo isVisible={!menuIsOpen} isDark={isDark} />
+          <div
+            style={{ display: menuIsOpen ? "block" : "flex" }}
+            className={classes["header-wrapper"]}
+          >
+            <Logo isVisible={!menuIsOpen} isDark={isDark} />
             <div
+              style={{ justifyContent: menuIsOpen ? "space-between" : "unset" }}
               className={`${classes["header-wrapper-fn"]} ${
                 isDark ? classes["dark-header"] : ""
               }`}
             >
               <div
                 className={`${classes["header-btn"]} ${
-                  menuIsOpen || !headerBtnIsShown
-                    ? classes["header-btn--hidden"]
-                    : ""
-                }`}
+                  menuIsOpen
+                    ? classes["header-btn__language"]
+                    : classes["header-btn__languageMobile"]
+                } ${!headerBtnIsShown ? classes["header-btn--hidden"] : ""}`}
               >
                 <div className={classes["header-btn__wrapper"]}>
                   <SelectOptionLanguage isDark={isDark} />
                 </div>
               </div>
-              <Link
+              <div
                 href="#"
                 className={`${classes["header-btn"]} ${
+                  classes["header-btn__Request"]
+                } ${
                   menuIsOpen || !headerBtnIsShown
                     ? classes["header-btn--hidden"]
                     : ""
                 }`}
               >
-                <div className={classes["header-btn__wrapper"]}>
+                <div
+                  onClick={togglePopup}
+                  className={classes["header-btn__wrapper"]}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -351,9 +369,12 @@ const Header = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span>Request Credential</span>
+                  <span>{header?.textRequestCredential}</span>
                 </div>
-              </Link>
+                {isPopupOpen && (
+                  <PopupForm dataForm={header} isOpen={isPopupOpen} onClose={togglePopup} />
+                )}
+              </div>
               <button
                 className={menuButtonClasses}
                 onClick={toggleMenuButtonHandler}

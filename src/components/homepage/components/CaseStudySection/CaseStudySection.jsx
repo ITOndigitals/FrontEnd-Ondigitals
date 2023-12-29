@@ -39,7 +39,7 @@ const CaseStudySection = ({ NavButton, data }) => {
             {caseStudySessionTitle}
           </h2>
           <ButtonNoBorder
-            href={basePath}
+            href={'/'}
             textSize="md"
             RightIcon={<TopRightArrow width={24} height={24} color="#ffffff" />}
           >

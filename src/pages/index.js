@@ -7,16 +7,16 @@ import {
 import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import { getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import { getDataMenu, getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
 
 const parse = require("html-react-parser");
 
-export default function Home({ allPosts, dataHomepage, dataFooter }) {
+export default function Home({ allPosts, dataHomepage, dataFooter,dataHeader }) {
   const fullHeadHTML = dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead || "";
   return (
     <>
       <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>
-      <Header />
+      <Header data ={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />
       <Footer data={dataFooter} />
     </>
@@ -28,6 +28,7 @@ export const getServerSideProps = async ({ locale }) => {
   const allPosts = await getDataForNewAndInsightsSection(language);
   const idHomepageEnglish = 44418;
   const dataFooter = await getTranslatedDataFooter(language);
+  const dataHeader= await getDataMenu(language)
   const data = await GetDataHomepage(idHomepageEnglish, language);
 
   const translation = data?.pages?.nodes?.[0]?.translations?.find(
@@ -44,6 +45,7 @@ export const getServerSideProps = async ({ locale }) => {
       allPosts,
       dataHomepage: updatedDataHomepage,
       dataFooter,
+      dataHeader
     },
   };
 };

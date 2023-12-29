@@ -10,6 +10,7 @@ import classes from "./Footer.module.scss";
 import { Maven_Pro } from "next/font/google";
 import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -19,11 +20,13 @@ const iconFont = {
   linkedinIn: faLinkedinIn,
 };
 export default function Footer({ data }) {
-  if(!data){
-    return <div>Loading.....</div>
+  const { locale } = useRouter();
+  if (!data) {
+    return <div>Loading.....</div>;
   }
   const { footerods, content } = data[0];
-  const { title, columExplore, columFollowUs, columService } = footerods;
+  const { title, columExplore, columFollowUs, columService, test1111 } =
+    footerods;
 
   return (
     <footer className={classes["footer"]}>
@@ -31,7 +34,12 @@ export default function Footer({ data }) {
         <div className={classes["footer__row"]}>
           <div className={classes["colum-1"]}>
             <div className={classes["image-logo-footer"]}>
-              <Link href="/">
+              <Link
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+                href="/"
+              >
                 <LogoFooter width={240} height={100} color={"#FFF"} />
               </Link>
             </div>
@@ -46,22 +54,23 @@ export default function Footer({ data }) {
             </div>
           </div>
           <div className={classes["colum-2"]}>
-            <p className={classes["colum__title"]}>{columService?.title}</p>
+            <p className={classes["colum__title"]}>
+              {columService?.titleServices}
+            </p>
             <div className={classes["row__services"]}>
-              <div
-                style={{ fontFamily: MavenPro.style.fontFamily }}
-                className={classes["colum-2__left"]}
-              >
-                {columService.listServiceLeft &&
-                  parse(columService.listServiceLeft)}
-              </div>
-              <div
-                style={{ fontFamily: MavenPro.style.fontFamily }}
-                className={classes["colum-2__right"]}
-              >
-                {columService.listServiceRight &&
-                  parse(columService.listServiceRight)}
-              </div>
+              {columService?.services &&
+                columService.services.map((item, index) => (
+                  <div
+                    key={index}
+                    style={{ fontFamily: MavenPro.style.fontFamily }}
+                    className={classes["row__services__detail"]}
+                  >
+                    <p className={classes["row__services__detail__title"]}>
+                      {item?.title}
+                    </p>
+                    {item.listServices && parse(item.listServices)}
+                  </div>
+                ))}
             </div>
           </div>
           <div className={classes["colum-3"]}>
@@ -85,8 +94,14 @@ export default function Footer({ data }) {
                 <IconZalo width={52} height={18} color={"#FFF"} />
               </Link>
             </div>
+            <div style={{ marginTop: "10px" }}>
+              {columFollowUs?.inputDmca && parse(columFollowUs.inputDmca)}
+            </div>
           </div>
         </div>
+      </div>
+      <div className={classes["btn-contact"]}>
+        <Link href={`/${locale}/contact`}>Contact Us</Link>
       </div>
     </footer>
   );

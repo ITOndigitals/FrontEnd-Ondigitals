@@ -9,13 +9,16 @@ export const GetDataFooter = async (id) => {
           content
           footerods {
             columService {
-              title
-              listServiceLeft
-              listServiceRight
+              titleServices
+              services {
+                listServices
+                title
+              }
             }
             columFollowUs {
               linkZalo
               title
+              inputDmca
               listIcon {
                 linkIcon
                 nameIconFortawesome
@@ -47,6 +50,44 @@ export const GetDataFooter = async (id) => {
     return [];
   }
 };
+export const GetDataHeader = async (id) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetDataHeader($id: Int!) {
+      pageBy(pageId: $id) {
+        translations {
+          pageId
+          language {
+            code
+            name
+          }
+        }
+        header {
+          textRequestCredential
+          headLineMenu
+          contentFormRequest {
+            titleForm
+            textInput {
+              textLable
+              textPlaceholder
+            }
+            textCheckbox
+            textButton
+            contentBelowButton
+          }
+        }
+      }
+    }
+  `;
+  const variables = { id };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data.pageBy;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
 export const getTranslatedDataFooter = async (language) => {
   const idFooter = 44677;
   const data = await GetDataFooter(idFooter);
@@ -58,4 +99,68 @@ export const getTranslatedDataFooter = async (language) => {
     : data;
   const dataFooter = updatedData.nodes || null;
   return dataFooter;
+};
+export const GetDataMenuHeader = async (languageCode) => {
+  const endpoint = endPointApi;
+  const locationFilter =
+    languageCode === "EN" ? "PRIMARY" : `PRIMARY___${languageCode}`;
+  const query = gql`
+    query GetDataHeader($languageCode: LanguageCodeFilterEnum!) {
+      menuItems(where: { location: ${locationFilter} }) {
+        nodes {
+          id
+          label
+          path
+        }
+      }
+      serviceParents(
+        where: { language: $languageCode, orderby: { field: DATE, order: ASC } }
+      ) {
+        nodes {
+          slug
+          databaseId
+          serviceHomepage {
+            name
+          }
+        }
+      }
+    }
+  `;
+  const variables = { languageCode };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
+  }
+};
+export const getDataMenu = async (languageCode) => {
+  const data = await GetDataMenuHeader(languageCode);
+  const idPage = 45869;
+  const [dataPage, dataHeader] = await Promise.all([
+    GetDataMenuHeader(languageCode),
+    GetDataHeader(idPage),
+  ]);
+  const translation = dataHeader.translations.find(
+    (t) => t.language.code === languageCode
+  );
+  const updatedData = translation
+    ? await GetDataHeader(translation.pageId)
+    : dataHeader;
+  const { menuItems, serviceParents } = data;
+  const listServices = serviceParents?.nodes;
+  const updatedMenuItems = menuItems?.nodes.map((item, index) => {
+    if (index === 1) {
+      return {
+        ...item,
+        listServices,
+      };
+    }
+    return {
+      ...item,
+    };
+  });
+
+  return { dataMenu: updatedMenuItems, updatedData };
 };

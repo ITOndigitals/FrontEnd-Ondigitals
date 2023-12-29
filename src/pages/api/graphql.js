@@ -289,12 +289,16 @@ export const GetDataHomepage = async (id, languageCode) => {
             partnerSectionTitleImage
             serviceSectionDesc
             serviceSectionTextButton
+            serviceSectionTextButtonCard
             serviceSectionTitle
             partnerSectionTextButton
             contactFormDecs
             contactFormTextButton
             contactFormTextRequiredField
             contactFormTitle
+            contentNoteError
+            contentNoteSuccess
+            textEmailContact
             linkPrivacyPolicy {
               url
               title
@@ -508,6 +512,7 @@ export const GetServiceDetailBySlug = async (slug) => {
             backgroundColor
             textHeadingRight
             textHeadingLeft
+            uselayout3card
             layoutContentSectionWhich {
               ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
@@ -522,6 +527,19 @@ export const GetServiceDetailBySlug = async (slug) => {
                 title
                 urlVideo
                 videoDescription
+              }
+              ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
+                title
+                backgroundCardColor
+                uselayout3cards
+                card {
+                  title
+                  textContent
+                  imageCard {
+                    altText
+                    sourceUrl
+                  }
+                }
               }
             }
           }
@@ -574,6 +592,17 @@ export const GetPageService = async (id, languageCode) => {
       pageBy(pageId: $id) {
         title
         content
+        seo {
+          fullHead
+        }
+        translations {
+          language {
+            locale
+            name
+            code
+          }
+          pageId
+        }
         pageService {
           textScroll1
           textScroll2
@@ -631,6 +660,9 @@ export const GetPageAboutUs = async (id) => {
   const query = gql`
     query GetPageAboutUs($id: Int!) {
       pageBy(pageId: $id) {
+        seo {
+          fullHead
+        }
         pageAboutUs {
           backgroundImage {
             altText
@@ -760,21 +792,25 @@ export const GetPageAboutUs = async (id) => {
     return null;
   }
 };
-export const GetSeoBlogPage = async (id) => {
+export const GetSeoAndContentBlogPage = async (id) => {
   const endpoint = endPointApi;
   const query = gql`
     query GetSeoBlogPage($id: Int!) {
-      pages(where: { id: $id }) {
-        nodes {
-          seo {
-            fullHead
-          }
-          translations {
-            pageId
-            language {
-              code
-              name
-            }
+      pageBy(pageId: $id) {
+        seo {
+          fullHead
+        }
+        pageBlog {
+          textDescription
+          title
+          textSortBy
+          textFilterCategory
+        }
+        translations {
+          pageId
+          language {
+            code
+            name
           }
         }
       }
@@ -783,7 +819,7 @@ export const GetSeoBlogPage = async (id) => {
   const variables = { id };
   try {
     const data = await request(endpoint, query, variables);
-    return data.pages;
+    return data.pageBy;
   } catch (error) {
     console.error("Error fetching data", error);
     return [];
@@ -977,6 +1013,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
             }
           }
           sectionWhich {
+            uselayout3card
             backgroundColor
             textHeadingRight
             textHeadingLeft
@@ -994,6 +1031,19 @@ export const GetServiceParentDetailBySlug = async (slug) => {
                 title
                 urlVideo
                 videoDescription
+              }
+              ... on Service_parent_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
+                title
+                backgroundCardColor
+                uselayout3cards
+                card {
+                  title
+                  textContent
+                  imageCard {
+                    altText
+                    sourceUrl
+                  }
+                }
               }
             }
           }
@@ -1037,5 +1087,197 @@ export const GetServiceParentDetailBySlug = async (slug) => {
   } catch (error) {
     console.error("Error fetching data", error);
     return null;
+  }
+};
+export const getDataPolicyAndCoEPage = async (id) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetSeoBlogPage($id: Int!) {
+      pageBy(pageId: $id) {
+        content
+        title
+        seo {
+          fullHead
+        }
+        translations {
+          language {
+            code
+          }
+          slug
+          pageId
+        }
+        language {
+          slug
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        serviceHomepage {
+          color
+          name
+          secondaryColor
+          titleBelowTextHeadingPageServiceDetail
+          titleHeadingSectionFaq
+          sectionWho {
+            backgroundColor
+            color
+            projectCardShort {
+              listImageLogo {
+                altText
+                sourceUrl
+              }
+              mainImage {
+                altText
+                sourceUrl
+              }
+              textContent
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionWhat {
+            backgroundColor
+            contentLeft
+            contentRight
+            textTitle
+            mainImage {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhy {
+            backgroundColor
+            color
+            listCardWhy {
+              cardContent
+              cardTitle
+              mainImage {
+                altText
+                sourceUrl
+              }
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionHow {
+            cardStep {
+              cardContent
+              cardTitle
+              titleStep
+              iconCardStep
+            }
+            contentListSteps
+            contentPlatform {
+              contentTitle
+              iconImage {
+                altText
+                sourceUrl
+              }
+              platformGlobal {
+                content
+                listIconImage {
+                  altText
+                  sourceUrl
+                }
+                name
+              }
+              platformVietnam {
+                content
+                fieldGroupName
+                listSocialMedia {
+                  sourceUrl
+                  altText
+                }
+                name
+              }
+              textFooterPlatform
+              title
+            }
+            textLeftHead
+            textRightHead
+            titleListSteps
+            imageIcon {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhich {
+            backgroundColor
+            textHeadingRight
+            textHeadingLeft
+            uselayout3card
+            layoutContentSectionWhich {
+              ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
+                textContent
+                title
+                imageCard {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutVideo {
+                content
+                title
+                urlVideo
+                videoDescription
+              }
+              ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
+                title
+                backgroundCardColor
+                uselayout3cards
+                card {
+                  title
+                  textContent
+                  imageCard {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+          sectionContentDetail {
+            ... on Page_Servicehomepage_SectionContentDetail_ContentNoImage {
+              content
+              title
+            }
+            ... on Page_Servicehomepage_SectionContentDetail_ContentWithImage {
+              content
+              image {
+                altText
+                sourceUrl
+              }
+              title
+            }
+          }
+          layoutContentServiceDetail {
+            ... on Page_Servicehomepage_LayoutContentServiceDetail_SectionIntro {
+              backgroundColor
+              color
+              textLeft
+              textRight
+              textHeadTitle
+              textTitle
+              backgroundColorImage
+              imageSectionIntro {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  const variables = { id };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
   }
 };

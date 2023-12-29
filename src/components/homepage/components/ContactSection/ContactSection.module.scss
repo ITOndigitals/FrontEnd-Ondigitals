@@ -37,11 +37,33 @@
             font-weight: 400;
             line-height: 16px;
             margin-top: 8px;
-            a{
+            a {
               color: #fff;
             }
           }
         }
+      }
+    }
+    &__email {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+      &__text {
+        color: #fff;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      &__address {
+        color: #dcc7ed;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        text-decoration-line: underline;
       }
     }
   }
@@ -124,13 +146,16 @@
         &__buttonAndNote {
           flex-direction: column-reverse;
           div:first-child {
-            width: 100% ;
+            width: 100%;
           }
           div:last-child {
             width: 70%;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
           }
         }
+      }
+      &__email {
+        margin-top: 15px;
       }
     }
   }

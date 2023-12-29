@@ -12,8 +12,7 @@ const Logo = ({ isVisible, isDark }) => {
         href="/"
         className={classes["logo-container"]}
         style={{
-          visibility: isVisible ? "visible" : "hidden",
-          opacity: isVisible ? "1" : "0",
+          display: isVisible ? "block" : "none",
         }}
       >
         <Image
@@ -35,8 +34,7 @@ const Logo = ({ isVisible, isDark }) => {
       href="/"
       className={classes["logo-container"]}
       style={{
-        visibility: isVisible ? "visible" : "hidden",
-        opacity: isVisible ? "1" : "0",
+        display: isVisible ? "block" : "none",
       }}
     >
       <Image

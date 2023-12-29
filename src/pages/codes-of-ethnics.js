@@ -1,48 +1,46 @@
 import ServicePage from "@/components/servicepage/ServicePage";
 import React from "react";
-import { GetPageService } from "../api/graphql";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import { getDataMenu, getTranslatedDataFooter } from "../api/graphqlHeaderFooter";
 import Head from "next/head";
+import { getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import { getDataPolicyAndCoEPage } from "./api/graphql";
+import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
 
 const parse = require("html-react-parser");
 
-export default function Index({ updatedData, dataFooter, dataHeader }) {
+export default function DataPolicy({ updatedData, dataFooter }) {
   if (!updatedData) {
     return null;
   }
-  const dataHead = updatedData.pageBy.seo.fullHead;
+  const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>
-      <Header data={dataHeader} />
+      <Header />
       <Head>{dataHead && parse(dataHead)}</Head>
-      <ServicePage data={updatedData} />
+      <ServiceDetail dataServiceDetail={updatedData} isUsePageId={true} />
       <Footer data={dataFooter} />
     </>
   );
 }
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = async ({locale}) => {
   const language = locale.toUpperCase();
-  const idPage = 44918;
-  const [dataPage, dataFooter, dataHeader] = await Promise.all([
-    GetPageService(idPage, language),
+  const idPage = 45843;
+  const [dataPage, dataFooter] = await Promise.all([
+    getDataPolicyAndCoEPage(idPage),
     getTranslatedDataFooter(language),
-    getDataMenu(language),
   ]);
-
   const translation = dataPage.pageBy.translations.find(
     (t) => t.language.code === language
   );
   const updatedData = translation
-    ? await GetPageService(translation.pageId, language)
+    ? await getDataPolicyAndCoEPage(translation.pageId)
     : dataPage;
   return {
     props: {
       updatedData,
       dataFooter,
-      dataHeader,
     },
   };
 };

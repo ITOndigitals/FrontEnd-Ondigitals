@@ -21,30 +21,3 @@ export const overlayOptions = [
   },
 ];
 
-export const menuItems = [
-  {
-    id: 1,
-    name: "About us",
-    href: "/about-us",
-  },
-  {
-    id: 2,
-    name: "Services",
-    href: "/service",
-  },
-  // {
-  //   id: 3,
-  //   name: "Case study",
-  //   href: "",
-  // },
-  {
-    id: 4,
-    name: "Blog",
-    href: "/blog",
-  },
-  {
-    id: 5,
-    name: "Contact",
-    href: "/contact",
-  },
-];

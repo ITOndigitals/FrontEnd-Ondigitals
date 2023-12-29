@@ -18,8 +18,12 @@ const ServiceSection = ({ NavButton, data }) => {
   const [isOnMobile, setIsOnMobile] = useState(false);
 
   const { nodes: serviceList } = data ? data.serviceParents : [];
-  const { serviceSectionTitle, serviceSectionDesc, serviceSectionTextButton } =
-    data.pages.nodes[0].homePageInputContent || {};
+  const {
+    serviceSectionTitle,
+    serviceSectionDesc,
+    serviceSectionTextButton,
+    serviceSectionTextButtonCard,
+  } = data.pages.nodes[0].homePageInputContent || {};
   useEffect(() => {
     if (serviceList.length > 0) {
       const renderServices = serviceList.map((item, index) => {
@@ -28,9 +32,10 @@ const ServiceSection = ({ NavButton, data }) => {
           slug: item.slug,
           name: item.serviceHomepage.name,
           title: item.title,
+          textBtn:serviceSectionTextButtonCard,
           isActive: index === 0,
           activeColor: item.serviceHomepage.color,
-          secondaryActiveColor: item.serviceHomepage.color,
+          secondaryActiveColor: item.serviceHomepage.secondaryColor,
           image: item.featuredImage?.node.sourceUrl,
           content: <div>{parse(item.excerpt)}</div>,
         };

@@ -27,10 +27,14 @@ const ContactSection = React.forwardRef((props, ref) => {
     contactFormDecs,
     contactFormTextButton,
     contactFormTextRequiredField,
+    contentNoteError,
+    contentNoteSuccess,
+    textEmailContact,
     linkPrivacyPolicy,
     contentLabelForm,
   } = data.pages.nodes[0].homePageInputContent;
-  const [fieldName, fieldEmail, fieldMessage] = contentLabelForm || [];
+  const [fieldName, fieldEmail, fieldPhone, fieldMessage] =
+    contentLabelForm || [];
   useEffect(() => {
     const handleResize = () => {
       setIsOnMobile(window.innerWidth < 1280);
@@ -53,6 +57,7 @@ const ContactSection = React.forwardRef((props, ref) => {
       name: "",
       message: "",
       email: "",
+      phone: "",
     },
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
@@ -61,8 +66,16 @@ const ContactSection = React.forwardRef((props, ref) => {
     try {
       const { data } = await sendEmailMutation({
         variables: {
-          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> <h4 style="color: black;">Email: ${values.email}</h4>  <strong style="color: black;">Message: ${values.message}</strong>  `,
-          subject: "Thông báo có khách hàng mới",
+          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> 
+          <h4 style="color: black;">Email: ${values.email}</h4>  
+          <h4 style="color: black;">
+            Phone Number: 
+            <a href="tel:${values.phone}" style="color: #1155CC;display:inline">
+             ${values.phone}
+            </a>
+          </h4>
+          <strong style="color: black;">Message: ${values.message}</strong>  `,
+          subject: "Thông báo có người liên hệ",
         },
       });
       formik.resetForm();
@@ -114,7 +127,23 @@ const ContactSection = React.forwardRef((props, ref) => {
                 formik.touched.email && !formik.errors.email ? true : false
               }
             />
-
+            <Input
+              title={fieldPhone?.textLable}
+              type={"tel"}
+              fieldName={"phone"}
+              placeholder={fieldEmail?.textPlaceholder}
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              errors={
+                formik.touched.phone && formik.errors.phone
+                  ? formik.errors.phone
+                  : null
+              }
+              isSuccess={
+                formik.touched.phone && !formik.errors.phone ? true : false
+              }
+            />
             <MesageTextarea
               title={fieldMessage?.textLable}
               name="message"
@@ -146,9 +175,7 @@ const ContactSection = React.forwardRef((props, ref) => {
                 {loading && <LoadingSpinner />}
                 {isSuccess && !loading && (
                   <Note
-                    content="Message sent! 
-             Thank you for contacting us.
-             We will reach out to you soon."
+                    content={contentNoteSuccess && contentNoteSuccess}
                     backgroundColor="#5CFFAE"
                     icon={
                       <IconSuccess
@@ -161,9 +188,7 @@ const ContactSection = React.forwardRef((props, ref) => {
                 )}
                 {error && (
                   <Note
-                    content="Something went wrong! 
-                We couldn't receive your message.
-                Please wait and try again."
+                    content={contentNoteError && contentNoteError}
                     backgroundColor="rgba(255, 82, 82, 1)"
                     icon={
                       <IconDanger
@@ -201,6 +226,20 @@ const ContactSection = React.forwardRef((props, ref) => {
               </div>
             </div>
           </form>
+          <div className={classes["contact-section__columLeft__email"]}>
+            <p
+              style={{ fontFamily: MavenPro.style.fontFamily }}
+              className={classes["contact-section__columLeft__email__text"]}
+            >
+              {textEmailContact && textEmailContact}
+            </p>
+            <a
+              href="mailto:contact@ondigitals.com"
+              className={classes["contact-section__columLeft__email__address"]}
+            >
+              contact@ondigitals.com
+            </a>
+          </div>
         </div>
         <div className={classes["contact-section__columRight"]}>
           <div className={classes["contact-section__columRight__image"]}>

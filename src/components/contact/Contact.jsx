@@ -43,7 +43,7 @@ export default function Contact({ data }) {
     <>
       <ContactUsForm data={data} />
       <ContactInfo data={sectionMap} />
-      <ContactInstargram />
+      {/* <ContactInstargram /> */}
     </>
   );
 }

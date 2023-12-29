@@ -7,7 +7,11 @@ export const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
     .required("Please enter your email"),
-  message: Yup.string()
-    .min(10, "Minimum 10 characters required")
-    .required("This field is not empty"),
+  phone: Yup.string()
+    .matches(/^[0-9+\s]+$/, "Only numbers are allowed")
+    .min(10, "At least 10 digits")
+    .max(15, "At most 15 digits")
+  // message: Yup.string()
+  //   .min(10, "Minimum 10 characters required")
+  //   .required("This field is not empty"),
 });

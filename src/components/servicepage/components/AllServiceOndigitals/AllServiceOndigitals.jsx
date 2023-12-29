@@ -32,7 +32,6 @@ export default function AllServiceOndigitals({ data }) {
           {listServiceParents &&
             listServiceParents.map((item) => {
               const bacgroundImageCard = item?.featuredImage?.node;
-              console.log(item);
               const idCate = item?.categories?.nodes[0]?.categoryId;
               const [getListServices, { loading, error, data }] = useLazyQuery(
                 GET_LIST_SERVICES_BY_CATEGORY
@@ -47,6 +46,7 @@ export default function AllServiceOndigitals({ data }) {
                 }
               }, []);
               const dataServices = data?.services?.nodes;
+              console.log(dataServices);
               return (
                 <div
                   key={item?.id}
@@ -55,7 +55,10 @@ export default function AllServiceOndigitals({ data }) {
                   }
                   style={{
                     backgroundColor: item.serviceHomepage.color || "#3d1766",
-                    backgroundImage: `url(${bacgroundImageCard?.sourceUrl})`,
+                    backgroundImage:
+                      dataServices?.length === 0
+                        ? `url(${bacgroundImageCard?.sourceUrl})`
+                        : "",
                   }}
                 >
                   <h3

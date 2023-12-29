@@ -15,6 +15,9 @@ import { frontendUrl } from "../../../../../utils/variables";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const TableOfContent = ({ markdown }) => {
+  if (markdown.length === 0) {
+    return null;
+  }
   const [tableOfContentIsShown, setTableOfContentIsShown] = useState(true);
   const tocRef = useRef(null);
   const tocWrapperRef = useRef(null);

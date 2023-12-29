@@ -65,16 +65,24 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const applyMarkDownHandler = (markdownData) => {
     setMarkdown(markdownData);
   };
+  
+  const [dataPostReadMore, setDataPostReadMore] = useState(null);
   const [filterPostsByTag, { loading, error, data }] =
     useLazyQuery(GET_POSTS_BY_TAG);
+
   useEffect(() => {
     filterPostsByTag({
       variables: {
         categoryId: idPost,
       },
     });
-  }, []);
-  let dataPostReadMore = data?.posts?.nodes;
+  }, [idPost]); 
+
+  useEffect(() => {
+    if (data) {
+      setDataPostReadMore(data?.posts?.nodes);
+    }
+  }, [data]);
   return (
     <div className={classes["blog-detail"]}>
       <div className="container">
@@ -123,7 +131,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
             </p>
           </div>
           {loading ? (
-           <div>Loading...</div>
+            <div>Loading...</div>
           ) : (
             <ul className={classes["blog-detail-read-more__listPosts"]}>
               {dataPostReadMore &&

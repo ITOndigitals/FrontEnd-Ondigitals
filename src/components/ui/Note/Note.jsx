@@ -7,7 +7,7 @@ export default function Note({ isSuccess, icon, backgroundColor, content }) {
   useEffect(() => {
     const visibilityTimer = setTimeout(() => {
       setIsShown(false);
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearTimeout(visibilityTimer);

@@ -55,8 +55,10 @@ const DUMMY_SORT_BY = [
   },
 ];
 
-const BlogsHeader = ({ onSearch, handleSort, filterCategory }) => {
+const BlogsHeader = ({ onSearch, handleSort, filterCategory, dataContent }) => {
   const { locale } = useRouter();
+  const { textDescription, title, textSortBy, textFilterCategory } =
+    dataContent;
   const [getCategoryBlog, { loading, error, data }] =
     useLazyQuery(GET_CATEGORY_POST);
   useEffect(() => {
@@ -65,17 +67,31 @@ const BlogsHeader = ({ onSearch, handleSort, filterCategory }) => {
         language: locale.toUpperCase(),
       },
     });
-  }, []);
-  const dataCategory = data?.categories?.nodes;
-  console.log(dataCategory);
+  }, [locale]);
+  let dataCategory = data?.categories?.nodes;
+  let listNewCategory = dataCategory;
+  if (listNewCategory) {
+    listNewCategory = [
+      {
+        name: "All",
+        slug: "all",
+        categoryId: 0,
+        id: 1,
+      },
+      ...listNewCategory.slice(1).map((item, index) => ({
+        ...item,
+        id: index + 2,
+      })),
+    ];
+  }
   return (
     <div className={classes["blog-header"]}>
       <div className={classes["blog-header-left-item"]}>
         <p className={classes["blog-header-left-item__heading"]}>
-          News & Insights
+         {title && title}
         </p>
         <p className={classes["blog-header-left-item__desc"]}>
-          Get update with latest Digital news, trends and insights
+          {textDescription && textDescription}
         </p>
       </div>
       <div className={classes["blog-header-right-item"]}>
@@ -85,8 +101,8 @@ const BlogsHeader = ({ onSearch, handleSort, filterCategory }) => {
         <div className={classes["blog-header-right-item__option"]}>
           <div className={classes["blog-header-right-item__option--no-mg"]}>
             <SelectOption
-              options={dataCategory && dataCategory}
-              label="category"
+              options={listNewCategory && listNewCategory}
+              label={textFilterCategory}
               handleSort={filterCategory}
             />
           </div>
@@ -94,7 +110,7 @@ const BlogsHeader = ({ onSearch, handleSort, filterCategory }) => {
             <SelectOption
               handleSort={handleSort}
               options={DUMMY_SORT_BY}
-              label="sort by"
+              label={textSortBy}
             />
           </div>
           <div className={classes["blog-header-right-item__option__search"]}>

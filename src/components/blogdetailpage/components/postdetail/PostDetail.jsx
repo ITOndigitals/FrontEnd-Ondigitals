@@ -7,6 +7,7 @@ import { Maven_Pro } from "next/font/google";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import { IconChevronLeft, UpNavIcon } from "@/components/ui/Icons/ListIcon";
 import { useRouter } from "next/router";
+import { getLanguagePathBlog } from "../../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
@@ -14,12 +15,14 @@ export default function PostDetail({ data, applyMarkDown }) {
   if (!data) {
     return <div>Loading...</div>;
   }
+  console.log(data);
   const post = data;
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
   const tagCategory = data?.categories?.nodes;
   const idPost = post?.postId;
   const viewPost = (idPost % 41) + 10;
+  const basePath = getLanguagePathBlog(router.locale);
   const matchingTranslation = data.translations.find(
     (translation) => translation.language.code === currentLanguage
   );
@@ -27,7 +30,7 @@ export default function PostDetail({ data, applyMarkDown }) {
     if (matchingTranslation) {
       router.push(matchingTranslation.slug);
     } else if (router.locale !== post.language.slug) {
-      router.push("/");
+      window.location.href = "/";
     }
   }, [router.locale, data.translations]);
 
@@ -43,12 +46,12 @@ export default function PostDetail({ data, applyMarkDown }) {
   // );
   //useEffect sau là khâu chuẩn bị dữ liệu cho Table Of Content
   useEffect(() => {
+    let markdown = [];
     const headingElements = document.querySelectorAll("h2, h3, h4");
     if (headingElements.length > 0) {
       let currentLevel = 1;
       let subLevel = 1;
       let innerSubLevel = 1;
-      const markdown = [];
       for (let i = 0; i < headingElements.length; i++) {
         const headingElement = headingElements[i];
         const headingContent = headingElement.textContent
@@ -97,8 +100,8 @@ export default function PostDetail({ data, applyMarkDown }) {
         }
       }
       applyMarkDown(markdown);
-    }
-  }, []);
+    } else applyMarkDown([]);
+  }, [data]);
 
   return (
     <div ref={postDetailRef} className={classes["post-detail-container"]}>
@@ -132,7 +135,7 @@ export default function PostDetail({ data, applyMarkDown }) {
           <div className={classes["post-detail-footer-button"]}>
             <div className={classes["post-detail-footer-button__back"]}>
               <ButtonNoBorder
-                href="/blog"
+                href={basePath}
                 textSize="md"
                 LeftIcon={
                   <IconChevronLeft width={24} height={24} color="#131114" />

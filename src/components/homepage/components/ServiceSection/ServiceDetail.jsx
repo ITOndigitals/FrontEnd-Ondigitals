@@ -13,8 +13,7 @@ const ServiceDetail = ({ context }) => {
   const contentRef = useRef(null);
   const { locale } = useRouter();
   const activeColor = context.activeColor;
-  // const colorClass = classes[`${context.activeColor}`];
-
+  const colorDot = context.secondaryActiveColor;
   useEffect(() => {
     const serviceDetailElement = contentRef.current;
     serviceDetailElement.classList.remove(classes["fade-in"]);
@@ -33,7 +32,10 @@ const ServiceDetail = ({ context }) => {
       className={`${classes["service-details"]} appear-from-down-slow`}
       style={{ backgroundColor: activeColor }}
     >
-      <div className={classes["service-details-header"]}></div>
+      <div
+        style={{ backgroundColor: colorDot ? colorDot : "red" }}
+        className={classes["service-details-header"]}
+      ></div>
       <div className={classes["service-details-content"]} ref={contentRef}>
         <div className={classes["service-details-content-wrapper"]}>
           <p className={classes["service-details-content__title"]}>
@@ -46,7 +48,7 @@ const ServiceDetail = ({ context }) => {
             {context.content}
           </div>
           <Link href={`${basePath}/${context.slug}`} locale={locale}>
-            <ExploreButton>Explore</ExploreButton>
+            <ExploreButton>{context?.textBtn}</ExploreButton>
           </Link>
         </div>
         <div className={classes["service-details-image"]}>
