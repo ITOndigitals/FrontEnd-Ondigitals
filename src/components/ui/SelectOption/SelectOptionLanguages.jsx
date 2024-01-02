@@ -77,7 +77,7 @@ const SelectOptionLanguage = ({ isDark, color }) => {
             width={24}
             height={24}
             color={
-              isMobile ? (isDark ? "white" : "") : isDark ? "black" : "white"
+              isMobile ? "white"  : isDark ? "black" : "white"
             }
           />
 
