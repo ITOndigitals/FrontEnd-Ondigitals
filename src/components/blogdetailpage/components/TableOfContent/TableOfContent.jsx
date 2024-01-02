@@ -21,8 +21,9 @@ const TableOfContent = ({ markdown }) => {
   const [tableOfContentIsShown, setTableOfContentIsShown] = useState(true);
   const tocRef = useRef(null);
   const tocWrapperRef = useRef(null);
-  const { asPath, locale } = useRouter();
-  const fullCurrentPath = `${frontendUrl}${locale}${asPath}`;
+  const router = useRouter();
+  const fullCurrentPath =
+    typeof window !== "undefined" ? window.location.href : "";
   const toggleShowTableOfContent = () => {
     setTableOfContentIsShown((oldState) => !oldState);
   };
@@ -89,6 +90,7 @@ const TableOfContent = ({ markdown }) => {
       icon: <PinterestIcon width="24" height="24" color="#3D1766" />,
     },
   ];
+
   return (
     <div className={classes.toc}>
       <div className={classes["toc-heading"]}>

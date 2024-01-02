@@ -1,8 +1,10 @@
 import React from "react";
 import classes from "./BottomNavigator.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const BottomNavigator = ({ isVisible, isDark }) => {
+  const {locale}=useRouter()
   return (
     <div
       className={`bottom-nav ${classes["bottom-nav"]} ${
@@ -11,7 +13,7 @@ const BottomNavigator = ({ isVisible, isDark }) => {
     >
       <div className="container--big">
         <Link
-          href="#"
+          href={`/${locale}/contact`}
           className={`${classes["bottom-nav-item"]} ${
             isDark ? classes.dark : ""
           }`}

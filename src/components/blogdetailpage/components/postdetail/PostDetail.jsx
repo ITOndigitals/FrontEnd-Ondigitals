@@ -15,7 +15,6 @@ export default function PostDetail({ data, applyMarkDown }) {
   if (!data) {
     return <div>Loading...</div>;
   }
-  console.log(data);
   const post = data;
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();

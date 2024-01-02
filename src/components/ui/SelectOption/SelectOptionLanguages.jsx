@@ -61,7 +61,7 @@ const SelectOptionLanguage = ({ isDark, color }) => {
           <IconLanguages
             width={24}
             height={24}
-            color={isDark ? "black" : "white"}
+            color="white"
           />
           <div
             className={classes["select-name__content"]}

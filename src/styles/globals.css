@@ -655,8 +655,8 @@ sup{
 }
 /* hiệu ứng hover cho ảnh ở trang about us và home page */
 .list-card-services-page {
-  padding-right: 45px !important;
-  padding-left: 45px !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
 }
 /* slider list card page servicehome */
 .list-card-services-page .swiper-button-prev::after {

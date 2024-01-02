@@ -6,5 +6,8 @@
 @media (max-width: 768px) { 
   .breadcrumb {
     flex-direction: column;
+    li:first-child{
+      margin-bottom: 5px;
+    }
   }
  }

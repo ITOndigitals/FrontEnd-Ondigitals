@@ -3,16 +3,25 @@ import React from "react";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Head from "next/head";
-import { getDataMenu, getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "./api/graphqlHeaderFooter";
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
 import { getDataPolicyAndCoEPage } from "./api/graphql";
 
 const parse = require("html-react-parser");
 
-export default function DataPolicy({ updatedData, dataFooter,dataHeader }) {
+export default function DataPolicy({
+  updatedData,
+  dataFooter,
+  dataHeader,
+  query,
+}) {
   if (!updatedData) {
     return null;
   }
+  console.log(query);
   const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>
@@ -24,14 +33,13 @@ export default function DataPolicy({ updatedData, dataFooter,dataHeader }) {
   );
 }
 
-export const getServerSideProps = async ({locale}) => {
+export const getServerSideProps = async ({ locale, query }) => {
   const language = locale.toUpperCase();
   const idPage = 45794;
-  const [dataPage, dataFooter,dataHeader] = await Promise.all([
+  const [dataPage, dataFooter, dataHeader] = await Promise.all([
     getDataPolicyAndCoEPage(idPage),
     getTranslatedDataFooter(language),
-    getDataMenu(language)
-    
+    getDataMenu(language),
   ]);
   const translation = dataPage.pageBy.translations.find(
     (t) => t.language.code === language
@@ -43,7 +51,8 @@ export const getServerSideProps = async ({locale}) => {
     props: {
       updatedData,
       dataFooter,
-      dataHeader
+      dataHeader,
+      query,
     },
   };
 };

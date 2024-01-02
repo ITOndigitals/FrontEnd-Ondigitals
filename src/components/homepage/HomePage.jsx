@@ -15,7 +15,6 @@ import { useEffect, useRef, useState } from "react";
 import SectionNavButtons from "../ui/Buttons/SectionNavButtons/SectionNavButtons";
 import { useBoundStore } from "@/store/useBoundStore";
 import CouterNumber from "../ui/CouterNumber/CouterNumber";
-
 const HomePage = ({ allPosts, dataHomepage }) => {
   const dataHomePages = dataHomepage;
   const { number1, number2, number3 } =
@@ -231,7 +230,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
         }
         `}
       </style>
-      {isShowSectionSlide && (
+      {isShowSectionSlide ? (
         <Swiper
           onSlideChange={(swiper) => handleSlideChange(swiper)}
           ref={swiperRef}
@@ -296,8 +295,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
             />
           </SwiperSlide>
         </Swiper>
-      )}
-      {!isShowSectionSlide && swiperRef.current.swiper && (
+      ) : (
         <>
           <IntroSection data={dataHomePages} />
           <ServiceSection data={dataHomePages} />
@@ -306,6 +304,15 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
         </>
       )}
+      {/* {!isShowSectionSlide && swiperRef.current.swiper && (
+        <>
+          <IntroSection data={dataHomePages} />
+          <ServiceSection data={dataHomePages} />
+          <PartnerSection data={dataHomePages} />
+          <CaseStudySection data={dataHomePages} />
+          <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
+        </>
+      )} */}
       <ContactSection
         data={dataHomePages}
         ref={contactFormRef}

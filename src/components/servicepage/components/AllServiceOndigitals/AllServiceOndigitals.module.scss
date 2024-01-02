@@ -60,7 +60,7 @@
           -webkit-line-clamp: 4;
           overflow: hidden;
         }
-        &__list-card-child{
+        &__list-card-child {
           width: 80%;
           margin: 10px 0;
         }
@@ -81,6 +81,11 @@
 }
 @media (max-width: 760px) {
   .all-service-ondigitals {
+    &__card-main {
+      &__container {
+        background-image: unset !important;
+      }
+    }
     &__title {
       width: 100%;
       text-align: center;
@@ -94,6 +99,7 @@
     }
   }
 }
+
 @media (max-width: 550px) {
   .all-service-ondigitals {
     &__card-main {
@@ -106,7 +112,7 @@
         width: 100%;
         height: auto;
         border-radius: 16px;
-        padding: 20px 32px;
+        padding: 20px 10px;
         &__title {
           color: #fff;
           font-size: 28px;

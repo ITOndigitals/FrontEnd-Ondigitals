@@ -141,8 +141,9 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                           key={item?.databaseId}
                           className={classes["menu-list-item__link__child"]}
                         >
-                          <Link href={`services/${item?.slug}`}>
+                          <Link href={`/services/${item?.slug}`}>
                             {item.serviceHomepage?.name}
+                            
                           </Link>
                         </li>
                       ))}
