@@ -46,7 +46,6 @@ export default function AllServiceOndigitals({ data }) {
                 }
               }, []);
               const dataServices = data?.services?.nodes;
-              console.log(dataServices);
               return (
                 <div
                   key={item?.id}

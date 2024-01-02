@@ -21,7 +21,6 @@ export default function PopupForm({ dataForm, isOpen, onClose }) {
     dataForm?.contentFormRequest;
   const [fieldName, fieldEmail, fieldPhone] = textInput || [];
 
-  console.log(fieldName, fieldEmail, fieldPhone);
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
   const [isSuccess, setIsSuccess] = useState(false);

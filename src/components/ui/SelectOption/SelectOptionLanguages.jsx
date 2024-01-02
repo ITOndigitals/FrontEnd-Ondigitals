@@ -11,6 +11,7 @@ import Link from "next/link";
 
 const SelectOptionLanguage = ({ isDark, color }) => {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const optionsRef = useRef(null);
   const { locales, locale: activeLocale } = useRouter();
   const otherLocales = locales.filter((locale) => locale !== activeLocale);
@@ -45,6 +46,20 @@ const SelectOptionLanguage = ({ isDark, color }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth;
+      setIsMobile(width <= 600);
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className={classes.select}>
       <div
@@ -61,8 +76,11 @@ const SelectOptionLanguage = ({ isDark, color }) => {
           <IconLanguages
             width={24}
             height={24}
-            color="white"
+            color={
+              isMobile ? (isDark ? "white" : "") : isDark ? "black" : "white"
+            }
           />
+
           <div
             className={classes["select-name__content"]}
             style={{ color: isDark ? "black" : "white" }}

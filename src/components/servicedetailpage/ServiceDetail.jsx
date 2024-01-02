@@ -12,7 +12,6 @@ import SectionWhich from "./components/SectionWhich/SectionWhich";
 import SectionWhat from "./components/SectionWhat/SectionWhat";
 
 export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
-  console.log(isUsePageId);
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
   const serviceBy =

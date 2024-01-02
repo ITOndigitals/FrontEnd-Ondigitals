@@ -114,7 +114,6 @@ const BlogPage = ({ blogsData, textContent }) => {
     const listItems = document.querySelectorAll("#list-posts-ods li");
     const lastListItem = listItems[listItems.length - 2];
     let observer;
-    console.log(data, "hello");
     const observeLastItem = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -134,7 +133,6 @@ const BlogPage = ({ blogsData, textContent }) => {
     };
 
     if (lastListItem) {
-      console.log("4444");
       observer = new IntersectionObserver(observeLastItem, {
         root: null,
         rootMargin: "0px",
@@ -161,17 +159,14 @@ const BlogPage = ({ blogsData, textContent }) => {
       if (isUseFilter && nodes.length > 0) {
         setRenderData(nodes);
         setIsUseFilter(false);
-        console.log(endCursor, isFilterPanigation);
       }
       if (isNexPage && !isUseFilter) {
-        console.log(3);
         setRenderData((prevData) => [...prevData, ...nodes]);
         setIsUseFilter(false);
       }
       if (!isNexPage) {
         setIsFilterPanigation(endCursor);
         setIsFilterPanigation("");
-        console.log(isFilterPanigation);
       }
       if (nodes.length === 0 && (keySearch || idCategory)) {
         if (renderData.length > 0 && !isUseFilter) {
