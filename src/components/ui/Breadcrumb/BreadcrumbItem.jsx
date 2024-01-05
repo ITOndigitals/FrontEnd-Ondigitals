@@ -9,7 +9,7 @@ const BreadcrumbItem = ({ item, order }) => {
   return (
     <li className={classes.item} style={{fontFamily: MavenPro.style.fontFamily}}>
       {order > 0 && (
-        <div className={`${classes.circle} ${classes[`order-${order}`]}`} />
+        <p className={`${classes.circle} ${classes[`order-${order}`]}`} />
       )}
       <Link href={item.url || "/"}>{item.title && parse(item.title)}</Link>
     </li>

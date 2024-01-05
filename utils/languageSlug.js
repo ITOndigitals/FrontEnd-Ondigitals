@@ -1,14 +1,19 @@
-export const getLanguagePathService = (locale) => {
-  const languagePaths = {
-    en: "/services",
-    vi: "/services",
-  };
-  return languagePaths[locale] || "/services";
+export const localeLang = {
+  en: "English",
+  vi: "Tiếng Việt",
+  zh: "中文(简体)",
 };
-export const getLanguagePathBlog = (locale) => {
-  const languagePaths = {
-    en: "/digital-news",
-    vi: "/digital-news",
-  };
-  return languagePaths[locale] || "/digital-news";
+export const languagePathsService = {
+  en: "/services",
+  vi: "/vi/dich-vu",
+};
+export const languagePathsBlog = {
+  en: "/digital-news",
+  vi: "/vi/tin-tuc",
+};
+export const getLanguagePathService = (locale) => {
+  return languagePathsService[locale] || "/services";
+};
+export const getLanguagePathBlog= (locale) => {
+  return languagePathsBlog[locale] || "/digital-news";
 };

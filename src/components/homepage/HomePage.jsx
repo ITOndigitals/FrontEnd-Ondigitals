@@ -60,13 +60,18 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       ".number-trusted, .number-successful, .number-monthly"
     );
     const maxValues = [number1, number2, number3];
+    let timeoutId; // Biến để lưu trữ ID của setTimeout
     function runCounterForElement(currentValue, maxValue, element) {
       if (currentValue <= maxValue) {
         element.textContent = currentValue + "+";
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           runCounterForElement(currentValue + 1, maxValue, element);
         }, 1);
       }
+      setTimeout(() => {
+        element.textContent = maxValue + "+";
+        clearTimeout(timeoutId)
+      }, 2000);
     }
     elements.forEach((element, index) => {
       runCounterForElement(0, maxValues[index], element);

@@ -32,7 +32,6 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const DUMMY_BREADCRUMB_DATA = [
     breadcrumHome,
     breadcrumPage,
-    breadcrumPageDetail,
     titlePostDetail,
   ];
   const [markdown, setMarkdown] = useState();

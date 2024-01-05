@@ -293,9 +293,31 @@ const Header = ({ data }) => {
       setSubPageHeaderIsSticky(false);
     }
   }, [headerIsSticky, isInSubPage]);
+
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };
+
+  const setChangeStickyIsAllowed = useBoundStore(
+    (state) => state.setChangeStickyIsAllowed
+  );
+  const setIsInSubPageState = useBoundStore(
+    (state) => state.setIsInSubPageState
+  );
+  useEffect(() => {
+    if (isOnMobile) {
+      setHeaderStickyState(false);
+      setChangeStickyIsAllowed(true);
+      setIsInSubPageState(true);
+      const header = document.querySelector(".main-header-g");
+      if (header) {
+        setHeaderCanChangeColor();
+        setToLight();
+        setBottomNavIsShown(true);
+        header.classList.remove("hide");
+      }
+    }
+  }, [isOnMobile]);
   return (
     <div>
       <ExpanseMenu

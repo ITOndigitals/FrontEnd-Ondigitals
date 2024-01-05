@@ -13,10 +13,14 @@ export default function CounterNumber({ value, classes, threshold }) {
               if (currentValue < value) {
                 setCurrentValue(currentValue + 1);
               }
-            }, 0.1);
+            }, 1);
+            const timeout = setTimeout(() => {
+              setCurrentValue(value);
+            }, 2000);
             return () => {
               observer.unobserve(entry.target);
               clearTimeout(couter);
+              clearTimeout(timeout);
             };
           }
         });

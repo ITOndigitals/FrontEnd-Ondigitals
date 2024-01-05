@@ -3,6 +3,9 @@
   font-weight: 600;
   align-items: center;
   line-height: 24px;
+  &:hover{
+    text-decoration: underline;
+  }
   p {
     margin-top: 6px;
     font-size: 14px;

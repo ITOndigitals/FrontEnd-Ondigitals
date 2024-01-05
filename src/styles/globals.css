@@ -674,6 +674,9 @@ sup{
 .section-who-service {
   padding: 4% 0 !important;
 }
+.section-who-service .swiper-wrapper {
+  justify-content: center;
+}
 .section-who-service .swiper-pagination-bullet {
   width: 16px;
   height: 16px;

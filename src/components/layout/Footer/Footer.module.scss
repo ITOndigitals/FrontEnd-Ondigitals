@@ -2,6 +2,11 @@
 .footer {
   background-color: #3d1766;
   height: auto;
+  a{
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
 .btn-contact {
   display: none;

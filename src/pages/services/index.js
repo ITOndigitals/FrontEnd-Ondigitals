@@ -1,10 +1,15 @@
 import ServicePage from "@/components/servicepage/ServicePage";
-import React from "react";
+import React, { useEffect } from "react";
 import { GetPageService } from "../api/graphql";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import { getDataMenu, getTranslatedDataFooter } from "../api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "../api/graphqlHeaderFooter";
 import Head from "next/head";
+import { useRouter } from "next/router";
+
 
 const parse = require("html-react-parser");
 
@@ -12,6 +17,7 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return null;
   }
+
   const dataHead = updatedData.pageBy.seo.fullHead;
   return (
     <>

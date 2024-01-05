@@ -67,6 +67,8 @@
     .footer-section {
       &__content {
         flex-wrap: wrap;
+        flex-direction: column;
+        gap: 50px;
       }
     }
   }

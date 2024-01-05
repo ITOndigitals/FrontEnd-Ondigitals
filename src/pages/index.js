@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomePage from "@/components/homepage/HomePage";
 import {
   GetDataHomepage,
@@ -8,10 +8,30 @@ import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import { getDataMenu, getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import { useRouter } from "next/router";
 
 const parse = require("html-react-parser");
 
 export default function Home({ allPosts, dataHomepage, dataFooter,dataHeader }) {
+  const router = useRouter();
+  const {locale}=router
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      console.log(url)
+      // Kiểm tra nếu người dùng quay lại trang chủ từ bất kỳ trang nào khác
+      if (url === `/${locale}/` || url === '/') {
+        // Reload trang chủ khi người dùng quay lại từ các trang khác
+        window.location.reload();
+      }
+    };
+    // Lắng nghe sự kiện chuyển trang
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Clean up
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
   const fullHeadHTML = dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead || "";
   return (
     <>

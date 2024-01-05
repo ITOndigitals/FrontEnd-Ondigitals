@@ -16,8 +16,8 @@ import { getLanguagePathService } from "../../../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 
-export default function AllServiceOndigitals({ data }) {
-  const { pageBy, serviceParents } = data;
+export default function AllServiceOndigitals({ dataAllServices }) {
+  const { pageBy, serviceParents } = dataAllServices;
   const { locale } = useRouter();
   const { sectionCaseStudy, sectionListServices } = pageBy.pageService;
   const listServiceParents = serviceParents?.nodes;
@@ -57,7 +57,7 @@ export default function AllServiceOndigitals({ data }) {
                     backgroundImage:
                       dataServices?.length === 0
                         ? `url(${bacgroundImageCard?.sourceUrl})`
-                        : "",
+                        : "unset",
                   }}
                 >
                   <h3
