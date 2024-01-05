@@ -131,7 +131,7 @@ const ContactSection = React.forwardRef((props, ref) => {
               title={fieldPhone?.textLable}
               type={"tel"}
               fieldName={"phone"}
-              placeholder={fieldEmail?.textPlaceholder}
+              placeholder={fieldPhone?.textPlaceholder}
               value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}

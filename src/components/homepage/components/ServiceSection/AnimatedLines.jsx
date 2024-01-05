@@ -9,63 +9,53 @@ const useIsomorphicLayoutEffect =
 const DUMMY_ANIMATEDLIST = [
   {
     id: 1,
-    name: "THOROUGH RESEARCH",
+    name: "LOCAL TEAM, GLOBAL MIND",
     color: "primary",
   },
   {
     id: 2,
-    name: "LOCAL INSIGHTS",
+    name: "CREATIVE ON A BUDGET",
     color: "red-dark",
   },
   {
     id: 3,
-    name: "PERSISTENT GROWTH",
+    name: "THINKING INSIDE THE BOX",
     color: "primary-light",
   },
   {
     id: 4,
-    name: "FULL TRANSPARENCY",
+    name: "THINK LIKE A BUSINESS",
     color: "red-light",
   },
   {
     id: 5,
-    name: "COMPETITIVE PRICING",
+    name: "ACT LIKE A TRUSTED PARTNER",
     color: "primary",
   },
   {
     id: 6,
-    name: "PROJECT MANAGEMEN",
-    color: "red-light",
-  },
-  {
-    id: 7,
-    name: "THOROUGH RESEARCH",
-    color: "primary",
-  },
-  {
-    id: 8,
-    name: "LOCAL INSIGHTS",
-    color: "red-dark",
-  },
-  {
-    id: 9,
-    name: "PERSISTENT GROWTH",
+    name: "LOCAL TEAM, GLOBAL MIND",
     color: "primary-light",
   },
   {
-    id: 10,
-    name: "FULL TRANSPARENCY",
+    id: 7,
+    name: "CREATIVE ON A BUDGET",
+    color: "red-dark",
+  },
+  {
+    id: 8,
+    name: "THINKING INSIDE THE BOX",
+    color: "primary-light",
+  },
+  {
+    id: 9,
+    name: "THINK LIKE A BUSINESS",
     color: "red-light",
   },
   {
-    id: 11,
-    name: "COMPETITIVE PRICING",
+    id:10,
+    name: "ACT LIKE A TRUSTED PARTNER",
     color: "primary",
-  },
-  {
-    id: 12,
-    name: "PROJECT MANAGEMEN",
-    color: "red-light",
   },
 ];
 

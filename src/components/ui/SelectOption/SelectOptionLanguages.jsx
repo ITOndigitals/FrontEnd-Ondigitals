@@ -8,6 +8,7 @@ import {
 } from "../Icons/ListIcon";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { localeLang } from "../../../../utils/languageSlug";
 
 const SelectOptionLanguage = ({ isDark, color }) => {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
@@ -16,11 +17,6 @@ const SelectOptionLanguage = ({ isDark, color }) => {
   const { locales, locale: activeLocale } = useRouter();
   const otherLocales = locales.filter((locale) => locale !== activeLocale);
 
-  const localeLang = {
-    en: "English",
-    vi: "Tiếng Việt",
-    zh: "中文(简体)",
-  };
   const iconByLocale = {
     vi: IconFlagVietnam,
     en: IconFlagEnglish,
@@ -76,9 +72,7 @@ const SelectOptionLanguage = ({ isDark, color }) => {
           <IconLanguages
             width={24}
             height={24}
-            color={
-              isMobile ? "white"  : isDark ? "black" : "white"
-            }
+            color={isMobile ? "white" : isDark ? "black" : "white"}
           />
 
           <div

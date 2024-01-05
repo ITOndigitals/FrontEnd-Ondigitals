@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BlogPage from "@/components/blogpage/BlogPage";
 import { GetSeoAndContentBlogPage, getDataPageBlog } from "../api/graphql";
 import Head from "next/head";
@@ -8,16 +8,27 @@ import {
   getDataMenu,
   getTranslatedDataFooter,
 } from "../api/graphqlHeaderFooter";
+import { useRouter } from "next/router";
+import { getLanguagePathBlog, languagePathsBlog } from "../../../utils/languageSlug";
+
 
 const parse = require("html-react-parser");
 
 export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathBlog(locale);
+  useEffect(() => {
+    if (locale in languagePathsBlog) {
+      router.push(basePath);
+    }
+  }, [locale]);
   const dataHead = seoHead?.seo?.fullHead;
   return (
     <>
       <Head>{dataHead && parse(dataHead)}</Head>
       <Header data={dataHeader} />
-      <BlogPage blogsData={allPosts} textContent = {seoHead}/>
+      <BlogPage blogsData={allPosts} textContent={seoHead} />
       <Footer data={dataFooter} />
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./ServiceCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,23 +11,41 @@ export default function ServiceCard({ data }) {
   }
   const { serviceHomepage, slug, featuredImage } = data;
   const { altText, sourceUrl } = featuredImage?.node;
+  const [isMobile, setIsMobile] = useState(false);
 
   const [isHover, setIsHover] = useState(false);
-
+  const boxStyle = {
+    backgroundColor: isHover ? serviceHomepage?.secondaryColor : "#fff",
+  };
+  const boxStyleMobile = {
+    backgroundColor: serviceHomepage?.secondaryColor
+      ? serviceHomepage?.secondaryColor
+      : "#fff",
+  };
   const handleMouseEnter = () => {
     setIsHover(true);
   };
   const handleMouseLeave = () => {
     setIsHover(false);
   };
-  const boxStyle = {
-    backgroundColor: isHover ? serviceHomepage?.secondaryColor : "#fff",
-  };
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth;
+      setIsMobile(width <= 1200);
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <Link
       href={`${slug}`}
-      style={boxStyle}
+      style={isMobile ? boxStyleMobile : boxStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={classes["service-card"]}

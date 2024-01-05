@@ -14,7 +14,6 @@ const parse = require("html-react-parser");
 
 export default function FAQServiceDetail({ data, titleHeading }) {
   const scrollRef = useRef(null);
-
   const [expandedItems, setExpandedItems] = useState(
     Array(data.length).fill(false)
   );
@@ -38,17 +37,17 @@ export default function FAQServiceDetail({ data, titleHeading }) {
     setExpandedItems(newExpandedItems);
   }, []);
   return (
-    <section
-      style={{ fontFamily: MavenPro.style.fontFamily }}
-      ref={scrollRef}
-      className={classes["faq-service-detail"]}
-    >
+    <section ref={scrollRef} className={classes["faq-service-detail"]}>
       <div className="container">
         <div className={classes["faq-service-detail__heading"]}>
           {titleHeading && parse(titleHeading)}
         </div>
         {data.map((item, index) => (
-          <div key={index} className={classes["faq-service-detail__content"]}>
+          <div
+            style={{ fontFamily: MavenPro.style.fontFamily }}
+            key={index}
+            className={classes["faq-service-detail__content"]}
+          >
             <div
               className={classes["faq-service-detail__content__title"]}
               onClick={() => toggleItem(index)}
@@ -102,7 +101,7 @@ export default function FAQServiceDetail({ data, titleHeading }) {
         ))}
         <div className={classes["faq-service-detail__footer"]}>
           <ButtonNoBorder
-            href="/service"
+            href="/services"
             textSize="md"
             LeftIcon={<IconChevronLeft width={24} height={24} color="#fff" />}
           >

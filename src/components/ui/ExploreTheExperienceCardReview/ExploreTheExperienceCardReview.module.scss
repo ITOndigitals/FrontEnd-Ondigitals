@@ -154,6 +154,7 @@
     background-color: #6f1ab6;
     padding: 16px;
     border-radius: 16px 16px 0px 0px;
+    min-height: 205px;
     &__point {
       display: flex;
       gap: 8px;
@@ -190,6 +191,8 @@
     background-color: #fff;
     padding: 16px;
     border-radius: 0px 0px 16px 16px;
+    min-height: 230px;
+
     &__title {
       color: #131114;
       font-size: 14px;

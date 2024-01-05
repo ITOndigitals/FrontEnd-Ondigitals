@@ -30,7 +30,7 @@ const listIconSocial = [
   },
   {
     id: 4,
-    slug: "",
+    slug: "https://zalo.me/4436409039049370507",
     icon: <IconZalo width={51} height={24} color={"#fff"} />,
   },
   {

@@ -40,7 +40,7 @@ export default function ServicePage({ data }) {
   return (
     <>
       <IntroService data={pageBy} />
-      <AllServiceOndigitals data={data} />
+      <AllServiceOndigitals dataAllServices={data} />
       {/* <CaseStudyServicePage /> */}
       <NeedHelpDigitalGrowth />
     </>

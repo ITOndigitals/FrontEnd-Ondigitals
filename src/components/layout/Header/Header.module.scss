@@ -62,6 +62,9 @@
       span {
         display: block;
         font-size: 18px;
+        &:hover {
+          color: #dcc7ed;
+        }
       }
       &-locale {
         display: flex;
@@ -106,7 +109,7 @@
 }
 
 .dark-header {
-  .header-btn__wrapper{
+  .header-btn__wrapper {
     color: black;
   }
 }
@@ -136,7 +139,7 @@
         visibility: unset;
         opacity: 1;
       }
-      &__languageMobile{
+      &__languageMobile {
         display: none;
       }
     }

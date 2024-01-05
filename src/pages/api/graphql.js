@@ -185,10 +185,6 @@ export const GetPostDetailBySlug = async (slug, language) => {
               title
               url
             }
-            breadcrumPageDetail {
-              title
-              url
-            }
             breadcrumTitleBlogDetail
             textButton
             textReadMore

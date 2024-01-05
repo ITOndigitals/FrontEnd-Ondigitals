@@ -58,7 +58,10 @@ const SelectOption = ({ options, label, color, handleSort }) => {
       </div>
       <div className={classes["select-wrapper"]} ref={optionsRef}>
         <div
-          style={{ borderWidth: "1px", borderColor: color ? color : "black" }}
+          style={{
+            borderWidth: dropdownIsOpen ? "3px" : "1px",
+            borderColor: color ? color : "black",
+          }}
           className={classes["select-name"]}
           onClick={() => {
             setDropdownIsOpen((oldState) => !oldState);
