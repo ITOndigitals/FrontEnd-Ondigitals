@@ -19,7 +19,7 @@ export default function ContactInstargram({ data }) {
         );
         setPosts(response.data.data);
       } catch (error) {
-        console.error("Error fetching Instagram data:IGQWRQLXYwaFprS2lwZAWZARUlR1NVUzM1djdnZAZAUjlncjZACeGZAyRC1OdGY2Ylgyc09kTDVoR29DSnpsSG92WDZAocWhyYXZAFV2cxcm0zbkNyejRGekI0aGczdnQ3NnBZANFZAwSkY2TVVWX2RBcmNNMzZA2ZA0lIWEtLTk0ZD", error);
+        console.error("Error fetching Instagram data:", error);
       }
     };
     fetchData();
