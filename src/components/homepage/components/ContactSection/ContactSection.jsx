@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import classes from "./ContactSection.module.scss";
 import MesageTextarea from "@/components/ui/Input/MesageTextarea";
 import Input from "@/components/ui/Input/Input";
-import { validationSchema } from "../../../../../utils/validationForm";
+import getValidationSchema from "../../../../../utils/validationForm";
 import Image from "next/image";
 import Button from "@/components/ui/Buttons/Button/Button";
 import {
@@ -17,10 +17,12 @@ import { useMutation } from "@apollo/client";
 import { SendEmailContactForm } from "../../../../../utils/sendEmail";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const ContactSection = React.forwardRef((props, ref) => {
   const { NavButton, data } = props;
+  const { locale } = useRouter();
   const [isOnMobile, setIsOnMobile] = useState(false);
   const {
     contactFormTitle,
@@ -32,6 +34,7 @@ const ContactSection = React.forwardRef((props, ref) => {
     textEmailContact,
     linkPrivacyPolicy,
     contentLabelForm,
+    imageSectionContact,
   } = data.pages.nodes[0].homePageInputContent;
   const [fieldName, fieldEmail, fieldPhone, fieldMessage] =
     contentLabelForm || [];
@@ -59,7 +62,7 @@ const ContactSection = React.forwardRef((props, ref) => {
       email: "",
       phone: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: getValidationSchema(locale),
     onSubmit: handleSubmit,
   });
   async function handleSubmit(values) {
@@ -244,12 +247,12 @@ const ContactSection = React.forwardRef((props, ref) => {
         <div className={classes["contact-section__columRight"]}>
           <div className={classes["contact-section__columRight__image"]}>
             <Image
-              src="/assets/images/partials/intro-bg.png"
+              src={imageSectionContact?.sourceUrl}
               fill
               alt="intro-img"
               placeholder="blur"
-              blurDataURL={"/assets/images/partials/intro-bg.png"}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              blurDataURL={imageSectionContact?.sourceUrl}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
             />
           </div>
           <div className={classes["contact-section__columRight__text"]}>

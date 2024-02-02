@@ -20,13 +20,20 @@
       font-weight: 400;
       line-height: 26px;
     }
+    &__button {
+      a {
+        &:hover {
+          background-color: #ff0032;
+        }
+      }
+    }
   }
 }
 @media (max-width: 1200px) {
   .help-digital-growth-main {
     padding: 5% 0;
-    br{
-        display: none;
+    br {
+      display: none;
     }
     &__content {
       flex-wrap: wrap;
@@ -36,11 +43,10 @@
       &__title {
         text-align: center;
       }
-      &__text{
+      &__text {
         width: 100%;
         text-align: center;
       }
     }
-
   }
 }

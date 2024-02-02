@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import classes from "./ContactUsForm.module.scss";
 import MesageTextarea from "@/components/ui/Input/MesageTextarea";
 import Input from "@/components/ui/Input/Input";
-import { validationSchema } from "../../../../../utils/validationForm";
+import getValidationSchema from "../../../../../utils/validationForm";
 import Button from "@/components/ui/Buttons/Button/Button";
 import {
   ArrowRight,
@@ -15,11 +15,13 @@ import { Maven_Pro } from "next/font/google";
 import { useMutation } from "@apollo/client";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { SendEmailContactForm } from "../../../../../utils/sendEmail";
+import { useRouter } from "next/router";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function ContactUsForm({ data }) {
+  const { locale } = useRouter();
   const {
     textButton,
     textButtonSending,
@@ -31,7 +33,8 @@ export default function ContactUsForm({ data }) {
     contentNoteSuccess,
     contactForm,
   } = data;
-  const [fieldName, fieldEmail,fieldPhone, fieldMessage] = contactForm.contentForm || [];
+  const [fieldName, fieldEmail, fieldPhone, fieldMessage] =
+    contactForm.contentForm || [];
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -42,7 +45,7 @@ export default function ContactUsForm({ data }) {
       email: "",
       phone: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: getValidationSchema(locale),
     onSubmit: handleSubmit,
   });
 
@@ -189,9 +192,13 @@ export default function ContactUsForm({ data }) {
               >
                 <div
                   className={
-                    classes[
-                      "contact-section__columLeft__form__buttonAndNote--btn"
-                    ]
+                    loading
+                      ? classes[
+                          "contact-section__columLeft__form__buttonAndNote--btn__loading"
+                        ]
+                      : classes[
+                          "contact-section__columLeft__form__buttonAndNote--btn"
+                        ]
                   }
                 >
                   <Button

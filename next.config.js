@@ -27,6 +27,28 @@ const nextConfig = {
         destination: "/:locale/services/",
         locale: false,
       },
+      // config slug contact language Vietnam
+      {
+        source: "/:locale/lien-he/:slug*",
+        destination: "/:locale/contact/:slug*",
+        locale: false,
+      },
+      {
+        source: "/:locale/lien-he/",
+        destination: "/:locale/contact/",
+        locale: false,
+      },
+       // config slug about us language Vietnam
+       {
+        source: "/:locale/ve-chung-toi/:slug*",
+        destination: "/:locale/about-us/:slug*",
+        locale: false,
+      },
+      {
+        source: "/:locale/ve-chung-toi/",
+        destination: "/:locale/about-us/",
+        locale: false,
+      },
     ];
   },
 
@@ -37,9 +59,9 @@ const nextConfig = {
   images: {
     domains: [
       "api.ondigitals.com",
-      "kimlongdiep.com",
       "s3-alpha-sig.figma.com",
       "res.cloudinary.com",
+      "scontent.cdninstagram.com",
     ],
   },
   i18n: i18nConfig,

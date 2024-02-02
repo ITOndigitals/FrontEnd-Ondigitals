@@ -7,11 +7,14 @@ const parse = require("html-react-parser");
 
 const BreadcrumbItem = ({ item, order }) => {
   return (
-    <li className={classes.item} style={{fontFamily: MavenPro.style.fontFamily}}>
+    <li
+      className={classes.item}
+      style={{ fontFamily: MavenPro.style.fontFamily }}
+    >
       {order > 0 && (
         <p className={`${classes.circle} ${classes[`order-${order}`]}`} />
       )}
-      <Link href={item.url || "/"}>{item.title && parse(item.title)}</Link>
+      <Link href={item.url || "/"}>{item.title && item.title}</Link>
     </li>
   );
 };

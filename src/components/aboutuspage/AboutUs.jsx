@@ -79,7 +79,6 @@ const AboutUs = ({ data }) => {
       {sectionStepDigitalMarketing && (
         <StepDigitalMarketing data={sectionStepDigitalMarketing} />
       )}
-
       <NeedHelpDigitalGrowth />
     </>
   );

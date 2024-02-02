@@ -2,12 +2,12 @@ import { useEffect } from "react";
 const MagicMouse = () => {
   useEffect(() => {
     const options = {
-      outerStyle: "circle-basic",
-      hoverEffect: "pointer-overlay",
-      hoverItemMove: true,
-      defaultCursor: false,
-      outerWidth: 30,
-      outerHeight: 30,
+      "outerStyle": "disable",
+      "hoverEffect": "circle-move",
+      "hoverItemMove": false,
+      "defaultCursor": true,
+      "outerWidth": 41,
+      "outerHeight": 41
     };
     window.magicMouse(options);
   }, []);

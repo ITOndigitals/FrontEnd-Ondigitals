@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import classes from "./AllServiceOndigitals.module.scss";
 import ServiceCard from "@/components/ui/ServiceCard/ServiceCard";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
@@ -12,8 +12,6 @@ import { GET_LIST_SERVICES_BY_CATEGORY } from "@/pages/api/graphqlApollo";
 import { useLazyQuery } from "@apollo/client";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
-import { getLanguagePathService } from "../../../../../utils/languageSlug";
-
 const parse = require("html-react-parser");
 
 export default function AllServiceOndigitals({ dataAllServices }) {
@@ -21,7 +19,49 @@ export default function AllServiceOndigitals({ dataAllServices }) {
   const { locale } = useRouter();
   const { sectionCaseStudy, sectionListServices } = pageBy.pageService;
   const listServiceParents = serviceParents?.nodes;
-  const basePath = getLanguagePathService(locale);
+  const [servicesByCategory, setServicesByCategory] = useState([]);
+  const [getListServices, { loading }] = useLazyQuery(
+    GET_LIST_SERVICES_BY_CATEGORY
+  );
+
+  const fetchData = useCallback(async (idCate) => {
+    if (idCate && !loading) {
+      const result = await getListServices({
+        variables: {
+          ID: idCate,
+        },
+      });
+      return result.data;
+    }
+    return null;
+  }, []);
+
+  useEffect(() => {
+    async function getData() {
+      const newData = {};
+      const uniqueCategories = new Set();
+      listServiceParents.forEach((parent) => {
+        const idCate = parent?.categories?.nodes[0]?.categoryId;
+        if (idCate) {
+          uniqueCategories.add(idCate);
+        }
+      });
+      const uniqueCategoriesArray = Array.from(uniqueCategories);
+
+      const promises = uniqueCategoriesArray.map(async (idCate) => {
+        const result = await fetchData(idCate);
+        return { idCate, result }; // Trả về một object chứa idCate và result
+      });
+      const results = await Promise.all(promises);
+      // Đổi từ mảng kết quả thành object kết quả
+      results.forEach(({ idCate, result }) => {
+        newData[idCate] = result;
+      });
+      setServicesByCategory(newData);
+    }
+    getData();
+  }, [locale]);
+
   return (
     <section className={classes["all-service-ondigitals"]}>
       <div className="container">
@@ -33,19 +73,7 @@ export default function AllServiceOndigitals({ dataAllServices }) {
             listServiceParents.map((item) => {
               const bacgroundImageCard = item?.featuredImage?.node;
               const idCate = item?.categories?.nodes[0]?.categoryId;
-              const [getListServices, { loading, error, data }] = useLazyQuery(
-                GET_LIST_SERVICES_BY_CATEGORY
-              );
-              useEffect(() => {
-                if (idCate) {
-                  getListServices({
-                    variables: {
-                      ID: idCate,
-                    },
-                  });
-                }
-              }, []);
-              const dataServices = data?.services?.nodes;
+              const dataServices = servicesByCategory[idCate]?.services?.nodes;
               return (
                 <div
                   key={item?.id}
@@ -83,9 +111,9 @@ export default function AllServiceOndigitals({ dataAllServices }) {
                         ]
                       }
                     >
-                      {item?.excerpt && parse(item?.excerpt)}
+                      {item?.serviceHomepage?.titleBelowTextHeadingPageServiceDetail}
                     </div>
-                    {loading ? (
+                    {loading && dataServices ? (
                       <LoadingSpinner />
                     ) : (
                       <div
@@ -141,9 +169,9 @@ export default function AllServiceOndigitals({ dataAllServices }) {
                   </div>
                   <div>
                     <Link
-                      href={item?.slug ? `${basePath}/${item?.slug}` : basePath}
+                      href={item?.slug}
                     >
-                      <ExploreButton>How it works</ExploreButton>
+                      <ExploreButton>{sectionListServices?.textButtonLink}</ExploreButton>
                     </Link>
                   </div>
                 </div>

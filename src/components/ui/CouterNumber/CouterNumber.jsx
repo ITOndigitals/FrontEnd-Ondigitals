@@ -1,25 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function CounterNumber({ value, classes, threshold }) {
-  const classname = classes;
   const [currentValue, setCurrentValue] = useState(0);
+  const classname = classes;
+  const valueRef = useRef(value);
   useEffect(() => {
     const partnerSections = document.querySelectorAll(`.${classname}`);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const couter = setTimeout(() => {
-              if (currentValue < value) {
-                setCurrentValue(currentValue + 1);
+            let count = 0;
+            const interval = setInterval(() => {
+              if (count < valueRef.current) {
+                setCurrentValue(count);
+                count++;
+              } else {
+                clearInterval(interval);
               }
-            }, 1);
+            }, 50);
+
             const timeout = setTimeout(() => {
-              setCurrentValue(value);
-            }, 2000);
+              setCurrentValue(valueRef.current);
+              clearInterval(interval);
+            }, 3000);
+
             return () => {
               observer.unobserve(entry.target);
-              clearTimeout(couter);
+              clearInterval(interval);
               clearTimeout(timeout);
             };
           }
@@ -31,10 +39,16 @@ export default function CounterNumber({ value, classes, threshold }) {
         threshold: threshold || 0.2,
       }
     );
+
     partnerSections.forEach((section) => {
       observer.observe(section);
     });
-  }, [currentValue]);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [classname, threshold]);
+
   return (
     <>
       <p>{`${currentValue}+`}</p>

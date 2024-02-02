@@ -49,13 +49,12 @@ export default function SectionWho({ data }) {
         <div className={classes["section-who__body"]}>
           <Swiper
             cssMode={true}
-            loop={true}
             pagination={{
               clickable: true,
             }}
             freeMode={true}
             autoplay={{
-              delay: 2500,
+              delay: 2000,
               disableOnInteraction: false,
             }}
             breakpoints={{

@@ -5,14 +5,12 @@
   align-items: center;
   gap: 8px;
   border-radius: 32px;
-  border: 2px solid #fff;
   color: #fff;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
   cursor: pointer;
-
 }
 .button {
   @include button;
@@ -20,10 +18,9 @@
 .btn-contact-form {
   @include button;
   border-radius: 32px;
-  border: 2px solid #cd0404;
-  background: #3d1766;
+  background: #cd0404;
   justify-content: space-around;
-  &:hover{
-    background: #cd0404;
+  &:hover {
+    background: #3d1766;
   }
 }

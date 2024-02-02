@@ -14,7 +14,7 @@ import { frontendUrl } from "../../../../../utils/variables";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const TableOfContent = ({ markdown }) => {
+const TableOfContent = ({ markdown,title }) => {
   if (markdown.length === 0) {
     return null;
   }
@@ -34,14 +34,13 @@ const TableOfContent = ({ markdown }) => {
     const element = e.target;
     const elementHref = element.getAttribute("href");
     const targetId = elementHref.slice(elementHref.indexOf("#") + 1);
-
     const targetElement = document.getElementById(targetId);
     targetElement.scrollIntoView({ behavior: "smooth" });
   };
 
   //Bắt sự kiện click vào nút expanse trên TOC
   useEffect(() => {
-    const tableOfContentHeight = tocRef.current.clientHeight;
+    const tableOfContentHeight = tocRef?.current?.clientHeight;
     if (!tableOfContentIsShown && tocRef && tocWrapperRef) {
       tocWrapperRef.current.style.height = "0";
       return;
@@ -50,17 +49,17 @@ const TableOfContent = ({ markdown }) => {
   }, [tableOfContentIsShown]);
 
   //Set lại height phòng khi user đổi sang kích thước màn hình khác
-  useEffect(() => {
-    const handleResize = () => {
-      const tableOfContentHeight = tocRef.current.clientHeight;
-      tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const tableOfContentHeight = tocRef?.current?.clientHeight;
+  //     tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize();
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const socialsSharingData = [
     {
@@ -94,7 +93,7 @@ const TableOfContent = ({ markdown }) => {
   return (
     <div className={classes.toc}>
       <div className={classes["toc-heading"]}>
-        <p className={classes["toc-heading__content"]}>TABLE OF CONTENTS</p>
+        <p className={classes["toc-heading__content"]}>{title?.titleTableOfContent}</p>
         <button
           className={`${classes["toc-heading__btn"]} ${
             !tableOfContentIsShown ? classes.hide : ""
@@ -128,7 +127,7 @@ const TableOfContent = ({ markdown }) => {
         </ul>
       </div>
       <div className={classes.line}></div>
-      <p className={classes["socials-heading"]}>SHARE THIS POST</p>
+      <p className={classes["socials-heading"]}>{title?.titleShareThisPost}</p>
       <ul className={classes.socials}>
         {socialsSharingData.map((item, index) => (
           <li key={index}>

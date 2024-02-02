@@ -12,26 +12,40 @@ import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGr
 import Link from "next/link";
 import { GET_POSTS_BY_TAG } from "@/pages/api/graphqlApollo";
 import { useLazyQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import { getLanguagePathBlog } from "../../../utils/languageSlug";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const BlogDetail = ({ relatedPosts, postDetail }) => {
   const { postBy, allBlogsContent } = postDetail || {};
-  const titlePostDetail = {
-    title: postBy?.title,
-    url: postBy?.slug,
-  };
+  const { locale } = useRouter();
   const idPost = postBy?.categories?.nodes[0].categoryId;
   const {
     breadcrumTitleBlogDetail,
     breadcrumHome,
     breadcrumPage,
-    breadcrumPageDetail,
     textButton,
     textReadMore,
+    titleTableOfContent,
+    titleNewestPosts,
+    textButtonBackToList,
+    titleShareThisPost,
   } = allBlogsContent.nodes[0].textBlogandBlogDetail || null;
+  const titlePostDetail = {
+    title: postBy?.title,
+    url: postBy?.slug,
+  };
+  const breadCrumHomePage = {
+    title: breadcrumHome,
+    url: `/${locale}`,
+  };
+  const breadCrumNewsPage = {
+    title: breadcrumPage,
+    url: getLanguagePathBlog(locale),
+  };
   const DUMMY_BREADCRUMB_DATA = [
-    breadcrumHome,
-    breadcrumPage,
+    breadCrumHomePage,
+    breadCrumNewsPage,
     titlePostDetail,
   ];
   const [markdown, setMarkdown] = useState();
@@ -64,7 +78,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
   const applyMarkDownHandler = (markdownData) => {
     setMarkdown(markdownData);
   };
-  
+
   const [dataPostReadMore, setDataPostReadMore] = useState(null);
   const [filterPostsByTag, { loading, error, data }] =
     useLazyQuery(GET_POSTS_BY_TAG);
@@ -75,7 +89,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
         categoryId: idPost,
       },
     });
-  }, [idPost]); 
+  }, [idPost]);
 
   useEffect(() => {
     if (data) {
@@ -93,17 +107,26 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
         </div>
         <section className={classes["blog-detail-content"]}>
           <div className={classes["blog-detail-content__main"]}>
-            <PostDetail data={postBy} applyMarkDown={applyMarkDownHandler} />
+            <PostDetail
+              data={postBy}
+              applyMarkDown={applyMarkDownHandler}
+              textBtn={textButtonBackToList}
+            />
           </div>
           <div className={classes["blog-detail-content__toc"]}>
-            {markdown && <TableOfContent markdown={markdown} />}
+            {markdown && (
+              <TableOfContent
+                title={{ titleTableOfContent, titleShareThisPost }}
+                markdown={markdown}
+              />
+            )}
             <div className={classes["blog-detail-content__toc__newest-posts"]}>
               <p
                 className={
                   classes["blog-detail-content__toc__newest-posts__title"]
                 }
               >
-                NEWEST POSTS
+                {titleNewestPosts && titleNewestPosts}
               </p>
               <ul
                 style={{ fontFamily: MavenPro.style.fontFamily }}

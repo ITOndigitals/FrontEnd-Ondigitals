@@ -139,7 +139,6 @@ export default function PartnerSection({ data, NavButton }) {
           <ButtonNoBorder
             href="#"
             textSize="md"
-            color="white"
             RightIcon={<FontAwesomeIcon icon={faArrowRight} color="white" />}
           >
             {partnerSectionTextButton}

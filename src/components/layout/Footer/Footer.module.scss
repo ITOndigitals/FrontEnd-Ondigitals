@@ -2,9 +2,10 @@
 .footer {
   background-color: #3d1766;
   height: auto;
-  a{
-    &:hover{
+  a {
+    &:hover {
       text-decoration: underline;
+      text-underline-offset: 4px
     }
   }
 }
@@ -14,7 +15,7 @@
   bottom: 4vh;
   left: 4vw;
   color: white;
-  padding: 5px;
+  padding: 5px 8px;
   background-color: #6f1ab6;
   border-radius: 8px;
   z-index: 100;
@@ -32,7 +33,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   .colum-1 {
-    width: 27%;
+    width: 28%;
     .title__company__footer {
       font-weight: 600;
       margin: 38px 0 10px 0;
@@ -55,17 +56,17 @@
           color: #fff;
           font-size: 18px;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 600;
           line-height: 24px;
         }
       }
     }
   }
   .colum-3 {
-    width: 9%;
+    width: 13%;
   }
   .colum-4 {
-    width: 14%;
+    width: 13%;
     .icon__homepage--social {
       display: flex;
       gap: 16px;
@@ -112,7 +113,7 @@
     line-height: 24px;
   }
   p {
-    color: #fff;
+    color: #dcc7ed;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;

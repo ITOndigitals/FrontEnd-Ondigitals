@@ -20,8 +20,8 @@
     justify-content: space-between;
     padding-top: 5%;
     flex-wrap: wrap;
+    color: #fff;
     &__button {
-      color: #fff;
       @include text;
       display: flex;
       padding: 16px 20px;

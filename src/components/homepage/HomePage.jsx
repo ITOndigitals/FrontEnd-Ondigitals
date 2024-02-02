@@ -60,19 +60,35 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       ".number-trusted, .number-successful, .number-monthly"
     );
     const maxValues = [number1, number2, number3];
-    let timeoutId; // Biến để lưu trữ ID của setTimeout
+    const duration = 2000; // Thời gian chạy animation, tính theo miliseconds
+    const steps = 50; // Số bước chạy animation
+    const delay = duration / steps; // Thời gian chờ giữa các bước
     function runCounterForElement(currentValue, maxValue, element) {
-      if (currentValue <= maxValue) {
+      const stepValue = Math.ceil(maxValue / steps); // Giá trị tăng ở mỗi bước
+      let timeoutId; // Biến để lưu trữ ID của setTimeout
+      function updateCounter() {
         element.textContent = currentValue + "+";
-        timeoutId = setTimeout(() => {
-          runCounterForElement(currentValue + 1, maxValue, element);
-        }, 1);
       }
+      function animateCounter() {
+        if (currentValue <= maxValue) {
+          updateCounter();
+          timeoutId = setTimeout(() => {
+            currentValue += stepValue;
+            animateCounter();
+          }, delay);
+        }
+      }
+  
+      animateCounter();
+  
+      // Dừng animation sau `duration` miliseconds
       setTimeout(() => {
-        element.textContent = maxValue + "+";
-        clearTimeout(timeoutId)
-      }, 2000);
+        clearTimeout(timeoutId);
+        currentValue = maxValue;
+        updateCounter();
+      }, duration);
     }
+  
     elements.forEach((element, index) => {
       runCounterForElement(0, maxValues[index], element);
     });
@@ -245,7 +261,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           allowTouchMove={false}
           className="section-swiper"
           mousewheel={true}
-          speed={1500}
+          speed={1000}
         >
           <SwiperSlide>
             <IntroSection data={dataHomePages} />

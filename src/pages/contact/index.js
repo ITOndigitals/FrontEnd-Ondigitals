@@ -4,6 +4,9 @@ import Header from "@/components/layout/Header/Header";
 import { GetDataPageContact } from "../api/graphql";
 import { getDataMenu, getTranslatedDataFooter } from "../api/graphqlHeaderFooter";
 import Head from "next/head";
+import { getLanguagePathContact, languagePathsContact } from "../../../utils/languageSlug";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const parse = require("html-react-parser");
 
@@ -11,6 +14,14 @@ export default function ContactUs({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return <div>Loading...</div>;
   }
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathContact(locale);
+  useEffect(() => {
+    if (locale in languagePathsContact) {
+      router.push(basePath);
+    }
+  }, [locale]);
   const { pageContact, seo } = updatedData;
   return (
     <>

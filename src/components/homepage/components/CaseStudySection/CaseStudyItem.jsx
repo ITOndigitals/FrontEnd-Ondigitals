@@ -4,15 +4,36 @@ import Link from "next/link";
 
 import { Maven_Pro } from "next/font/google";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
+import { useState } from "react";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
 const CaseStudyItem = ({ item, index }) => {
-  const { title, caseStudyHomepage, featuredImage, content, slug } = item;
+  const { caseStudyHomepage, featuredImage, content, slug } = item;
+  const {
+    caseStudyTextButtonItem,
+    caseStudyTextButton,
+    logoImage,
+    backgroundColor,
+  } = caseStudyHomepage;
   const itemClasses = `${classes.item} ${classes[`item-${index + 1}`]}`;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
-    <li className={itemClasses}>
+    <li
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={itemClasses}
+    >
       {/* <Link href="#"> */}
       <div className={classes["item-image-wrapper"]}>
         <div className={classes["stroke-wrapper"]}>
@@ -41,31 +62,34 @@ const CaseStudyItem = ({ item, index }) => {
         </div>
         <div className={classes["item-image-wrapper-sm-circle"]}></div>
         <div className={classes["item-image-wrapper-main"]}>
-          <Image
-            src={featuredImage.node.sourceUrl}
-            fill
-            style={{ objectFit: "cover" }}
-            alt={featuredImage.node.altText}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          {!isHovered ? (
+            <Image
+              src={logoImage?.sourceUrl}
+              fill
+              style={{ objectFit: "cover", backgroundColor: backgroundColor }}
+              alt={logoImage?.altText}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            />
+          ) : (
+            <Image
+              src={featuredImage.node.sourceUrl}
+              fill
+              style={{ objectFit: "cover" }}
+              alt={featuredImage.node.altText}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            />
+          )}
         </div>
       </div>
       <div className={classes["item-description"]}>
-        <h3 className={classes["item-description-name"]}>{title}</h3>
         <div
           className={classes["item-description-wrapper"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}
         >
           {parse(content)}
-          <div>{caseStudyHomepage.caseStudyYear}</div>
         </div>
-        <Link
-          href={"/"}
-          className={classes["item-description__explore"]}
-        >
-          <ExploreButton>
-            {caseStudyHomepage.caseStudyTextButtonItem}
-          </ExploreButton>
+        <Link href={"/"} className={classes["item-description__explore"]}>
+          <ExploreButton>{caseStudyTextButtonItem}</ExploreButton>
         </Link>
       </div>
       {/* </Link> */}

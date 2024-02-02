@@ -9,6 +9,7 @@ import {
 } from "../api/graphqlHeaderFooter";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { getLanguagePathService, languagePathsService } from "../../../utils/languageSlug";
 
 
 const parse = require("html-react-parser");
@@ -17,7 +18,14 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return null;
   }
-
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathService(locale);
+  useEffect(() => {
+    if (locale in languagePathsService) {
+      router.push(basePath);
+    }
+  }, [locale]);
   const dataHead = updatedData.pageBy.seo.fullHead;
   return (
     <>

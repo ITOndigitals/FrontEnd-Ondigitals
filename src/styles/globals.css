@@ -423,14 +423,13 @@ sup{
     max-width: 1280px;
   }
   .container--big {
-    padding: 0 20px;
+    padding: 0 30px;
   }
   .container-no-pd {
     padding: 0;
     max-width: 1280px;
   }
 }
-
 @media (max-width: 1024px) {
   .container {
     max-width: 1024px;
@@ -596,7 +595,7 @@ sup{
   top: 96% !important;
 }
 .our-trusted-partner-slider {
-  padding: 5% 0 !important;
+  padding: 10% 0 !important;
 }
 /* chỉnh màu nút dot slider about us */
 /* hiệu ứng hover cho ảnh ở trang about us và home page */
@@ -674,9 +673,9 @@ sup{
 .section-who-service {
   padding: 4% 0 !important;
 }
-.section-who-service .swiper-wrapper {
+/* .section-who-service .swiper-wrapper {
   justify-content: center;
-}
+} */
 .section-who-service .swiper-pagination-bullet {
   width: 16px;
   height: 16px;

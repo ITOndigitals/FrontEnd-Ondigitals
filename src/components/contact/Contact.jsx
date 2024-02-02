@@ -5,7 +5,7 @@ import { useBoundStore } from "@/store/useBoundStore";
 import ContactInstargram from "./components/ContactInstargram/ContactInstargram";
 
 export default function Contact({ data }) {
-  const { sectionMap } = data;
+  const { sectionMap, sectionInstagram } = data;
 
   //Khi tới các section homepage, cho ẩn header chính để hiện section header
   //nên cần set lại xuất hiện
@@ -43,7 +43,7 @@ export default function Contact({ data }) {
     <>
       <ContactUsForm data={data} />
       <ContactInfo data={sectionMap} />
-      {/* <ContactInstargram /> */}
+      <ContactInstargram data={sectionInstagram} />
     </>
   );
 }

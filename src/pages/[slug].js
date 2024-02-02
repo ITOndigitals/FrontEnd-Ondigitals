@@ -5,6 +5,8 @@ import {
   GetListSlugPosts,
   GetPostDetailBySlug,
   getDataForNewAndInsightsSection,
+  GetListSlugServiceParent,
+  GetServiceParentDetailBySlug,
 } from "./api/graphql";
 import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
@@ -20,6 +22,7 @@ const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
   serviceData,
+  serviceParentsData,
   blogData,
   relatedPosts,
   dataFooter,
@@ -43,7 +46,6 @@ export default function DynamicDetailPage({
       </>
     );
   }
-
   if (blogData) {
     const dataHead = blogData.postBy.seo.fullHead;
     return (
@@ -55,11 +57,22 @@ export default function DynamicDetailPage({
       </>
     );
   }
+  if (serviceParentsData) {
+    const dataHead = serviceParentsData.serviceParentBy.seo.fullHead;
+    return (
+      <>
+        <Header data={dataHeader} />
+        <Head>{dataHead && parse(dataHead)}</Head>
+        <ServiceDetail dataServiceDetail={serviceParentsData} />
+        <Footer data={dataFooter} />
+      </>
+    );
+  }
 }
 
 export async function getStaticPaths() {
   const listServices = await GetListSlugService();
-  const supportedLanguages = ["EN", "VI", "ZH"];
+  const supportedLanguages = ["EN", "VI", "ZH", "JP", "KR"];
   const allPostsPaths = [];
   for (const lang of supportedLanguages) {
     const posts = await GetListSlugPosts(lang);
@@ -73,14 +86,12 @@ export async function getStaticPaths() {
     params: { slug: service.slug },
     locale: service.language.code.toLowerCase(),
   }));
-
-  // const postPaths = listPosts.map((post) => ({
-  //   params: { slug: post.slug },
-  //   locale: post.language.code.toLowerCase(),
-  // }));
-
-  const paths = servicePaths.concat(allPostsPaths);
-
+  const listServicesParent = await GetListSlugServiceParent();
+  const pathsServiceParent = listServicesParent.map((service) => ({
+    params: { slug: service.slug },
+    locale: service.language.code.toLowerCase(),
+  }));
+  const paths = servicePaths.concat(allPostsPaths).concat(pathsServiceParent);
   return {
     paths,
     fallback: "blocking",
@@ -91,6 +102,7 @@ export async function getStaticProps({ params, locale }) {
   const language = locale.toUpperCase();
   const serviceData = await GetServiceDetailBySlug(params.slug);
   const blogData = await GetPostDetailBySlug(params.slug, language);
+  const serviceParentsData = await GetServiceParentDetailBySlug(params.slug);
   const dataFooter = await getTranslatedDataFooter(language);
   const dataHeader = await getDataMenu(language);
   const notFound = true;
@@ -101,7 +113,7 @@ export async function getStaticProps({ params, locale }) {
         dataFooter,
         dataHeader,
       },
-      revalidate: 8640,
+      revalidate: 3600 ,
     };
   } else if (blogData && blogData.postBy) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
@@ -112,7 +124,17 @@ export async function getStaticProps({ params, locale }) {
         dataFooter,
         dataHeader,
       },
-      revalidate: 8640,
+      revalidate: 3600 ,
+    };
+  }
+  if (serviceParentsData && serviceParentsData.serviceParentBy) {
+    return {
+      props: {
+        serviceParentsData,
+        dataFooter,
+        dataHeader,
+      },
+      revalidate: 3600 ,
     };
   } else {
     return {

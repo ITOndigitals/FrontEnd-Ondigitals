@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./PopupForm.module.scss";
-import { validationSchema } from "../../../../utils/validationForm";
+import getValidationSchema, {
+} from "../../../../utils/validationForm";
 import { Field, useFormik } from "formik";
 import { useMutation } from "@apollo/client";
 import { SendEmailContactForm } from "../../../../utils/sendEmail";
@@ -13,10 +14,12 @@ import {
 } from "../Icons/ListIcon";
 import Button from "../Buttons/Button/Button";
 import Note from "../Note/Note";
+import { useRouter } from "next/router";
 
 const parse = require("html-react-parser");
 
 export default function PopupForm({ dataForm, isOpen, onClose }) {
+  const { locale } = useRouter();
   const { titleForm, textCheckbox, textButton, contentBelowButton, textInput } =
     dataForm?.contentFormRequest;
   const [fieldName, fieldEmail, fieldPhone] = textInput || [];
@@ -31,7 +34,7 @@ export default function PopupForm({ dataForm, isOpen, onClose }) {
       phone: "",
       checked: false,
     },
-    validationSchema: validationSchema,
+    validationSchema: getValidationSchema(locale),
     onSubmit: handleSubmit,
   });
   async function handleSubmit(values) {

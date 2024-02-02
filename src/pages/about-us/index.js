@@ -2,8 +2,14 @@ import AboutUs from "@/components/aboutuspage/AboutUs";
 import { GetPageAboutUs } from "../api/graphql";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import { getDataMenu, getTranslatedDataFooter } from "../api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "../api/graphqlHeaderFooter";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { getLanguagePathAboutUs, languagePathsAboutUs } from "../../../utils/languageSlug";
+import { useEffect } from "react";
 
 const parse = require("html-react-parser");
 
@@ -11,6 +17,14 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
   if (!updatedData) {
     return null;
   } else {
+    const router = useRouter();
+    const { locale } = router;
+    const basePath = getLanguagePathAboutUs(locale);
+    useEffect(() => {
+      if (locale in languagePathsAboutUs) {
+        router.push(basePath);
+      }
+    }, [locale]);
     const dataHead = updatedData.pageBy.seo.fullHead;
     return (
       <>

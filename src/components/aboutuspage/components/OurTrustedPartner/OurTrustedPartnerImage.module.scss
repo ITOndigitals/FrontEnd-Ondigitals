@@ -3,20 +3,19 @@
   .image-item {
     border-radius: 50%;
     position: relative;
-    border: 3px solid rgba(61, 23, 102, 1);
+    border: 1px solid transparent;
     width: 180px;
     height: 180px;
     overflow: hidden;
     background-color: #fff;
     &:hover {
-      border: 4.5px solid rgba(205, 4, 4, 1);
+      border: 1px solid rgba(205, 4, 4, 1);
     }
     img {
       object-fit: cover;
     }
   }
 }
-
 @media (max-width: 430px) {
   .main-image {
     .image-item {

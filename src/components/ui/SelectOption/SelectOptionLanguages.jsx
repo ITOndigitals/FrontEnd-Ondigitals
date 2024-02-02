@@ -3,6 +3,8 @@ import classes from "./SelectOptionLanguages.module.scss";
 import {
   IconFlagChina,
   IconFlagEnglish,
+  IconFlagJapan,
+  IconFlagKorea,
   IconFlagVietnam,
   IconLanguages,
 } from "../Icons/ListIcon";
@@ -21,6 +23,8 @@ const SelectOptionLanguage = ({ isDark, color }) => {
     vi: IconFlagVietnam,
     en: IconFlagEnglish,
     zh: IconFlagChina,
+    kr: IconFlagKorea,
+    jp: IconFlagJapan,
   };
 
   const getFlagIcon = (locale) => {
@@ -99,7 +103,7 @@ const SelectOptionLanguage = ({ isDark, color }) => {
             const FlagIcon = getFlagIcon(locale);
             return (
               <li key={localeIndex} className={classes["select-list-item"]}>
-                {FlagIcon && <FlagIcon width={18} height={18} />}
+                {FlagIcon && <FlagIcon width={24} height={24} />}
                 <Link href={{ pathname, query }} locale={locale}>
                   {localeLang[locale]}
                 </Link>

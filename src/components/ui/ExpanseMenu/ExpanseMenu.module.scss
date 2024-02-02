@@ -66,14 +66,22 @@
       font-style: normal;
       font-weight: 600;
       line-height: 36px;
-      width: 303px;
       text-align: start;
       cursor: pointer;
       transition: all 0.3s;
       z-index: 2;
       &:hover {
         color: rgba(171, 139, 212, 1);
-        transform: scale(1.1);
+        transform: scale(1.02);
+      }
+      p {
+        font-size: 36px !important;
+        font-weight: 600;
+      }
+      span {
+        font-size: 20px !important;
+        font-weight: 600;
+        line-height: 28px !important;
       }
     }
     &__japan {
@@ -171,12 +179,12 @@
           visibility: hidden;
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.3s ease-in-out;
+          transition: max-height 0.75s ease-in-out;
         }
 
         &__services ul {
           opacity: 1;
-          max-height: 1000px; 
+          max-height: 1000px;
           visibility: visible;
           transition: max-height 0.3s ease-in-out;
         }

@@ -35,7 +35,7 @@ export default function ContactInfo({ data }) {
   return (
     <section className={`contact-infor ${classes["contact-section"]}`}>
       <div className="container">
-        <h2>We’re here to help</h2>
+        <h2>{data?.title}</h2>
         <div className={classes["contact-infor"]}>
           <div className={classes["contact-infor__content"]}>
             <div className={classes["contact-infor__content-wrapper"]}>

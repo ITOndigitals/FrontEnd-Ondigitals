@@ -11,7 +11,7 @@ import { getLanguagePathBlog } from "../../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
-export default function PostDetail({ data, applyMarkDown }) {
+export default function PostDetail({ data, applyMarkDown, textBtn }) {
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -140,7 +140,7 @@ export default function PostDetail({ data, applyMarkDown }) {
                   <IconChevronLeft width={24} height={24} color="#131114" />
                 }
               >
-                Back to list
+                {textBtn}
               </ButtonNoBorder>
             </div>
             <div

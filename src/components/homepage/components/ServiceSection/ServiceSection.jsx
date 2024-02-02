@@ -23,6 +23,7 @@ const ServiceSection = ({ NavButton, data }) => {
     serviceSectionDesc,
     serviceSectionTextButton,
     serviceSectionTextButtonCard,
+    listTextCarousel
   } = data.pages.nodes[0].homePageInputContent || {};
   useEffect(() => {
     if (serviceList.length > 0) {
@@ -109,7 +110,7 @@ const ServiceSection = ({ NavButton, data }) => {
           )}
         </div>
       </div>
-      <AnimatedLines />
+      <AnimatedLines data={listTextCarousel} />
       {NavButton && NavButton}
     </section>
   );

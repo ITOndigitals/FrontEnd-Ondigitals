@@ -61,11 +61,19 @@
           width: 44%;
           button {
             justify-content: space-between;
+            &:hover{
+              background-color: #FF0032;
+            }
           }
         }
         &--btn {
           display: flex;
           flex-direction: column;
+          &__loading {
+            button {
+              background-color: #FF0032;;
+            }
+          }
         }
       }
     }
@@ -228,7 +236,6 @@
         }
       }
     }
-
   }
 }
 @media (max-width: 320px) {

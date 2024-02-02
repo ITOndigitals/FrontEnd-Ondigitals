@@ -16,7 +16,7 @@ const Header = ({ data }) => {
   if (!data) {
     return null;
   }
-  const { header } =data?.updatedData;
+  const { header } = data?.updatedData;
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [bottomIsDark, setBottomIsDark] = useState(true);
@@ -130,7 +130,7 @@ const Header = ({ data }) => {
     const handleScroll = () => {
       const headerHeight = header.getBoundingClientRect().top;
       const headerScrollOffset = headerHeight + window.scrollY;
-      const bottomNavHeight = bottomNav.getBoundingClientRect().top;
+      const bottomNavHeight = bottomNav?.getBoundingClientRect().top;
       const bottomNavScrollOffset = bottomNavHeight + window.scrollY;
       // Khi scroll trên PC - ẩn section header
       // Second section sẽ là section cuối cùng đối với slider
@@ -356,7 +356,6 @@ const Header = ({ data }) => {
                 </div>
               </div>
               <div
-                href="#"
                 className={`${classes["header-btn"]} ${
                   classes["header-btn__Request"]
                 } ${
@@ -394,7 +393,11 @@ const Header = ({ data }) => {
                   <span>{header?.textRequestCredential}</span>
                 </div>
                 {isPopupOpen && (
-                  <PopupForm dataForm={header} isOpen={isPopupOpen} onClose={togglePopup} />
+                  <PopupForm
+                    dataForm={header}
+                    isOpen={isPopupOpen}
+                    onClose={togglePopup}
+                  />
                 )}
               </div>
               <button
@@ -407,15 +410,17 @@ const Header = ({ data }) => {
               </button>
             </div>
           </div>
-          <BottomNavigator
-            isVisible={
-              !menuIsOpen &&
-              bottomNavIsShown &&
-              headerBtnIsShown &&
-              bottomNavIsShownState
-            }
-            isDark={bottomIsDark}
-          />
+          {!subPageHeaderIsSticky && !isOnMobile && (
+            <BottomNavigator
+              isVisible={
+                !menuIsOpen &&
+                bottomNavIsShown &&
+                headerBtnIsShown &&
+                bottomNavIsShownState
+              }
+              isDark={bottomIsDark}
+            />
+          )}
         </div>
       </header>
     </div>

@@ -24,12 +24,6 @@ const CaseStudySection = ({ NavButton, data }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const { locale } = useRouter();
-  const languagePaths = {
-    en: "/case-study",
-    vi: "/du-an",
-  };
-  const basePath = languagePaths[locale] || "/case-study";
   return (
     <section className={`${classes["case-study"]} case-study-section`}>
       {!isOnMobile && <SectionHeader />}

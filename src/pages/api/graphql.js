@@ -175,16 +175,12 @@ export const GetPostDetailBySlug = async (slug, language) => {
       allBlogsContent(where: { language: $language }) {
         nodes {
           textBlogandBlogDetail {
-            blogsDecs
-            blogsTitle
-            breadcrumHome {
-              title
-              url
-            }
-            breadcrumPage {
-              title
-              url
-            }
+            titleTableOfContent
+            titleNewestPosts
+            textButtonBackToList
+            titleShareThisPost
+            breadcrumHome 
+            breadcrumPage
             breadcrumTitleBlogDetail
             textButton
             textReadMore
@@ -250,7 +246,10 @@ export const GetDataHomepage = async (id, languageCode) => {
           homePageInputContent {
             caseStudySessionButtonText
             caseStudySessionTitle
-            fieldGroupName
+            listTextCarousel {
+              color
+              textContent
+            }
             introSectionLeftImage {
               altText
               sourceUrl
@@ -303,6 +302,10 @@ export const GetDataHomepage = async (id, languageCode) => {
               textLable
               textPlaceholder
             }
+            imageSectionContact {
+              altText
+              sourceUrl
+            }
           }
           translations {
             language {
@@ -341,9 +344,12 @@ export const GetDataHomepage = async (id, languageCode) => {
           content
           caseStudyHomepage {
             caseStudyTextButton
-            caseStudyTitle
             caseStudyTextButtonItem
-            caseStudyYear
+            logoImage {
+              altText
+              sourceUrl
+            }
+            backgroundColor
           }
           featuredImage {
             node {
@@ -626,6 +632,7 @@ export const GetPageService = async (id, languageCode) => {
           serviceHomepage {
             color
             secondaryColor
+            titleBelowTextHeadingPageServiceDetail
           }
           categories {
             nodes {
@@ -837,10 +844,17 @@ export const GetDataPageContact = async (id) => {
             }
           }
           sectionMap {
+            title
             contentInfo {
               textContent
               title
             }
+          }
+          sectionInstagram {
+            titleLeft
+            textRight
+            textButton
+            accessTokenIntagram
           }
           textButton
           textButtonSending

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import classes from "./ServiceCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { getLanguagePathService } from "../../../../utils/languageSlug";
 
 export default function ServiceCard({ data }) {
   if (!data) {

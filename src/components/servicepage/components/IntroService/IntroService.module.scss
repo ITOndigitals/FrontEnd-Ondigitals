@@ -88,7 +88,23 @@
       width: 80%;
     }
     .scroll-msg {
-      bottom: 50%;
+      bottom: 30%;
+      transform: translateY(-50%);
+    }
+  }
+}
+@media (max-width: 767px) {
+  .intro-service {
+    .scroll-msg {
+      bottom: 23%;
+      transform: translateY(-50%);
+    }
+  }
+}
+@media (max-width: 480px) {
+  .intro-service {
+    .scroll-msg {
+      bottom: 17%;
       transform: translateY(-50%);
     }
   }
