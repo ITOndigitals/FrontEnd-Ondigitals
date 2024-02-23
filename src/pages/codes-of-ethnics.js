@@ -3,20 +3,23 @@ import React from "react";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Head from "next/head";
-import { getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "./api/graphqlHeaderFooter";
 import { getDataPolicyAndCoEPage } from "./api/graphql";
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
 
 const parse = require("html-react-parser");
 
-export default function DataPolicy({ updatedData, dataFooter }) {
+export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return null;
   }
   const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>
-      <Header />
+      <Header data={dataHeader} />
       <Head>{dataHead && parse(dataHead)}</Head>
       <ServiceDetail dataServiceDetail={updatedData} isUsePageId={true} />
       <Footer data={dataFooter} />
@@ -24,12 +27,13 @@ export default function DataPolicy({ updatedData, dataFooter }) {
   );
 }
 
-export const getServerSideProps = async ({locale}) => {
+export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPage = 45843;
-  const [dataPage, dataFooter] = await Promise.all([
+  const [dataPage, dataFooter, dataHeader] = await Promise.all([
     getDataPolicyAndCoEPage(idPage),
     getTranslatedDataFooter(language),
+    getDataMenu(language),
   ]);
   const translation = dataPage.pageBy.translations.find(
     (t) => t.language.code === language
@@ -41,6 +45,7 @@ export const getServerSideProps = async ({locale}) => {
     props: {
       updatedData,
       dataFooter,
+      dataHeader,
     },
   };
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./PopupForm.module.scss";
-import getValidationSchema, {
-} from "../../../../utils/validationForm";
+import getValidationSchema from "../../../../utils/validationForm";
 import { Field, useFormik } from "formik";
 import { useMutation } from "@apollo/client";
 import { SendEmailContactForm } from "../../../../utils/sendEmail";
@@ -20,8 +19,15 @@ const parse = require("html-react-parser");
 
 export default function PopupForm({ dataForm, isOpen, onClose }) {
   const { locale } = useRouter();
-  const { titleForm, textCheckbox, textButton, contentBelowButton, textInput } =
-    dataForm?.contentFormRequest;
+  const {
+    titleForm,
+    textCheckbox,
+    textButton,
+    contentBelowButton,
+    textInput,
+    contentNoteError,
+    contentNoteSuccess,
+  } = dataForm?.contentFormRequest;
   const [fieldName, fieldEmail, fieldPhone] = textInput || [];
 
   const [sendEmailMutation, { loading, error }] =
@@ -176,9 +182,7 @@ export default function PopupForm({ dataForm, isOpen, onClose }) {
         <div className={isSuccess ? classes["popup-form__note"] : ""}>
           {isSuccess && !loading && (
             <Note
-              content={
-                "Message sent! Thank you for contacting us. We will reach out to you soon."
-              }
+              content={contentNoteSuccess}
               backgroundColor="#5CFFAE"
               icon={
                 <IconSuccess
@@ -191,9 +195,7 @@ export default function PopupForm({ dataForm, isOpen, onClose }) {
           )}
           {error && (
             <Note
-              content={
-                "Something went wrong! We couldn't receive your message. Please wait and try again."
-              }
+              content={contentNoteError}
               backgroundColor="rgba(255, 82, 82, 1)"
               icon={
                 <IconDanger

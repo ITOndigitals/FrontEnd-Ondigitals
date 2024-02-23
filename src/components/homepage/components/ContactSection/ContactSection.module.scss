@@ -18,7 +18,7 @@
       &__buttonAndNote {
         margin-top: 16px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         flex-wrap: wrap;
         div:first-child {
           width: 50%;
@@ -28,7 +28,7 @@
         &--btn {
           display: flex;
           flex-direction: column;
-          span {
+          &__textpolicy {
             color: #dcc7ed;
             text-align: center;
             font-family: Maven Pro;
@@ -112,16 +112,6 @@
           &--btn {
             display: flex;
             flex-direction: column;
-            span {
-              color: #dcc7ed;
-              text-align: center;
-              font-family: Maven Pro;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: 16px;
-              margin-top: 8px;
-            }
           }
         }
       }
@@ -144,7 +134,6 @@
       &__form {
         width: 100%;
         &__buttonAndNote {
-          flex-direction: column-reverse;
           div:first-child {
             width: 100%;
           }

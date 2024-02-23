@@ -43,7 +43,9 @@ const IntroSection = ({ data }) => {
             </p>
           </div>
           <div className={classes["intro-layout-item"]}>
-            <div className={`${classes["intro-layout-item-video"]} appear-slow`}>
+            <div
+              className={`${classes["intro-layout-item-video"]} appear-slow`}
+            >
               <video width="100%" autoPlay loop muted playsInline>
                 <source
                   src="https://api.ondigitals.com/wp-content/uploads/2024/01/Homepage_animation_purple.mp4"

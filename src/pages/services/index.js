@@ -9,8 +9,10 @@ import {
 } from "../api/graphqlHeaderFooter";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getLanguagePathService, languagePathsService } from "../../../utils/languageSlug";
-
+import {
+  getLanguagePathService,
+  languagePathsService,
+} from "../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 

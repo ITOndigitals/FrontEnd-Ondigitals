@@ -70,4 +70,7 @@
   textarea::placeholder {
     color: #dcc7ed;
   }
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
 }

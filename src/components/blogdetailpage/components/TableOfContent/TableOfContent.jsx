@@ -14,11 +14,11 @@ import { frontendUrl } from "../../../../../utils/variables";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const TableOfContent = ({ markdown,title }) => {
+const TableOfContent = ({ markdown, title }) => {
   if (markdown.length === 0) {
     return null;
   }
-  const [tableOfContentIsShown, setTableOfContentIsShown] = useState(true);
+  const [tableOfContentIsShown, setTableOfContentIsShown] = useState(false);
   const tocRef = useRef(null);
   const tocWrapperRef = useRef(null);
   const router = useRouter();
@@ -93,7 +93,9 @@ const TableOfContent = ({ markdown,title }) => {
   return (
     <div className={classes.toc}>
       <div className={classes["toc-heading"]}>
-        <p className={classes["toc-heading__content"]}>{title?.titleTableOfContent}</p>
+        <p className={classes["toc-heading__content"]}>
+          {title?.titleTableOfContent}
+        </p>
         <button
           className={`${classes["toc-heading__btn"]} ${
             !tableOfContentIsShown ? classes.hide : ""

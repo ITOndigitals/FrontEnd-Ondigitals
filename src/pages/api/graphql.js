@@ -179,7 +179,7 @@ export const GetPostDetailBySlug = async (slug, language) => {
             titleNewestPosts
             textButtonBackToList
             titleShareThisPost
-            breadcrumHome 
+            breadcrumHome
             breadcrumPage
             breadcrumTitleBlogDetail
             textButton
@@ -658,10 +658,10 @@ export const GetPageService = async (id, languageCode) => {
     return null;
   }
 };
-export const GetPageAboutUs = async (id) => {
+export const GetPageAboutUs = async (id, languageCode) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetPageAboutUs($id: Int!) {
+    query GetPageAboutUs($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pageBy(pageId: $id) {
         seo {
           fullHead
@@ -742,7 +742,7 @@ export const GetPageAboutUs = async (id) => {
       }
       allCardReviews(
         first: 9
-        where: { orderby: { field: DATE, order: ASC } }
+        where: { orderby: { field: DATE, order: ASC }, language: $languageCode }
       ) {
         nodes {
           card_reviewId
@@ -786,7 +786,7 @@ export const GetPageAboutUs = async (id) => {
       }
     }
   `;
-  const variables = { id };
+  const variables = { id, languageCode };
   try {
     const data = await request(endpoint, query, variables);
     return data;

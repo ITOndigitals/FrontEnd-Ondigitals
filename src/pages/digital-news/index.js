@@ -9,8 +9,10 @@ import {
   getTranslatedDataFooter,
 } from "../api/graphqlHeaderFooter";
 import { useRouter } from "next/router";
-import { getLanguagePathBlog, languagePathsBlog } from "../../../utils/languageSlug";
-
+import {
+  getLanguagePathBlog,
+  languagePathsBlog,
+} from "../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 
@@ -19,6 +21,10 @@ export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
   const { locale } = router;
   const basePath = getLanguagePathBlog(locale);
   useEffect(() => {
+    if (["zh", "jp", "kr"].includes(locale)) {
+      window.location.href = `/${locale}`;
+    }
+
     if (locale in languagePathsBlog) {
       router.push(basePath);
     }

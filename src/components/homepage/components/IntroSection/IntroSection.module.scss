@@ -43,6 +43,7 @@
     font-size: 20px;
     line-height: 28px;
     color: white;
+    width:95%;
   }
 }
 
@@ -129,6 +130,7 @@
 
 @media (max-width: 576px) {
   .intro {
+    height: 100vh;
     &-brand-img-container {
       width: zoom_ratio(523px, 0.7);
       height: zoom_ratio(60.5px, 0.7);

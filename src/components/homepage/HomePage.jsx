@@ -15,8 +15,10 @@ import { useEffect, useRef, useState } from "react";
 import SectionNavButtons from "../ui/Buttons/SectionNavButtons/SectionNavButtons";
 import { useBoundStore } from "@/store/useBoundStore";
 import CouterNumber from "../ui/CouterNumber/CouterNumber";
+import { useRouter } from "next/router";
 const HomePage = ({ allPosts, dataHomepage }) => {
   const dataHomePages = dataHomepage;
+  const { locale } = useRouter();
   const { number1, number2, number3 } =
     dataHomePages.pages.nodes[0].homePageInputContent
       .partnerSectionGroupNumberClient || [];
@@ -78,9 +80,9 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           }, delay);
         }
       }
-  
+
       animateCounter();
-  
+
       // Dừng animation sau `duration` miliseconds
       setTimeout(() => {
         clearTimeout(timeoutId);
@@ -88,7 +90,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
         updateCounter();
       }, duration);
     }
-  
+
     elements.forEach((element, index) => {
       runCounterForElement(0, maxValues[index], element);
     });
@@ -214,6 +216,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       setHeaderCanChangeColor();
       setToDark();
     }
+
     if (swiper.activeIndex === 3) {
       setToLight();
     }
@@ -303,17 +306,13 @@ const HomePage = ({ allPosts, dataHomepage }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            <NewAndInsightsSection
-              data={allPosts}
-              dataHomepage={dataHomePages}
-              NavButton={
-                <SectionNavButtons
-                  color="black"
-                  isDown
-                  onClick={scrollToContactForm}
+            {locale === "vi" ||
+              (locale === "en" && (
+                <NewAndInsightsSection
+                  data={allPosts}
+                  dataHomepage={dataHomePages}
                 />
-              }
-            />
+              ))}
           </SwiperSlide>
         </Swiper>
       ) : (
@@ -322,18 +321,15 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           <ServiceSection data={dataHomePages} />
           <PartnerSection data={dataHomePages} />
           <CaseStudySection data={dataHomePages} />
-          <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
+          {locale === "vi" ||
+            (locale === "en" && (
+              <NewAndInsightsSection
+                data={allPosts}
+                dataHomepage={dataHomePages}
+              />
+            ))}
         </>
       )}
-      {/* {!isShowSectionSlide && swiperRef.current.swiper && (
-        <>
-          <IntroSection data={dataHomePages} />
-          <ServiceSection data={dataHomePages} />
-          <PartnerSection data={dataHomePages} />
-          <CaseStudySection data={dataHomePages} />
-          <NewAndInsightsSection data={allPosts} dataHomepage={dataHomePages} />
-        </>
-      )} */}
       <ContactSection
         data={dataHomePages}
         ref={contactFormRef}

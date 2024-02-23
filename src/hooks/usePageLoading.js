@@ -1,7 +1,7 @@
 import Router from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-const usePageLoading = (delay = 100) => {
+const usePageLoading = (delay = 1000) => {
   const timeoutRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
 

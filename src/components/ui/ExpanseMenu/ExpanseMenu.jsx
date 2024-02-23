@@ -132,7 +132,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                           e.preventDefault();
                         }
                       }}
-                      href={item.path}
+                      href={item?.path || "/"}
                       className={classes["menu-list-item__link"]}
                     >
                       <span>{item.label}</span>
@@ -168,7 +168,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                             key={item?.databaseId}
                             className={classes["menu-list-item__link__child"]}
                           >
-                            <Link href={item?.slug}>
+                            <Link href={item?.slug || "/"}>
                               {item.serviceHomepage?.name || item?.name}
                             </Link>
                           </li>
@@ -201,7 +201,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                     key={item.id}
                   >
                     <Link
-                      href={item.path}
+                      href={item?.path || "/"}
                       className={classes["menu-list-item__link"]}
                     >
                       <span>{item.label}</span>
@@ -230,7 +230,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                             key={item?.databaseId}
                             className={classes["menu-list-item__link__child"]}
                           >
-                            <Link href={item?.slug}>
+                            <Link href={item?.slug || "/"}>
                               {item.serviceHomepage?.name}
                             </Link>
                           </li>
@@ -260,7 +260,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                     rel="nofollow"
                     className={classes["menu-social__item"]}
                     key={item.id}
-                    href={item.slug}
+                    href={item?.slug || "/"}
                   >
                     <li>{item.icon}</li>
                   </Link>

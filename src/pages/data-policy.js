@@ -21,7 +21,6 @@ export default function DataPolicy({
   if (!updatedData) {
     return null;
   }
-  console.log(query);
   const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>

@@ -8,7 +8,10 @@ import {
 } from "../api/graphqlHeaderFooter";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getLanguagePathAboutUs, languagePathsAboutUs } from "../../../utils/languageSlug";
+import {
+  getLanguagePathAboutUs,
+  languagePathsAboutUs,
+} from "../../../utils/languageSlug";
 import { useEffect } from "react";
 
 const parse = require("html-react-parser");
@@ -39,14 +42,14 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPageAboutUs = 44514;
-  const data = await GetPageAboutUs(idPageAboutUs);
+  const data = await GetPageAboutUs(idPageAboutUs, language);
   const dataFooter = await getTranslatedDataFooter(language);
   const dataHeader = await getDataMenu(language);
   const translation = data.pageBy.translations.find(
     (translation) => translation.language.code === language
   );
   const updatedData = translation
-    ? await GetPageAboutUs(translation.pageId)
+    ? await GetPageAboutUs(translation.pageId, language)
     : data;
   return {
     props: {

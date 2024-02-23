@@ -4,7 +4,7 @@ import Image from "next/image";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getLanguagePathContact } from "../../../../../utils/languageSlug";
+import { getLanguagePathContact, localeLangButtonServerChild } from "../../../../../utils/languageSlug";
 const parse = require("html-react-parser");
 
 export default function IntroServiceDetail({ data }) {
@@ -41,7 +41,7 @@ export default function IntroServiceDetail({ data }) {
               className={classes["intro-service-detail__content__text__btn"]}
               href={getLanguagePathContact(locale)}
             >
-              Get Started Today
+             {localeLangButtonServerChild[locale]}
             </Link>
           </div>
           <div className={classes["intro-service-detail__content__image"]}>

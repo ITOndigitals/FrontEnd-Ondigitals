@@ -73,6 +73,8 @@ export const GetDataHeader = async (id) => {
             }
             textCheckbox
             textButton
+            contentNoteError
+            contentNoteSuccess
             contentBelowButton
           }
         }

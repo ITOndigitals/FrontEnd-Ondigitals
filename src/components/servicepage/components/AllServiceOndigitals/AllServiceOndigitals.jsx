@@ -111,7 +111,10 @@ export default function AllServiceOndigitals({ dataAllServices }) {
                         ]
                       }
                     >
-                      {item?.serviceHomepage?.titleBelowTextHeadingPageServiceDetail}
+                      {
+                        item?.serviceHomepage
+                          ?.titleBelowTextHeadingPageServiceDetail
+                      }
                     </div>
                     {loading && dataServices ? (
                       <LoadingSpinner />
@@ -168,10 +171,10 @@ export default function AllServiceOndigitals({ dataAllServices }) {
                     )}
                   </div>
                   <div>
-                    <Link
-                      href={item?.slug}
-                    >
-                      <ExploreButton>{sectionListServices?.textButtonLink}</ExploreButton>
+                  <Link href={item && item.slug || "#"}>
+                      <ExploreButton>
+                        {sectionListServices?.textButtonLink}
+                      </ExploreButton>
                     </Link>
                   </div>
                 </div>

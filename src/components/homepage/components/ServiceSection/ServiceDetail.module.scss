@@ -6,7 +6,7 @@
   border-radius: 50%;
 }
 .service-details {
-  grid-column: span 7 / span 7;
+  grid-column: span 6 / span 6;
   padding: 18px 16px;
   border-radius: 30px;
   // &.primary-dark {
@@ -63,6 +63,7 @@
     }
     &__main {
       height: auto;
+      min-height: 130px;
       overflow: hidden;
       font-size: 16px;
       line-height: 24px;
