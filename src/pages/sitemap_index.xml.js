@@ -23,10 +23,6 @@ export async function getServerSideProps({ res }) {
       </sitemapindex>`;
 
     res.setHeader("Content-Type", "text/xml; charset=utf-8");
-    res.setHeader(
-      "Cache-Control",
-      "public, s-maxage=600, stale-while-revalidate=600"
-    );
     res.write(sitemapIndex);
     res.end();
 
