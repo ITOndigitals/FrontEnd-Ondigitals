@@ -1,9 +1,9 @@
 import getTotalCounts from "../../lib/getTotalCounts";
 import getSitemapPages from "../../utils/getSitemapPages";
 
-export default function SitemapIndexPage() {
+const SitemapIndexPage = () => {
   return null;
-}
+};
 
 export async function getServerSideProps({ res }) {
   try {
@@ -18,7 +18,7 @@ export async function getServerSideProps({ res }) {
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <sitemap>
-          <loc>http://localhost:3000/sitemapnextjs.xml</loc>
+          <loc>https://ondigitals.com/sitemapnextjs.xml</loc>
         </sitemap>
         ${details.map((item) => getSitemapPages(item)).join("")}
       </sitemapindex>`;
@@ -39,3 +39,4 @@ export async function getServerSideProps({ res }) {
     return { props: {} };
   }
 }
+export default SitemapIndexPage

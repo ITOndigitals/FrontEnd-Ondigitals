@@ -18,10 +18,11 @@
       &__buttonAndNote {
         margin-top: 16px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         flex-wrap: wrap;
+        gap: 10px;
         div:first-child {
-          width: 50%;
+          width: 45%;
           display: flex;
           justify-content: center;
         }
@@ -31,12 +32,13 @@
           &__textpolicy {
             color: #dcc7ed;
             text-align: center;
-            font-family: Maven Pro;
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
             line-height: 16px;
             margin-top: 8px;
+            display: flex;
+            justify-content: flex-end;
             a {
               color: #fff;
             }
@@ -134,11 +136,12 @@
       &__form {
         width: 100%;
         &__buttonAndNote {
+          justify-content: center;
           div:first-child {
             width: 100%;
           }
           div:last-child {
-            width: 70%;
+            width: 90%;
             margin-bottom: 0px;
           }
         }

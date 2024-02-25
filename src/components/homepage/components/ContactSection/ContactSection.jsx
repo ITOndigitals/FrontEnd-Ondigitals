@@ -219,22 +219,22 @@ const ContactSection = React.forwardRef((props, ref) => {
                     : `${contactFormTextButton}`}
                 </Button>
               </div>
-              <span
-                className={
-                  classes[
-                    "contact-section__columLeft__form__buttonAndNote--btn__textpolicy"
-                  ]
-                }
-                style={{ fontFamily: MavenPro.style.fontFamily }}
-              >
-                {`${contactFormTextRequiredField} `}
-                {linkPrivacyPolicy ? (
-                  <Link href={linkPrivacyPolicy.url}>
-                    {linkPrivacyPolicy.title}
-                  </Link>
-                ) : null}
-              </span>
             </div>
+            <span
+              className={
+                classes[
+                  "contact-section__columLeft__form__buttonAndNote--btn__textpolicy"
+                ]
+              }
+              style={{ fontFamily: MavenPro.style.fontFamily }}
+            >
+              {`${contactFormTextRequiredField} `}
+              {linkPrivacyPolicy ? (
+                <Link href={linkPrivacyPolicy.url}>
+                  {linkPrivacyPolicy.title}
+                </Link>
+              ) : null}
+            </span>
           </form>
           <div className={classes["contact-section__columLeft__email"]}>
             <p

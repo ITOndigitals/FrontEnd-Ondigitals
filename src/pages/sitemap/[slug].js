@@ -2,9 +2,9 @@ import getSitemapPageUrls from "../../../lib/getSitemapPageUrls";
 import getTotalCounts from "../../../lib/getTotalCounts";
 import generateSitemapPaths from "../../../utils/generateSitemapPaths";
 
-export default function SitemapTagPage() {
+const SitemapTagPage = () => {
   return null;
-}
+};
 export async function getServerSideProps({ res, params: { slug } }) {
   let isXml = slug.endsWith(".xml");
   if (!isXml) {
@@ -43,3 +43,4 @@ export async function getServerSideProps({ res, params: { slug } }) {
   res.end();
   return { props: {} };
 }
+export default SitemapTagPage

@@ -8,7 +8,7 @@ export const SendEmailContactForm = gql`
         from: "danh.do@ondigitals.com",
         subject: $subject,
         body: $body,
-        to: "contact@ondigitals.com"
+        to: "nguyenduyanhvu2812@gmail.com"
       }
     ) {
       sent
