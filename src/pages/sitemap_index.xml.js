@@ -6,14 +6,13 @@ const SitemapIndexPage = () => {
 };
 
 export async function getServerSideProps({ res }) {
-  try {
-    const details = await getTotalCounts();
+  // const details = await getTotalCounts();
 
-    if (!details || details.length === 0) {
-      throw new Error("No data available");
-    }
+  // if (!details || details.length === 0) {
+  //   throw new Error("No data available");
+  // }
 
-    const sitemapIndex = `<?xml version='1.0' encoding='UTF-8'?>
+  const sitemapIndexOds = `<?xml version='1.0' encoding='UTF-8'?>
       <sitemapindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -22,16 +21,10 @@ export async function getServerSideProps({ res }) {
         </sitemap>
       </sitemapindex>`;
 
-    res.setHeader("Content-Type", "text/xml; charset=utf-8");
-    res.write(sitemapIndex);
-    res.end();
+  res.setHeader("Content-Type", "text/xml; charset=utf-8");
+  res.write(sitemapIndexOds);
+  res.end();
 
-    return { props: {} };
-  } catch (error) {
-    console.error("Error generating sitemap:", error.message);
-    res.statusCode = 500;
-    res.end();
-    return { props: {} };
-  }
+  return { props: {} };
 }
-export default SitemapIndexPage
+export default SitemapIndexPage;
