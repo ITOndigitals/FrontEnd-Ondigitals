@@ -20,7 +20,6 @@ export async function getServerSideProps({ res }) {
         <sitemap>
           <loc>https://ondigitals.com/sitemapnextjs.xml</loc>
         </sitemap>
-        ${details.map((item) => getSitemapPages(item)).join("")}
       </sitemapindex>`;
 
     res.setHeader("Content-Type", "text/xml; charset=utf-8");
