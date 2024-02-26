@@ -33,8 +33,8 @@ export async function getServerSideProps({ res }) {
 
     return { props: {} };
   } catch (error) {
-    console.error("Error generating sitemap:", error.message);
     res.statusCode = 500;
+    res.write("Error generating sitemap: " + error.message);
     res.end();
     return { props: {} };
   }
