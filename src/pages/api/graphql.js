@@ -336,7 +336,13 @@ export const GetDataHomepage = async (id, languageCode) => {
           }
         }
       }
-      allCaseStudy(where: { orderby: { field: DATE, order: DESC } }) {
+      allCaseStudy(
+        where: {
+          orderby: { field: DATE, order: DESC }
+          language: $languageCode
+        }
+        first: 3
+      ) {
         nodes {
           case_studyId
           title

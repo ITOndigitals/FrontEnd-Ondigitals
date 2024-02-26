@@ -1,14 +1,16 @@
 import ServicePage from "@/components/servicepage/ServicePage";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Head from "next/head";
 import {
   getDataMenu,
   getTranslatedDataFooter,
-} from "./api/graphqlHeaderFooter";
+} from "../api/graphqlHeaderFooter";
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
-import { getDataPolicyAndCoEPage } from "./api/graphql";
+import { getDataPolicyAndCoEPage } from "../api/graphql";
+import { useRouter } from "next/router";
+import { getLanguagePathDataPolicy, languagePathsDataPolicy } from "../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 
@@ -16,11 +18,18 @@ export default function DataPolicy({
   updatedData,
   dataFooter,
   dataHeader,
-  query,
 }) {
   if (!updatedData) {
     return null;
   }
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathDataPolicy(locale);
+  useEffect(() => {
+    if (locale in languagePathsDataPolicy) {
+      router.push(basePath);
+    }
+  }, [locale]);
   const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>
@@ -32,7 +41,7 @@ export default function DataPolicy({
   );
 }
 
-export const getServerSideProps = async ({ locale, query }) => {
+export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPage = 45794;
   const [dataPage, dataFooter, dataHeader] = await Promise.all([
@@ -51,7 +60,6 @@ export const getServerSideProps = async ({ locale, query }) => {
       updatedData,
       dataFooter,
       dataHeader,
-      query,
     },
   };
 };

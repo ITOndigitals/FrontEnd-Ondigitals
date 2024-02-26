@@ -1,14 +1,16 @@
 import ServicePage from "@/components/servicepage/ServicePage";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Head from "next/head";
 import {
   getDataMenu,
   getTranslatedDataFooter,
-} from "./api/graphqlHeaderFooter";
-import { getDataPolicyAndCoEPage } from "./api/graphql";
+} from "../api/graphqlHeaderFooter";
+import { getDataPolicyAndCoEPage } from "../api/graphql";
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
+import { useRouter } from "next/router";
+import { getLanguagePathCodesofEthnics, languagePathsCodesofEthnics } from "../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 
@@ -16,6 +18,14 @@ export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return null;
   }
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathCodesofEthnics(locale);
+  useEffect(() => {
+    if (locale in languagePathsCodesofEthnics) {
+      router.push(basePath);
+    }
+  }, [locale]);
   const dataHead = updatedData.pageBy?.seo?.fullHead;
   return (
     <>

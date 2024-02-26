@@ -37,6 +37,20 @@ export const languagePathsAboutUs = {
   jp: "/jp/%e4%bc%9a%e7%a4%be%e6%a6%82%e8%a6%81/",
   kr: "/kr/%ed%9a%8c%ec%82%ac-%ec%86%8c%ea%b0%9c/",
 };
+export const languagePathsDataPolicy = {
+  en: "/data-policy/",
+  vi: "/vi/chinh-sach-du-lieu",
+  zh: "/zh/数-据-政-策/",
+  jp: "/jp/データポリシー-について/",
+  kr: "/kr/데이터-정책-정보/",
+};
+export const languagePathsCodesofEthnics = {
+  en: "/codes-of-ethnics",
+  vi: "/vi/quy-tac-dao-duc-trong-digital-marketing",
+  zh: "/zh/数-字-营-销-道-德-准-则",
+  jp: "/jp/デジタル-マーケティング-の-倫理-規定",
+  kr: "/kr/디지털-마케팅-민족-코드",
+};
 export const getLanguagePathService = (locale) => {
   return languagePathsService[locale] || "/services";
 };
@@ -49,6 +63,12 @@ export const getLanguagePathContact = (locale) => {
 
 export const getLanguagePathAboutUs = (locale) => {
   return languagePathsAboutUs[locale] || "/about-us";
+};
+export const getLanguagePathDataPolicy = (locale) => {
+  return languagePathsDataPolicy[locale] || "/data-policy";
+};
+export const getLanguagePathCodesofEthnics = (locale) => {
+  return languagePathsCodesofEthnics[locale] || "/codes-of-ethnics";
 };
 
 export const slugServicesMenuMobile = {

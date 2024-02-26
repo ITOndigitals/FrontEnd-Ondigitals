@@ -28,11 +28,15 @@ const nextConfig = {
     rewrites = rewrites.concat(
       generateRewrites("vi", "ve-chung-toi", "about-us")
     );
-    // Configurations for different paths and locales china
-    rewrites = rewrites.concat(generateRewrites("zh", "dich-vu", "services"));
-    rewrites = rewrites.concat(generateRewrites("zh", "lien-he", "contact"));
     rewrites = rewrites.concat(
-      generateRewrites("zh", "ve-chung-toi", "about-us")
+      generateRewrites("vi", "chinh-sach-du-lieu", "data-policy")
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "vi",
+        "quy-tac-dao-duc-trong-digital-marketing",
+        "codes-of-ethnics"
+      )
     );
     // Configurations for different paths and locales japan
     rewrites = rewrites.concat(
@@ -48,16 +52,26 @@ const nextConfig = {
     rewrites = rewrites.concat(
       generateRewrites("jp", "%e4%bc%9a%e7%a4%be%e6%a6%82%e8%a6%81", "about-us")
     );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "jp",
+        "%e3%83%87%e3%83%bc%e3%82%bf%e3%83%9d%e3%83%aa%e3%82%b7%e3%83%bc-%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6",
+        "data-policy"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "jp",
+        "%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab-%e3%83%9e%e3%83%bc%e3%82%b1%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0-%e3%81%ae-%e5%80%ab%e7%90%86-%e8%a6%8f%e5%ae%9a",
+        "codes-of-ethnics"
+      )
+    );
     // Configurations for different paths and locales korea
     rewrites = rewrites.concat(
       generateRewrites("kr", "%ec%84%9c%eb%b9%84%ec%8a%a4", "services")
     );
     rewrites = rewrites.concat(
-      generateRewrites(
-        "kr",
-        "%ec%97%b0%eb%9d%bd%ed%95%98%eb%8b%a4",
-        "contact"
-      )
+      generateRewrites("kr", "%ec%97%b0%eb%9d%bd%ed%95%98%eb%8b%a4", "contact")
     );
     rewrites = rewrites.concat(
       generateRewrites(
@@ -66,24 +80,48 @@ const nextConfig = {
         "about-us"
       )
     );
-      // Configurations for different paths and locales china
-      rewrites = rewrites.concat(
-        generateRewrites("zh", "%e6%9c%8d-%e5%8a%a1", "services")
-      );
-      rewrites = rewrites.concat(
-        generateRewrites(
-          "zh",
-          "%e8%81%94%e7%b3%bb",
-          "contact"
-        )
-      );
-      rewrites = rewrites.concat(
-        generateRewrites(
-          "zh",
-          "%e5%85%b3-%e4%ba%8e-%e6%88%91-%e4%bb%ac",
-          "about-us"
-        )
-      );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "kr",
+        "%eb%8d%b0%ec%9d%b4%ed%84%b0-%ec%a0%95%ec%b1%85-%ec%a0%95%eb%b3%b4",
+        "data-policy"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "kr",
+        "%eb%94%94%ec%a7%80%ed%84%b8-%eb%a7%88%ec%bc%80%ed%8c%85-%eb%af%bc%ec%a1%b1-%ec%bd%94%eb%93%9c",
+        "codes-of-ethnics"
+      )
+    );
+    // Configurations for different paths and locales china
+    rewrites = rewrites.concat(
+      generateRewrites("zh", "%e6%9c%8d-%e5%8a%a1", "services")
+    );
+    rewrites = rewrites.concat(
+      generateRewrites("zh", "%e8%81%94%e7%b3%bb", "contact")
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "zh",
+        "%e5%85%b3-%e4%ba%8e-%e6%88%91-%e4%bb%ac",
+        "about-us"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "zh",
+        "%e6%95%b0-%e6%8d%ae-%e6%94%bf-%e7%ad%96",
+        "data-policy"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "zh",
+        "%e6%95%b0-%e5%ad%97-%e8%90%a5-%e9%94%80-%e9%81%93-%e5%be%b7-%e5%87%86-%e5%88%99",
+        "codes-of-ethnics"
+      )
+    );
     return rewrites;
   },
 
@@ -97,7 +135,7 @@ const nextConfig = {
       "scontent.cdninstagram.com",
       "scontent-hkg1-2.cdninstagram.com",
       "scontent-hkg4-1.cdninstagram.com",
-      "scontent-hkg1-1.cdninstagram.com"
+      "scontent-hkg1-1.cdninstagram.com",
     ],
   },
   i18n: i18nConfig,
