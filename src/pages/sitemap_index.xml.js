@@ -37,7 +37,7 @@ export async function getServerSideProps({ res }) {
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <sitemap>
-          <loc>https://api.ondigitals.com/sitemapnextjs.xml</loc>
+          <loc>https://ondigitals.com/sitemapnextjs.xml</loc>
         </sitemap>
         ${totalArray.map((item) => getSitemapPages(item)).join("")}
       </sitemapindex>`;

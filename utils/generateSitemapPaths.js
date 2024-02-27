@@ -30,7 +30,7 @@ export default function generateSitemapPaths(array, getPriority) {
                 }</lastmod>`
               : ""
           }
-          <changefreq>monthly</changefreq>
+          <changefreq>daily</changefreq>
           <priority>${Number(getPriority).toFixed(1)}</priority>
         </url>`
     );
