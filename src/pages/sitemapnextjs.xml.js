@@ -18,15 +18,26 @@ export const getServerSideProps = async ({ res }) => {
         "_document.js",
         "404.js",
         "sitemap.xml.js",
+        "[slug].js",
+        "sitemap_index.xml.js",
+        "sitemapnextjs.xml.js",
+        "index.js",
+        "case-study",
+        "sitemap",
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
       return `${BASE_URL}/${staticPagePath}`;
     });
 
-  const dynamicPaths = [`${BASE_URL}/name/1`, `${BASE_URL}/name/2`];
+  const dynamicPaths = [
+    `${BASE_URL}/vi/`,
+    `${BASE_URL}/zh/`,
+    `${BASE_URL}/jp/`,
+    `${BASE_URL}/kr/`,
+  ];
 
-  const allPaths = [...staticPaths];
+  const allPaths = [...staticPaths, ...dynamicPaths];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
