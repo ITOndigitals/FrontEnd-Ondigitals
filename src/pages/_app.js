@@ -8,6 +8,7 @@ import usePageLoading from "@/hooks/usePageLoading";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
+import { useEffect } from "react";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -23,6 +24,17 @@ export default function App({ Component, pageProps }) {
   const { locale } = useRouter();
   const selectedFont =
     locale === "vi" ? MavenPro.className : fixelFont.className;
+  useEffect(() => {
+    // Kiểm tra nếu truy cập không sử dụng HTTPS và không phải ở môi trường development
+    if (
+      process.env.NODE_ENV === "production" &&
+      typeof window !== "undefined" &&
+      window.location.protocol === "http:"
+    ) {
+      // Thực hiện chuyển hướng từ HTTP sang HTTPS
+      window.location.href = window.location.href.replace(/^http:/, "https:");
+    }
+  }, []);
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}
