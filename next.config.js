@@ -122,28 +122,6 @@ const nextConfig = {
         "codes-of-ethnics"
       )
     );
-    rewrites.concat([
-      {
-        source: "/:path*",
-        destination: "https://ondigitals.com/:path*",
-        permanent: true,
-      },
-      {
-        source: "/http://ondigitals.com",
-        destination: "https://ondigitals.com/",
-        permanent: true,
-      },
-      {
-        source: "/https://www.ondigitals.com",
-        destination: "https://ondigitals.com/",
-        permanent: true,
-      },
-      {
-        source: "/http://www.ondigitals.com",
-        destination: "https://ondigitals.com/",
-        permanent: true,
-      },
-    ]);
     return rewrites;
   },
 
