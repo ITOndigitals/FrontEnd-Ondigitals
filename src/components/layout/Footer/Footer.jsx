@@ -40,7 +40,7 @@ export default function Footer({ data }) {
                 }}
                 href="/"
               >
-                <LogoFooter width={240} height={100} color={"#FFF"} />
+                <LogoFooter width={160} height={100} color={"#FFF"} />
               </Link>
             </div>
             <div>

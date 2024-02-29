@@ -35,6 +35,16 @@ export default function App({ Component, pageProps }) {
               href={`https://ondigitals.com/${locale !== "en" ? locale : ""}`}
               hrefLang={locale}
             />
+            <meta name="geo.region" content="VN-SG" />
+            <meta name="geo.placename" content="Ho Chi Minh" />
+            <meta
+              name="geo.position"
+              content="10.763109429425983;106.69381408995902"
+            />
+            <meta
+              name="ICBM"
+              content="10.763109429425983, 106.69381408995902"
+            />
           </Head>
           <Component {...pageProps} />
         </Layout>

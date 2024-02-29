@@ -48,6 +48,10 @@ const IntroSection = ({ data }) => {
             >
               <video width="100%" autoPlay loop muted playsInline>
                 <source
+                  src="https://rotato.netlify.app/alpha-demo/movie-hevc.mov"
+                  type='video/mp4; codecs="hvc1"'
+                />
+                <source
                   src="https://api.ondigitals.com/wp-content/uploads/2024/02/Animation-WEBM.webm"
                   type="video/webm"
                 />
