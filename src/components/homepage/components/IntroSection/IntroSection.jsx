@@ -32,6 +32,7 @@ const IntroSection = ({ data }) => {
                 src={introSectionLeftImage?.sourceUrl}
                 alt={introSectionLeftImage?.altText}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                loading="eager"
               />
             </div>
             <p
