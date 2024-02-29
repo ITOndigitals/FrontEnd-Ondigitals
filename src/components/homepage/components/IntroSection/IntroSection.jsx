@@ -48,8 +48,8 @@ const IntroSection = ({ data }) => {
             >
               <video width="100%" autoPlay loop muted playsInline>
                 <source
-                  src="https://api.ondigitals.com/wp-content/uploads/2024/01/Homepage_animation_purple.mp4"
-                  type="video/mp4"
+                  src="https://api.ondigitals.com/wp-content/uploads/2024/02/Animation-WEBM.webm"
+                  type="video/webm"
                 />
               </video>
             </div>
