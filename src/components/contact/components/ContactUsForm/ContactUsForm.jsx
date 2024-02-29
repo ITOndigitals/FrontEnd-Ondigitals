@@ -62,7 +62,7 @@ export default function ContactUsForm({ data }) {
             </a>
           </h4>
           <strong style="color: black;">Message: <p style="font-weight: 300; display: inline;">${values.message}</p></strong>`,
-          subject: "Thông báo có người liên hệ",
+          subject: "Notification of contact person",
         },
       });
       formik.resetForm();
