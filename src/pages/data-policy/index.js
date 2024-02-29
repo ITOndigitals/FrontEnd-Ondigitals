@@ -10,15 +10,15 @@ import {
 import ServiceDetail from "@/components/servicedetailpage/ServiceDetail";
 import { getDataPolicyAndCoEPage } from "../api/graphql";
 import { useRouter } from "next/router";
-import { getLanguagePathDataPolicy, languagePathsDataPolicy } from "../../../utils/languageSlug";
+import {
+  getLanguagePathDataPolicy,
+  languagePathsDataPolicy,
+} from "../../../utils/languageSlug";
+import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 
 const parse = require("html-react-parser");
 
-export default function DataPolicy({
-  updatedData,
-  dataFooter,
-  dataHeader,
-}) {
+export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
   if (!updatedData) {
     return null;
   }
@@ -30,7 +30,7 @@ export default function DataPolicy({
       router.push(basePath);
     }
   }, [locale]);
-  const dataHead = updatedData.pageBy?.seo?.fullHead;
+  const dataHead = replaceUrlsHead(updatedData.pageBy?.seo?.fullHead);
   return (
     <>
       <Header data={dataHeader} />

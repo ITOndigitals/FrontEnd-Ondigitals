@@ -9,6 +9,7 @@ import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import { getDataMenu, getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
 import { useRouter } from "next/router";
+import replaceUrlsHead from "../../utils/replaceUrlsHead";
 
 const parse = require("html-react-parser");
 
@@ -32,7 +33,7 @@ export default function Home({ allPosts, dataHomepage, dataFooter,dataHeader }) 
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-  const fullHeadHTML = dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead || "";
+  const fullHeadHTML = replaceUrlsHead(dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead) || "";
   return (
     <>
       <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>

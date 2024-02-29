@@ -7,10 +7,14 @@ import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useEffect, useState } from "react";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import CouterNumber from "@/components/ui/CouterNumber/CouterNumber";
+import { useRouter } from "next/router";
+import { getLanguagePathAboutUs } from "../../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function PartnerSection({ data, NavButton }) {
   const { clients, pages } = data;
+  const { locale } = useRouter();
+  const basePath = getLanguagePathAboutUs(locale);
   const dataPartnerSection = pages.nodes[0] || {};
   const {
     partnerSectionTitle,
@@ -18,7 +22,7 @@ export default function PartnerSection({ data, NavButton }) {
     partnerSectionTitleImage,
     partnerSectionGroupNumberClient,
     partnerSectionTextButton,
-    partnerSectionListImage
+    partnerSectionListImage,
   } = dataPartnerSection.homePageInputContent || {};
   const divImage = `${classes["homepagesectionpartner__content__image"]} ${classes["hvr-bounce-in"]}`;
   const [isOnMobile, setIsOnMobile] = useState(false);
@@ -114,11 +118,8 @@ export default function PartnerSection({ data, NavButton }) {
               className={`${classes["homepagesectionpartner__content__colrightimage"]}`}
             >
               {partnerSectionListImage &&
-                partnerSectionListImage.map((item,index) => (
-                  <div
-                    key={index}
-                    className={`${divImage} hvr-float-shadow`}
-                  >
+                partnerSectionListImage.map((item, index) => (
+                  <div key={index} className={`${divImage} hvr-float-shadow`}>
                     <Image
                       src={item?.sourceUrl}
                       fill
@@ -137,7 +138,7 @@ export default function PartnerSection({ data, NavButton }) {
             {partnerSectionDesc}
           </div>
           <ButtonNoBorder
-            href="#"
+            href={basePath}
             textSize="md"
             RightIcon={<FontAwesomeIcon icon={faArrowRight} color="white" />}
           >

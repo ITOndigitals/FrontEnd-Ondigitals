@@ -47,19 +47,23 @@ export default function PopupForm({ dataForm, isOpen, onClose }) {
     try {
       const { data } = await sendEmailMutation({
         variables: {
-          body: `<h4 style="color: black;">Companyname or Name Client: ${
+          body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300;display: inline;">${
             values.name
-          }</h4> 
-          <h4 style="color: black;">Email: ${values.email}</h4>  
-          <h4 style="color: black;">Digitals Credential: ${
+          }</p></h4> 
+          <h4 style="color: black;">Email: <p style="font-weight: 300;display: inline;">${
+            values.email
+          }</p></h4>  
+          <h4 style="color: black;">Digitals Credential: <span style="font-weight: 300;">${
             values.checked
               ? "I would like to receive On Digitals Credential"
               : "I do not want to receive On Digitals Credential"
-          }</h4>  
+          }</span></h4>  
           <h4 style="color: black;">
             Phone Number: 
-            <a href="tel:${values.phone}" style="color: #1155CC;display:inline">
-             ${values.phone}
+            <a href="tel:${
+              values.phone
+            }" style="color: #1155CC;display:inline;font-weight: 300;">
+              ${values.phone}
             </a>
           </h4> `,
           subject: "Request Credential",

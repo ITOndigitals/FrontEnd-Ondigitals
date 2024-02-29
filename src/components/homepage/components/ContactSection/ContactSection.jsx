@@ -69,15 +69,15 @@ const ContactSection = React.forwardRef((props, ref) => {
     try {
       const { data } = await sendEmailMutation({
         variables: {
-          body: `<h4 style="color: black;">Companyname or Name Client: ${values.name}</h4> 
-          <h4 style="color: black;">Email: ${values.email}</h4>  
+          body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300; display: inline;">${values.name}</p></h4> 
+          <h4 style="color: black;">Email: <p style="font-weight: 300; display: inline;">${values.email}</p></h4>  
           <h4 style="color: black;">
             Phone Number: 
-            <a href="tel:${values.phone}" style="color: #1155CC;display:inline">
-             ${values.phone}
+            <a href="tel:${values.phone}" style="color: #1155CC; display: inline;">
+              <p style="font-weight: 300; display: inline;">${values.phone}</p>
             </a>
           </h4>
-          <strong style="color: black;">Message: ${values.message}</strong>  `,
+          <strong style="color: black;">Message: <p style="font-weight: 300; display: inline;">${values.message}</p></strong>`,
           subject: "Thông báo có người liên hệ",
         },
       });

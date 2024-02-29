@@ -13,6 +13,7 @@ import {
   getLanguagePathBlog,
   languagePathsBlog,
 } from "../../../utils/languageSlug";
+import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 
 const parse = require("html-react-parser");
 
@@ -29,7 +30,7 @@ export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
       router.push(basePath);
     }
   }, [locale]);
-  const dataHead = seoHead?.seo?.fullHead;
+  const dataHead = replaceUrlsHead(seoHead?.seo?.fullHead);
   return (
     <>
       <Head>{dataHead && parse(dataHead)}</Head>

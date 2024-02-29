@@ -193,7 +193,6 @@ const BlogPage = ({ blogsData, textContent }) => {
       nextElement.style.backgroundColor = "#F6F8FA";
     }
   }, []);
-  console.log(data, isFilterPanigation,count);
   return (
     <div className={`container ${classes.container}`}>
       <BlogsHeader

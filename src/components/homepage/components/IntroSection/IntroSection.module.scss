@@ -2,7 +2,7 @@
 @import "../../../../styles/functions";
 
 .intro {
-  background: #3F1768;
+  background: #3f1768;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@
     font-size: 20px;
     line-height: 28px;
     color: white;
-    width:95%;
+    width: 95%;
   }
 }
 
@@ -124,6 +124,10 @@
       width: zoom_ratio(523px);
       height: zoom_ratio(60.5px);
       margin: 30px auto;
+    }
+    &-description {
+      font-size: 14px;
+     
     }
   }
 }

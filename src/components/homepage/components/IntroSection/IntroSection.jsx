@@ -14,7 +14,6 @@ const IntroSection = ({ data }) => {
     introSectionRightImage,
     introSectionLeftImage,
   } = pages.nodes[0].homePageInputContent || {};
-  console.log(introSectionRightImage);
   return (
     <section className={`${classes.intro} intro-section`}>
       <div className="container relative">

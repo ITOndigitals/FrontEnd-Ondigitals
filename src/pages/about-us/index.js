@@ -13,6 +13,7 @@ import {
   languagePathsAboutUs,
 } from "../../../utils/languageSlug";
 import { useEffect } from "react";
+import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 
 const parse = require("html-react-parser");
 
@@ -28,7 +29,7 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
         router.push(basePath);
       }
     }, [locale]);
-    const dataHead = updatedData.pageBy.seo.fullHead;
+    const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
     return (
       <>
         <Header data={dataHeader} />

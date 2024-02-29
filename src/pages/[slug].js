@@ -18,6 +18,7 @@ import {
   getDataMenu,
   getTranslatedDataFooter,
 } from "./api/graphqlHeaderFooter";
+import replaceUrlsHead from "../../utils/replaceUrlsHead";
 const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
@@ -36,7 +37,7 @@ export default function DynamicDetailPage({
     }
   }, [notFound]);
   if (serviceData) {
-    const dataHead = serviceData.serviceBy.seo.fullHead;
+    const dataHead = replaceUrlsHead(serviceData.serviceBy.seo.fullHead);
     return (
       <>
         <Header data={dataHeader} />
@@ -47,7 +48,7 @@ export default function DynamicDetailPage({
     );
   }
   if (blogData) {
-    const dataHead = blogData.postBy.seo.fullHead;
+    const dataHead = replaceUrlsHead(blogData.postBy.seo.fullHead);
     return (
       <>
         <Head>{dataHead && parse(dataHead)}</Head>
@@ -58,7 +59,9 @@ export default function DynamicDetailPage({
     );
   }
   if (serviceParentsData) {
-    const dataHead = serviceParentsData.serviceParentBy.seo.fullHead;
+    const dataHead = replaceUrlsHead(
+      serviceParentsData.serviceParentBy.seo.fullHead
+    );
     return (
       <>
         <Header data={dataHeader} />
@@ -113,7 +116,7 @@ export async function getStaticProps({ params, locale }) {
         dataFooter,
         dataHeader,
       },
-      revalidate: 3600 ,
+      revalidate: 3600,
     };
   } else if (blogData && blogData.postBy) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
@@ -124,7 +127,7 @@ export async function getStaticProps({ params, locale }) {
         dataFooter,
         dataHeader,
       },
-      revalidate: 3600 ,
+      revalidate: 3600,
     };
   }
   if (serviceParentsData && serviceParentsData.serviceParentBy) {
@@ -134,7 +137,7 @@ export async function getStaticProps({ params, locale }) {
         dataFooter,
         dataHeader,
       },
-      revalidate: 3600 ,
+      revalidate: 3600,
     };
   } else {
     return {

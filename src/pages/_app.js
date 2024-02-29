@@ -9,6 +9,7 @@ import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
 import { useEffect } from "react";
+import Head from "next/head";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -40,6 +41,13 @@ export default function App({ Component, pageProps }) {
       {isLoading && <LoadingSpinner hasOverlay />}
       <ApolloProvider client={client}>
         <Layout className={selectedFont}>
+          <Head>
+            <link
+              rel="alternate"
+              href={`https://ondigitals.com/${locale !== "en" ? locale : ""}`}
+              hrefLang={locale}
+            />
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </ApolloProvider>
