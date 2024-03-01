@@ -75,7 +75,7 @@ export default function DynamicDetailPage({
 
 export async function getStaticPaths() {
   const listServices = await GetListSlugService();
-  const supportedLanguages = ["EN", "VI", "ZH", "JP", "KR"];
+  const supportedLanguages = ["EN", "VI"];
   const allPostsPaths = [];
   for (const lang of supportedLanguages) {
     const posts = await GetListSlugPosts(lang);
