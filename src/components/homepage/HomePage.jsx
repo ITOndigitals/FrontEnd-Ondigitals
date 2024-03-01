@@ -306,13 +306,12 @@ const HomePage = ({ allPosts, dataHomepage }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {locale === "vi" ||
-              (locale === "en" && (
-                <NewAndInsightsSection
-                  data={allPosts}
-                  dataHomepage={dataHomePages}
-                />
-              ))}
+            {(locale === "vi" || locale === "en") && (
+              <NewAndInsightsSection
+                data={allPosts}
+                dataHomepage={dataHomePages}
+              />
+            )}
           </SwiperSlide>
         </Swiper>
       ) : (
@@ -321,13 +320,12 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           <ServiceSection data={dataHomePages} />
           <PartnerSection data={dataHomePages} />
           <CaseStudySection data={dataHomePages} />
-          {locale === "vi" ||
-            (locale === "en" && (
-              <NewAndInsightsSection
-                data={allPosts}
-                dataHomepage={dataHomePages}
-              />
-            ))}
+          {(locale === "vi" || locale === "en") && (
+            <NewAndInsightsSection
+              data={allPosts}
+              dataHomepage={dataHomePages}
+            />
+          )}
         </>
       )}
       <ContactSection

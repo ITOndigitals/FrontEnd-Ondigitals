@@ -46,7 +46,7 @@ const IntroSection = ({ data }) => {
             <div
               className={`${classes["intro-layout-item-video"]} appear-slow`}
             >
-              <video width="100%" muted autolay loop playsInline>
+              <video width="100%" muted autoPlay loop playsInline>
                 <source
                   src="https://api.ondigitals.com/wp-content/uploads/2024/03/ANIMATION-HEVC-2.mov"
                   type='video/mp4; codecs="hvc1"'

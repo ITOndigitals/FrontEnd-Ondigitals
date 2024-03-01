@@ -11,14 +11,5 @@ export function middleware(request) {
     return NextResponse.redirect(redirectUrl, { status: 301 });
   }
 
-  // Kiểm tra nếu đường dẫn bắt đầu bằng "/spam-mail-la-gi/"
-  if (request.nextUrl.pathname.startsWith("/spam-mail-la-gi/")) {
-    // Thực hiện redirect 301
-    return NextResponse.redirect(
-      new URL("/vi/spam-mail-la-gi/", request.url),
-      { permanent: true }
-    );
-  }
-
   return NextResponse.next();
 }
