@@ -65,9 +65,12 @@ export default function Footer({ data }) {
                     style={{ fontFamily: MavenPro.style.fontFamily }}
                     className={classes["row__services__detail"]}
                   >
-                    <p className={classes["row__services__detail__title"]}>
+                    <Link
+                      href={item?.linkservice || "/"}
+                      className={classes["row__services__detail__title"]}
+                    >
                       {item?.title}
-                    </p>
+                    </Link>
                     {item.listServices && parse(item.listServices)}
                   </div>
                 ))}

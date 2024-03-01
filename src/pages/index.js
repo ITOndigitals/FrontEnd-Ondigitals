@@ -7,37 +7,49 @@ import {
 import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import { getDataMenu, getTranslatedDataFooter } from "./api/graphqlHeaderFooter";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "./api/graphqlHeaderFooter";
 import { useRouter } from "next/router";
 import replaceUrlsHead from "../../utils/replaceUrlsHead";
 
 const parse = require("html-react-parser");
 
-export default function Home({ allPosts, dataHomepage, dataFooter,dataHeader }) {
+export default function Home({
+  allPosts,
+  dataHomepage,
+  dataFooter,
+  dataHeader,
+}) {
   const router = useRouter();
-  const {locale}=router
+  const { locale } = router;
   useEffect(() => {
     const handleRouteChange = (url) => {
-      console.log(url)
+      console.log(url);
       // Kiểm tra nếu người dùng quay lại trang chủ từ bất kỳ trang nào khác
-      if (url === `/${locale}/` || url === '/') {
+      if (url === `/${locale}/` || url === "/") {
         // Reload trang chủ khi người dùng quay lại từ các trang khác
         window.location.reload();
       }
     };
     // Lắng nghe sự kiện chuyển trang
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     // Clean up
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, []);
-  const fullHeadHTML = replaceUrlsHead(dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead) || "";
+  const fullHeadHTML =
+    replaceUrlsHead(dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead).replace(
+      /trang-chu\/|homepagechina\/|trang-chu-nhat\/|trang-chu-han\//g,
+      ""
+    ) || "";
   return (
     <>
       <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>
-      <Header data ={dataHeader} />
+      <Header data={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />
       <Footer data={dataFooter} />
     </>
@@ -49,7 +61,7 @@ export const getServerSideProps = async ({ locale }) => {
   const allPosts = await getDataForNewAndInsightsSection(language);
   const idHomepageEnglish = 44418;
   const dataFooter = await getTranslatedDataFooter(language);
-  const dataHeader= await getDataMenu(language)
+  const dataHeader = await getDataMenu(language);
   const data = await GetDataHomepage(idHomepageEnglish, language);
 
   const translation = data?.pages?.nodes?.[0]?.translations?.find(
@@ -66,7 +78,7 @@ export const getServerSideProps = async ({ locale }) => {
       allPosts,
       dataHomepage: updatedDataHomepage,
       dataFooter,
-      dataHeader
+      dataHeader,
     },
   };
 };

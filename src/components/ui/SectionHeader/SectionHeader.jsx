@@ -50,7 +50,9 @@ const SectionHeader = ({ isDark }) => {
       <header className={`${classes["main-header"]} section-header`}>
         <div className="container--big">
           <div
-            style={{ justifyContent: menuIsOpen ? "flex-end": "space-between"  }}
+            style={{
+              justifyContent: menuIsOpen ? "flex-end" : "space-between",
+            }}
             className={classes["header-wrapper"]}
           >
             <Logo isVisible={!menuIsOpen} isDark={isDark} />

@@ -16,13 +16,16 @@
     font-size: 20px;
     line-height: 28px;
     color: white;
+    &:hover {
+      color: #dcc7ed;
+    }
   }
   .dark {
     color: black;
   }
 }
-@media (max-width:767px) {
-  .bottom-nav{
+@media (max-width: 767px) {
+  .bottom-nav {
     display: none;
   }
 }

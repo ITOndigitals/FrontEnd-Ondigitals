@@ -4,6 +4,7 @@ import Button from "../Buttons/Button/Button";
 import { ArrowRight } from "../Icons/ListIcon";
 import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
+import { languagePathsContact } from "../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 export default function NeedHelpDigitalGrowth() {
@@ -24,7 +25,7 @@ export default function NeedHelpDigitalGrowth() {
           </div>
           <div className={classes["help-digital-growth-main__content__button"]}>
             <Button
-              href={`/${locale}/contact`}
+              href={languagePathsContact[locale]}
               className="btn-contact-form"
               RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
             >

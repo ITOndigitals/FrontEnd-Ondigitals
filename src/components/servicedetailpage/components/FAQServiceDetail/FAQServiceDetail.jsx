@@ -8,12 +8,15 @@ import {
 } from "@/components/ui/Icons/ListIcon";
 import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import { Maven_Pro } from "next/font/google";
+import { localeLangButtonBackToList } from "../../../../../utils/languageSlug";
+import { useRouter } from "next/router";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
 export default function FAQServiceDetail({ data, titleHeading }) {
   const scrollRef = useRef(null);
+  const { locale } = useRouter();
   const [expandedItems, setExpandedItems] = useState(
     Array(data.length).fill(false)
   );
@@ -105,7 +108,7 @@ export default function FAQServiceDetail({ data, titleHeading }) {
             textSize="md"
             LeftIcon={<IconChevronLeft width={24} height={24} color="#fff" />}
           >
-            Back to list
+            {localeLangButtonBackToList[locale]}
           </ButtonNoBorder>
           <div
             onClick={handleScrollToTop}

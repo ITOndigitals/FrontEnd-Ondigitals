@@ -54,6 +54,14 @@
     &__wrapper {
       display: flex;
       align-items: center;
+      &:hover {
+        svg {
+          fill: #dcc7ed;
+        }
+        span {
+          color: #dcc7ed;
+        }
+      }
       svg {
         display: block;
         margin-right: 10px;
@@ -62,9 +70,6 @@
       span {
         display: block;
         font-size: 18px;
-        &:hover {
-          color: #dcc7ed;
-        }
       }
       &-locale {
         display: flex;
@@ -117,8 +122,21 @@
 .main-header-dark {
   .header {
     &-menu-btn {
+      &:hover {
+        .line {
+          background-color: #dcc7ed !important;
+        }
+        &.active {
+          .line {
+            background-color: #dcc7ed;
+          }
+        }
+      }
       .line {
         background-color: black;
+      }
+      .mobile {
+        background-color: #fff !important;
       }
       &.active {
         .line {

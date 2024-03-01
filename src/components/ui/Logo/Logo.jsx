@@ -2,8 +2,8 @@ import Image from "next/image";
 import classes from "./Logo.module.scss";
 import Link from "next/link";
 
-const Logo = ({ isVisible, isDark }) => {
-  if (isDark) {
+const Logo = ({ isVisible, isDark, isOnMobile }) => {
+  if (isDark && !isOnMobile) {
     return (
       <Link
         onClick={() => {

@@ -337,7 +337,11 @@ const Header = ({ data }) => {
             style={{ display: menuIsOpen ? "block" : "flex" }}
             className={classes["header-wrapper"]}
           >
-            <Logo isVisible={!menuIsOpen} isDark={isDark} />
+            <Logo
+              isVisible={!menuIsOpen}
+              isDark={isDark}
+              isOnMobile={isOnMobile}
+            />
             <div
               style={{ justifyContent: menuIsOpen ? "space-between" : "unset" }}
               className={`${classes["header-wrapper-fn"]} ${
@@ -404,9 +408,21 @@ const Header = ({ data }) => {
                 className={menuButtonClasses}
                 onClick={toggleMenuButtonHandler}
               >
-                <div className={classes.line}></div>
-                <div className={classes.line}></div>
-                <div className={classes.line}></div>
+                <div
+                  className={`${classes.line} ${
+                    isOnMobile ? classes.mobile : ""
+                  }`}
+                ></div>
+                <div
+                  className={`${classes.line} ${
+                    isOnMobile ? classes.mobile : ""
+                  }`}
+                ></div>{" "}
+                <div
+                  className={`${classes.line} ${
+                    isOnMobile ? classes.mobile : ""
+                  }`}
+                ></div>
               </button>
             </div>
           </div>

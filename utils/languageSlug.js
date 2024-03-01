@@ -5,6 +5,20 @@ export const localeLangButtonServerChild = {
   jp: "今すぐ始めましょう",
   kr: "오늘 시작하세요",
 };
+export const localeLangButtonBackToList = {
+  en: "Back to list",
+  vi: "Quay lại danh sách",
+  zh: "返回目录",
+  jp: "リストに戻る",
+  kr: "다시 목록으로",
+};
+export const localeLangButtonContact = {
+  en: "CONTACT US",
+  vi: "LIÊN HỆ",
+  zh: "联系我们",
+  jp: "お問い合わせ",
+  kr: "문의하기",
+};
 export const localeLang = {
   en: "English",
   vi: "Tiếng Việt",

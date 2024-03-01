@@ -81,9 +81,8 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
             <Image
               fill
               src="https://api.ondigitals.com/wp-content/uploads/2023/11/GLOBE.png"
-              alt="sadasdas"
+              alt="Ondigitals"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-              priority
             />
           </div>
           <div className={classes["menu-list-wrapper__head-line"]}>
@@ -98,6 +97,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
           <p className={classes["menu-list-wrapper__philippines"]}>
             Philippines
           </p>
+          
           <p className={classes["menu-list-wrapper__malaysia"]}>Malaysia </p>
           <p className={classes["menu-list-wrapper__singapore"]}>Singapore </p>
           <p className={classes["menu-list-wrapper__indonesia"]}>Indonesia </p>

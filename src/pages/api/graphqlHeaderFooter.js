@@ -13,6 +13,7 @@ export const GetDataFooter = async (id) => {
               services {
                 listServices
                 title
+                linkservice
               }
             }
             columFollowUs {
