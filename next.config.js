@@ -16,6 +16,15 @@ function generateRewrites(locale, sourcePath, destinationPath) {
   ];
 }
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/vi/about-us/",
+        destination: "/vi/ve-chung-toi/",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     let rewrites = [];
 
