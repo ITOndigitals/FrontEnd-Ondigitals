@@ -3,6 +3,7 @@ import { dataSlugPostVi } from "../utils/dataSlugPostVi";
 
 export function middleware(request) {
   const targetHost = "ondigitals.com";
+  console.log(request.nextUrl.href);
   const host = request.headers.get("host");
   const protocol = request.headers.get("x-forwarded-proto") || "http"; // Sử dụng header "x-forwarded-proto" để xác định giao thức nếu bạn đang sử dụng proxy
   // Kiểm tra nếu giao thức không phải HTTPS hoặc host có tiền tố www
@@ -14,10 +15,11 @@ export function middleware(request) {
   const modifiedData = dataSlugPostVi.map((item) => ({
     slug: `${urlMain}/${item.slug}/`,
     slugNewVi: `${urlMain}/vi/${item.slug}/`,
+    slugNoHttps: `http://ondigitals.com/${item.slug}/`,
   }));
   // Tìm phần tử trong modifiedData có slug trùng với request.nextUrl.href
   const matchedItem = modifiedData.find(
-    (item) => request.nextUrl.href === item.slug
+    (item) => request.nextUrl.href === (item.slug || item.slugNoHttps)
   );
   // Nếu tìm thấy phần tử
   if (matchedItem) {
