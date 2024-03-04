@@ -15,10 +15,9 @@ export function middleware(request) {
     slug: `${urlMain}/${item.slug}/`,
     slugNewVi: `${urlMain}/vi/${item.slug}/`,
   }));
-  const redirectUrlPost = `https://${targetHost}${request.nextUrl.pathname}`;
   // Tìm phần tử trong modifiedData có slug trùng với request.nextUrl.href
   const matchedItem = modifiedData.find(
-    (item) => redirectUrlPost === item.slug
+    (item) => request.nextUrl.href === item.slug
   );
   // Nếu tìm thấy phần tử
   if (matchedItem) {
