@@ -29,6 +29,7 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
         router.push(basePath);
       }
     }, [locale]);
+
     const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
     return (
       <>

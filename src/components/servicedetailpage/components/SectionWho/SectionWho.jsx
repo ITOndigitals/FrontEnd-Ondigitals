@@ -54,7 +54,7 @@ export default function SectionWho({ data }) {
             }}
             freeMode={true}
             autoplay={{
-              delay: 2000,
+              delay: 5000,
               disableOnInteraction: false,
             }}
             breakpoints={{
