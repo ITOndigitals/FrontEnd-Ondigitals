@@ -100,7 +100,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     <div className={classes["blog-detail"]}>
       <div className="container">
         <p className={classes["blog-detail-header"]}>
-          {breadcrumTitleBlogDetail}
+          {breadcrumTitleBlogDetail || ""}
         </p>
         <div className={classes["blog-detail-breadcrumbs"]}>
           <Breadcrumb data={DUMMY_BREADCRUMB_DATA} />
