@@ -1,6 +1,6 @@
 export const localeLangButtonServerChild = {
   en: "Get Started Today",
-  vi: "Bắt đầu từ hôm nay",
+  vi: "Bắt đầu ngay",
   zh: "今天开始",
   jp: "今すぐ始めましょう",
   kr: "오늘 시작하세요",

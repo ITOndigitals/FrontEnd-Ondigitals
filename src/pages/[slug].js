@@ -27,15 +27,8 @@ export default function DynamicDetailPage({
   blogData,
   relatedPosts,
   dataFooter,
-  notFound,
   dataHeader,
 }) {
-  const { locale } = useRouter();
-  useEffect(() => {
-    if (notFound) {
-      window.location.href = `/${locale}`;
-    }
-  }, [notFound]);
   if (serviceData) {
     const dataHead = replaceUrlsHead(serviceData.serviceBy.seo.fullHead);
     return (
@@ -108,7 +101,7 @@ export async function getStaticProps({ params, locale }) {
   const serviceParentsData = await GetServiceParentDetailBySlug(params.slug);
   const dataFooter = await getTranslatedDataFooter(language);
   const dataHeader = await getDataMenu(language);
-  const notFound = true;
+  // const notFound = true;
   if (serviceData && serviceData.serviceBy) {
     return {
       props: {
@@ -141,9 +134,7 @@ export async function getStaticProps({ params, locale }) {
     };
   } else {
     return {
-      props: {
-        notFound,
-      },
+        notFound: true,
     };
   }
 }

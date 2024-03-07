@@ -1,0 +1,124 @@
+@import ".././../../src/styles/variables";
+.section-page-404 {
+  padding-top: calc($header-height + $header-padding + $section-padding);
+  background-color: #3d1766;
+  height: auto;
+}
+.content-page-404 {
+  display: flex;
+  color: #ffffff;
+  &__left {
+    width: 100%;
+    height: 500px;
+    position: relative;
+  }
+  &__right {
+    width: 50%;
+    padding-top: 10%;
+    h1 {
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &__text {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 20px;
+      margin-top: 15px;
+    }
+    button {
+      &:hover {
+        background-color: #ff0032 !important;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .content-page-404 {
+    display: flex;
+    color: #ffffff;
+    &__left {
+      width: 90%;
+      height: 320px;
+      position: relative;
+    }
+    &__right {
+      width: 50%;
+      padding-top: 5%;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .content-page-404 {
+    display: flex;
+    color: #ffffff;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    &__left {
+      width: 100%;
+      height: 320px;
+      position: relative;
+    }
+    &__right {
+      width: 100%;
+      padding: 5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+@media (max-width: 540px) {
+  .content-page-404 {
+    &__left {
+      width: 100%;
+      height: 250px;
+      position: relative;
+    }
+    &__right {
+      width: 100%;
+      padding: 5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 430px) {
+  .content-page-404 {
+    &__left {
+      width: 100%;
+      height: 200px;
+      position: relative;
+    }
+    &__right {
+      width: 100%;
+      padding: 5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 340px) {
+  .content-page-404 {
+    &__left {
+      width: 100%;
+      height: 170px;
+      position: relative;
+    }
+    &__right {
+      width: 100%;
+      padding: 5% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
