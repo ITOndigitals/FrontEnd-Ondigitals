@@ -4,10 +4,9 @@ import {
   getTranslatedDataFooter,
 } from "./api/graphqlHeaderFooter";
 import Footer from "@/components/layout/Footer/Footer";
-import CustomPage404 from "@/components/custompage404/customPage404";
 import NeedHelpDigitalGrowth from "@/components/ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import Head from "next/head";
-
+import CustomPage404 from "@/components/custompage404/CustomPage404";
 export default function Page404({ dataFooter, dataHeader }) {
   return (
     <>
