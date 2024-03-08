@@ -1,7 +1,7 @@
 @import ".././../../src/styles/variables";
 .section-page-404 {
   padding-top: calc($header-height + $header-padding + $section-padding);
-  background-color: #3d1766;
+  background: linear-gradient(180deg, #3d1766 0%, #6f1ab6 100%);
   height: auto;
 }
 .content-page-404 {
@@ -13,7 +13,7 @@
     position: relative;
   }
   &__right {
-    width: 50%;
+    width: 60%;
     padding-top: 10%;
     h1 {
       font-weight: 600;

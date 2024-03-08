@@ -1,3 +1,10 @@
+export const localeLang = {
+  en: "English",
+  vi: "Tiếng Việt",
+  zh: "中文(简体)",
+  jp: "日本語",
+  kr: "한국어",
+};
 export const localeLangButtonServerChild = {
   en: "Get Started Today",
   vi: "Bắt đầu ngay",
@@ -19,12 +26,33 @@ export const localeLangButtonContact = {
   jp: "お問い合わせ",
   kr: "문의하기",
 };
-export const localeLang = {
-  en: "English",
-  vi: "Tiếng Việt",
-  zh: "中文(简体)",
-  jp: "日本語",
-  kr: "한국어",
+export const translateTitlePage404 = {
+  en: "Lost in the digital space?",
+  vi: "Lạc lối trong không gian kỹ thuật số? ",
+  zh: "迷失在數位空間？",
+  jp: "デジタル宇宙で迷ってしまいますか？",
+  kr: "디지털 공간에서 길을 잃었나요?",
+};
+export const translateTextPage404 = {
+  en: "No worries, let's navigate back together.",
+  vi: "Đừng lo lắng, hãy cùng nhau quay lại.",
+  zh: "不用擔心，讓我們一起導航回來。",
+  jp: "心配しないでください、一緒に戻りましょう。",
+  kr: "걱정하지 마세요. 함께 다시 탐색해 보세요.",
+};
+export const translateButtonPage404 = {
+  en: "Back to Home",
+  vi: "Trở về Trang chủ",
+  zh: "回首頁",
+  jp: "心配しないでください、一緒に戻りましょう。",
+  kr: "ホームページに帰る",
+};
+export const translateMetaTitlePage404 = {
+  en: "Page not found",
+  vi: "Không tìm thấy trang",
+  zh: "페이지를 찾을 수 없습니다",
+  jp: "ページが存在いたしません。",
+  kr: "找不到网页",
 };
 export const languagePathsService = {
   en: "/services",

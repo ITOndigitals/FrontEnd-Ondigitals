@@ -111,7 +111,11 @@ export async function getStaticProps({ params, locale }) {
       },
       revalidate: 3600,
     };
-  } else if (blogData && blogData.postBy) {
+  } else if (
+    blogData &&
+    blogData.postBy &&
+    (language === "VI" || language === "EN")
+  ) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {
       props: {
@@ -134,7 +138,7 @@ export async function getStaticProps({ params, locale }) {
     };
   } else {
     return {
-        notFound: true,
+      notFound: true,
     };
   }
 }

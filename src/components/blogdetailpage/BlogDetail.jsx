@@ -30,7 +30,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
     titleNewestPosts,
     textButtonBackToList,
     titleShareThisPost,
-  } = allBlogsContent.nodes[0]?.textBlogandBlogDetail || null;
+  } = allBlogsContent.nodes[0]?.textBlogandBlogDetail || {};
   const titlePostDetail = {
     title: postBy?.title,
     url: postBy?.slug,
