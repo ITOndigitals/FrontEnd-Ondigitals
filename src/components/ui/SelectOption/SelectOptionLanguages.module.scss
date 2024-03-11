@@ -41,10 +41,12 @@
         font-size: 12px;
         font-weight: 500;
         line-height: 16px;
-        display: flex;
-        align-items: center;
         p {
-          margin-top: 3px;
+          margin-top: 6px;
+        }
+        a {
+          display: flex;
+          justify-content: flex-start;
         }
         &:hover {
           background-color: #6f1ab6;

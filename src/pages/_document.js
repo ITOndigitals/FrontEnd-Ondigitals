@@ -10,6 +10,7 @@ export default function Document() {
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
+          media="all"
         />
         <meta
           name="robots"

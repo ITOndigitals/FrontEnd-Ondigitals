@@ -16,15 +16,6 @@ function generateRewrites(locale, sourcePath, destinationPath) {
   ];
 }
 const nextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/vi/about-us/",
-        destination: "/vi/ve-chung-toi/",
-        permanent: true,
-      },
-    ];
-  },
   async rewrites() {
     let rewrites = [];
 
@@ -149,5 +140,11 @@ const nextConfig = {
   },
   i18n: i18nConfig,
   trailingSlash: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer && process.env.NODE_ENV === "production") {
+      config.optimization.minimize = true;
+    }
+    return config;
+  },
 };
 module.exports = nextConfig;

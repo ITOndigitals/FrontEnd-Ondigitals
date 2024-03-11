@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HomePage from "@/components/homepage/HomePage";
 import {
   GetDataHomepage,
@@ -13,6 +13,7 @@ import {
 } from "./api/graphqlHeaderFooter";
 import { useRouter } from "next/router";
 import replaceUrlsHead from "../../utils/replaceUrlsHead";
+import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 
 const parse = require("html-react-parser");
 
@@ -46,8 +47,18 @@ export default function Home({
       /trang-chu\/|homepagechina\/|trang-chu-nhat\/|trang-chu-han\//g,
       ""
     ) || "";
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
+      {loading && <LoadingSpinner hasOverlay />}
       <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>
       <Header data={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />

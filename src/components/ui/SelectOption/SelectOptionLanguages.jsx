@@ -103,9 +103,9 @@ const SelectOptionLanguage = ({ isDark, color }) => {
             const FlagIcon = getFlagIcon(locale);
             return (
               <li key={localeIndex} className={classes["select-list-item"]}>
-                {FlagIcon && <FlagIcon width={24} height={24} />}
                 <Link href={{ pathname, query }} locale={locale}>
-                  {localeLang[locale]}
+                  {FlagIcon && <FlagIcon width={24} height={24} />}
+                  <p>{localeLang[locale]}</p>
                 </Link>
               </li>
             );

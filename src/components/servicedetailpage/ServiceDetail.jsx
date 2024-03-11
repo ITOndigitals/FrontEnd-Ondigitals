@@ -42,7 +42,7 @@ export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
       } else if (router.locale !== serviceBy.language?.slug) {
         window.location.href = "/";
       }
-    }, [router.locale, serviceBy.translations]);
+    }, [router.locale]);
   }
 
   const setToLight = useBoundStore((state) => state.setToLight);
