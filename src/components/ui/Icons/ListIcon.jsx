@@ -1009,3 +1009,63 @@ export const IconWarningContact = () => {
     </svg>
   );
 };
+export const IconEye = ({ width, height, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={`${width}`}
+      height={`${height}`}
+      viewBox={`0 0 ${width} ${height}`}
+      fill="none"
+    >
+      <path
+        d="M0.666626 7.99935C0.666626 7.99935 3.33329 2.66602 7.99996 2.66602C12.6666 2.66602 15.3333 7.99935 15.3333 7.99935C15.3333 7.99935 12.6666 13.3327 7.99996 13.3327C3.33329 13.3327 0.666626 7.99935 0.666626 7.99935Z"
+        stroke={`${color}`}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
+        stroke={`${color}`}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+export const IconCalendarBlogs = ({ width, height, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={`${width}`}
+      height={`${height}`}
+      viewBox={`0 0 ${width} ${height}`}
+      fill="none"
+    >
+      <path
+        d="M12.6667 2.66602H3.33333C2.59695 2.66602 2 3.26297 2 3.99935V13.3327C2 14.0691 2.59695 14.666 3.33333 14.666H12.6667C13.403 14.666 14 14.0691 14 13.3327V3.99935C14 3.26297 13.403 2.66602 12.6667 2.66602Z"
+        stroke={`${color}`}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.6666 1.33398V4.00065"
+        stroke={`${color}`}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.33337 1.33398V4.00065"
+        stroke={`${color}`}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2 6.66602H14"
+        stroke={`${color}`}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
