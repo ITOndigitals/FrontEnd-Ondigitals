@@ -47,18 +47,8 @@ export default function Home({
       /trang-chu\/|homepagechina\/|trang-chu-nhat\/|trang-chu-han\//g,
       ""
     ) || "";
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
   return (
     <>
-      {loading && <LoadingSpinner hasOverlay />}
       <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>
       <Header data={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />

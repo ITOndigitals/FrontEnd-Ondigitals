@@ -140,11 +140,5 @@ const nextConfig = {
   },
   i18n: i18nConfig,
   trailingSlash: true,
-  webpack: (config, { isServer }) => {
-    if (!isServer && process.env.NODE_ENV === "production") {
-      config.optimization.minimize = true;
-    }
-    return config;
-  },
 };
 module.exports = nextConfig;
