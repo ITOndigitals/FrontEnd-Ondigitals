@@ -1021,14 +1021,14 @@ export const IconEye = ({ width, height, color }) => {
       <path
         d="M0.666626 7.99935C0.666626 7.99935 3.33329 2.66602 7.99996 2.66602C12.6666 2.66602 15.3333 7.99935 15.3333 7.99935C15.3333 7.99935 12.6666 13.3327 7.99996 13.3327C3.33329 13.3327 0.666626 7.99935 0.666626 7.99935Z"
         stroke={`${color}`}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z"
         stroke={`${color}`}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

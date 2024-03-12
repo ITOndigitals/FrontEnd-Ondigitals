@@ -94,7 +94,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps(context) {
+  const { params, locale } = context;
   const language = locale.toUpperCase();
   const serviceData = await GetServiceDetailBySlug(params.slug);
   const blogData = await GetPostDetailBySlug(params.slug, language);
