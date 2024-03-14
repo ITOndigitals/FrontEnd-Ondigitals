@@ -657,9 +657,6 @@ export const dataSlugPostVi = [
     slug: "nhung-luu-y-khi-chay-quang-cao-tren-facebook",
   },
   {
-    slug: "chi-phi-quang-cao-facebook",
-  },
-  {
     slug: "cong-cu-audience-insights-trong-facebook-ads",
   },
   {

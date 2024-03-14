@@ -116,7 +116,11 @@ export async function getStaticProps(context) {
       },
       revalidate: 3600,
     };
-  } else if (blogData && blogData.postBy) {
+  } else if (
+    blogData &&
+    blogData.postBy &&
+    (language === "VI" || language === "EN")
+  ) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {
       props: {
