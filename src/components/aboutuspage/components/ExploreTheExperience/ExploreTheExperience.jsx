@@ -25,13 +25,14 @@ export default function ExploreTheExperience({ data }) {
             </div>
             <div className={classes["header__btn"]}>
               <ButtonNoBorder
+                relNofollow
                 href={buttonLink?.url || "/"}
                 textSize="md"
                 RightIcon={
                   <TopRightArrow width={24} height={24} color="#fff" />
                 }
               >
-                {buttonLink?.title ||" VIEW ALL"}
+                {buttonLink?.title || " VIEW ALL"}
               </ButtonNoBorder>
             </div>
           </div>

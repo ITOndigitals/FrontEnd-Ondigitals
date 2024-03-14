@@ -199,29 +199,34 @@ export const GetPostDetailBySlug = async (slug, language) => {
   }
 };
 
-export const GetListSlugPosts = async (language) => {
+export const GetListSlugPosts = async (after) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetListSlugPosts($language: LanguageCodeFilterEnum!) {
-      posts(
-        where: { language: $language, orderby: { field: DATE, order: DESC } }
-        first: 100
-      ) {
-        nodes {
-          slug
-          postId
-          language {
-            locale
-            code
-          }
+  query GetListSlugPosts(  $after: String) {
+    posts(
+      where: {orderby: {field: DATE, order: DESC}}
+      first: 100
+      after: $after
+    ) {
+      nodes {
+        slug
+        postId
+        language {
+          locale
+          code
         }
       }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
     }
+  }
   `;
-  const variables = { language };
+  const variables = { after };
   try {
     const data = await request(endpoint, query, variables);
-    return data.posts.nodes;
+    return data.posts;
   } catch (error) {
     console.error("Error fetching data", error);
     return [];
@@ -894,7 +899,7 @@ export const GetListSlugServiceParent = async () => {
   const endpoint = endPointApi;
   const query = gql`
     query GetListSlugServiceParent {
-      serviceParents {
+      serviceParents(first: 100) {
         nodes {
           slug
           service_parentId

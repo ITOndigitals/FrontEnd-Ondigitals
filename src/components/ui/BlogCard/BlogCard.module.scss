@@ -24,6 +24,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-top: 16px;
       &__item {
         margin-top: 6px;
       }
@@ -88,7 +89,7 @@
     flex-wrap: wrap;
     &__content {
       padding: 24px;
-      width:60%;
+      width: 60%;
       &__tag {
         display: flex;
         align-items: center;

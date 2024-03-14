@@ -30,11 +30,6 @@ export default function App({ Component, pageProps }) {
       <ApolloProvider client={client}>
         <Layout className={selectedFont}>
           <Head>
-            <link
-              rel="alternate"
-              href={`https://ondigitals.com/${locale !== "en" ? locale : ""}`}
-              hrefLang={locale}
-            />
             <meta name="geo.region" content="VN-SG" />
             <meta name="geo.placename" content="Ho Chi Minh" />
             <meta

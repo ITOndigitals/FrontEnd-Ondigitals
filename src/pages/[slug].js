@@ -68,16 +68,20 @@ export default function DynamicDetailPage({
 
 export async function getStaticPaths() {
   const listServices = await GetListSlugService();
-  const supportedLanguages = ["EN", "VI"];
   const allPostsPaths = [];
-  for (const lang of supportedLanguages) {
-    const posts = await GetListSlugPosts(lang);
-    const paths = posts.map((post) => ({
+  let hasNextPage = true;
+  let after = "";
+  while (hasNextPage) {
+    const posts = await GetListSlugPosts(after);
+    const pathsPost = posts.nodes.map((post) => ({
       params: { slug: post.slug },
       locale: post.language.code.toLowerCase(),
     }));
-    allPostsPaths.push(...paths);
+    allPostsPaths.push(...pathsPost);
+    hasNextPage = posts.pageInfo?.hasNextPage;
+    after = hasNextPage ? posts.pageInfo?.endCursor : "";
   }
+
   const servicePaths = listServices.map((service) => ({
     params: { slug: service.slug },
     locale: service.language.code.toLowerCase(),
@@ -90,7 +94,7 @@ export async function getStaticPaths() {
   const paths = servicePaths.concat(allPostsPaths).concat(pathsServiceParent);
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
@@ -112,11 +116,7 @@ export async function getStaticProps(context) {
       },
       revalidate: 3600,
     };
-  } else if (
-    blogData &&
-    blogData.postBy &&
-    (language === "VI" || language === "EN")
-  ) {
+  } else if (blogData && blogData.postBy) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {
       props: {

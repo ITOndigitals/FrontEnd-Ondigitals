@@ -192,12 +192,6 @@ export const dataSlugServiceAndServiceParent = [
     },
   },
   {
-    slug: "dich-vu-gui-va-thiet-ke-email-marketing",
-    language: {
-      code: "vi",
-    },
-  },
-  {
     slug: "pr-サービス",
     language: {
       code: "jp",
