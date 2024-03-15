@@ -50,7 +50,11 @@
         margin: 12px 0 10px 0;
         height: auto;
       }
-      figcaption{
+      a {
+        text-decoration: underline;
+        color: #6f1ab6;
+      }
+      figcaption {
         text-align: center;
         font-style: italic;
       }

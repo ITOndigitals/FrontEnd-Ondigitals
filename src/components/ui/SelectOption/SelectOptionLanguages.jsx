@@ -99,14 +99,17 @@ const SelectOptionLanguage = ({ isDark, color }) => {
           }`}
         >
           {otherLocales.map((locale, localeIndex) => {
-            const { pathname, query } = useRouter();
             const FlagIcon = getFlagIcon(locale);
+            const router = useRouter();
+            const changeLanguage = (locale) => {
+              router.push(router.pathname, router.asPath, { locale });
+            };
             return (
               <li key={localeIndex} className={classes["select-list-item"]}>
-                <Link href={{ pathname, query }} locale={locale}>
+                <a onClick={() => changeLanguage(locale)} locale={locale}>
                   {FlagIcon && <FlagIcon width={24} height={24} />}
                   <p>{localeLang[locale]}</p>
-                </Link>
+                </a>
               </li>
             );
           })}

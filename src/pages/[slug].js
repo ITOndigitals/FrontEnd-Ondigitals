@@ -94,7 +94,7 @@ export async function getStaticPaths() {
   const paths = servicePaths.concat(allPostsPaths).concat(pathsServiceParent);
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
@@ -119,7 +119,7 @@ export async function getStaticProps(context) {
   } else if (
     blogData &&
     blogData.postBy &&
-    (language === "VI" || language === "EN")
+    language === blogData.postBy.language.slug.toUpperCase()
   ) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {
