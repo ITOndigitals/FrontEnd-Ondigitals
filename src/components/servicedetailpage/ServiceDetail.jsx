@@ -11,7 +11,7 @@ import SectionHow from "./components/SectionHow/SectionHow";
 import SectionWhich from "./components/SectionWhich/SectionWhich";
 import SectionWhat from "./components/SectionWhat/SectionWhat";
 
-export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
+export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
   const serviceBy =
@@ -31,7 +31,7 @@ export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
   } = serviceBy?.serviceHomepage || {};
   const dataContentServiceDetail = layoutContentServiceDetail || [];
   const dataFAQService = sectionContentDetail || [];
-
+  const dataCTA = serviceBy?.cta;
   if (serviceBy && !isUsePageId) {
     const matchingTranslation = serviceBy.translations?.find(
       (translation) => translation.language.code === currentLanguage
@@ -94,7 +94,7 @@ export default function ServiceDetail({ dataServiceDetail,isUsePageId }) {
           titleHeading={titleHeadingSectionFaq}
         />
       )}
-      <NeedHelpDigitalGrowth />
+      <NeedHelpDigitalGrowth  />
     </>
   );
 }

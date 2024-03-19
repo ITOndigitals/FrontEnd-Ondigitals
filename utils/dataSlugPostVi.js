@@ -36,9 +36,6 @@ export const dataSlugPostVi = [
     slug: "affiliate-tiktok",
   },
   {
-    slug: "social-media-marketing-tai-viet-nam",
-  },
-  {
     slug: "tep-khach-hang-tiem-nang",
   },
   {
@@ -670,9 +667,6 @@ export const dataSlugPostVi = [
   },
   {
     slug: "so-sanh-quang-cao-facebook-va-google",
-  },
-  {
-    slug: "facebook-ads-va-nhung-dieu-can-biet",
   },
   {
     slug: "content-chuan-seo",

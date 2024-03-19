@@ -414,6 +414,13 @@ export const GetServiceDetailBySlug = async (slug) => {
       serviceBy(slug: $slug) {
         content
         title
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
+        }
         seo {
           fullHead
         }
@@ -926,6 +933,13 @@ export const GetServiceParentDetailBySlug = async (slug) => {
       serviceParentBy(slug: $slug) {
         content
         title
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
+        }
         seo {
           fullHead
         }

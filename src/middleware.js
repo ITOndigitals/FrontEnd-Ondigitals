@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { dataSlugPostVi } from "../utils/dataSlugPostVi";
 import { dataSlugServiceAndServiceParent } from "../utils/dataSlugServiceAndServiceParent";
 import { dataSlugServiceOld } from "../utils/dataSlugServiceOld";
+import { dataListslugOld } from "../utils/dataListslugOld";
 
 export function middleware(request) {
   const targetHost = "ondigitals.com";
@@ -67,5 +68,15 @@ export function middleware(request) {
       }
     );
   }
+  // fuction 301 các url của web cũ qua web mới không còn nữa chuyển về trang chủ
+  const matchedSlugWebOld = dataListslugOld.find((item) => {
+    return request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`;
+  });
+  if (matchedSlugWebOld) {
+    return NextResponse.redirect(`${urlMain}/`, {
+      status: 301,
+    });
+  }
+
   return NextResponse.next();
 }

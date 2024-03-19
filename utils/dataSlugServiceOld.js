@@ -85,6 +85,11 @@ export const dataSlugServiceOld = [
     locale: "vi",
   },
   {
+    slugNew: "social-media-marketing",
+    slugOld: "social-media-management-advertising",
+    locale: "",
+  },
+  {
     slugNew: "社-交-媒-体-营-销-服-务",
     slugOld: "臉-書-廣-告-服-務",
     locale: "zh",

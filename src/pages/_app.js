@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }) {
               content="10.763109429425983, 106.69381408995902"
             />
             <script
-              async
+              defer
               src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2"
             />
             <script

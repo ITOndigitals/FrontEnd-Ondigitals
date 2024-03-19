@@ -75,10 +75,7 @@ export async function getStaticPaths() {
     const posts = await GetListSlugPosts(after);
     const pathsPost = posts.nodes.map((post) => ({
       params: {
-        slug:
-          post.language.code.toLowerCase() === "EN"
-            ? post.slug
-            : `${post.language.code.toLowerCase()}/${post.slug}`,
+        slug: post.slug,
       },
       locale: post.language.code.toLowerCase(),
     }));
@@ -89,20 +86,14 @@ export async function getStaticPaths() {
 
   const servicePaths = listServices.map((service) => ({
     params: {
-      slug:
-        service.language.code.toLowerCase() === "EN"
-          ? service.slug
-          : `${service.language.code.toLowerCase()}/${service.slug}`,
+      slug: service.slug,
     },
     locale: service.language.code.toLowerCase(),
   }));
   const listServicesParent = await GetListSlugServiceParent();
   const pathsServiceParent = listServicesParent.map((service) => ({
     params: {
-      slug:
-        service.language.code.toLowerCase() === "EN"
-          ? service.slug
-          : `${service.language.code.toLowerCase()}/${service.slug}`,
+      slug: service.slug,
     },
     locale: service.language.code.toLowerCase(),
   }));
