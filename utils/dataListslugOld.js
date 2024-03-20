@@ -3,9 +3,6 @@ export const dataListslugOld = [
     slug: "pr-event-marketing-service",
   },
   {
-    slug: "email-marketing-service",
-  },
-  {
     slug: "telemarketing-service",
   },
   {

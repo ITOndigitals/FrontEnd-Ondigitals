@@ -6,22 +6,28 @@ import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
 import { languagePathsContact } from "../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
-export default function NeedHelpDigitalGrowth() {
+export default function NeedHelpDigitalGrowth({ data }) {
+  const { title, textButton, content, buttonColor, backgroundColor } =
+    data || {};
   const { locale } = useRouter();
+  console.log(data);
   return (
-    <section className={classes["help-digital-growth-main"]}>
+    <section
+      style={{ backgroundColor: backgroundColor }}
+      className={classes["help-digital-growth-main"]}
+    >
       <div className="container">
         <div className={classes["help-digital-growth-main__content"]}>
           <div className={classes["help-digital-growth-main__content__title"]}>
-            NEED HELP <br />
-            with digital growth?
+            {title && parse(title)}
           </div>
           <div
             style={{ fontFamily: MavenPro.style.fontFamily }}
             className={classes["help-digital-growth-main__content__text"]}
           >
-            Tell us about your business challenge and let's discuss together
+            {content && parse(content)}
           </div>
           <div className={classes["help-digital-growth-main__content__button"]}>
             <Button
@@ -29,7 +35,7 @@ export default function NeedHelpDigitalGrowth() {
               className="btn-contact-form"
               RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
             >
-              Send us a message
+              {textButton && textButton}
             </Button>
           </div>
         </div>

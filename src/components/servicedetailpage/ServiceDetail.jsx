@@ -94,7 +94,7 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
           titleHeading={titleHeadingSectionFaq}
         />
       )}
-      <NeedHelpDigitalGrowth  />
+      <NeedHelpDigitalGrowth data={dataCTA} />
     </>
   );
 }

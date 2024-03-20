@@ -202,26 +202,26 @@ export const GetPostDetailBySlug = async (slug, language) => {
 export const GetListSlugPosts = async (after) => {
   const endpoint = endPointApi;
   const query = gql`
-  query GetListSlugPosts(  $after: String) {
-    posts(
-      where: {orderby: {field: DATE, order: DESC}}
-      first: 100
-      after: $after
-    ) {
-      nodes {
-        slug
-        postId
-        language {
-          locale
-          code
+    query GetListSlugPosts($after: String) {
+      posts(
+        where: { orderby: { field: DATE, order: DESC } }
+        first: 100
+        after: $after
+      ) {
+        nodes {
+          slug
+          postId
+          language {
+            locale
+            code
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
         }
       }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
-  }
   `;
   const variables = { after };
   try {
@@ -615,6 +615,13 @@ export const GetPageService = async (id, languageCode) => {
         seo {
           fullHead
         }
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
+        }
         translations {
           language {
             locale
@@ -683,6 +690,13 @@ export const GetPageAboutUs = async (id, languageCode) => {
       pageBy(pageId: $id) {
         seo {
           fullHead
+        }
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
         }
         pageAboutUs {
           backgroundImage {
@@ -1131,6 +1145,13 @@ export const getDataPolicyAndCoEPage = async (id) => {
       pageBy(pageId: $id) {
         content
         title
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
+        }
         seo {
           fullHead
         }

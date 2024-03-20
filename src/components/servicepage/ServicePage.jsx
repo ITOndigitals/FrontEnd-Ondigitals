@@ -7,6 +7,7 @@ import CaseStudyServicePage from "./components/CaseStudy/CaseStudy";
 
 export default function ServicePage({ data }) {
   const { pageBy } = data;
+  const dataCTA = pageBy?.cta;
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -42,7 +43,7 @@ export default function ServicePage({ data }) {
       <IntroService data={pageBy} />
       <AllServiceOndigitals dataAllServices={data} />
       {/* <CaseStudyServicePage /> */}
-      <NeedHelpDigitalGrowth />
+      <NeedHelpDigitalGrowth data={dataCTA} />
     </>
   );
 }

@@ -10,6 +10,7 @@ import IntroducingOnDigitals from "./components/IntroducingOnDigitals/Introducin
 
 const AboutUs = ({ data }) => {
   const { pageBy, allCardReviews } = data;
+  const dataCTA = pageBy?.cta;
   const {
     backgroundImage,
     imageLogo,
@@ -79,7 +80,7 @@ const AboutUs = ({ data }) => {
       {sectionStepDigitalMarketing && (
         <StepDigitalMarketing data={sectionStepDigitalMarketing} />
       )}
-      <NeedHelpDigitalGrowth />
+      <NeedHelpDigitalGrowth data={dataCTA} />
     </>
   );
 };

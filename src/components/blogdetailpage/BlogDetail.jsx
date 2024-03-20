@@ -14,6 +14,23 @@ import { GET_POSTS_BY_TAG } from "@/pages/api/graphqlApollo";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { getLanguagePathBlog } from "../../../utils/languageSlug";
+const DATACTA = {
+  en: {
+    title: "NEED HELP with digital growth?",
+    textButton: "Send us a message",
+    content: "Tell us about your business challenge and let's discuss together",
+    buttonColor: "#CD0404",
+    backgroundColor: "#6F1AB6",
+  },
+  vi: {
+    title: "CẦN GIÚP ĐỠ để phát triển kỹ thuật số?",
+    textButton: "Gửi tin nhắn",
+    content:
+      "Hãy cho chúng tôi biết về thách thức kinh doanh của bạn và cùng nhau thảo luận",
+    buttonColor: "#CD0404",
+    backgroundColor: "#6F1AB6",
+  },
+};
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const BlogDetail = ({ relatedPosts, postDetail }) => {
@@ -166,7 +183,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
           )}
         </div>
       </section>
-      <NeedHelpDigitalGrowth />
+      <NeedHelpDigitalGrowth data={DATACTA[locale]} />
     </div>
   );
 };

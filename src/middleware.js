@@ -59,15 +59,16 @@ export function middleware(request) {
     );
   });
   if (matchedItemServiceOld) {
-    return NextResponse.redirect(
-      `${urlMain}/${matchedItemServiceOld.locale}/${encodeURIComponent(
-        matchedItemServiceOld.slugNew
-      )}/`,
-      {
-        status: 301,
-      }
-    );
+    const redirectUrl =
+      matchedItemServiceOld.locale === "en"
+        ? `${urlMain}/${encodeURIComponent(matchedItemServiceOld.slugNew)}/`
+        : `${urlMain}/${matchedItemServiceOld.locale}/${encodeURIComponent(
+            matchedItemServiceOld.slugNew
+          )}/`;
+
+    return NextResponse.redirect(redirectUrl, { status: 301 });
   }
+
   // fuction 301 các url của web cũ qua web mới không còn nữa chuyển về trang chủ
   const matchedSlugWebOld = dataListslugOld.find((item) => {
     return request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`;
