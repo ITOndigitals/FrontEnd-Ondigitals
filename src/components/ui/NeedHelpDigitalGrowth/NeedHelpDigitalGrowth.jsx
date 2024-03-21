@@ -12,7 +12,6 @@ export default function NeedHelpDigitalGrowth({ data }) {
   const { title, textButton, content, buttonColor, backgroundColor } =
     data || {};
   const { locale } = useRouter();
-  console.log(data);
   return (
     <section
       style={{ backgroundColor: backgroundColor }}

@@ -115,4 +115,15 @@ export const dataSlugServiceOld = [
     slugOld: "디자인-서비스",
     locale: "jp",
   },
+  //page 404 url old
+  {
+    slugNew: "ppc-management-service",
+    slugOld: "ppc-services",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-video-marketing",
+    slugOld: "video-quang-cao",
+    locale: "vi",
+  },
 ];

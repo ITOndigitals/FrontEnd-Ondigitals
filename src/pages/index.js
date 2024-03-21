@@ -27,7 +27,6 @@ export default function Home({
   const { locale } = router;
   useEffect(() => {
     const handleRouteChange = (url) => {
-      console.log(url);
       // Kiểm tra nếu người dùng quay lại trang chủ từ bất kỳ trang nào khác
       if (url === `/${locale}/` || url === "/") {
         // Reload trang chủ khi người dùng quay lại từ các trang khác

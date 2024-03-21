@@ -9,6 +9,8 @@ import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
 import Head from "next/head";
+import { useEffect } from "react";
+import { langHtml } from "../../utils/languageSlug";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -24,6 +26,16 @@ export default function App({ Component, pageProps }) {
   const { locale } = useRouter();
   const selectedFont =
     locale === "vi" ? MavenPro.className : fixelFont.className;
+  const router = useRouter();
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      document.documentElement.lang = langHtml[locale];
+    };
+    router.events.on("routeChangeComplete", handleLanguageChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleLanguageChange);
+    };
+  }, [router]);
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}

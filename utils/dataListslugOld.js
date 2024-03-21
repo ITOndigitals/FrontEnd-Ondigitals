@@ -9,9 +9,6 @@ export const dataListslugOld = [
     slug: "dich-vu-to-chuc-truyen-thong-su-kien",
   },
   {
-    slug: "cac-dich-vu-chua-co-o-viet-nam",
-  },
-  {
     slug: "dich-vu-gui-va-thiet-ke-email-marketing",
   },
   {
@@ -25,5 +22,8 @@ export const dataListslugOld = [
   },
   {
     slug: "khong-phan-loai",
+  },
+  {
+    slug: "thiet-ke-website-ecommerce",
   },
 ];

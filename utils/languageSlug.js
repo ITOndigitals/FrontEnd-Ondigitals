@@ -1,3 +1,10 @@
+export const langHtml = {
+  en: "en",
+  vi: "vi",
+  zh: "zh",
+  jp: "ja",
+  kr: "ko",
+};
 export const localeLang = {
   en: "English",
   vi: "Tiếng Việt",
