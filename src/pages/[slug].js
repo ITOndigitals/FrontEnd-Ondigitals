@@ -124,8 +124,7 @@ export async function getStaticProps(context) {
     };
   } else if (
     blogData &&
-    blogData.postBy &&
-    language === blogData.postBy.language.slug.toUpperCase()
+    blogData.postBy
   ) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {

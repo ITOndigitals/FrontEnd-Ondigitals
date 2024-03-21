@@ -118,12 +118,12 @@ export const dataSlugServiceOld = [
   //page 404 url old
   {
     slugNew: "ppc-management-service",
-    slugOld: "ppc-services",
+    slugOld: "key-opinion-influencer",
     locale: "en",
   },
   {
-    slugNew: "dich-vu-video-marketing",
-    slugOld: "video-quang-cao",
-    locale: "vi",
+    slugNew: "digital-content-marketing",
+    slugOld: "content-marketing",
+    locale: "en",
   },
 ];
