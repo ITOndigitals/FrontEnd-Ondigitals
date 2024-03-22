@@ -101,7 +101,19 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
       applyMarkDown(markdown);
     } else applyMarkDown([]);
   }, [data]);
-
+  //thêm rel nofollow cho các link ngoài của ondigitals
+  const addNofollowToExternalLinks = (node) => {
+    if (node.type === "tag" && node.name === "a" && node.attribs.href) {
+      const href = node.attribs.href;
+      if (!href.includes("ondigitals")) {
+        node.attribs.rel = "nofollow";
+      }
+    }
+    return node;
+  };
+  const parsedContent = parse(post.content, {
+    replace: addNofollowToExternalLinks,
+  });
   return (
     <div ref={postDetailRef} className={classes["post-detail-container"]}>
       <div className={classes["post-detail-content"]} key={post.postId}>
@@ -127,7 +139,7 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
           style={{ fontFamily: MavenPro.style.fontFamily }}
           className={classes["content-post"]}
         >
-          {post.content && parse(post.content)}
+          {post.content && parsedContent}
         </div>
         <div className={classes["post-detail-footer"]}>
           <hr />

@@ -8,9 +8,9 @@ export default function ListUrlAllPosts({ data }) {
       {data.map((url, index) => {
         let href;
         if (url.locale === "en") {
-          href = `https://ondigitals.com/${url.params.slug}`;
+          href = `/${url.params.slug}`;
         } else {
-          href = `https://ondigitals.com/${url.locale}/${url.params.slug}`;
+          href = `/${url.locale}/${url.params.slug}`;
         }
         return (
           <Link key={index} href={href}>

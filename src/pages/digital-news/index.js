@@ -47,7 +47,7 @@ export default function Blog({
       <Head>{dataHead && parse(dataHead)}</Head>
       <Header data={dataHeader} />
       <BlogPage blogsData={allPosts} textContent={seoHead} />
-      <ListUrlAllPosts data={allPostsPaths} />
+      {locale === "en" && <ListUrlAllPosts data={allPostsPaths} />}
       <Footer data={dataFooter} />
     </>
   );
