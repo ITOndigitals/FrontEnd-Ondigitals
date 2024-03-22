@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import BlogPage from "@/components/blogpage/BlogPage";
-import { GetSeoAndContentBlogPage, getDataPageBlog } from "../api/graphql";
+import {
+  GetListSlugPosts,
+  GetSeoAndContentBlogPage,
+  getDataPageBlog,
+} from "../api/graphql";
 import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
@@ -14,10 +18,17 @@ import {
   languagePathsBlog,
 } from "../../../utils/languageSlug";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import ListUrlAllPosts from "../../../utils/listUrlAllPosts";
 
 const parse = require("html-react-parser");
 
-export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
+export default function Blog({
+  allPosts,
+  seoHead,
+  dataFooter,
+  dataHeader,
+  allPostsPaths,
+}) {
   const router = useRouter();
   const { locale } = router;
   const basePath = getLanguagePathBlog(locale);
@@ -36,6 +47,7 @@ export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
       <Head>{dataHead && parse(dataHead)}</Head>
       <Header data={dataHeader} />
       <BlogPage blogsData={allPosts} textContent={seoHead} />
+      <ListUrlAllPosts data={allPostsPaths} />
       <Footer data={dataFooter} />
     </>
   );
@@ -44,6 +56,9 @@ export default function Blog({ allPosts, seoHead, dataFooter, dataHeader }) {
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPage = 45359;
+  const allPostsPaths = [];
+  let hasNextPage = true;
+  let after = "";
   const [allPosts, dataSeo, dataHeader] = await Promise.all([
     getDataPageBlog(language, 12, null, null, null),
     GetSeoAndContentBlogPage(idPage),
@@ -57,12 +72,26 @@ export const getServerSideProps = async ({ locale }) => {
     ? await GetSeoAndContentBlogPage(translation.pageId)
     : dataSeo;
   const dataFooter = await getTranslatedDataFooter(language);
+
+  while (hasNextPage) {
+    const posts = await GetListSlugPosts(after);
+    const pathsPost = posts.nodes.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+      locale: post.language.code.toLowerCase(),
+    }));
+    allPostsPaths.push(...pathsPost);
+    hasNextPage = posts.pageInfo?.hasNextPage;
+    after = hasNextPage ? posts.pageInfo?.endCursor : "";
+  }
   return {
     props: {
       allPosts,
       seoHead,
       dataFooter,
       dataHeader,
+      allPostsPaths,
     },
   };
 };

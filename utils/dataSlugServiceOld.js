@@ -126,4 +126,14 @@ export const dataSlugServiceOld = [
     slugOld: "content-marketing",
     locale: "en",
   },
+  {
+    slugNew: "seo-service",
+    slugOld: "seo",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-video-marketing",
+    slugOld: "video-quang-cao",
+    locale: "vi",
+  },
 ];
