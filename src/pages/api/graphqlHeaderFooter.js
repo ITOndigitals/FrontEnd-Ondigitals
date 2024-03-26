@@ -141,8 +141,7 @@ export const GetDataMenuHeader = async (languageCode) => {
 export const getDataMenu = async (languageCode) => {
   const data = await GetDataMenuHeader(languageCode);
   const idPage = 45869;
-  const [dataPage, dataHeader] = await Promise.all([
-    GetDataMenuHeader(languageCode),
+  const [dataHeader] = await Promise.all([
     GetDataHeader(idPage),
   ]);
   const translation = dataHeader.translations.find(

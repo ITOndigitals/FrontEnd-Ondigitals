@@ -4,7 +4,10 @@ import Button from "../Buttons/Button/Button";
 import { ArrowRight } from "../Icons/ListIcon";
 import { useRouter } from "next/router";
 import { Maven_Pro } from "next/font/google";
-import { languagePathsContact } from "../../../../utils/languageSlug";
+import {
+  languagePathsContact,
+  localeLangButtonCTA,
+} from "../../../../utils/languageSlug";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
@@ -34,7 +37,7 @@ export default function NeedHelpDigitalGrowth({ data }) {
               className="btn-contact-form"
               RightIcon={<ArrowRight width={24} height={24} color="#FFF" />}
             >
-              {textButton && textButton}
+              {localeLangButtonCTA[locale]}
             </Button>
           </div>
         </div>

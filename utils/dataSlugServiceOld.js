@@ -136,4 +136,5 @@ export const dataSlugServiceOld = [
     slugOld: "video-quang-cao",
     locale: "vi",
   },
+ 
 ];

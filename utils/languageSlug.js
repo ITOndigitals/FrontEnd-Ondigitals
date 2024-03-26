@@ -19,6 +19,13 @@ export const localeLangButtonServerChild = {
   jp: "今すぐ始めましょう",
   kr: "오늘 시작하세요",
 };
+export const localeLangButtonCTA = {
+  en: "Send us a message",
+  vi: "Gửi tin nhắn",
+  zh: "发信息",
+  jp: "メッセージを送る",
+  kr: "우리에게 메시지를 보내",
+};
 export const localeLangButtonBackToList = {
   en: "Back to list",
   vi: "Quay lại danh sách",
