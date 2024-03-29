@@ -32,9 +32,21 @@
       font-weight: 400;
       line-height: 18px;
       overflow: auto;
-      scrollbar-width: thin;
       max-height: 126px;
       min-height: 126px;
+      padding: 5px;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      /* Track */
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #dcc7ed;
+        border-radius: 10px;
+      }
     }
   }
 }

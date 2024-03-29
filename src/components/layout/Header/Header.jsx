@@ -417,7 +417,7 @@ const Header = ({ data }) => {
                   className={`${classes.line} ${
                     isOnMobile ? classes.mobile : ""
                   }`}
-                ></div>{" "}
+                ></div>
                 <div
                   className={`${classes.line} ${
                     isOnMobile ? classes.mobile : ""

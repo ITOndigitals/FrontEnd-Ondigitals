@@ -8,41 +8,41 @@ import { getDataMenu } from "@/pages/api/graphqlHeaderFooter";
 import { useRouter } from "next/router";
 
 const SectionHeader = ({ isDark }) => {
-  const { locale } = useRouter();
-  const language = locale.toUpperCase();
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [data, setData] = useState(null);
-  const menuButtonClasses = `${classes["header-menu-btn"]} ${
-    menuIsOpen ? classes["active"] : ""
-  }`;
-  const setExpanseMenuIsOpen = useBoundStore(
-    (state) => state.setExpanseMenuIsOpen
-  );
+  // const { locale } = useRouter();
+  // const language = locale.toUpperCase();
+  // const [menuIsOpen, setMenuIsOpen] = useState(false);
+  // const [data, setData] = useState(null);
+  // const menuButtonClasses = `${classes["header-menu-btn"]} ${
+  //   menuIsOpen ? classes["active"] : ""
+  // }`;
+  // const setExpanseMenuIsOpen = useBoundStore(
+  //   (state) => state.setExpanseMenuIsOpen
+  // );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getDataMenu(language);
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-    fetchData();
-  }, []);
-  const toggleMenuButtonHandler = () => {
-    if (menuIsOpen) {
-      setExpanseMenuIsOpen(false);
-      setMenuIsOpen(false);
-    } else {
-      setExpanseMenuIsOpen(true);
-      setMenuIsOpen(true);
-    }
-  };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const result = await getDataMenu(language);
+  //       setData(result);
+  //     } catch (error) {
+  //       console.error("Error fetching data: ", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+  // const toggleMenuButtonHandler = () => {
+  //   if (menuIsOpen) {
+  //     setExpanseMenuIsOpen(false);
+  //     setMenuIsOpen(false);
+  //   } else {
+  //     setExpanseMenuIsOpen(true);
+  //     setMenuIsOpen(true);
+  //   }
+  // };
 
   return (
     <>
-      <ExpanseMenu
+      {/* <ExpanseMenu
         options={overlayOptions}
         isActive={menuIsOpen}
         menu={data && data}
@@ -72,7 +72,7 @@ const SectionHeader = ({ isDark }) => {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
     </>
   );
 };
