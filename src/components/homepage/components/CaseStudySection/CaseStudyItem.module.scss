@@ -1,9 +1,6 @@
 @import "../../../../styles/variables";
 
 .item {
-  a {
-    pointer-events: none;
-  }
   grid-column: span 2 / span 2;
   display: flex;
   flex-direction: column;
@@ -186,6 +183,9 @@
       ul {
         list-style: disc;
         list-style-position: inside;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
         li {
           font-size: 14px;
           line-height: 16px;

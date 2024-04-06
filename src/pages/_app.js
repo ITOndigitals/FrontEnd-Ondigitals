@@ -7,10 +7,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import usePageLoading from "@/hooks/usePageLoading";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
-import { Maven_Pro } from "next/font/google";
 import Head from "next/head";
 import { useEffect } from "react";
 import { langHtml } from "../../utils/languageSlug";
+import { GoogleFonts } from "next-google-fonts";
+import { Maven_Pro } from "next/font/google";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -48,6 +49,7 @@ export default function App({ Component, pageProps }) {
               name="geo.position"
               content="10.763109429425983;106.69381408995902"
             />
+            <GoogleFonts href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap&subset=latin,vietnamese" />
             <meta
               name="ICBM"
               content="10.763109429425983, 106.69381408995902"

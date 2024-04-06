@@ -6,7 +6,6 @@ import ButtonNoBorder from "../ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import TopRightArrow from "../ui/Icons/TopRightArrow";
 import ReadMoreSlider from "./components/ReadMoreSlider/ReadMoreSlider";
 import PostDetail from "./components/postdetail/PostDetail";
-import { Maven_Pro } from "next/font/google";
 import TableOfContent from "./components/TableOfContent/TableOfContent";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import Link from "next/link";
@@ -14,6 +13,7 @@ import { GET_POSTS_BY_TAG } from "@/pages/api/graphqlApollo";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { getLanguagePathBlog } from "../../../utils/languageSlug";
+import { Maven_Pro } from "next/font/google";
 const DATACTA = {
   en: {
     title: "NEED HELP with digital growth?",

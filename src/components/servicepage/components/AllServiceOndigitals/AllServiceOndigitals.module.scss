@@ -6,14 +6,12 @@
   align-items: center;
   padding: 5% 0;
   &__title {
-    width: 50%;
-    h2 {
-      color: #131114;
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 40px;
-    }
+    width: 100%;
+    color: #131114;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
   }
   &__card-main {
     display: flex;

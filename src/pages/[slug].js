@@ -19,11 +19,17 @@ import {
   getTranslatedDataFooter,
 } from "./api/graphqlHeaderFooter";
 import replaceUrlsHead from "../../utils/replaceUrlsHead";
+import {
+  GetCaseStudyDetailBySlug,
+  GetListSlugCaseStudy,
+} from "./api/graphqlCaseStudy";
+import CaseStudyDetail from "@/components/casestudydetailpage/CaseStudyDetail";
 const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
   serviceData,
   serviceParentsData,
+  caseStudyData,
   blogData,
   relatedPosts,
   dataFooter,
@@ -64,6 +70,17 @@ export default function DynamicDetailPage({
       </>
     );
   }
+  if (caseStudyData) {
+    const dataHead = replaceUrlsHead(caseStudyData.caseStudyBy.seo.fullHead);
+    return (
+      <>
+        <Header data={dataHeader} />
+        <Head>{dataHead && parse(dataHead)}</Head>
+        <CaseStudyDetail data={caseStudyData} />
+        <Footer data={dataFooter} />
+      </>
+    );
+  }
 }
 
 export async function getStaticPaths() {
@@ -97,7 +114,17 @@ export async function getStaticPaths() {
     },
     locale: service.language.code.toLowerCase(),
   }));
-  const paths = servicePaths.concat(allPostsPaths).concat(pathsServiceParent);
+  const listCaseStudy = await GetListSlugCaseStudy();
+  const pathsCaseStudy = listCaseStudy.map((caseStudy) => ({
+    params: {
+      slug: caseStudy.slug,
+    },
+    locale: caseStudy.language.code.toLowerCase(),
+  }));
+  const paths = servicePaths
+    .concat(allPostsPaths)
+    .concat(pathsServiceParent)
+    .concat(pathsCaseStudy);
   return {
     paths,
     fallback: "blocking",
@@ -110,6 +137,7 @@ export async function getStaticProps(context) {
   const serviceData = await GetServiceDetailBySlug(params.slug);
   const blogData = await GetPostDetailBySlug(params.slug, language);
   const serviceParentsData = await GetServiceParentDetailBySlug(params.slug);
+  const caseStudyData = await GetCaseStudyDetailBySlug(params.slug);
   const dataFooter = await getTranslatedDataFooter(language);
   const dataHeader = await getDataMenu(language);
   // const notFound = true;
@@ -122,10 +150,7 @@ export async function getStaticProps(context) {
       },
       revalidate: 3600,
     };
-  } else if (
-    blogData &&
-    blogData.postBy
-  ) {
+  } else if (blogData && blogData.postBy) {
     const relatedPosts = await getDataForNewAndInsightsSection(language);
     return {
       props: {
@@ -141,6 +166,15 @@ export async function getStaticProps(context) {
     return {
       props: {
         serviceParentsData,
+        dataFooter,
+        dataHeader,
+      },
+      revalidate: 3600,
+    };
+  } else if (caseStudyData && caseStudyData.caseStudyBy) {
+    return {
+      props: {
+        caseStudyData,
         dataFooter,
         dataHeader,
       },

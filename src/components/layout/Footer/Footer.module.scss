@@ -98,7 +98,18 @@
 
 .footer__row {
   .colum__title {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    width: fit-content;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      height: 2.5px;
+      width: 100%;
+      background-color: rgba(171, 139, 212, 1);
+      left: 0;
+    }
   }
   .colum-1 p {
     color: #fff;
@@ -123,7 +134,7 @@
   }
   p {
     color: #dcc7ed;
-    font-size: 20px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: 28px;

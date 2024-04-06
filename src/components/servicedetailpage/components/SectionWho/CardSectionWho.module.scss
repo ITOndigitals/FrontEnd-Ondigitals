@@ -36,16 +36,17 @@
       min-height: 126px;
       padding: 5px;
       &::-webkit-scrollbar {
-        width: 5px;
+        width: 4px;
       }
       /* Track */
       &::-webkit-scrollbar-track {
         border-radius: 10px;
+        background: #dcc7ed;
       }
       /* Handle */
       &::-webkit-scrollbar-thumb {
-        background: #dcc7ed;
         border-radius: 10px;
+        background-color: rgb(111, 26, 182);
       }
     }
   }

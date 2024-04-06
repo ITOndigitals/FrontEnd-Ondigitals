@@ -6,14 +6,12 @@
   justify-content: center;
   align-items: center;
   .header {
-    width: 40%;
-    h2 {
-      color: #fff;
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 40px;
-    }
+    width: 100%;
+    color: #fff;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
   }
   .main-content {
     .list-reason-item {
@@ -53,7 +51,7 @@
     padding: 10% 0;
     .main-content {
       .list-reason-item {
-       justify-content: center;
+        justify-content: center;
       }
     }
   }

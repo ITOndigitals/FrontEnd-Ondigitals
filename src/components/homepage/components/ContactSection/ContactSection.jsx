@@ -78,7 +78,7 @@ const ContactSection = React.forwardRef((props, ref) => {
             </a>
           </h4>
           <strong style="color: black;">Message: <p style="font-weight: 300; display: inline;">${values.message}</p></strong>`,
-          subject: "Hello from Ondigitals",
+          subject: "Hello from On Digitals!",
         },
       });
       formik.resetForm();

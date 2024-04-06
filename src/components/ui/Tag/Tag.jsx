@@ -23,20 +23,35 @@ const Tag = ({ backgroundColor, name, href }) => {
   };
 
   const hoverClass = hoverClasses[backgroundColor] || "";
-
-  return (
-    <Link
-      href={href}
-      className={`${classes.tag} ${isHovered && classes[hoverClass]}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        backgroundColor: backgroundColor ? backgroundColor : "#3D1766",
-      }}
-    >
-      {name}
-    </Link>
-  );
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={`${classes.tag} ${isHovered && classes[hoverClass]}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          backgroundColor: backgroundColor ? backgroundColor : "#3D1766",
+        }}
+      >
+        {name}
+      </Link>
+    );
+  } else {
+    return (
+      <div
+        href={href}
+        className={`${classes.tag} ${isHovered && classes[hoverClass]}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          backgroundColor: backgroundColor ? backgroundColor : "#3D1766",
+        }}
+      >
+        {name}
+      </div>
+    );
+  }
 };
 
 export default Tag;

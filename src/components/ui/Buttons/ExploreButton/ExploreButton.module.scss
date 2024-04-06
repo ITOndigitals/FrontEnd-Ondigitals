@@ -8,6 +8,7 @@
   padding-left: 15px;
   padding-top: 3px;
   color: $neutral-900;
+  cursor: pointer;
   &::before {
     top: 50%;
     transform: translateY(-50%);
@@ -20,9 +21,9 @@
     border-radius: 100%;
     left: 0;
   }
-  &:hover{
+  &:hover {
     &::before {
-      background-color: #DCC7ED ;
+      background-color: #dcc7ed;
     }
   }
 }

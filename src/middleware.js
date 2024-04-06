@@ -3,6 +3,7 @@ import { dataSlugPostVi } from "../utils/dataSlugPostVi";
 import { dataSlugServiceAndServiceParent } from "../utils/dataSlugServiceAndServiceParent";
 import { dataSlugServiceOld } from "../utils/dataSlugServiceOld";
 import { dataListslugOld } from "../utils/dataListslugOld";
+import { dataListSlugEn } from "../utils/dataSlugPostEn";
 
 export function middleware(request) {
   const targetHost = "ondigitals.com";
@@ -20,27 +21,46 @@ export function middleware(request) {
     slug: `/${item.slug}/`,
     slugNewVi: `${urlMain}/vi/${item.slug}/`,
   }));
+  
+  const modifiedDataEn = dataListSlugEn.map((item) => ({
+    slug: `/${item.slug}/`,
+    slugNewEn: `${urlMain}/${item.slug}/`,
+  }));
   const matchedItem = modifiedData.find((item) => {
     return (
-      request.nextUrl.pathname === item.slug &&
-      !request.nextUrl.href.includes("vi")
+      request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "vi"
+    );
+  }); // function chuyển 301 các url bài viết tiếng anh
+  const matchedItemEn = modifiedDataEn.find((item) => {
+    return (
+      request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "en"
     );
   });
-  // Nếu tìm thấy phần tử
   if (matchedItem) {
-    // Thực hiện chuyển hướng đến slugNewVi của phần tử đó
     return NextResponse.redirect(matchedItem.slugNewVi, {
+      status: 301,
+    });
+  }
+
+  if (matchedItemEn) {
+    return NextResponse.redirect(matchedItemEn.slugNewEn, {
       status: 301,
     });
   }
   // fuction 301 các services cho các ngôn ngữ
   const matchedItemService = dataSlugServiceAndServiceParent.find((item) => {
-    return (
+    if (
       request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
-      !stringsToCheck.some((str) => request.nextUrl.href.includes(str))
-    );
+      request.nextUrl.locale === "en"
+    )
+      return null;
+    else {
+      return (
+        request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
+        !stringsToCheck.some((str) => request.nextUrl.locale.includes(str))
+      );
+    }
   });
-
   if (matchedItemService) {
     return NextResponse.redirect(
       `${urlMain}/${matchedItemService.language.code}/${encodeURIComponent(
@@ -55,7 +75,7 @@ export function middleware(request) {
   const matchedItemServiceOld = dataSlugServiceOld.find((item) => {
     return (
       request.nextUrl.pathname === `/${encodeURIComponent(item.slugOld)}/` &&
-      !stringsToCheck.some((str) => request.nextUrl.href.includes(str))
+      !stringsToCheck.some((str) => request.nextUrl.locale.includes(str))
     );
   });
   if (matchedItemServiceOld) {

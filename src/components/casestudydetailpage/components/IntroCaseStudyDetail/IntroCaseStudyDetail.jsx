@@ -1,96 +1,117 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./IntroCaseStudyDetail.module.scss";
 import { Maven_Pro } from "next/font/google";
+import Image from "next/image";
+import Tag from "@/components/ui/Tag/Tag";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
-const DUMMY_IMG_SRC =
-  "https://s3-alpha-sig.figma.com/img/1b43/abeb/43a81b5b45fad391bd8d77acdefdd273?Expires=1701648000&Signature=irVL5Y8nMKXOGoxylcQEzCv6UbeqGHucrsR0WknRfuMC~cOMhs8GLrdAVhPJuTrDHIRBmXLpTTUGdhcWt237rpooTfbeKv8pU7V5QN8RrUnjXDTzdR3ZW7X5ZRWwYwLIEEv3FHNloWmcD4FBV8RYnmRjnX~TjuuUVeB2tcpuvyhanxj5XyL6sdzIaOQvRVZ9LBVkxvpVcjGQ9dmkzVsZYl3x~c~OI60K6CSUp8w-WJ1bRk0sGQAU-eeoB6LrFCbn0QfPmuY~E5qVNtsxbWb93ZsA3NgDyNwPYn52F0RorlLYJoHTUWDl6A4TVhJrf3qmxm6lfJEbwtCwePBkEPz4kQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+export default function IntroCaseStudyDetail({ data }) {
+  const { caseStudyDetailPage, categories, tags, content } = data.caseStudyBy;
+  const {
+    backgroundcolor,
+    imageBackground,
+    imageMoblie,
+    logoBrand,
+    titleCategory,
+    titleTagIndustry,
+  } = caseStudyDetailPage?.sectionIntro;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth;
+      setIsMobile(width <= 760);
+    }
 
-// const DUMMY_IMG_SRC =
-//   "https://s3-alpha-sig.figma.com/img/e3b4/d923/927eac33fa99e0bb296867fcbec62a9e?Expires=1698019200&Signature=oDq-qTNBobrp~A2Q0G0NpjxY0ydHuytPL8M9I5zyBUB1CVyU67OgKxculgieSnKSnwGkhPpogAoo1mqcRfcRbrfM6Ytwv9Pitt9Hrd3bQJkxFQCQBIwG0cDLs0oGtIEUPtPXnY6EG8M1QXuLSQ1Oyo1PwuMaKxUwAzNqM0WenG1Ag2iyg5nBtZ2OFZznk2v4yn8c8HAGha7DknhIsl7Oh~B7Wb~mKeL18ha3aOGA3MWPgZnyCGbEJurNhcFo-WfwzFzG47o7CYEyg-7anTK~yJWIif5H4d~9cPAhZ9CwIV7Lb6oHIwsuK1gAnjejj7F8nJLSqRCQRzob-UiSsZpULw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-const cardBackgroundColor = "#3D1766"; // Màu nền của card
-const cardHeaderColor = "#6F1AB6"; // Màu nền header của card
-
-export default function IntroCaseStudyDetail() {
-  const caseStudyCardTheme = classes["red-theme"];
-
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
   return (
     <section className={classes["intro-case-study-detail"]}>
       <div
         className={classes["intro-case-study-detail-wrapper"]}
         style={{
-          backgroundImage: `url(${DUMMY_IMG_SRC})`,
+          backgroundImage: `url(${imageBackground?.sourceUrl})`,
+          backgroundColor: backgroundcolor,
         }}
       >
-        <div className="container">
-          <div
-            className={classes["intro-case-study-detail-card"]}
-            style={{ backgroundColor: cardBackgroundColor }}
-          >
-            <div
-              className={`${classes["intro-case-study-detail-spacer"]}`}
-            ></div>
-            <div
-              className={classes["intro-case-study-detail-heading"]}
-              style={{ backgroundColor: cardHeaderColor }}
-            >
-              <p className={classes["intro-case-study-detail-heading__title"]}>
-                KUNDAL
-              </p>
-              <p className={classes["intro-case-study-detail-heading__desc"]}>
-                Digital Marketing Campaign
-              </p>
+        <div className={`container ${classes["content-layout-mobile"]}`}>
+          <div className={classes["intro-case-study-detail-content"]}>
+            <div className={classes["intro-case-study-detail-content__image"]}>
+              <Image
+                src={logoBrand?.sourceUrl}
+                fill
+                style={{ objectFit: "cover" }}
+                alt={logoBrand?.altText}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              />
             </div>
-            <hr />
-            <div
-              className={classes["intro-case-study-detail-body"]}
-              style={{ fontFamily: MavenPro.style.fontFamily }}
-            >
-              <p className={classes["intro-case-study-detail-body__heading"]}>
-                Services
-              </p>
-              <ul className={classes["intro-case-study-detail-body-list"]}>
-                <li className={classes["intro-case-study-detail-body-item"]}>
-                  <div
-                    className={classes["intro-case-study-detail-body-item-dot"]}
-                  ></div>
-                  <p>Content Marketing</p>
-                </li>
-                <li className={classes["intro-case-study-detail-body-item"]}>
-                  <div
-                    className={classes["intro-case-study-detail-body-item-dot"]}
-                  ></div>
-                  <p>Content Marketing</p>
-                </li>
-                <li className={classes["intro-case-study-detail-body-item"]}>
-                  <div
-                    className={classes["intro-case-study-detail-body-item-dot"]}
-                  ></div>
-                  <p>Content Marketing</p>
-                </li>
-                <li className={classes["intro-case-study-detail-body-item"]}>
-                  <div
-                    className={classes["intro-case-study-detail-body-item-dot"]}
-                  ></div>
-                  <p>Content Marketing</p>
-                </li>
-                <li className={classes["intro-case-study-detail-body-item"]}>
-                  <div
-                    className={classes["intro-case-study-detail-body-item-dot"]}
-                  ></div>
-                  <p>Content Marketing</p>
-                </li>
-              </ul>
+            <div className={classes["intro-case-study-detail-content__text"]}>
+              {content && parse(content)}
             </div>
-            <hr />
             <div
-              className={classes["intro-case-study-detail-footer"]}
-              style={{ fontFamily: MavenPro.style.fontFamily }}
+              className={
+                classes["intro-case-study-detail-content__industry-type"]
+              }
             >
-              <p>Case Study - 2020</p>
+              <p
+                className={
+                  classes[
+                    "intro-case-study-detail-content__industry-type__text"
+                  ]
+                }
+              >
+                {titleTagIndustry}
+              </p>
+              {tags.nodes.map((item, index) => (
+                <Tag
+                  key={index}
+                  backgroundColor={item?.description}
+                  name={item?.name}
+                />
+              ))}
+            </div>
+            <div
+              className={classes["intro-case-study-detail-content__cate-type"]}
+            >
+              <p
+                className={
+                  classes["intro-case-study-detail-content__cate-type__text"]
+                }
+              >
+                {titleCategory}
+              </p>
+              <div
+                className={
+                  classes["intro-case-study-detail-content__cate-type__tag"]
+                }
+              >
+                {categories?.nodes.map((item, index) => (
+                  <Tag
+                    key={index}
+                    backgroundColor={item?.description}
+                    name={item?.name}
+                    href={item?.slug}
+                  />
+                ))}
+              </div>
             </div>
           </div>
+          {isMobile && (
+            <div className={classes["intro-case-study-detail__image-moblile"]}>
+              <Image
+                src={imageMoblie?.sourceUrl}
+                fill
+                style={{ objectFit: "cover" }}
+                alt={imageMoblie?.altText}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

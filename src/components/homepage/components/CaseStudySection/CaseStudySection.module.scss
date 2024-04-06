@@ -2,9 +2,6 @@
 @import "../../../../styles/mixins";
 
 .case-study {
-  a {
-    pointer-events: none;
-  }
   background-color: $primary-dark;
   @include section;
   flex-direction: column;

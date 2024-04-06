@@ -719,4 +719,8 @@ export const dataSlugPostVi = [
   {
     slug: "loi-ich-thuong-mai-dien-tu-voi-doanh-nghiep-b2b",
   },
+  //bổ xung thêm vào ngày 05/04/2024
+  {
+    slug: "social-media-marketing-tai-viet-nam",
+  },
 ];

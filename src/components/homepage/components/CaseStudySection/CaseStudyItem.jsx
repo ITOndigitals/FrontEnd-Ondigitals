@@ -10,7 +10,7 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
 const CaseStudyItem = ({ item, index }) => {
-  const { caseStudyHomepage, featuredImage, content, slug } = item;
+  const { caseStudyHomepage, featuredImage, content, slug, categories } = item;
   const {
     caseStudyTextButtonItem,
     caseStudyTextButton,
@@ -72,10 +72,10 @@ const CaseStudyItem = ({ item, index }) => {
             />
           ) : (
             <Image
-              src={featuredImage.node.sourceUrl}
+              src={featuredImage?.node.sourceUrl}
               fill
               style={{ objectFit: "cover" }}
-              alt={featuredImage.node.altText}
+              alt={featuredImage?.node.altText}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
             />
           )}
@@ -86,9 +86,15 @@ const CaseStudyItem = ({ item, index }) => {
           className={classes["item-description-wrapper"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}
         >
-          {parse(content)}
+          <ul>
+            {categories.nodes.map((item, index) => (
+              <li key={index}>
+                <Link href={item.slug}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <Link href={"/"} className={classes["item-description__explore"]}>
+        <Link href={slug} className={classes["item-description__explore"]}>
           <ExploreButton>{caseStudyTextButtonItem}</ExploreButton>
         </Link>
       </div>

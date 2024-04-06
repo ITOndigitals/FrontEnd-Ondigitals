@@ -368,6 +368,12 @@ export const GetDataHomepage = async (id, languageCode) => {
               sourceUrl
             }
           }
+          categories {
+            nodes {
+              name
+              slug
+            }
+          }
         }
       }
     }

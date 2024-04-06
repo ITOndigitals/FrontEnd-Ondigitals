@@ -3,6 +3,7 @@ import classes from "./BestDigitalMarketingItem.module.scss";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
+const parse = require("html-react-parser");
 
 export default function BestDigitalMarketingItem({ item }) {
   if (!item) {
@@ -21,7 +22,9 @@ export default function BestDigitalMarketingItem({ item }) {
           />
         </div>
 
-        <h3 className={classes["title"]}>{item?.titleItem}</h3>
+        <div className={classes["title"]}>
+          {item?.titleItem && parse(item?.titleItem)}
+        </div>
         <p
           className={classes["text"]}
           style={{ fontFamily: MavenPro.style.fontFamily }}

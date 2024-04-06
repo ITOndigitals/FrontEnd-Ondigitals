@@ -1,6 +1,11 @@
 export const dataSlugServiceOld = [
   //page seo parent
   {
+    slugNew: "dich-vu-video-marketing",
+    slugOld: "video-quang-cao",
+    locale: "vi",
+  },
+  {
     slugNew: "搜-索-引-擎-优-化-seo-服务",
     slugOld: "搜-索-引-擎-優-化-服-務",
     locale: "zh",
@@ -48,21 +53,17 @@ export const dataSlugServiceOld = [
     locale: "zh",
   },
   {
-    slugNew: "디지털-콘텐츠-마케팅-서비스",
-    slugOld: "온라인-광고-서비스",
+    slugNew: "온라인-광고-서비스",
+    slugOld: "google-ads-서비스",
     locale: "kr",
   },
   {
-    slugNew: "デジタル-コンテンツ-マーケティング-サービス",
-    slugOld: "ppc-サービス",
+    slugNew: "ppc-サービス",
+    slugOld: "google-広-告-サ-ー-ビ-ス",
     locale: "jp",
   },
   //page Video Marketing Services  child
-  {
-    slugNew: "dich-vu-video-marketing",
-    slugOld: "video-quang-cao",
-    locale: "vi",
-  },
+
   {
     slugNew: "视-频-营-销-服-务",
     slugOld: "商-業-視-頻",
@@ -80,7 +81,7 @@ export const dataSlugServiceOld = [
   },
   //page Social Media Marketing  child
   {
-    slugNew: "dich-vu-social-media-marketing",
+    slugNew: "dich-vu-quang-cao-meta",
     slugOld: "dich-vu-facebook-ads",
     locale: "vi",
   },
@@ -112,12 +113,54 @@ export const dataSlugServiceOld = [
   },
   {
     slugNew: "デザイン-サービス",
-    slugOld: "디자인-서비스",
+    slugOld: "デザインサービス",
+    locale: "jp",
+  },
+  {
+    slugNew: "设-计-服-务",
+    slugOld: "電-子-商-務-網-站-設-計",
+    locale: "zh",
+  },
+  {
+    slugNew: "设-计-服-务",
+    slugOld: "應-用-程-序-設-計",
+    locale: "zh",
+  },
+  //KOL MARKETING
+  {
+    slugNew: "kol-营-销-服-务",
+    slugOld: "kol-服-务",
+    locale: "zh",
+  },
+  {
+    slugNew: "kol-マーケティング-サービス",
+    slugOld: "マーケティングkolのサービス",
+    locale: "jp",
+  },
+  //EMAIL MARKETING
+  {
+    slugNew: "dich-vu-email-marketing",
+    slugOld: "dich-vu-gui-va-thiet-ke-email-marketing",
+    locale: "vi",
+  },
+  {
+    slugNew: "电-子-邮-件-营-销-服-务",
+    slugOld: "电-子-邮-件-营-销-发-送-和-设-计-服务",
+    locale: "zh",
+  },
+  {
+    slugNew: "이메일-마케팅-서비스",
+    slugOld: "이메일-마케팅-디자인-및-서비스",
+    locale: "kr",
+  },
+  {
+    slugNew: "電子メール-マーケティング-サービス",
+    slugOld: "メールマーケティングのデザインと送信サービス",
     locale: "jp",
   },
   //page 404 url old
   {
-    slugNew: "ppc-management-service",
+    slugNew: "kol-marketing-service",
     slugOld: "key-opinion-influencer",
     locale: "en",
   },
@@ -131,10 +174,229 @@ export const dataSlugServiceOld = [
     slugOld: "seo",
     locale: "en",
   },
+  //page lien he
   {
-    slugNew: "dich-vu-video-marketing",
-    slugOld: "video-quang-cao",
+    slugNew: "lien-he",
+    slugOld: "lien-he",
     locale: "vi",
   },
- 
+  {
+    slugNew: "联系",
+    slugOld: "联-系",
+    locale: "zh",
+  },
+  {
+    slugNew: "お問い合わせ",
+    slugOld: "に連絡する",
+    locale: "jp",
+  },
+  {
+    slugNew: "연락하다",
+    slugOld: "연락하다",
+    locale: "kr",
+  },
+  // các url ngày 05/04/2024
+  {
+    slugNew: "dich-vu-digital-content-marketing",
+    slugOld: "dich-vu-digital-content",
+    locale: "vi",
+  },
+  {
+    slugNew: "social-media-marketing",
+    slugOld: "social-media",
+    locale: "en",
+  },
+  {
+    slugNew: "seo-traffic-service",
+    slugOld: "seo-traffic",
+    locale: "en",
+  },
+  {
+    slugNew: "tiktok-affiliate",
+    slugOld: "tiep-thi-lien-ket-tiktok",
+    locale: "en",
+  },
+  {
+    slugNew: "phan-mem-seo-chuyen-nghiep",
+    slugOld: "top-10-phan-mem-seo-chuyen-nghiep-nhat-hien-nay",
+    locale: "vi",
+  },
+  {
+    slugNew: "phan-mem-seo-chuyen-nghiep",
+    slugOld: "phan-mem-seo-chuyen-nghiep-cho-website",
+    locale: "vi",
+  },
+  {
+    slugNew: "optimize-for-featured-snippets",
+    slugOld: "optimize-for-featured-snippet",
+    locale: "en",
+  },
+  {
+    slugNew: "search-intent-la-gi",
+    slugOld: "search-intent",
+    locale: "vi",
+  },
+  // dich vu web
+  {
+    slugNew: "creative-design",
+    slugOld: "web-design-ecommerce",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-thiet-ke",
+    slugOld: "thiet-ke-website-ecommerce",
+    locale: "vi",
+  },
+  {
+    slugNew: "设-计-服-务",
+    slugOld: "電-子-商-務-網-站-設-計",
+    locale: "zh",
+  },
+  {
+    slugNew: "디자인-서비스",
+    slugOld: "전자상거래-웹사이트-디자인",
+    locale: "kr",
+  },
+  {
+    slugNew: "デザイン-サービス",
+    slugOld: "ecサイトのウェブサイトデザイン",
+    locale: "jp",
+  },
+  // dich vu mobile
+  {
+    slugNew: "creative-design",
+    slugOld: "mobile-app-development",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-thiet-ke",
+    slugOld: "thiet-ke-app",
+    locale: "vi",
+  },
+  {
+    slugNew: "设-计-服-务",
+    slugOld: "應-用-程-序-設-計",
+    locale: "zh",
+  },
+  {
+    slugNew: "디자인-서비스",
+    slugOld: "앱-디자인",
+    locale: "kr",
+  },
+  {
+    slugNew: "デザイン-サービス",
+    slugOld: "アプリのデザイン",
+    locale: "jp",
+  },
+  // dich vu OOH
+  {
+    slugNew: "social-outreach-service",
+    slugOld: "ooh-advertising",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-outreach-marketing",
+    slugOld: "quang-cao-ooh",
+    locale: "vi",
+  },
+  {
+    slugNew: "外-联-营-销-服-务",
+    slugOld: "廣告-ooh",
+    locale: "zh",
+  },
+  {
+    slugNew: "홍보-마케팅-서비스",
+    slugOld: "ooh-광고",
+    locale: "kr",
+  },
+  {
+    slugNew: "アウトリーチ-マーケティング-サービス",
+    slugOld: "ooh広告",
+    locale: "jp",
+  },
+  // dich vu TVC
+  {
+    slugNew: "social-outreach-service",
+    slugOld: "tvc-advertising",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-outreach-marketing",
+    slugOld: "quang-cao-tvc",
+    locale: "vi",
+  },
+  {
+    slugNew: "外-联-营-销-服-务",
+    slugOld: "tvc-广告",
+    locale: "zh",
+  },
+  {
+    slugNew: "홍보-마케팅-서비스",
+    slugOld: "광고tvc",
+    locale: "kr",
+  },
+  {
+    slugNew: "アウトリーチ-マーケティング-サービス",
+    slugOld: "tvc広告",
+    locale: "jp",
+  },
+  // dich vu TELEMARKETING
+  {
+    slugNew: "social-outreach-service",
+    slugOld: "telemarketing-service",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-outreach-marketing",
+    slugOld: "dich-vu-telemarketing-telesale",
+    locale: "vi",
+  },
+  {
+    slugNew: "外-联-营-销-服-务",
+    slugOld: "電-話-營-銷-服-務-電-話-銷-售",
+    locale: "zh",
+  },
+  {
+    slugNew: "홍보-마케팅-서비스",
+    slugOld: "텔레마케팅-서비스-텔레세일즈",
+    locale: "kr",
+  },
+  {
+    slugNew: "アウトリーチ-マーケティング-サービス",
+    slugOld: "テレマーケティングテレセールスサービス",
+    locale: "jp",
+  },
+  // dich vu EVENT MARKETING
+  {
+    slugNew: "social-outreach-service",
+    slugOld: "pr-event-marketing-service",
+    locale: "en",
+  },
+  {
+    slugNew: "dich-vu-outreach-marketing",
+    slugOld: "dich-vu-to-chuc-truyen-thong-su-kien",
+    locale: "vi",
+  },
+  {
+    slugNew: "外-联-营-销-服-务",
+    slugOld: "活-動-通-訊-服-務",
+    locale: "zh",
+  },
+  {
+    slugNew: "홍보-마케팅-서비스",
+    slugOld: "이벤트-커뮤니케이션-서비스",
+    locale: "kr",
+  },
+  {
+    slugNew: "アウトリーチ-マーケティング-サービス",
+    slugOld: "イベントメディア運営サービス",
+    locale: "jp",
+  },
+  // trang tin tuc
+  {
+    slugNew: "tin-tuc",
+    slugOld: "tin-tuc",
+    locale: "vi",
+  },
+  
 ];

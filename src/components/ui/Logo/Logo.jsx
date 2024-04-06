@@ -1,15 +1,17 @@
 import Image from "next/image";
 import classes from "./Logo.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Logo = ({ isVisible, isDark, isOnMobile }) => {
+  const { locale } = useRouter();
   if (isDark && !isOnMobile) {
     return (
       <Link
         onClick={() => {
-          window.location.href = "/";
+          window.location.href = locale === "en" ? "/" : `/${locale}`;
         }}
-        href="/"
+        href={locale === "en" ? "/" : `/${locale}`}
         className={classes["logo-container"]}
         style={{
           display: isVisible ? "block" : "none",
@@ -29,9 +31,9 @@ const Logo = ({ isVisible, isDark, isOnMobile }) => {
   return (
     <Link
       onClick={() => {
-        window.location.href = "/";
+        window.location.href = locale === "en" ? "/" : `/${locale}`;
       }}
-      href="/"
+      href={locale === "en" ? "/" : `/${locale}`}
       className={classes["logo-container"]}
       style={{
         display: isVisible ? "block" : "none",

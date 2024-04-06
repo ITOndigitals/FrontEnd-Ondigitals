@@ -20,11 +20,11 @@ const IntroSection = ({ data }) => {
         <h1 style={{ display: "none" }}>ONDIGITALS</h1>
         <div className={classes["intro-layout"]}>
           <div className={classes["intro-layout-item"]}>
-            <p className={`${classes["intro-greeting"]} appear`}>
+            <p className={`${classes["intro-greeting"]} `}>
               {introSectionTextHello}
             </p>
             <div
-              className={`${classes["intro-brand-img-container"]} appear-slow`}
+              className={`${classes["intro-brand-img-container"]}`}
             >
               <Image
                 className={classes["intro-brand-img"]}
@@ -36,7 +36,7 @@ const IntroSection = ({ data }) => {
               />
             </div>
             <p
-              className={`${classes["intro-description"]} appear-slow-more`}
+              className={`${classes["intro-description"]} `}
               style={{ fontFamily: MavenPro.style.fontFamily }}
             >
               {introSectionTextDescription}
@@ -44,7 +44,7 @@ const IntroSection = ({ data }) => {
           </div>
           <div className={classes["intro-layout-item"]}>
             <div
-              className={`${classes["intro-layout-item-video"]} appear-slow`}
+              className={`${classes["intro-layout-item-video"]} `}
             >
               <video width="100%" muted autoPlay loop playsInline>
                 <source

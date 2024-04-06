@@ -6,106 +6,121 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 42vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
   }
-  .intro-case-study-detail {
-    &-card {
-      margin-top: 7%;
-      border-radius: 24px;
-      box-shadow: 22px 30px 37px 0px rgba(0, 0, 0, 0.14),
-        50px 67px 50px 0px rgba(0, 0, 0, 0.08),
-        89px 119px 59px 0px rgba(0, 0, 0, 0.02),
-        140px 185px 65px 0px rgba(0, 0, 0, 0);
+  &-content {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 420px;
+    gap: 30px;
+    &__image {
+      position: relative;
+      width: 192px;
+      height: 72px;
+    }
+    &__text {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    &__industry-type {
       display: flex;
       flex-direction: column;
-      max-width: 410px;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      hr {
-        margin: 20px 0;
-        width: 100%;
-      }
-    }
-    &-heading {
-      width: 100%;
-      padding: 10px 0px;
-      border-radius: 16px;
-      &__title {
-        font-size: 48px;
-        font-weight: 700;
-        line-height: 52px;
-      }
-    }
-    &-body {
-      width: 100%;
-      &__heading {
+      gap: 5px;
+      &__text {
         font-size: 18px;
         font-weight: 600;
         line-height: 26px;
-        padding-bottom: 4px;
       }
-      &-item {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 24px;
-        padding: 6px 0;
-        padding-bottom: 5px;
+      &__tag {
+        padding: 6px 12px;
+        border-radius: 40px;
+        background-color: #6f1ab6;
+        width: fit-content;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        text-align: center;
+      }
+    }
+    &__cate-type {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      &__text {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 26px;
+      }
+      &__tag {
         display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  &__image-moblile {
+    width: 358px;
+    height: 358px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+}
+@media (max-width: 1025px) {
+  .intro-case-study-detail {
+    &-wrapper {
+      height: auto;
+      padding: 50px 0;
+      padding-top: 90px;
+    }
+    &-content {
+      width: 330px;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .intro-case-study-detail {
+    &-wrapper {
+      background-image: unset !important;
+      gap: 50px;
+    }
+    &-content {
+      width: 100%;
+      align-items: center;
+      &__text {
+        text-align: center;
+      }
+      &__industry-type {
         align-items: center;
-        justify-content: center;
-        &:last-child {
-          padding-bottom: 0;
+        gap: 10px;
+      }
+      &__cate-type {
+        gap: 10px;
+        &__text {
+          text-align: center;
         }
-        &-dot {
-          margin-right: 8px;
-          width: 8px;
-          height: 8px;
-          background-color: white;
-          border-radius: 50%;
+        &__tag {
+          justify-content: center;
         }
       }
     }
-    &-btn {
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 26px;
-    }
-    &-footer {
-      width: 100%;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 26px;
-      text-align: center;
-    }
+  }
+  .content-layout-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
   }
 }
-
-@media (max-width: 768px) {
+@media (max-width: 360px) {
   .intro-case-study-detail {
-    &-wrapper {
-      padding-bottom: 20vh;
-    }
-    &-card {
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-}
-
-@media (max-width: 450px) {
-  .intro-case-study-detail {
-    &-wrapper {
-      padding-bottom: 10%;
-    }
-    &-heading__title {
-      font-size: 36px !important;
-      line-height: 40px !important;
+    &__image-moblile {
+      width: 300px;
+      height: 300px;
     }
   }
 }

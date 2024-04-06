@@ -14,4 +14,3 @@ const CaseStudiesList = ({ items }) => {
 };
 
 export default CaseStudiesList;
-

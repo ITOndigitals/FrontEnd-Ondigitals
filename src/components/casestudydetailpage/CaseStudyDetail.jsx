@@ -1,17 +1,34 @@
 import React, { useEffect } from "react";
 import IntroCaseStudyDetail from "./components/IntroCaseStudyDetail/IntroCaseStudyDetail";
-import OverViewCaseStudyDetail from "./components/OverViewCaseStudyDetail/OverViewCaseStudyDetail";
-import CampaignResults from "./components/CampaignResults/CampaignResults";
 import { useBoundStore } from "@/store/useBoundStore";
-import CaseStudyKLD from "./components/CaseStudyKLD/CaseStudyKLD";
-import CaseStudyKundal from "./components/CaseStudyKundal/CaseStudyKundal";
-import CaseStudyDucati from "./components/CaseStudyDucati/CaseStudyDucati";
-import CaseStudyPassion from "./components/CaseStudyPassion/CaseStudyPassion";
-import CaseStudyRenault from "./components/CaseStudyRenault/CaseStudyRenault";
+import ResultsCaseStudyDetail from "./components/ResultsCaseStudyDetail/ResultsCaseStudyDetail";
+import SectionDigitalsContent from "./components/SectionDigitalsContentCaseStudy/SectionDigitalsContentCaseStudy";
+import SectionVideoCaseStudy from "./components/SectionVideoCaseStudy/SectionVideoCaseStudy";
+import SectionContentCaseStudy from "./components/SectionContentCaseStudy/SectionContentCaseStudy";
+import CaseStudyViewMore from "./components/CaseStudyViewMore/CaseStudyViewMore";
+import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
+import { useRouter } from "next/router";
 
-const DUMMY_EXTEND_COMPONENTS_TYPE = 3;
+export default function CaseStudyDetail({ data }) {
+  if (!data) return null;
+  const router = useRouter();
+  const currentLanguage = router.locale.toUpperCase();
+  const { caseStudyDetailPage, cta, translations } = data.caseStudyBy;
+  const { sectionResults, sectionDigitalContent, sectionVideo } =
+    caseStudyDetailPage;
 
-export default function CaseStudyDetail() {
+  if (data.caseStudyBy) {
+    const matchingTranslation = translations?.find(
+      (translation) => translation.language.code === currentLanguage
+    );
+    useEffect(() => {
+      if (matchingTranslation) {
+        router.push(matchingTranslation.slug);
+      } else if (router.locale !== data.caseStudyBy.language?.slug) {
+        window.location.href = "/";
+      }
+    }, [router.locale]);
+  }
   const setToDark = useBoundStore((state) => state.setToDark);
   const setToLight = useBoundStore((state) => state.setToLight);
 
@@ -41,22 +58,15 @@ export default function CaseStudyDetail() {
     setToLight();
   }, [headerIsDark]);
 
-  const extendComponentType = DUMMY_EXTEND_COMPONENTS_TYPE;
-
   return (
     <>
-      <IntroCaseStudyDetail />
-      <OverViewCaseStudyDetail />
-      {/* <CaseStudyPassion/>
-      <CampaignResults />
-      <CaseStudyRenault />
-      <CaseStudyKLD />
-      <CaseStudyDucati /> */}
-      <CaseStudyKundal/>
-      {/* {extendComponentType === 0 && <CaseStudyKundal/>}
-      {extendComponentType === 2 && <CaseStudyKLD />}
-      {extendComponentType === 3 && <CaseStudyDucati/>}
-      {extendComponentType === 4 && <CaseStudyPassion/>} */}
+      <IntroCaseStudyDetail data={data} />
+      <ResultsCaseStudyDetail data={sectionResults} />
+      <SectionDigitalsContent data={sectionDigitalContent} />
+      {/* <SectionVideoCaseStudy data={sectionVideo} />
+      <SectionContentCaseStudy /> */}
+      {/* <CaseStudyViewMore /> */}
+      {/* <NeedHelpDigitalGrowth data={cta} /> */}
     </>
   );
 }

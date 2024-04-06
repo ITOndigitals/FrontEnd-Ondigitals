@@ -11,7 +11,7 @@ export default function BestDigitalMarketing({ data }) {
       <section className={classes["main-section"]}>
         <div className="container">
           <div className={classes["header"]}>
-            <h2>{titleSection && titleSection}</h2>
+            {titleSection && parse(titleSection)}
           </div>
           <div className={classes["main-content"]}>
             <div className={classes["list-reason-item"]}>
