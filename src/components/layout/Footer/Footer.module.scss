@@ -98,13 +98,13 @@
 
 .footer__row {
   .colum__title {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     width: fit-content;
     position: relative;
     &::after {
       content: "";
       position: absolute;
-      bottom: -8px;
+      bottom: -6px;
       height: 2.5px;
       width: 100%;
       background-color: rgba(171, 139, 212, 1);

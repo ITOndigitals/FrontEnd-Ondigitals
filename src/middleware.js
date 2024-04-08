@@ -30,7 +30,9 @@ export function middleware(request) {
     return (
       request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "vi"
     );
-  }); // function chuyển 301 các url bài viết tiếng anh
+  }); 
+  
+  // function chuyển 301 các url bài viết tiếng anh
   const matchedItemEn = modifiedDataEn.find((item) => {
     return (
       request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "en"

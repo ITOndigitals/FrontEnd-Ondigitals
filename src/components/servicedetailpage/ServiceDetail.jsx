@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import IntroServiceDetail from "./components/IntroServiceDetail/IntroServiceDetail";
 import { useBoundStore } from "@/store/useBoundStore";
 import ContentServiceDetail from "./components/ContentServiceDetail/ContentServiceDetail";
@@ -32,6 +32,13 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
   const dataContentServiceDetail = layoutContentServiceDetail || [];
   const dataFAQService = sectionContentDetail || [];
   const dataCTA = serviceBy?.cta;
+  const [isMatchLocale, setIsMatchLocale] = useState(true);
+
+  useEffect(() => {
+    if (serviceBy && serviceBy.language?.slug !== router.locale) {
+      setIsMatchLocale(false);
+    }
+  }, [serviceBy, router.locale]);
   if (serviceBy && !isUsePageId) {
     const matchingTranslation = serviceBy.translations?.find(
       (translation) => translation.language.code === currentLanguage
@@ -39,10 +46,10 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
     useEffect(() => {
       if (matchingTranslation) {
         router.push(matchingTranslation.slug);
-      } else if (router.locale !== serviceBy.language?.slug) {
+      } else  {
         window.location.href = "/";
       }
-    }, [router.locale]);
+    }, [router.locale, isMatchLocale]); // Thêm isMatchLocale vào dependency array
   }
 
   const setToLight = useBoundStore((state) => state.setToLight);
