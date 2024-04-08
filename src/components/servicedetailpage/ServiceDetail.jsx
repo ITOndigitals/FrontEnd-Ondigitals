@@ -46,7 +46,7 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
     useEffect(() => {
       if (matchingTranslation) {
         router.push(matchingTranslation.slug);
-      } else  {
+      } else if (router.locale !== serviceBy.language?.slug) {
         window.location.href = "/";
       }
     }, [router.locale, isMatchLocale]); // Thêm isMatchLocale vào dependency array
