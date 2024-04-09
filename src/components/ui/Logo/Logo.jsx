@@ -21,8 +21,6 @@ const Logo = ({ isVisible, isDark, isOnMobile }) => {
           src="/assets/images/ui/Logo-dark.png"
           fill
           alt="logo"
-          placeholder="blur"
-          blurDataURL={"/assets/images/ui/Logo-dark.png"}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </Link>
@@ -43,8 +41,6 @@ const Logo = ({ isVisible, isDark, isOnMobile }) => {
         src="/assets/images/ui/Logo.png"
         fill
         alt="logo"
-        placeholder="blur"
-        blurDataURL={"/assets/images/ui/Logo.png"}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </Link>

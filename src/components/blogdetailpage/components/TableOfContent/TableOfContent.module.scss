@@ -26,6 +26,10 @@
   .toc-list-wrapper {
     overflow: hidden;
     transition: height 0.3s;
+    height: 0px;
+    &.hide{
+      height: auto;
+    }
   }
   &-list {
     &__item {

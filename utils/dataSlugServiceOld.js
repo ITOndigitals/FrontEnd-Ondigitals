@@ -53,7 +53,7 @@ export const dataSlugServiceOld = [
     locale: "zh",
   },
   {
-    slugNew: "온라인-광고-서비스",
+    slugNew: "google-광고-서비스",
     slugOld: "google-ads-서비스",
     locale: "kr",
   },
@@ -101,7 +101,7 @@ export const dataSlugServiceOld = [
     locale: "kr",
   },
   {
-    slugNew: "ソーシャル-メディア-マーケティング-サービス",
+    slugNew: "meta-有料広告サービス",
     slugOld: "facebook広告サービス",
     locale: "jp",
   },
@@ -234,6 +234,23 @@ export const dataSlugServiceOld = [
   {
     slugNew: "search-intent-la-gi",
     slugOld: "search-intent",
+    locale: "vi",
+  },
+
+  {
+    slugNew: "file-robots-txt-cho-wordpress",
+    slugOld: "file-robots-txt-cho-wordpress-2",
+    locale: "vi",
+  },
+
+  {
+    slugNew: "cau-truc-4ps-content-writing",
+    slugOld: "cau-truc-4ps-trong-content-writing",
+    locale: "vi",
+  },
+  {
+    slugNew: "ahrefs-la-gi",
+    slugOld: "ahref-la-gi",
     locale: "vi",
   },
   // dich vu web
@@ -398,5 +415,4 @@ export const dataSlugServiceOld = [
     slugOld: "tin-tuc",
     locale: "vi",
   },
-  
 ];

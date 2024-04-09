@@ -8,4 +8,7 @@ export const dataListslugOld = [
   {
     slug: "khong-phan-loai",
   },
+  {
+    slug: "marketing-ban-hang-cham-soc-khach-hang-2021",
+  },
 ];

@@ -38,7 +38,7 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
     if (serviceBy && serviceBy.language?.slug !== router.locale) {
       setIsMatchLocale(false);
     }
-  }, [serviceBy, router.locale]);
+  }, []);
   if (serviceBy && !isUsePageId) {
     const matchingTranslation = serviceBy.translations?.find(
       (translation) => translation.language.code === currentLanguage

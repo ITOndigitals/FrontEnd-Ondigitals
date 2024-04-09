@@ -131,12 +131,14 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
             />
           </div>
           <div className={classes["blog-detail-content__toc"]}>
-            {markdown && (
-              <TableOfContent
-                title={{ titleTableOfContent, titleShareThisPost }}
-                markdown={markdown}
-              />
-            )}
+            <div style={{minHeight:"142px"}}>
+              {markdown && (
+                <TableOfContent
+                  title={{ titleTableOfContent, titleShareThisPost }}
+                  markdown={markdown}
+                />
+              )}
+            </div>
             <div className={classes["blog-detail-content__toc__newest-posts"]}>
               <p
                 className={

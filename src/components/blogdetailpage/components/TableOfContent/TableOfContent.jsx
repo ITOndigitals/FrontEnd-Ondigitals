@@ -39,14 +39,14 @@ const TableOfContent = ({ markdown, title }) => {
   };
 
   //Bắt sự kiện click vào nút expanse trên TOC
-  useEffect(() => {
-    const tableOfContentHeight = tocRef?.current?.clientHeight;
-    if (!tableOfContentIsShown && tocRef && tocWrapperRef) {
-      tocWrapperRef.current.style.height = "0";
-      return;
-    }
-    tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
-  }, [tableOfContentIsShown]);
+  // useEffect(() => {
+  //   const tableOfContentHeight = tocRef?.current?.clientHeight;
+  //   if (!tableOfContentIsShown && tocRef && tocWrapperRef) {
+  //     tocWrapperRef.current.style.height = "0px";
+  //     return;
+  //   }
+  //   tocWrapperRef.current.style.height = `${tableOfContentHeight + 20}px`;
+  // }, [tableOfContentIsShown]);
 
   //Set lại height phòng khi user đổi sang kích thước màn hình khác
   // useEffect(() => {
@@ -98,7 +98,7 @@ const TableOfContent = ({ markdown, title }) => {
         </p>
         <button
           className={`${classes["toc-heading__btn"]} ${
-            !tableOfContentIsShown ? classes.hide : ""
+            tableOfContentIsShown ? classes.hide : ""
           }`}
           onClick={toggleShowTableOfContent}
         >
@@ -108,7 +108,7 @@ const TableOfContent = ({ markdown, title }) => {
       <div
         ref={tocWrapperRef}
         className={`${classes["toc-list-wrapper"]} ${
-          !tableOfContentIsShown ? classes.hide : ""
+          tableOfContentIsShown ? classes.hide : ""
         }`}
       >
         <ul

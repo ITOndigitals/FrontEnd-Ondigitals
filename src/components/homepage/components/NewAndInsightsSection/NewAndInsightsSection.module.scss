@@ -27,6 +27,7 @@
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       &__content {
         padding: 16px 12px;
+        height: 180px;
         &__tag {
           display: flex;
           gap: 10px;
@@ -56,9 +57,9 @@
           -webkit-line-clamp: 2;
           overflow: hidden;
           text-align: start;
-          font-size: 14px;
+          font-size: 16px;
           font-style: normal;
-          font-weight: 500;
+          font-weight: 600;
           line-height: 20px;
           min-height: 40px;
         }
