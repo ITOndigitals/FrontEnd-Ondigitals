@@ -14,6 +14,10 @@ import { GoogleFonts } from "next-google-fonts";
 import { Maven_Pro } from "next/font/google";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
+const notoSans = localFont({
+  src: "../fonts/NotoSansSC-VariableFont_wght.ttf",
+});
+
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 config.autoAddCss = false;
@@ -26,7 +30,12 @@ export default function App({ Component, pageProps }) {
   const isLoading = usePageLoading();
   const { locale } = useRouter();
   const selectedFont =
-    locale === "vi" ? MavenPro.className : fixelFont.className;
+    locale === "vi"
+      ? MavenPro.className
+      : locale === "zh"
+      ? notoSans.className
+      : fixelFont.className;
+
   const router = useRouter();
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -43,6 +52,11 @@ export default function App({ Component, pageProps }) {
       <ApolloProvider client={client}>
         <Layout className={selectedFont}>
           <Head>
+            <link
+              rel="preload"
+              href="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
+              as="image"
+            />
             <meta name="geo.region" content="VN-SG" />
             <meta name="geo.placename" content="Ho Chi Minh" />
             <meta

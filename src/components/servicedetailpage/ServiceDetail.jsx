@@ -11,7 +11,7 @@ import SectionHow from "./components/SectionHow/SectionHow";
 import SectionWhich from "./components/SectionWhich/SectionWhich";
 import SectionWhat from "./components/SectionWhat/SectionWhat";
 
-export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
+export default function ServiceDetail({ dataServiceDetail }) {
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
   const serviceBy =
@@ -32,25 +32,19 @@ export default function ServiceDetail({ dataServiceDetail, isUsePageId }) {
   const dataContentServiceDetail = layoutContentServiceDetail || [];
   const dataFAQService = sectionContentDetail || [];
   const dataCTA = serviceBy?.cta;
-  const [isMatchLocale, setIsMatchLocale] = useState(true);
-
   useEffect(() => {
-    if (serviceBy && serviceBy.language?.slug !== router.locale) {
-      setIsMatchLocale(false);
-    }
-  }, []);
-  if (serviceBy && !isUsePageId) {
-    const matchingTranslation = serviceBy.translations?.find(
-      (translation) => translation.language.code === currentLanguage
-    );
-    useEffect(() => {
-      if (matchingTranslation) {
+    if (serviceBy && currentLanguage && router) {
+      const matchingTranslation = serviceBy.translations?.find(
+        (translation) => translation.language.code === currentLanguage
+      );
+      if (matchingTranslation && router.locale !== serviceBy.language?.slug) {
+        console.log("hello");
         router.push(matchingTranslation.slug);
       } else if (router.locale !== serviceBy.language?.slug) {
         window.location.href = "/";
       }
-    }, [router.locale, isMatchLocale]); // Thêm isMatchLocale vào dependency array
-  }
+    }
+  }, [serviceBy, currentLanguage, router]);
 
   const setToLight = useBoundStore((state) => state.setToLight);
 

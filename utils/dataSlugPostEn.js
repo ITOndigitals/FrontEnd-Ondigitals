@@ -90,4 +90,28 @@ export const dataListSlugEn = [
   {
     slug: "video-search-engine",
   },
+  {
+    slug: "what-is-keyword-cannibalization",
+  },
+  {
+    slug: "traditional-marketing-vs-digital-marketing",
+  },
+  {
+    slug: "seo-header",
+  },
+  {
+    slug: "digital-infographic-design-benefits",
+  },
+  {
+    slug: "search-engine-optimization-business",
+  },
+  {
+    slug: "high-quality-backlinks",
+  },
+  {
+    slug: "404-page",
+  },
+  {
+    slug: "advertising-industry-in-vietnam",
+  },
 ];

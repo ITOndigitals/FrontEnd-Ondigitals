@@ -4,6 +4,7 @@ import { dataSlugServiceAndServiceParent } from "../utils/dataSlugServiceAndServ
 import { dataSlugServiceOld } from "../utils/dataSlugServiceOld";
 import { dataListslugOld } from "../utils/dataListslugOld";
 import { dataListSlugEn } from "../utils/dataSlugPostEn";
+import { urlRedirects } from "../utils/urlRedirects";
 
 export function middleware(request) {
   const targetHost = "ondigitals.com";
@@ -21,7 +22,7 @@ export function middleware(request) {
     slug: `/${item.slug}/`,
     slugNewVi: `${urlMain}/vi/${item.slug}/`,
   }));
-  
+
   const modifiedDataEn = dataListSlugEn.map((item) => ({
     slug: `/${item.slug}/`,
     slugNewEn: `${urlMain}/${item.slug}/`,
@@ -30,8 +31,8 @@ export function middleware(request) {
     return (
       request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "vi"
     );
-  }); 
-  
+  });
+
   // function chuyển 301 các url bài viết tiếng anh
   const matchedItemEn = modifiedDataEn.find((item) => {
     return (
@@ -73,6 +74,7 @@ export function middleware(request) {
       }
     );
   }
+
   // fuction 301 các services website cũ cho các ngôn ngữ
   const matchedItemServiceOld = dataSlugServiceOld.find((item) => {
     return (
@@ -96,10 +98,31 @@ export function middleware(request) {
     return request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`;
   });
   if (matchedSlugWebOld) {
-    return NextResponse.redirect(`${urlMain}/`, {
-      status: 301,
-    });
+    return NextResponse.redirect(
+      `${urlMain}/${
+        request.nextUrl.locale === "en" ? "" : request.nextUrl.locale
+      }`,
+      {
+        status: 301,
+      }
+    );
   }
 
+  // const urlRedirects301 = urlRedirects.find((item) => {
+  //   return (
+  //     request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
+  //     request.nextUrl.locale !== item.locale
+  //   );
+  // });
+  // if (urlRedirects301) {
+  //   const redirectUrl301 =
+  //     urlRedirects301.locale === "en"
+  //       ? `${urlMain}/${encodeURIComponent(urlRedirects301.slug)}/`
+  //       : `${urlMain}/${urlRedirects301.locale}/${encodeURIComponent(
+  //           urlRedirects301?.slugNew || urlRedirects301.slug
+  //         )}/`;
+
+  //   return NextResponse.redirect(redirectUrl301, { status: 301 });
+  // }
   return NextResponse.next();
 }

@@ -96,7 +96,7 @@ export const dataSlugServiceOld = [
     locale: "zh",
   },
   {
-    slugNew: "소셜-미디어-마케팅-서비스",
+    slugNew: "meta-광고-서비스",
     slugOld: "facebook-광고-서비스",
     locale: "kr",
   },

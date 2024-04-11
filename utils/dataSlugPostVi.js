@@ -725,14 +725,8 @@ export const dataSlugPostVi = [
   {
     slug: "chi-phi-quang-cao-facebook",
   },
-  {
-    slug: "dich-vu-video-marketing",
-  },
   //bổ xung thêm vào ngày 05/04/2024
   {
     slug: "social-media-marketing-tai-viet-nam",
-  },
-  {
-    slug:"dich-vu-review"
   },
 ];
