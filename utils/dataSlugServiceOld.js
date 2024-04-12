@@ -244,8 +244,8 @@ export const dataSlugServiceOld = [
   },
 
   {
-    slugNew: "cau-truc-4ps-content-writing",
-    slugOld: "cau-truc-4ps-trong-content-writing",
+    slugNew: "cau-truc-4ps-trong-content-writing",
+    slugOld: "cau-truc-4ps-content-writing",
     locale: "vi",
   },
   {
@@ -413,6 +413,56 @@ export const dataSlugServiceOld = [
   {
     slugNew: "tin-tuc",
     slugOld: "tin-tuc",
+    locale: "vi",
+  },
+  {
+    slugNew: "digital-news",
+    slugOld: "new",
+    locale: "en",
+  },
+  {
+    slugNew: "danh-gia-hieu-qua-cua-quang-cao-facebook",
+    slugOld: "danh-gia-hieu-qua-quang-cao-facebook",
+    locale: "vi",
+  },
+  {
+    slugNew: "danh-gia-hieu-qua-cua-quang-cao-facebook",
+    slugOld: "danh-gia-hieu-qua-quang-cao-facebook",
+    locale: "vi",
+  },
+  {
+    slugNew: "top-websites",
+    slugOld: "top-website",
+    locale: "en",
+  },
+  {
+    slugNew: "marketing-thue-ngoai-cho-doanh-nghiep",
+    slugOld: "marketing-thue-ngoai-buoc-tien-lon-cua-doanh-nghiep",
+    locale: "vi",
+  },
+  {
+    slugNew: "seo-giai-phap-nang-cao-cho-doanh-nghiep",
+    slugOld: "seo-giai-phap-kinh-doanh-cho-doanh-nghiep",
+    locale: "vi",
+  },
+  {
+    slugNew: "chay-ads-la-gi",
+    slugOld: "huong-dan-chay-ads-facebook",
+    locale: "vi",
+  },
+  {
+    slugNew: "chinh-sach-du-lieu",
+    slugOld: "chinh-sach-bao-mat",
+    locale: "vi",
+  },
+  {
+    slugNew: "thiet-ke-logo-chuyen-nghiep-su-dung-khong-gian-am",
+    slugOld: "khong-gian-am-trong-thiet-ke-logo-chuyen-nghiep",
+    locale: "vi",
+  },
+  {
+    slugNew: "consumer-confidence-index-vietnam",
+    slugOld: "vietnam-consumer-confidence-index",
     locale: "vi",
   },
 ];

@@ -609,9 +609,6 @@ export const dataSlugPostVi = [
     slug: "pbn-la-gi",
   },
   {
-    slug: "khong-gian-am-trong-thiet-ke-logo-chuyen-nghiep",
-  },
-  {
     slug: "tiep-thi-noi-dung-bang-content-social",
   },
   {
@@ -637,9 +634,6 @@ export const dataSlugPostVi = [
   },
   {
     slug: "cac-loai-website",
-  },
-  {
-    slug: "huong-dan-chay-ads-facebook",
   },
   {
     slug: "thiet-ke-giao-dien-website-can-nhung-gi",

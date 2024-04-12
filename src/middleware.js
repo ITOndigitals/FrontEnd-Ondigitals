@@ -108,21 +108,21 @@ export function middleware(request) {
     );
   }
 
-  // const urlRedirects301 = urlRedirects.find((item) => {
-  //   return (
-  //     request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
-  //     request.nextUrl.locale !== item.locale
-  //   );
-  // });
-  // if (urlRedirects301) {
-  //   const redirectUrl301 =
-  //     urlRedirects301.locale === "en"
-  //       ? `${urlMain}/${encodeURIComponent(urlRedirects301.slug)}/`
-  //       : `${urlMain}/${urlRedirects301.locale}/${encodeURIComponent(
-  //           urlRedirects301?.slugNew || urlRedirects301.slug
-  //         )}/`;
+  const urlRedirects301 = urlRedirects.find((item) => {
+    return (
+      request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
+      request.nextUrl.locale !== item.locale
+    );
+  });
+  if (urlRedirects301) {
+    const redirectUrl301 =
+      urlRedirects301.locale === "en"
+        ? `${urlMain}/${encodeURIComponent(urlRedirects301.slug)}/`
+        : `${urlMain}/${urlRedirects301.locale}/${encodeURIComponent(
+            urlRedirects301?.slugNew || urlRedirects301.slug
+          )}/`;
 
-  //   return NextResponse.redirect(redirectUrl301, { status: 301 });
-  // }
+    return NextResponse.redirect(redirectUrl301, { status: 301 });
+  }
   return NextResponse.next();
 }
