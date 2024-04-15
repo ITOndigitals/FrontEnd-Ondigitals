@@ -97,7 +97,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
           <p className={classes["menu-list-wrapper__philippines"]}>
             Philippines
           </p>
-          
+
           <p className={classes["menu-list-wrapper__malaysia"]}>Malaysia </p>
           <p className={classes["menu-list-wrapper__singapore"]}>Singapore </p>
           <p className={classes["menu-list-wrapper__indonesia"]}>Indonesia </p>
@@ -108,139 +108,32 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
           className={`container--big ${classes["menu-list-wrapper-inner"]}`}
           style={{ overflowY: "auto" }}
         >
-          {isMobile ? (
-            <ul
-              className={`${classes["menu-list"]}`}
-              style={{ transitionDelay: isActive ? "0.8s" : "0.2s" }}
-            >
-              {dataMenu &&
-                dataMenu.map((item, index) => (
-                  <li
-                    onClick={() => {
-                      if (index === 1) {
-                        setDropdownIsOpen((old) => !old);
-                      }
-                    }}
-                    className={`${classes["menu-list-item"]} ${
-                      dropdownIsOpen ? classes["menu-list-item__services"] : ""
-                    }`}
-                    key={item.id}
+          <ul
+            className={`${classes["menu-list"]}`}
+            style={{ transitionDelay: isActive ? "0.8s" : "0.2s" }}
+          >
+            {dataMenu &&
+              dataMenu.map((item, index) => (
+                <li
+                  className={`${classes["menu-list-item"]} ${
+                    dropdownIsOpen ? classes["menu-list-item__services"] : ""
+                  }`}
+                  key={item.id}
+                >
+                  <Link
+                    href={item?.path || "/"}
+                    className={classes["menu-list-item__link"]}
                   >
-                    <Link
-                      onClick={(e) => {
-                        if (index === 1) {
-                          e.preventDefault();
-                        }
-                      }}
-                      href={item?.path || "/"}
-                      className={classes["menu-list-item__link"]}
-                    >
-                      <span>{item.label}</span>
-                      {index === 1 ? (
-                        dropdownIsOpen ? (
-                          <p
-                            className={`${classes["menu-list-item__circle"]} ${
-                              classes[`circle-${index}`]
-                            }`}
-                          ></p>
-                        ) : (
-                          <DownNavIcon width={30} height={30} color="#fff" />
-                        )
-                      ) : (
-                        <p
-                          className={`${classes["menu-list-item__circle"]} ${
-                            classes[`circle-${index}`]
-                          }`}
-                        ></p>
-                      )}
-                    </Link>
-                    <ul
-                      style={{
-                        transition: "max-height 0.3s ease-in-out",
-                      }}
-                    >
-                      {item?.listServices &&
-                        [
-                          slugServicesMenuMobile[locale],
-                          ...item?.listServices,
-                        ].map((item) => (
-                          <li
-                            key={item?.databaseId}
-                            className={classes["menu-list-item__link__child"]}
-                          >
-                            <Link href={item?.slug || "/"}>
-                              {item.serviceHomepage?.name || item?.name}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </li>
-                ))}
-            </ul>
-          ) : (
-            <ul
-              className={`${classes["menu-list"]}`}
-              style={{ transitionDelay: isActive ? "0.8s" : "0.2s" }}
-            >
-              {dataMenu &&
-                dataMenu.map((item, index) => (
-                  <li
-                    onMouseEnter={() => {
-                      {
-                        index === 1 && setDropdownIsOpen(true);
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      {
-                        index === 1 && setDropdownIsOpen(false);
-                      }
-                    }}
-                    className={`${classes["menu-list-item"]} ${
-                      dropdownIsOpen ? classes["menu-list-item__services"] : ""
-                    }`}
-                    key={item.id}
-                  >
-                    <Link
-                      href={item?.path || "/"}
-                      className={classes["menu-list-item__link"]}
-                    >
-                      <span>{item.label}</span>
-                      {index === 1 ? (
-                        dropdownIsOpen ? (
-                          <p
-                            className={`${classes["menu-list-item__circle"]} ${
-                              classes[`circle-${index}`]
-                            }`}
-                          ></p>
-                        ) : (
-                          <DownNavIcon width={30} height={30} color="#fff" />
-                        )
-                      ) : (
-                        <p
-                          className={`${classes["menu-list-item__circle"]} ${
-                            classes[`circle-${index}`]
-                          }`}
-                        ></p>
-                      )}
-                    </Link>
-                    <ul>
-                      {item?.listServices &&
-                        item?.listServices.map((item) => (
-                          <li
-                            key={item?.databaseId}
-                            className={classes["menu-list-item__link__child"]}
-                          >
-                            <Link href={item?.slug || "/"}>
-                              {item.serviceHomepage?.name}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </li>
-                ))}
-            </ul>
-          )}
-
+                    <span>{item.label}</span>
+                    <p
+                      className={`${classes["menu-list-item__circle"]} ${
+                        classes[`circle-${index}`]
+                      }`}
+                    ></p>
+                  </Link>
+                </li>
+              ))}
+          </ul>
           <div>
             <a
               href="mailto:contact@ondigitals.com"

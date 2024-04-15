@@ -318,60 +318,60 @@ sup {
 
 /* hiệu ứng text khi chuyển slide */
 .section-swiper .swiper-slide-active .appear {
-  animation: backInDownAnimation 1s;
+  animation: backInDownAnimation 0.7s;
 }
 .section-swiper .swiper-slide-prev .appear {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 .section-swiper .swiper-slide-active .appear-from-down {
-  animation: backInUpAnimation 1s;
+  animation: backInUpAnimation 0.7s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear-from-down {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 /* delay ít */
 .section-swiper .swiper-slide-active .appear-slow {
-  animation: backInDownAnimation 2s;
+  animation: backInDownAnimation 1.7s;
 }
 .section-swiper .swiper-slide-prev .appear-slow {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear-slow {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 .section-swiper .swiper-slide-active .appear-from-down-slow {
-  animation: backInUpAnimation 2s;
+  animation: backInUpAnimation 1.7s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down-slow {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear-from-down-slow {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 /* delay nhiều hơn */
 .section-swiper .swiper-slide-active .appear-slow-more {
-  animation: backInDownAnimation 2.5s;
+  animation: backInDownAnimation 2.2s;
 }
 .section-swiper .swiper-slide-prev .appear-slow-more {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear-slow-more {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 .section-swiper .swiper-slide-active .appear-from-down-slow-more {
-  animation: backInUpAnimation 2.5s;
+  animation: backInUpAnimation 2.2s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down-slow-more {
-  animation: backOutUpAnimation 1.5s;
+  animation: backOutUpAnimation 1.2s;
 }
 .section-swiper .swiper-slide-next .appear-from-down-slow-more {
-  animation: backOutDowAnimation 1.5s;
+  animation: backOutDowAnimation 1.2s;
 }
 
 /* Pagination */

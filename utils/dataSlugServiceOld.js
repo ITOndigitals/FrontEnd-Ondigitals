@@ -411,11 +411,6 @@ export const dataSlugServiceOld = [
   },
   // trang tin tuc
   {
-    slugNew: "tin-tuc",
-    slugOld: "tin-tuc",
-    locale: "vi",
-  },
-  {
     slugNew: "digital-news",
     slugOld: "new",
     locale: "en",

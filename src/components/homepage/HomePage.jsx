@@ -264,7 +264,7 @@ const HomePage = ({ allPosts, dataHomepage }) => {
           allowTouchMove={false}
           className="section-swiper"
           mousewheel={true}
-          speed={700}
+          speed={500}
         >
           <SwiperSlide>
             <IntroSection data={dataHomePages} />

@@ -110,8 +110,7 @@ export function middleware(request) {
 
   const urlRedirects301 = urlRedirects.find((item) => {
     return (
-      request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/` &&
-      request.nextUrl.locale !== item.locale
+      request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`
     );
   });
   if (urlRedirects301) {
