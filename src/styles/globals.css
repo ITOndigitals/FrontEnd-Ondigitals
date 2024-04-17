@@ -313,65 +313,65 @@ sup {
 
 /* Header */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 /* hiệu ứng text khi chuyển slide */
 .section-swiper .swiper-slide-active .appear {
-  animation: backInDownAnimation 0.7s;
+  animation: backInDownAnimation 0.4s;
 }
 .section-swiper .swiper-slide-prev .appear {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 .section-swiper .swiper-slide-active .appear-from-down {
-  animation: backInUpAnimation 0.7s;
+  animation: backInUpAnimation 0.4s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear-from-down {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 /* delay ít */
 .section-swiper .swiper-slide-active .appear-slow {
-  animation: backInDownAnimation 1.7s;
+  animation: backInDownAnimation 1.4s;
 }
 .section-swiper .swiper-slide-prev .appear-slow {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear-slow {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 .section-swiper .swiper-slide-active .appear-from-down-slow {
-  animation: backInUpAnimation 1.7s;
+  animation: backInUpAnimation 1.4s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down-slow {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear-from-down-slow {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 /* delay nhiều hơn */
 .section-swiper .swiper-slide-active .appear-slow-more {
-  animation: backInDownAnimation 2.2s;
+  animation: backInDownAnimation 1.9s;
 }
 .section-swiper .swiper-slide-prev .appear-slow-more {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear-slow-more {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 .section-swiper .swiper-slide-active .appear-from-down-slow-more {
-  animation: backInUpAnimation 2.2s;
+  animation: backInUpAnimation 1.9s;
 }
 .section-swiper .swiper-slide-prev .appear-from-down-slow-more {
-  animation: backOutUpAnimation 1.2s;
+  animation: backOutUpAnimation 0.9s;
 }
 .section-swiper .swiper-slide-next .appear-from-down-slow-more {
-  animation: backOutDowAnimation 1.2s;
+  animation: backOutDowAnimation 0.9s;
 }
 
 /* Pagination */

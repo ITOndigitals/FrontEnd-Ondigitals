@@ -96,14 +96,14 @@ const TableOfContent = ({ markdown, title }) => {
         <p className={classes["toc-heading__content"]}>
           {title?.titleTableOfContent}
         </p>
-        <button
+        <div
           className={`${classes["toc-heading__btn"]} ${
             tableOfContentIsShown ? classes.hide : ""
           }`}
           onClick={toggleShowTableOfContent}
         >
           <DownNavIcon width={30} height={30} color="#131114" />
-        </button>
+        </div>
       </div>
       <div
         ref={tocWrapperRef}

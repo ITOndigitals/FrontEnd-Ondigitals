@@ -18,10 +18,10 @@ const SectionNavButtons = ({ onClick, isDown, isUp, color, noLeftButton }) => {
         >
           {localeLangButtonContact[locale]}
         </Link>
-        <button onClick={onClick}>
+        <div className={classes["btn"]} onClick={onClick}>
           {isDown && <DownNavIcon width={30} height={30} color={color} />}
           {isUp && <UpNavIcon width={30} height={30} color={color} />}
-        </button>
+        </div>
       </div>
     </div>
   );

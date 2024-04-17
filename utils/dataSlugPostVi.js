@@ -453,9 +453,6 @@ export const dataSlugPostVi = [
     slug: "thiet-ke-website-chuan-seo",
   },
   {
-    slug: "ahref-la-gi",
-  },
-  {
     slug: "nhan-vien-seo",
   },
   {

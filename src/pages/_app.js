@@ -15,7 +15,7 @@ import { Maven_Pro } from "next/font/google";
 
 const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
 const notoSans = localFont({
-  src: "../fonts/NotoSansSC-VariableFont_wght.ttf",
+  src: "../fonts/NotoSansSC-Light.woff2",
 });
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });

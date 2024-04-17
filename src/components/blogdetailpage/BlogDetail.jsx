@@ -131,7 +131,7 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
             />
           </div>
           <div className={classes["blog-detail-content__toc"]}>
-            <div style={{minHeight:"142px"}}>
+            <div style={{ minHeight: "142px" }}>
               {markdown && (
                 <TableOfContent
                   title={{ titleTableOfContent, titleShareThisPost }}
@@ -155,9 +155,11 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
               >
                 {relatedPosts &&
                   relatedPosts.slice(0, 5).map((item) => (
-                    <Link key={item.id} href={item.slug}>
-                      <li>{item.title}</li>
-                    </Link>
+                    <li>
+                      <Link key={item.id} href={item.slug}>
+                        {item.title}
+                      </Link>
+                    </li>
                   ))}
               </ul>
             </div>
@@ -177,9 +179,11 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
             <ul className={classes["blog-detail-read-more__listPosts"]}>
               {dataPostReadMore &&
                 dataPostReadMore.map((item) => (
-                  <Link key={item.id} href={item.slug}>
-                    <li>{item.title}</li>
-                  </Link>
+                  <li>
+                    <Link key={item.id} href={item.slug}>
+                      {item.title}
+                    </Link>
+                  </li>
                 ))}
             </ul>
           )}

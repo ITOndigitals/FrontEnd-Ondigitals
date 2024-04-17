@@ -142,7 +142,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
               contact@ondigitals.com
             </a>
 
-            <ul
+            <div
               className={classes["menu-social"]}
               style={{ transitionDelay: isActive ? "0.8s" : "0.2s" }}
             >
@@ -155,10 +155,10 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
                     key={item.id}
                     href={item?.slug || "/"}
                   >
-                    <li>{item.icon}</li>
+                    {item.icon}
                   </Link>
                 ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

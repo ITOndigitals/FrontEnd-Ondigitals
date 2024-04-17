@@ -18,15 +18,21 @@ export function middleware(request) {
     return NextResponse.redirect(redirectUrl, { status: 301 });
   }
   // function chuyển 301 các url bài viết tiếng việt
-  const modifiedData = dataSlugPostVi.map((item) => ({
-    slug: `/${item.slug}/`,
-    slugNewVi: `${urlMain}/vi/${item.slug}/`,
-  }));
+  function modifySlugItem(item, urlMain, language) {
+    const slugPrefix = language === "vi" ? "/vi/" : "/";
+    return {
+      slug: `/${item.slug}/`,
+      slugNew: `${urlMain}${slugPrefix}${item.slug}/`,
+    };
+  }
 
-  const modifiedDataEn = dataListSlugEn.map((item) => ({
-    slug: `/${item.slug}/`,
-    slugNewEn: `${urlMain}/${item.slug}/`,
-  }));
+  const modifiedData = dataSlugPostVi.map((item) =>
+    modifySlugItem(item, urlMain, "vi")
+  );
+  const modifiedDataEn = dataListSlugEn.map((item) =>
+    modifySlugItem(item, urlMain, "en")
+  );
+
   const matchedItem = modifiedData.find((item) => {
     return (
       request.nextUrl.pathname === item.slug && request.nextUrl.locale !== "vi"
@@ -40,13 +46,13 @@ export function middleware(request) {
     );
   });
   if (matchedItem) {
-    return NextResponse.redirect(matchedItem.slugNewVi, {
+    return NextResponse.redirect(matchedItem.slugNew, {
       status: 301,
     });
   }
 
   if (matchedItemEn) {
-    return NextResponse.redirect(matchedItemEn.slugNewEn, {
+    return NextResponse.redirect(matchedItemEn.slugNew, {
       status: 301,
     });
   }
@@ -109,9 +115,7 @@ export function middleware(request) {
   }
 
   const urlRedirects301 = urlRedirects.find((item) => {
-    return (
-      request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`
-    );
+    return request.nextUrl.pathname === `/${encodeURIComponent(item.slug)}/`;
   });
   if (urlRedirects301) {
     const redirectUrl301 =

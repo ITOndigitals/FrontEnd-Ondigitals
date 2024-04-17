@@ -404,7 +404,7 @@ const Header = ({ data }) => {
                   />
                 )}
               </div>
-              <button
+              <div
                 className={menuButtonClasses}
                 onClick={toggleMenuButtonHandler}
               >
@@ -423,7 +423,7 @@ const Header = ({ data }) => {
                     isOnMobile ? classes.mobile : ""
                   }`}
                 ></div>
-              </button>
+              </div>
             </div>
           </div>
           {!subPageHeaderIsSticky && !isOnMobile && (

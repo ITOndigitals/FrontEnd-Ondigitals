@@ -216,7 +216,6 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       setHeaderCanChangeColor();
       setToDark();
     }
-
     if (swiper.activeIndex === 3) {
       setToLight();
     }
