@@ -136,6 +136,7 @@ const nextConfig = {
       "scontent-hkg1-2.cdninstagram.com",
       "scontent-hkg4-1.cdninstagram.com",
       "scontent-hkg1-1.cdninstagram.com",
+      "images.dmca.com",
     ],
   },
   i18n: i18nConfig,
