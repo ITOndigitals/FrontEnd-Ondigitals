@@ -63,6 +63,7 @@ export const getDataPageBlog = async (language, first, before, after, last) => {
           title
           date
           slug
+          content
           excerpt
           postId
           featuredImage {

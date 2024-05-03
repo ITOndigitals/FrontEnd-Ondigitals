@@ -25,6 +25,7 @@ export const GET_POSTS_BY_FILTER = gql`
         date
         excerpt
         slug
+        content
         postId
         featuredImage {
           node {

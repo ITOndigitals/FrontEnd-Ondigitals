@@ -23,12 +23,11 @@ const IntroSection = ({ data }) => {
             <p className={`${classes["intro-greeting"]} `}>
               {introSectionTextHello}
             </p>
-            <div
-              className={`${classes["intro-brand-img-container"]}`}
-            >
+            <div className={`${classes["intro-brand-img-container"]}`}>
               <Image
                 className={classes["intro-brand-img"]}
                 fill
+                priority="true"
                 src={introSectionLeftImage?.sourceUrl}
                 alt={introSectionLeftImage?.altText}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
@@ -43,9 +42,7 @@ const IntroSection = ({ data }) => {
             </p>
           </div>
           <div className={classes["intro-layout-item"]}>
-            <div
-              className={`${classes["intro-layout-item-video"]} `}
-            >
+            <div className={`${classes["intro-layout-item-video"]} `}>
               <video width="100%" muted autoPlay loop playsInline>
                 <source
                   src="https://api.ondigitals.com/wp-content/uploads/2024/03/ANIMATION-HEVC-2.mov"

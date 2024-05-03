@@ -133,13 +133,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params, locale } = context;
-  const language = locale.toUpperCase();
-  const serviceData = await GetServiceDetailBySlug(params.slug);
-  const blogData = await GetPostDetailBySlug(params.slug, language);
-  const serviceParentsData = await GetServiceParentDetailBySlug(params.slug);
-  const caseStudyData = await GetCaseStudyDetailBySlug(params.slug);
-  const dataFooter = await getTranslatedDataFooter(language);
-  const dataHeader = await getDataMenu(language);
+const language = locale.toUpperCase();
+
+// Thực hiện các cuộc gọi async song song
+const [serviceData, blogData, serviceParentsData, caseStudyData, dataFooter, dataHeader] = await Promise.all([
+    GetServiceDetailBySlug(params.slug),
+    GetPostDetailBySlug(params.slug, language),
+    GetServiceParentDetailBySlug(params.slug),
+    GetCaseStudyDetailBySlug(params.slug),
+    getTranslatedDataFooter(language),
+    getDataMenu(language)
+]);
   // const notFound = true;
   if (serviceData && serviceData.serviceBy) {
     return {

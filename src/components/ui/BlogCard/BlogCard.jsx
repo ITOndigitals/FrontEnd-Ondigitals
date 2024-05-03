@@ -6,11 +6,23 @@ import { Maven_Pro } from "next/font/google";
 import Tag from "../Tag/Tag";
 import DateAndViews from "../DateAndViews/DateAndViews";
 import { useRouter } from "next/router";
+import cheerio from "cheerio";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
 const BlogCard = ({ data }) => {
+  let firstImageSrc =""
+  if (data) {
+    // Kiểm tra xem item.content có tồn tại và có giá trị không
+    const htmlContent = (data.content ?? "").toString();
+
+    // Sử dụng cheerio để phân tích HTML
+    const $ = cheerio.load(htmlContent);
+
+    // Lấy đường dẫn của ảnh đầu tiên
+    firstImageSrc = $("img").attr("src");
+  }
   const post = data;
   const { locale } = useRouter();
   const isoDate = post.date;
@@ -24,12 +36,21 @@ const BlogCard = ({ data }) => {
         <div className={containerClasses}>
           <div className={classes["blog-card__image"]}>
             <Link href={`${post.slug}`} locale={locale}>
-              <Image
-                src={post.featuredImage?.node.sourceUrl}
-                fill
-                alt={post.title}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-              />
+              {post?.featuredImage ? (
+                <Image
+                  src={post.featuredImage?.node.sourceUrl}
+                  fill
+                  alt={post.title}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                />
+              ) : (
+                <Image
+                  src={firstImageSrc}
+                  fill
+                  alt={post.title}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                />
+              )}
             </Link>
           </div>
           <div className={classes["blog-card__content"]}>

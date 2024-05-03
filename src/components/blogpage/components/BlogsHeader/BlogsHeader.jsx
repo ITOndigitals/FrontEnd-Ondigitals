@@ -48,11 +48,6 @@ const DUMMY_SORT_BY = [
     name: "Oldest",
     dataKey: "ASC",
   },
-  {
-    id: 3,
-    name: "Most popular",
-    dataKey: "ASC",
-  },
 ];
 
 const BlogsHeader = ({ onSearch, handleSort, filterCategory, dataContent }) => {

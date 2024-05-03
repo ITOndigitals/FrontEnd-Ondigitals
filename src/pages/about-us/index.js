@@ -44,9 +44,11 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPageAboutUs = 44514;
-  const data = await GetPageAboutUs(idPageAboutUs, language);
-  const dataFooter = await getTranslatedDataFooter(language);
-  const dataHeader = await getDataMenu(language);
+  const [data, dataFooter, dataHeader] = await Promise.all([
+    GetPageAboutUs(idPageAboutUs, language),
+    getTranslatedDataFooter(language),
+    getDataMenu(language),
+  ]);
   const translation = data.pageBy.translations.find(
     (translation) => translation.language.code === language
   );

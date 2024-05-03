@@ -58,11 +58,15 @@ export default function Home({
 
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
-  const allPosts = await getDataForNewAndInsightsSection(language);
   const idHomepageEnglish = 44418;
-  const dataFooter = await getTranslatedDataFooter(language);
-  const dataHeader = await getDataMenu(language);
-  const data = await GetDataHomepage(idHomepageEnglish, language);
+
+  // Parallelize async calls
+  const [allPosts, dataFooter, dataHeader, data] = await Promise.all([
+    getDataForNewAndInsightsSection(language),
+    getTranslatedDataFooter(language),
+    getDataMenu(language),
+    GetDataHomepage(idHomepageEnglish, language),
+  ]);
 
   const translation = data?.pages?.nodes?.[0]?.translations?.find(
     (translation) => translation?.language?.code === language
