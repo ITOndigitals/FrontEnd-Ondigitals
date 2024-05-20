@@ -35,8 +35,17 @@ const TableOfContent = ({ markdown, title }) => {
     const elementHref = element.getAttribute("href");
     const targetId = elementHref.slice(elementHref.indexOf("#") + 1);
     const targetElement = document.getElementById(targetId);
-    targetElement.scrollIntoView({ behavior: "smooth" });
+    const headerHeight = document.querySelector("header").offsetHeight; // Lấy chiều cao của header
+  
+    if (targetElement) {
+      const targetOffset = targetElement.offsetTop - headerHeight; // Tính toán vị trí cần cuộn đến
+      window.scrollTo({
+        top: targetOffset-15,
+        behavior: "smooth"
+      });
+    }
   };
+  
 
   //Bắt sự kiện click vào nút expanse trên TOC
   // useEffect(() => {
@@ -92,7 +101,10 @@ const TableOfContent = ({ markdown, title }) => {
 
   return (
     <div className={classes.toc}>
-      <div className={classes["toc-heading"]}>
+      <div
+        onClick={toggleShowTableOfContent}
+        className={classes["toc-heading"]}
+      >
         <p className={classes["toc-heading__content"]}>
           {title?.titleTableOfContent}
         </p>
@@ -100,7 +112,6 @@ const TableOfContent = ({ markdown, title }) => {
           className={`${classes["toc-heading__btn"]} ${
             tableOfContentIsShown ? classes.hide : ""
           }`}
-          onClick={toggleShowTableOfContent}
         >
           <DownNavIcon width={30} height={30} color="#131114" />
         </div>

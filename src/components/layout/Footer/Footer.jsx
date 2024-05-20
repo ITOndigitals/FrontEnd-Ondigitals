@@ -11,6 +11,7 @@ import { Maven_Pro } from "next/font/google";
 import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -98,7 +99,22 @@ export default function Footer({ data }) {
               </Link>
             </div>
             <div style={{ marginTop: "10px" }}>
-              {columFollowUs?.inputDmca && parse(columFollowUs.inputDmca)}
+              {/* {columFollowUs?.inputDmca && parse(columFollowUs.inputDmca)} */}
+              <Link
+                href="https://www.dmca.com/Protection/Status.aspx?ID=6950ddd2-dee7-4269-bb55-98e4f776a325&refurl=https://ondigitals.com/"
+                title="DMCA.com Protection Status"
+                className="dmca-badge"
+                target="_blank"
+                rel="nofollow"
+              >
+                <Image
+                  src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=244fa5c9-fa77-485b-9407-b294e1446b88"
+                  alt="DMCA.com Protection Status"
+                  width={122}
+                  height={25}
+                />
+              </Link>
+              <Script strategy="lazyOnload" src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js" />
             </div>
           </div>
         </div>

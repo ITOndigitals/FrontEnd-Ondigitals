@@ -1,4 +1,5 @@
 export default function replaceUrlsHead(fullHead) {
+  if(!fullHead) return null;
   return fullHead
     .replace(
       /<link\s+rel="canonical"\s+href="https:\/\/api\.ondigitals\.com([^"]*)"/g,

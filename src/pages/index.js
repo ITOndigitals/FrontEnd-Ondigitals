@@ -42,7 +42,7 @@ export default function Home({
     };
   }, []);
   const fullHeadHTML =
-    replaceUrlsHead(dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead).replace(
+    replaceUrlsHead(dataHomepage?.pages?.nodes?.[0]?.seo?.fullHead)?.replace(
       /trang-chu\/|homepagechina\/|trang-chu-nhat\/|trang-chu-han\//g,
       ""
     ) || "";

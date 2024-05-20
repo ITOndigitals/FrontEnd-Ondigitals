@@ -155,10 +155,8 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
               >
                 {relatedPosts &&
                   relatedPosts.slice(0, 5).map((item) => (
-                    <li>
-                      <Link key={item.id} href={item.slug}>
-                        {item.title}
-                      </Link>
+                    <li key={item.id}>
+                      <Link href={item.slug}>{item.title}</Link>
                     </li>
                   ))}
               </ul>
@@ -179,8 +177,8 @@ const BlogDetail = ({ relatedPosts, postDetail }) => {
             <ul className={classes["blog-detail-read-more__listPosts"]}>
               {dataPostReadMore &&
                 dataPostReadMore.map((item) => (
-                  <li>
-                    <Link key={item.id} href={item.slug}>
+                  <li key={item.id}>
+                    <Link  href={item.slug}>
                       {item.title}
                     </Link>
                   </li>

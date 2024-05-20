@@ -1,7 +1,7 @@
 import { request, gql } from "graphql-request";
 import { endPointApi } from "./endpoint";
+const endpoint = endPointApi;
 export const GetDataFooter = async (id) => {
-  const endpoint = endPointApi;
   const query = gql`
     query GetDataFooter($id: Int!) {
       pages(where: { id: $id }) {
@@ -52,7 +52,6 @@ export const GetDataFooter = async (id) => {
   }
 };
 export const GetDataHeader = async (id) => {
-  const endpoint = endPointApi;
   const query = gql`
     query GetDataHeader($id: Int!) {
       pageBy(pageId: $id) {
@@ -104,7 +103,6 @@ export const getTranslatedDataFooter = async (language) => {
   return dataFooter;
 };
 export const GetDataMenuHeader = async (languageCode) => {
-  const endpoint = endPointApi;
   const locationFilter =
     languageCode === "EN" ? "PRIMARY" : `PRIMARY___${languageCode}`;
   const query = gql`

@@ -43,13 +43,20 @@ const IntroSection = ({ data }) => {
           </div>
           <div className={classes["intro-layout-item"]}>
             <div className={`${classes["intro-layout-item-video"]} `}>
-              <video width="100%" muted autoPlay loop playsInline>
+              <video
+                width="100%"
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="auto"
+              >
                 <source
-                  src="https://api.ondigitals.com/wp-content/uploads/2024/03/ANIMATION-HEVC-2.mov"
-                  type='video/mp4; codecs="hvc1"'
+                  src="/assets/video/ANIMATION-HEVC-2.mov"
+                  type='./video/mp4; codecs="hvc1"'
                 />
                 <source
-                  src="https://api.ondigitals.com/wp-content/uploads/2024/02/Animation-WEBM.webm"
+                  src="/assets/video/Animation-WEBM.webm"
                   type="video/webm"
                 />
               </video>

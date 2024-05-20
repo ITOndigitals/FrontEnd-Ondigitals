@@ -40,6 +40,13 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
       window.scrollTo({ top: offsetTop - 75, behavior: "smooth" });
     }
   };
+  const convertToURL = (text) => {
+    // Loại bỏ các ký tự đặc biệt và chuyển thành chữ thường
+    const cleanedText = text.toLowerCase().replace(/[^a-z0-9\s]/g, "");
+    // Thay thế dấu cách bằng dấu gạch ngang
+    const url = cleanedText.replace(/\s+/g, "-");
+    return url;
+  };
   // console.log(
   //   parse(post.content).findIndex((item) => item === "[divider height=”30″]")
   // );
@@ -66,7 +73,7 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
         }
 
         if (headingContent !== "") {
-          const headingId = "heading-" + i;
+          const headingId = convertToURL(headingContent);
           headingElement.id = headingId;
           let numbering = 1;
 

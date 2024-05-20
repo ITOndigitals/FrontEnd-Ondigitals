@@ -12,10 +12,15 @@ import { useEffect } from "react";
 import { langHtml } from "../../utils/languageSlug";
 import { GoogleFonts } from "next-google-fonts";
 import { Maven_Pro } from "next/font/google";
+import Script from "next/script";
 
-const fixelFont = localFont({ src: "../fonts/FixelVariable.ttf" });
+const fixelFont = localFont({
+  src: "../fonts/FixelVariable.ttf",
+  display: "swap",
+});
 const notoSans = localFont({
   src: "../fonts/NotoSansSC-Light.woff2",
+  display: "swap",
 });
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -67,18 +72,15 @@ export default function App({ Component, pageProps }) {
               name="ICBM"
               content="10.763109429425983, 106.69381408995902"
             />
-            <script
-              async   
-              src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2"
-            />
-            <script
+            <Script src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2" />
+            <Script
               dangerouslySetInnerHTML={{
                 __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-H7T16R0SB2');
-      `,
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H7T16R0SB2');
+    `,
               }}
             />
           </Head>
