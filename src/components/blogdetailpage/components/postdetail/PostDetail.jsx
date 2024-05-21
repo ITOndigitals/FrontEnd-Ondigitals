@@ -37,7 +37,7 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
   const handleScrollToTop = () => {
     if (postDetailRef.current) {
       const offsetTop = postDetailRef.current.offsetTop;
-      window.scrollTo({ top: offsetTop - 75, behavior: "smooth" });
+      window.scrollTo({ top: offsetTop - 60, behavior: "smooth" });
     }
   };
   const convertToURL = (text) => {

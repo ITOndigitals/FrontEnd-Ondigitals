@@ -137,30 +137,44 @@ export const GetDataMenuHeader = async (languageCode) => {
   }
 };
 export const getDataMenu = async (languageCode) => {
-  const data = await GetDataMenuHeader(languageCode);
-  const idPage = 45869;
-  const [dataHeader] = await Promise.all([
-    GetDataHeader(idPage),
-  ]);
-  const translation = dataHeader.translations.find(
-    (t) => t.language.code === languageCode
-  );
-  const updatedData = translation
-    ? await GetDataHeader(translation.pageId)
-    : dataHeader;
-  const { menuItems, serviceParents } = data;
-  const listServices = serviceParents?.nodes;
-  const updatedMenuItems = menuItems?.nodes.map((item, index) => {
-    if (index === 1) {
-      return {
-        ...item,
-        listServices,
-      };
-    }
-    return {
-      ...item,
-    };
-  });
+  try {
+    const idPage = 45869;
 
-  return { dataMenu: updatedMenuItems, updatedData };
+    // Gộp các lệnh gọi bất đồng bộ vào một Promise.all
+    const [data, dataHeader] = await Promise.all([
+      GetDataMenuHeader(languageCode),
+      GetDataHeader(idPage),
+    ]);
+
+    // Kiểm tra nếu dataHeader và dataHeader.translations tồn tại
+    const translation = dataHeader?.translations?.find(
+      (t) => t?.language?.code === languageCode
+    );
+
+    const updatedData = translation
+      ? await GetDataHeader(translation.pageId)
+      : dataHeader;
+
+    const { menuItems, serviceParents } = data || {};
+    const listServices = serviceParents?.nodes;
+
+    // Kiểm tra nếu menuItems tồn tại và là một mảng
+    const updatedMenuItems =
+      menuItems?.nodes?.map((item, index) => {
+        if (index === 1) {
+          return {
+            ...item,
+            listServices,
+          };
+        }
+        return {
+          ...item,
+        };
+      }) || [];
+
+    return { dataMenu: updatedMenuItems, updatedData };
+  } catch (error) {
+    console.error("Error in getDataMenu:", error);
+    return { dataMenu: [], updatedData: null };
+  }
 };
