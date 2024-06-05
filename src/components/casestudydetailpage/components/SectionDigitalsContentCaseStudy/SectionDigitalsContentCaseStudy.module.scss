@@ -1,6 +1,5 @@
 .section-digitals-content {
   padding: 5% 0;
-  color: #111111;
   &-head {
     display: flex;
     align-items: center;
@@ -11,23 +10,43 @@
       line-height: 40px;
     }
     &-textRight {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 26px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       a {
         text-decoration: underline;
       }
     }
   }
+  &-decs {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    width: 50%;
+    p {
+      margin-top: 10px;
+    }
+    ul{
+      list-style: inside;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
   &-body {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
     &__title {
       text-align: center;
       font-size: 28px;
       font-weight: 600;
       line-height: 36px;
+      margin-top: 30px;
     }
     &__titleFooter {
       font-size: 16px;
@@ -52,7 +71,6 @@
         &__image {
           width: 100%;
           height: 300px;
-          box-shadow: 0px 8px 16.399999618530273px 0px #00000040;
           position: relative;
         }
       }
@@ -66,11 +84,12 @@
     &-head {
       flex-direction: column;
       align-items: center;
-      gap: 50px;
+      gap: 30px;
       &-textLeft {
         font-size: 36px;
         font-weight: 600;
         line-height: 40px;
+        text-align: center;
       }
       &-textRight {
         font-size: 18px;
@@ -85,12 +104,18 @@
     &-body {
       &__item {
         &__card {
-          width: 47% !important;
           &__image {
-            height: 350px;
+            height: 350px !important;
           }
         }
+        .cards {
+          width: 47% !important;
+        }
       }
+    }
+    &-decs {
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -98,8 +123,11 @@
   .section-digitals-content {
     &-body {
       &__item {
-        &__card {
+        .cards {
           width: 100% !important;
+        }
+        .singleimage{
+          height: 250px !important;
         }
       }
     }

@@ -4,43 +4,51 @@ import Link from "next/link";
 import { Maven_Pro } from "next/font/google";
 import ExploreButton from "@/components/ui/Buttons/ExploreButton/ExploreButton";
 import Tag from "@/components/ui/Tag/Tag";
+import { useRouter } from "next/router";
+import { localeLangButtonExplore } from "../../../../../utils/languageSlug";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
-const CaseStudyItem = ({ item, href }) => {
+const CaseStudyItem = ({ item }) => {
+  const { locale } = useRouter();
+  const { featuredImage, categories, slug, title } = item;
+  const handleUrl = (url) => {
+    return locale === "en" ? `/${url}` : `/${locale}/${url}`;
+  };
+
   return (
-    <li className={classes.item}>
-      <div href={href} className={classes["item-wrapper"]}>
+    <div className={`${classes.item} case-study-item`}>
+      <div className={classes["item-wrapper"]}>
         <Image
-          src={item.image}
+          src={featuredImage?.node?.sourceUrl}
           fill
           style={{ objectFit: "cover" }}
-          alt="case-study-image"
+          alt={featuredImage?.node?.altText}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
         <div className={classes["item-content"]}>
           <div>
-            <p className={classes["item-content__main-title"]}>{item.name}</p>
-            <p
-              className={classes["item-content__year"]}
-              style={{ fontFamily: MavenPro.style.fontFamily }}
-            >
-              {item.year}
+            <p className={classes["item-content__main-title"]}>
+              {title && title}
             </p>
           </div>
           <ul className={classes["tag-list"]}>
-            {item.tags.map((item, index) => (
-              <Link href="#" className={classes["tag-item"]} key={index}>
-                <Tag type={item.type} name={item.name} />
-              </Link>
+            {categories.nodes.map((item, index) => (
+              <li className={classes["tag-item"]} key={index}>
+                <Tag
+                  backgroundColor={item.description}
+                  name={item.name}
+                  href={handleUrl(item.slug)}
+                />
+              </li>
             ))}
           </ul>
-          <Link href="#" className={classes["explore-btn"]}>
-            <ExploreButton>Explore</ExploreButton>
+          <Link href={handleUrl(slug)} className={classes["explore-btn"]}>
+            <ExploreButton>{localeLangButtonExplore[locale]}</ExploreButton>
           </Link>
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 

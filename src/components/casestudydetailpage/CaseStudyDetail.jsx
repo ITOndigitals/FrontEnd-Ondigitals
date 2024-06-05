@@ -3,8 +3,6 @@ import IntroCaseStudyDetail from "./components/IntroCaseStudyDetail/IntroCaseStu
 import { useBoundStore } from "@/store/useBoundStore";
 import ResultsCaseStudyDetail from "./components/ResultsCaseStudyDetail/ResultsCaseStudyDetail";
 import SectionDigitalsContent from "./components/SectionDigitalsContentCaseStudy/SectionDigitalsContentCaseStudy";
-import SectionVideoCaseStudy from "./components/SectionVideoCaseStudy/SectionVideoCaseStudy";
-import SectionContentCaseStudy from "./components/SectionContentCaseStudy/SectionContentCaseStudy";
 import CaseStudyViewMore from "./components/CaseStudyViewMore/CaseStudyViewMore";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useRouter } from "next/router";
@@ -14,9 +12,10 @@ export default function CaseStudyDetail({ data }) {
   const router = useRouter();
   const currentLanguage = router.locale.toUpperCase();
   const { caseStudyDetailPage, cta, translations } = data.caseStudyBy;
-  const { sectionResults, sectionDigitalContent, sectionVideo } =
-    caseStudyDetailPage;
-
+  const {
+    sectionResults,
+    sectionContentBody,
+  } = caseStudyDetailPage;
   if (data.caseStudyBy) {
     const matchingTranslation = translations?.find(
       (translation) => translation.language.code === currentLanguage
@@ -57,16 +56,16 @@ export default function CaseStudyDetail({ data }) {
     setHeaderCanChangeColor();
     setToLight();
   }, [headerIsDark]);
-
+console.log(cta)
   return (
     <>
       <IntroCaseStudyDetail data={data} />
       <ResultsCaseStudyDetail data={sectionResults} />
-      <SectionDigitalsContent data={sectionDigitalContent} />
-      {/* <SectionVideoCaseStudy data={sectionVideo} />
-      <SectionContentCaseStudy /> */}
-      {/* <CaseStudyViewMore /> */}
-      {/* <NeedHelpDigitalGrowth data={cta} /> */}
+      {sectionContentBody.sectionContentDetail && sectionContentBody.sectionContentDetail.map((item, index) => (
+        <SectionDigitalsContent key={index} data={item} />
+      ))}
+      <CaseStudyViewMore />
+      <NeedHelpDigitalGrowth data={cta} />
     </>
   );
 }

@@ -54,6 +54,7 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
         caseStudyDetailPage {
           sectionIntro {
             backgroundcolor
+            textColor
             imageBackground {
               altText
               sourceUrl
@@ -78,38 +79,46 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
               titleItem
             }
           }
-          sectionDigitalContent {
-            paddingBottom
-            titleBody
-            titleFooter
-            titleLeft
-            titleRight
-            widthImage
-            listImage {
-              titleImage
-              itemImage {
-                altText
-                sourceUrl
+          sectionContentBody {
+            sectionContentDetail {
+              backgroundColor
+              textColor
+              layoutVideo {
+                ... on Case_study_Casestudydetailpage_SectionContentBody_sectionContentDetail_LayoutVideo_LayoutVideoSingle {
+                  backgroundColor
+                  fieldGroupName
+                  listVideo {
+                    linkVideoItem
+                  }
+                  titleLeft
+                  titleRight
+                  widthVideo
+                }
+                ... on Case_study_Casestudydetailpage_SectionContentBody_sectionContentDetail_LayoutVideo_LayoutVideoSlide {
+                  backgroundColor
+                  fieldGroupName
+                  listVideoSlide {
+                    linkVideo
+                    titleVideo
+                  }
+                }
               }
-            }
-          }
-          sectionVideo {
-            backgroundColor
-            backgroundColorVideoSingle
-            marginBottom
-            marginTop
-            titleLeft
-            titleRight
-            titleSlider
-            listVideoSlide {
-              linkVideo
-            }
-            listVideoSingle {
-              linkVideo
+              listImage {
+                imageItem {
+                  altText
+                  sourceUrl
+                }
+              }
+              textDecs
+              titleRight
+              titleLeft
+              titleListImage
+              widthImage
+              heightImage
+              objectFitImage
             }
           }
         }
-
         categories {
           nodes {
             slug
@@ -134,5 +143,87 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
   } catch (error) {
     console.error("Error fetching data", error);
     return null;
+  }
+};
+export const GetDataPageCaseStudy = async (id, languageCode) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetListSlugCaseStudy(
+      $id: Int!
+      $languageCode: LanguageCodeFilterEnum!
+    ) {
+      pageBy(pageId: $id) {
+        pageCaseStudy {
+          sectionIntro {
+            backgroundColor
+            content
+            textScroll
+            textScrollDecs
+          }
+          sectionListCaseStudy {
+            backgroundColor
+            title
+            titleService
+            titleSortby
+            tittleIndustry
+          }
+        }
+        translations {
+          language {
+            code
+          }
+          pageId
+        }
+        cta {
+          backgroundColor
+          buttonColor
+          content
+          textButton
+          title
+        }
+        seo {
+          fullHead
+        }
+      }
+      allCaseStudy(
+        first: 4
+        where: {
+          language: $languageCode
+          orderby: { field: DATE, order: DESC }
+        }
+      ) {
+        nodes {
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+          slug
+          title
+          categories {
+            nodes {
+              slug
+              name
+              description
+            }
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
+      }
+    }
+  `;
+  const variables = { id, languageCode };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
   }
 };

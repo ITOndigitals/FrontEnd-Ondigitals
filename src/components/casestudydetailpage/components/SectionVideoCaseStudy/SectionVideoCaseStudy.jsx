@@ -25,7 +25,6 @@ export default function SectionVideoCaseStudy({ data }) {
       <div className="container">
         <div className={classes["section-video-main"]}>
           <div
-            style={{ marginTop: marginTop }}
             className={classes["section-video-main__slider"]}
           >
             <Swiper
@@ -53,7 +52,7 @@ export default function SectionVideoCaseStudy({ data }) {
               {titleSlider && titleSlider}
             </p>
           </div>
-          <div
+          {/* <div
             style={{
               marginBottom: marginBottom,
               backgroundColor: backgroundColorVideoSingle,
@@ -78,7 +77,7 @@ export default function SectionVideoCaseStudy({ data }) {
             >
               {titleRight && titleRight}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

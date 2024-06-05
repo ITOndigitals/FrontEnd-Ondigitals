@@ -24,6 +24,7 @@ const nextConfig = {
       generateRewrites("vi", "tin-tuc", "digital-news")
     );
     rewrites = rewrites.concat(generateRewrites("vi", "dich-vu", "services"));
+    rewrites = rewrites.concat(generateRewrites("vi", "du-an", "case-study"));
     rewrites = rewrites.concat(generateRewrites("vi", "lien-he", "contact"));
     rewrites = rewrites.concat(
       generateRewrites("vi", "ve-chung-toi", "about-us")
@@ -55,6 +56,13 @@ const nextConfig = {
     rewrites = rewrites.concat(
       generateRewrites(
         "jp",
+        "%e3%82%b1%e3%83%bc%e3%82%b9%e3%82%b9%e3%82%bf%e3%83%87%e3%82%a3",
+        "case-study"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "jp",
         "%e3%83%87%e3%83%bc%e3%82%bf%e3%83%9d%e3%83%aa%e3%82%b7%e3%83%bc-%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6",
         "data-policy"
       )
@@ -72,6 +80,13 @@ const nextConfig = {
     );
     rewrites = rewrites.concat(
       generateRewrites("kr", "%ec%97%b0%eb%9d%bd%ed%95%98%eb%8b%a4", "contact")
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "kr",
+        "%ec%82%ac%eb%a1%80-%ec%97%b0%ea%b5%ac",
+        "case-study"
+      )
     );
     rewrites = rewrites.concat(
       generateRewrites(
@@ -100,6 +115,9 @@ const nextConfig = {
     );
     rewrites = rewrites.concat(
       generateRewrites("zh", "%e8%81%94%e7%b3%bb", "contact")
+    );
+    rewrites = rewrites.concat(
+      generateRewrites("zh", "%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90", "case-study")
     );
     rewrites = rewrites.concat(
       generateRewrites(

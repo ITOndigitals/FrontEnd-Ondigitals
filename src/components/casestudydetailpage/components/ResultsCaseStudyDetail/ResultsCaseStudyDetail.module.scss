@@ -53,8 +53,9 @@
         justify-content: center;
         flex-wrap: wrap;
         row-gap: 30px;
+        column-gap: 10px;
         &__text {
-          width: 50% !important;
+          width: 47% !important;
           gap: 0px;
           &__number {
             font-size: 32px;

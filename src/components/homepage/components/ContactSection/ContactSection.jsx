@@ -77,7 +77,8 @@ const ContactSection = React.forwardRef((props, ref) => {
               <p style="font-weight: 300; display: inline;">${values.phone}</p>
             </a>
           </h4>
-          <strong style="color: black;">Message: <p style="font-weight: 300; display: inline;">${values.message}</p></strong>`,
+          <strong style="color: black;">Message:</strong> 
+          <pre style="font-weight: 300; display: inline; white-space: pre-wrap;line-height: 24px;">${values.message}</pre>`,
           subject: "Hello from On Digitals!",
         },
       });

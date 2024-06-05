@@ -4,7 +4,10 @@ import { useBoundStore } from "@/store/useBoundStore";
 import CaseStudy from "./components/CaseStudy/CaseStudy";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 
-export default function CaseStudyPage() {
+export default function CaseStudyPage({ data }) {
+  const { pageBy, allCaseStudy } = data;
+  const { cta, pageCaseStudy } = pageBy;
+  const combinedData = { ...pageCaseStudy, ...allCaseStudy };
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
     (state) => state.setHeaderCanChangeColor
@@ -37,9 +40,9 @@ export default function CaseStudyPage() {
 
   return (
     <>
-      <IntroCaseStudyPage />
-      <CaseStudy/>
-      <NeedHelpDigitalGrowth/>
+      <IntroCaseStudyPage data={pageCaseStudy.sectionIntro} />
+      <CaseStudy data={combinedData} />
+      <NeedHelpDigitalGrowth data={cta} />
     </>
   );
 }

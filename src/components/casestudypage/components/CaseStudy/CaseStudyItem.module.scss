@@ -65,5 +65,7 @@
     transition: opacity 0.3s;
     pointer-events: none;
     visibility: hidden;
+    display: flex;
+    justify-content: flex-end;
   }
 }

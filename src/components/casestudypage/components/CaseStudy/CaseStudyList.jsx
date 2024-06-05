@@ -1,12 +1,16 @@
+import NotFound from "@/components/ui/NotFound/NotFound";
 import CaseStudyItem from "./CaseStudyItem";
 import classes from "./CaseStudyList.module.scss";
 
-const CaseStudyList = ({items}) => {
+const CaseStudyList = ({ items }) => {
+  if (items.length < 1) return <p className={classes.nodata}>No Data</p>;
   return (
-    <ul className={classes.list}>
-        {items.map(item => <CaseStudyItem item={item} href="#" key={item.id}/>)}
-    </ul>
-  )
-}
+    <div className={`${classes.list} list-case-study`}>
+      {items.map((item, index) => (
+        <CaseStudyItem item={item} key={index} />
+      ))}
+    </div>
+  );
+};
 
-export default CaseStudyList
+export default CaseStudyList;

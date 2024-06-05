@@ -1,5 +1,9 @@
 @import "../../../../styles/variables";
 
+.intro-conent{
+  display: flex;
+  align-items: center;
+}
 .intro-service {
   height: 100vh;
   display: flex;
@@ -27,6 +31,14 @@
         line-height: 24px;
         margin-bottom: 10px;
       }
+    }
+  }
+  &__image{
+    position: relative;
+    width: 45%;
+    height: 500px;
+    img{
+      object-fit: contain;
     }
   }
   .scroll-msg {
@@ -81,11 +93,20 @@
   }
 }
 @media (max-width: 1200px) {
+  .intro-conent{
+    flex-wrap: wrap;
+  }
   .intro-service {
     height: auto;
     padding-bottom: calc($header-height + $section-padding);
     &__content {
       width: 80%;
+    }
+    &__image{
+      width: 100%;
+      img{
+        object-fit: contain;
+      }
     }
     .scroll-msg {
       bottom: 30%;
@@ -99,18 +120,40 @@
       bottom: 23%;
       transform: translateY(-50%);
     }
+    &__image{
+      width: 100%;
+      height: 350px;
+      img{
+        object-fit: contain;
+      }
+    }
   }
 }
 @media (max-width: 480px) {
   .intro-service {
     .scroll-msg {
-      bottom: 17%;
+      bottom: 15%;
       transform: translateY(-50%);
+    }
+    &__image{
+      width: 100%;
+      height: 200px;
+      img{
+        object-fit: contain;
+      }
     }
   }
 }
 @media (max-width: 390px) {
   .intro-service {
     height: auto;
+    &__image{
+      width: 100%;
+      height: 140px;
+      img{
+        object-fit: contain;
+      }
+    }
   }
+  
 }

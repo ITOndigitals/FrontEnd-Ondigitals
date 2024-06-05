@@ -12,6 +12,7 @@ export default function IntroCaseStudyDetail({ data }) {
     backgroundcolor,
     imageBackground,
     imageMoblie,
+    textColor,
     logoBrand,
     titleCategory,
     titleTagIndustry,
@@ -40,7 +41,7 @@ export default function IntroCaseStudyDetail({ data }) {
         }}
       >
         <div className={`container ${classes["content-layout-mobile"]}`}>
-          <div className={classes["intro-case-study-detail-content"]}>
+          <div style={{color:textColor}} className={classes["intro-case-study-detail-content"]}>
             <div className={classes["intro-case-study-detail-content__image"]}>
               <Image
                 src={logoBrand?.sourceUrl}

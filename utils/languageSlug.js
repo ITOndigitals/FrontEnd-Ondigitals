@@ -40,6 +40,13 @@ export const localeLangButtonContact = {
   jp: "お問い合わせ",
   kr: "문의하기",
 };
+export const localeLangButtonExplore = {
+  en: "Explore",
+  vi: "Khám phá",
+  zh: "探索",
+  jp: "探検する",
+  kr: "탐구하다",
+};
 export const translateTitlePage404 = {
   en: "Lost in the digital space?",
   vi: "Lạc lối trong không gian kỹ thuật số? ",
@@ -107,6 +114,13 @@ export const languagePathsCodesofEthnics = {
   jp: "/jp/デジタル-マーケティング-の-倫理-規定",
   kr: "/kr/디지털-마케팅-민족-코드",
 };
+export const languagePathsCaseStudy = {
+  en: "/case-study",
+  vi: "/vi/du-an",
+  zh: "/zh/案例分析",
+  jp: "/jp/ケーススタディ",
+  kr: "/kr/사례-연구",
+};
 export const getLanguagePathService = (locale) => {
   return languagePathsService[locale] || "/services";
 };
@@ -126,7 +140,9 @@ export const getLanguagePathDataPolicy = (locale) => {
 export const getLanguagePathCodesofEthnics = (locale) => {
   return languagePathsCodesofEthnics[locale] || "/codes-of-ethnics";
 };
-
+export const getLanguagePathCaseStudy = (locale) => {
+  return languagePathsCaseStudy[locale] || "/case-study";
+};
 export const slugServicesMenuMobile = {
   en: {
     databaseId: 1,

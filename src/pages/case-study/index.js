@@ -1,22 +1,64 @@
-// import CaseStudyPage from "@/components/casestudypage/CaseStudyPage";
-// import React from "react";
-// import Header from "@/components/layout/Header/Header";
-// import Footer from "@/components/layout/Footer/Footer";
+import CaseStudyPage from "@/components/casestudypage/CaseStudyPage";
+import React, { useEffect } from "react";
+import { GetDataPageCaseStudy } from "../api/graphqlCaseStudy";
+import {
+  getDataMenu,
+  getTranslatedDataFooter,
+} from "../api/graphqlHeaderFooter";
+import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
+import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import {
+  getLanguagePathCaseStudy,
+  languagePathsCaseStudy,
+} from "../../../utils/languageSlug";
 
-// export default function PagesMainCaseStudy() {
-//   return (
-//     <>
-//       <Header />
-//       <CaseStudyPage />
-//       <Footer />
-//     </>
-//   );
-// }
-import React from 'react'
+const parse = require("html-react-parser");
 
-export default function index() {
+export default function PagesMainCaseStudy({
+  updatedData,
+  dataFooter,
+  dataHeader,
+}) {
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathCaseStudy(locale);
+  useEffect(() => {
+    if (locale in languagePathsCaseStudy) {
+      router.push(basePath);
+    }
+  }, [locale]);
+  const dataHead = replaceUrlsHead(updatedData.pageBy?.seo?.fullHead);
   return (
-    <div>index</div>
-  )
+    <>
+      <Header data={dataHeader} />
+      <Head>{dataHead && parse(dataHead)}</Head>
+      <CaseStudyPage data={updatedData} />
+      <Footer data={dataFooter} />
+    </>
+  );
 }
-
+export const getServerSideProps = async ({ locale }) => {
+  const language = locale.toUpperCase();
+  const idPage = 53542;
+  const [dataPage, dataFooter, dataHeader] = await Promise.all([
+    GetDataPageCaseStudy(idPage, language),
+    getTranslatedDataFooter(language),
+    getDataMenu(language),
+  ]);
+  const translation = dataPage.pageBy?.translations.find(
+    (t) => t.language.code === language
+  );
+  const updatedData = translation
+    ? await GetDataPageCaseStudy(translation.pageId, language)
+    : dataPage;
+  return {
+    props: {
+      updatedData,
+      dataFooter,
+      dataHeader,
+    },
+  };
+};

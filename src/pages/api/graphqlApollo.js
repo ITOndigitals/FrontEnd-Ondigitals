@@ -49,6 +49,52 @@ export const GET_POSTS_BY_FILTER = gql`
     }
   }
 `;
+export const GET_CASE_STUDY_BY_FILTER = gql`
+  query GetCaseStudy(
+    $categoryId: Int!
+    $order: OrderEnum!
+    $language: LanguageCodeFilterEnum!
+    $tagId: String!
+    $after: String!
+    $first: Int!
+  ) {
+    allCaseStudy(
+      where: {
+        categoryId: $categoryId
+        orderby: { field: DATE, order: $order }
+        language: $language
+        tagId: $tagId
+      }
+      after: $after
+      first: $first
+    ) {
+      nodes {
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+          }
+        }
+        slug
+        title
+        categories {
+          nodes {
+            slug
+            name
+            description
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+`;
+
 export const GET_POSTS_BY_TAG = gql`
   query GetPostsByTag($categoryId: Int!) {
     posts(
@@ -65,11 +111,22 @@ export const GET_POSTS_BY_TAG = gql`
 `;
 export const GET_CATEGORY_POST = gql`
   query GetCategoryPost($language: LanguageCodeFilterEnum!) {
-    categories(where: { language: $language }) {
+    categories(where: { language: $language,, order: ASC, orderby: COUNT }) {
       nodes {
         name
         slug
         categoryId
+      }
+    }
+  }
+`;
+export const GET_TAG = gql`
+  query GetTag($language: LanguageCodeFilterEnum!) {
+    tags(where: { language: $language }) {
+      nodes {
+        name
+        slug
+        tagId
       }
     }
   }

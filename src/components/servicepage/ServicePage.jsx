@@ -3,7 +3,6 @@ import IntroService from "./components/IntroService/IntroService";
 import AllServiceOndigitals from "./components/AllServiceOndigitals/AllServiceOndigitals";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useBoundStore } from "@/store/useBoundStore";
-import CaseStudyServicePage from "./components/CaseStudy/CaseStudy";
 
 export default function ServicePage({ data }) {
   const { pageBy } = data;
@@ -42,7 +41,6 @@ export default function ServicePage({ data }) {
     <>
       <IntroService data={pageBy} />
       <AllServiceOndigitals dataAllServices={data} />
-      {/* <CaseStudyServicePage /> */}
       <NeedHelpDigitalGrowth data={dataCTA} />
     </>
   );
