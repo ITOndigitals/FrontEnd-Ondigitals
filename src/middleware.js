@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { dataSlugPostVi } from "../utils/dataSlugPostVi";
 import { dataSlugServiceAndServiceParent } from "../utils/dataSlugServiceAndServiceParent";
-import { dataSlugServiceOld } from "../utils/dataSlugServiceOld";
+import { dataSlugServiceOldAndRedirectUrl } from "../utils/dataSlugRedirect";
 import { dataListslugOld } from "../utils/dataListslugOld";
 import { dataListSlugEn } from "../utils/dataSlugPostEn";
 import { urlRedirects } from "../utils/urlRedirects";
@@ -82,7 +82,7 @@ export function middleware(request) {
   }
 
   // fuction 301 các services website cũ cho các ngôn ngữ
-  const matchedItemServiceOld = dataSlugServiceOld.find((item) => {
+  const matchedItemServiceOld = dataSlugServiceOldAndRedirectUrl.find((item) => {
     return (
       request.nextUrl.pathname === `/${encodeURIComponent(item.slugOld)}/` &&
       !stringsToCheck.some((str) => request.nextUrl.locale.includes(str))

@@ -16,6 +16,7 @@ import { useMutation } from "@apollo/client";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
 import { SendEmailContactForm } from "../../../../../utils/sendEmail";
 import { useRouter } from "next/router";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -38,6 +39,7 @@ export default function ContactUsForm({ data }) {
   const [sendEmailMutation, { loading, error }] =
     useMutation(SendEmailContactForm);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -51,6 +53,30 @@ export default function ContactUsForm({ data }) {
 
   async function handleSubmit(values) {
     try {
+      if (!executeRecaptcha) {
+        console.log("Execute recaptcha not yet available");
+        return;
+      }
+      const token = await executeRecaptcha("submitAction");
+
+      // Gửi token đến server để xác thực
+      const response = await fetch("/api/verify-recaptcha", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
+
+      const dataRecapcha = await response.json();
+
+      if (dataRecapcha.success) {
+        console.log("reCAPTCHA verified successfully");
+        // Thực hiện hành động sau khi xác thực thành công
+      } else {
+        console.log("reCAPTCHA verification failed");
+        // Xử lý khi xác thực thất bại
+      }
       const { data } = await sendEmailMutation({
         variables: {
           body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300; display: inline;">${values.name}</p></h4> 

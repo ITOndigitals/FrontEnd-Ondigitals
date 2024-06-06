@@ -13,6 +13,8 @@ import { langHtml } from "../../utils/languageSlug";
 import { GoogleFonts } from "next-google-fonts";
 import { Maven_Pro } from "next/font/google";
 import Script from "next/script";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { RECAPTCHA_SITE_KEY } from "@/configurations/recaptcha";
 
 const fixelFont = localFont({
   src: "../fonts/FixelVariable.ttf",
@@ -54,39 +56,41 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}
-      <ApolloProvider client={client}>
-        <Layout className={selectedFont}>
-          <Head>
-            <link
-              rel="preload"
-              href="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
-              as="image"
-            />
-            <meta name="geo.region" content="VN-SG" />
-            <meta name="geo.placename" content="Ho Chi Minh" />
-            <meta
-              name="geo.position"
-              content="10.763109429425983;106.69381408995902"
-            />
-            <meta
-              name="ICBM"
-              content="10.763109429425983, 106.69381408995902"
-            />
-            <script src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2" />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+      <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
+        <ApolloProvider client={client}>
+          <Layout className={selectedFont}>
+            <Head>
+              <link
+                rel="preload"
+                href="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
+                as="image"
+              />
+              <meta name="geo.region" content="VN-SG" />
+              <meta name="geo.placename" content="Ho Chi Minh" />
+              <meta
+                name="geo.position"
+                content="10.763109429425983;106.69381408995902"
+              />
+              <meta
+                name="ICBM"
+                content="10.763109429425983, 106.69381408995902"
+              />
+              <script src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2" />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-H7T16R0SB2');
     `,
-              }}
-            />
-          </Head>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
+                }}
+              />
+            </Head>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </GoogleReCaptchaProvider>
     </>
   );
 }

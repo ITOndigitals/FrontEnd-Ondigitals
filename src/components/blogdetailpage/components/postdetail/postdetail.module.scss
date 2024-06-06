@@ -68,10 +68,24 @@
         font-style: normal;
         font-weight: 400;
         line-height: 24px;
+        margin-top: 10px;
       }
       ul {
         list-style: inside;
         padding: 5px 0 0 10px;
+        li {
+          margin-top: 10px;
+          line-height: 20px;
+        }
+      }
+      ol {
+        list-style: auto;
+        padding-left: 5%;
+        margin-top: 10px;
+        li {
+          margin-top: 10px;
+          line-height: 20px;
+        }
       }
     }
     .post-detail-footer {

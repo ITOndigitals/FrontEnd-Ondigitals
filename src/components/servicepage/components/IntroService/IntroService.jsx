@@ -23,9 +23,9 @@ export default function IntroService({ data }) {
           </div>
           <div className={classes["intro-service__image"]}>
             <Image
-              src="https://api.ondigitals.com/wp-content/uploads/2024/06/banner-page-services.png"
+              src="/assets/images/banner-page-services.png"
               fill
-              alt="{post.title}"
+              alt="services ondigitals"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
             />
           </div>

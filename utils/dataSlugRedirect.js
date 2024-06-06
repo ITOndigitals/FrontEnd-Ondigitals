@@ -1,4 +1,4 @@
-export const dataSlugServiceOld = [
+export const dataSlugServiceOldAndRedirectUrl = [
   //page seo parent
   {
     slugNew: "dich-vu-video-marketing",
@@ -459,5 +459,11 @@ export const dataSlugServiceOld = [
     slugNew: "consumer-confidence-index-vietnam",
     slugOld: "vietnam-consumer-confidence-index",
     locale: "vi",
+  },
+  // url redirect
+  {
+    slugNew: "301-redirect-htaccess",
+    slugOld: "guide-to-do-301-redirects-with-htaccess-files",
+    locale: "en",
   },
 ];
