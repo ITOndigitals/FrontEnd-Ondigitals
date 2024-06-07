@@ -28,9 +28,9 @@ const CaseStudyItem = ({ item }) => {
         />
         <div className={classes["item-content"]}>
           <div>
-            <p className={classes["item-content__main-title"]}>
+            <Link href={handleUrl(slug)} className={classes["item-content__main-title"]}>
               {title && title}
-            </p>
+            </Link>
           </div>
           <ul className={classes["tag-list"]}>
             {categories.nodes.map((item, index) => (

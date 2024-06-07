@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./BlogCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,6 +30,13 @@ const BlogCard = ({ data }) => {
   const idPost = post?.postId;
   const viewPost = (idPost % 41) + 10;
   const containerClasses = `${classes["blog-card"]} ${classes["blog-card-blog-page"]}`;
+  //remove more link đọc thêm bài viết từ api
+    useEffect(() => {
+    const element = document.querySelector('a.more-link');
+    if (element) {
+      element.remove();
+    }
+  }, []);
   return (
     <>
       <div className={classes["blog-card-container"]}>
@@ -65,9 +72,7 @@ const BlogCard = ({ data }) => {
               style={{ fontFamily: MavenPro.style.fontFamily }}
               className={classes["blog-card__content--text"]}
             >
-              <Link href={`${post.slug}`} locale={locale}>
                 {post?.excerpt && parse(post.excerpt)}
-              </Link>
             </div>
             <DateAndViews createDate={isoDate} views={viewPost} />
             <div className={classes["blog-card__content__tag"]}>

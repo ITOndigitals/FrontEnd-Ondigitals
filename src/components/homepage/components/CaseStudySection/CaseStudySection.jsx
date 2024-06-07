@@ -5,9 +5,11 @@ import TopRightArrow from "@/components/ui/Icons/TopRightArrow";
 import SectionHeader from "@/components/ui/SectionHeader/SectionHeader";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { getLanguagePathCaseStudy } from "../../../../../utils/languageSlug";
 
 const CaseStudySection = ({ NavButton, data }) => {
   const [isOnMobile, setIsOnMobile] = useState(false);
+  const {locale}=useRouter();
   const { allCaseStudy, pages } = data;
   const { caseStudySessionTitle, caseStudySessionButtonText } =
     pages.nodes[0].homePageInputContent || {};
@@ -33,7 +35,7 @@ const CaseStudySection = ({ NavButton, data }) => {
             {caseStudySessionTitle}
           </h2>
           <ButtonNoBorder
-            href={'/'}
+            href={getLanguagePathCaseStudy(locale)}
             textSize="md"
             RightIcon={<TopRightArrow width={24} height={24} color="#ffffff" />}
           >
