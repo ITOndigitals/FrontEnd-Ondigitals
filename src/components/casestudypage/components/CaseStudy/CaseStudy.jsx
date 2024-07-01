@@ -53,7 +53,6 @@ export default function CaseStudy({ data }) {
     setIsUseFilter(true);
   };
   const handleByTags = (idTags) => {
-    console.log(idTags);
     filterCaseStudy({
       variables: {
         categoryId: idCategory,

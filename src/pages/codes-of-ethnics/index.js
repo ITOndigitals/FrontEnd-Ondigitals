@@ -15,6 +15,7 @@ import {
   languagePathsCodesofEthnics,
 } from "../../../utils/languageSlug";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -35,6 +36,7 @@ export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
     <>
       <Header data={dataHeader} />
       <Head>{dataHead && parse(dataHead)}</Head>
+      <SchemaODS/>
       <ServiceDetail dataServiceDetail={updatedData} isUsePageId={true} />
       <Footer data={dataFooter} />
     </>

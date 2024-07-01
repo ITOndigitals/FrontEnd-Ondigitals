@@ -466,4 +466,9 @@ export const dataSlugServiceOldAndRedirectUrl = [
     slugOld: "guide-to-do-301-redirects-with-htaccess-files",
     locale: "en",
   },
+  {
+    slugNew: "google-lighthouse",
+    slugOld: "lighthouse-score",
+    locale: "en",
+  },
 ];

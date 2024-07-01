@@ -24,6 +24,7 @@ import {
   GetListSlugCaseStudy,
 } from "./api/graphqlCaseStudy";
 import CaseStudyDetail from "@/components/casestudydetailpage/CaseStudyDetail";
+import SchemaODS from "../../utils/schema";
 const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
@@ -41,6 +42,7 @@ export default function DynamicDetailPage({
       <>
         <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
+        <SchemaODS type="serviceBy" />
         <ServiceDetail dataServiceDetail={serviceData} />
         <Footer data={dataFooter} />
       </>
@@ -52,6 +54,7 @@ export default function DynamicDetailPage({
       <>
         <Head>{dataHead && parse(dataHead)}</Head>
         <Header data={dataHeader} />
+        <SchemaODS type="postBy" />
         <BlogDetail postDetail={blogData} relatedPosts={relatedPosts} />
         <Footer data={dataFooter} />
       </>
@@ -65,6 +68,7 @@ export default function DynamicDetailPage({
       <>
         <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
+        <SchemaODS type="serviceParentBy" />
         <ServiceDetail dataServiceDetail={serviceParentsData} />
         <Footer data={dataFooter} />
       </>
@@ -76,6 +80,10 @@ export default function DynamicDetailPage({
       <>
         <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
+        <h1 style={{ display: "none" }}>
+          {caseStudyData?.caseStudyBy?.seo?.title}
+        </h1>
+        <SchemaODS type="caseStudyBy" />
         <CaseStudyDetail data={caseStudyData} />
         <Footer data={dataFooter} />
       </>
@@ -133,17 +141,24 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params, locale } = context;
-const language = locale.toUpperCase();
+  const language = locale.toUpperCase();
 
-// Thực hiện các cuộc gọi async song song
-const [serviceData, blogData, serviceParentsData, caseStudyData, dataFooter, dataHeader] = await Promise.all([
+  // Thực hiện các cuộc gọi async song song
+  const [
+    serviceData,
+    blogData,
+    serviceParentsData,
+    caseStudyData,
+    dataFooter,
+    dataHeader,
+  ] = await Promise.all([
     GetServiceDetailBySlug(params.slug),
     GetPostDetailBySlug(params.slug, language),
     GetServiceParentDetailBySlug(params.slug),
     GetCaseStudyDetailBySlug(params.slug),
     getTranslatedDataFooter(language),
-    getDataMenu(language)
-]);
+    getDataMenu(language),
+  ]);
   // const notFound = true;
   if (serviceData && serviceData.serviceBy) {
     return {

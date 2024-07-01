@@ -52,9 +52,9 @@ const BlogsHeader = ({ onSearch, handleSort, filterCategory, dataContent }) => {
   return (
     <div className={classes["blog-header"]}>
       <div className={classes["blog-header-left-item"]}>
-        <p className={classes["blog-header-left-item__heading"]}>
+        <h2 className={classes["blog-header-left-item__heading"]}>
          {title && title}
-        </p>
+        </h2>
         <p className={classes["blog-header-left-item__desc"]}>
           {textDescription && textDescription}
         </p>

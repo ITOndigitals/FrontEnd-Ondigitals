@@ -14,6 +14,7 @@ import {
 } from "../../../utils/languageSlug";
 import { useEffect } from "react";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -35,6 +36,7 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
       <>
         <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
+        <SchemaODS/>
         <AboutUs data={updatedData} />
         <Footer data={dataFooter} />
       </>

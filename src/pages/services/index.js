@@ -14,6 +14,7 @@ import {
   languagePathsService,
 } from "../../../utils/languageSlug";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -34,6 +35,8 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
     <>
       <Header data={dataHeader} />
       <Head>{dataHead && parse(dataHead)}</Head>
+      <h1 style={{ display: "none" }}>{updatedData?.pageBy?.seo?.title}</h1>
+      <SchemaODS />
       <ServicePage data={updatedData} />
       <Footer data={dataFooter} />
     </>

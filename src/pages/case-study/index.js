@@ -14,6 +14,7 @@ import {
   getLanguagePathCaseStudy,
   languagePathsCaseStudy,
 } from "../../../utils/languageSlug";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -35,6 +36,7 @@ export default function PagesMainCaseStudy({
     <>
       <Header data={dataHeader} />
       <Head>{dataHead && parse(dataHead)}</Head>
+      <SchemaODS/>
       <CaseStudyPage data={updatedData} />
       <Footer data={dataFooter} />
     </>

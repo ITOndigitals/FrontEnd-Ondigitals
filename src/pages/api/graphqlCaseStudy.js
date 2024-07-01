@@ -41,6 +41,7 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
         }
         seo {
           fullHead
+          title
         }
         language {
           slug

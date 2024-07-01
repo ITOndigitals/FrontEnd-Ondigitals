@@ -621,6 +621,7 @@ export const GetPageService = async (id, languageCode) => {
         content
         seo {
           fullHead
+          title
         }
         cta {
           title
@@ -841,6 +842,7 @@ export const GetSeoAndContentBlogPage = async (id) => {
       pageBy(pageId: $id) {
         seo {
           fullHead
+          title
         }
         pageBlog {
           textDescription
@@ -1342,5 +1344,27 @@ export const getDataPolicyAndCoEPage = async (id) => {
   } catch (error) {
     console.error("Error fetching data", error);
     return [];
+  }
+};
+export const GetDataSchema = async (type, slug) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetDataSchema($slug: String!) {
+      ${type}(uri: $slug) {
+        seo {
+          title
+          description
+          focusKeywords
+        }
+      }
+    }
+  `;
+  const variables = { slug };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
   }
 };

@@ -14,6 +14,7 @@ import {
 import { useRouter } from "next/router";
 import replaceUrlsHead from "../../utils/replaceUrlsHead";
 import LoadingSpinner from "@/components/ui/LoadingSpinner/LoadingSpinner";
+import SchemaODS from "../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -48,7 +49,10 @@ export default function Home({
     ) || "";
   return (
     <>
-      <Head>{fullHeadHTML && parse(fullHeadHTML)}</Head>
+      <Head>
+        {fullHeadHTML && parse(fullHeadHTML)}
+      </Head>
+      <SchemaODS/>
       <Header data={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />
       <Footer data={dataFooter} />

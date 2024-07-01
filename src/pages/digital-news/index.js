@@ -19,6 +19,7 @@ import {
 } from "../../../utils/languageSlug";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 import ListUrlAllPosts from "../../../utils/listUrlAllPosts";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -45,7 +46,9 @@ export default function Blog({
   return (
     <>
       <Head>{dataHead && parse(dataHead)}</Head>
+      <SchemaODS/>
       <Header data={dataHeader} />
+      <h1 style={{ display: "none" }}>{seoHead?.seo?.title}</h1>
       <BlogPage blogsData={allPosts} textContent={seoHead} />
       {locale === "en" && <ListUrlAllPosts data={allPostsPaths} />}
       <Footer data={dataFooter} />

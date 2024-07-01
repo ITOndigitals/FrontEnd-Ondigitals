@@ -14,6 +14,7 @@ import {
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
+import SchemaODS from "../../../utils/schema";
 
 const parse = require("html-react-parser");
 
@@ -34,6 +35,7 @@ export default function ContactUs({ updatedData, dataFooter, dataHeader }) {
   return (
     <>
       <Head>{dataHead && parse(dataHead)}</Head>
+      <SchemaODS/>
       <Header data={dataHeader} />
       <Contact data={pageContact} />
       <Footer data={dataFooter} />

@@ -56,7 +56,6 @@ export default function CaseStudyDetail({ data }) {
     setHeaderCanChangeColor();
     setToLight();
   }, [headerIsDark]);
-console.log(cta)
   return (
     <>
       <IntroCaseStudyDetail data={data} />

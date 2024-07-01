@@ -46,6 +46,7 @@ export default function ContactUsForm({ data }) {
       message: "",
       email: "",
       phone: "",
+      honeypot: "", // Trường honeypot ẩn
     },
     validationSchema: getValidationSchema(locale),
     onSubmit: handleSubmit,
@@ -65,36 +66,34 @@ export default function ContactUsForm({ data }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ token }),
+        body: JSON.stringify({ token, honeypot: values.honeypot }),
       });
-
       const dataRecapcha = await response.json();
-
       if (dataRecapcha.success) {
         console.log("reCAPTCHA verified successfully");
         // Thực hiện hành động sau khi xác thực thành công
+        const { data } = await sendEmailMutation({
+          variables: {
+            body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300; display: inline;">${values.name}</p></h4> 
+              <h4 style="color: black;">Email: <p style="font-weight: 300; display: inline;">${values.email}</p></h4>  
+              <h4 style="color: black;">
+                Phone Number: 
+                <a href="tel:${values.phone}" style="color: #1155CC; display: inline;">
+                  <p style="font-weight: 300; display: inline;">${values.phone}</p>
+                </a>
+              </h4>
+              <strong style="color: black;">Message:</strong> 
+              <pre style="font-weight: 400;display: inline;white-space: pre-wrap;line-height: 24px;font-family: 'Roboto';font-size: 16px;">${values.message}</pre>
+            `,
+            subject: "Hello from On Digitals!",
+          },
+        });
+        formik.resetForm();
+        setIsSuccess(true);
       } else {
         console.log("reCAPTCHA verification failed");
         // Xử lý khi xác thực thất bại
       }
-      const { data } = await sendEmailMutation({
-        variables: {
-          body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300; display: inline;">${values.name}</p></h4> 
-          <h4 style="color: black;">Email: <p style="font-weight: 300; display: inline;">${values.email}</p></h4>  
-          <h4 style="color: black;">
-            Phone Number: 
-            <a href="tel:${values.phone}" style="color: #1155CC; display: inline;">
-              <p style="font-weight: 300; display: inline;">${values.phone}</p>
-            </a>
-          </h4>
-          <strong style="color: black;">Message:</strong> 
-          <pre style="font-weight: 400;display: inline;white-space: pre-wrap;line-height: 24px;font-family: 'Roboto';font-size: 16px;">${values.message}</pre>
-          `,
-          subject: "Hello from On Digitals!",
-        },
-      });
-      formik.resetForm();
-      setIsSuccess(true);
     } catch (mutationError) {
       console.error(mutationError);
     }
@@ -213,6 +212,13 @@ export default function ContactUsForm({ data }) {
                     ? true
                     : false
                 }
+              />
+              <input
+                type="text"
+                name="honeypot"
+                style={{ display: "none" }}
+                onChange={formik.handleChange}
+                value={formik.values.honeypot}
               />
               <div
                 className={

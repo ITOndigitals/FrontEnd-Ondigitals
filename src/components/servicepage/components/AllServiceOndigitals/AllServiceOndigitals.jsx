@@ -65,9 +65,9 @@ export default function AllServiceOndigitals({ dataAllServices }) {
   return (
     <section className={classes["all-service-ondigitals"]}>
       <div className="container">
-        <div className={classes["all-service-ondigitals__title"]}>
+        <h2 className={classes["all-service-ondigitals__title"]}>
          {sectionListServices.title && parse(sectionListServices.title)}
-        </div>
+        </h2>
         <div className={classes["all-service-ondigitals__card-main"]}>
           {listServiceParents &&
             listServiceParents.map((item) => {

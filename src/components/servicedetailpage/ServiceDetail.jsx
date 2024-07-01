@@ -38,7 +38,6 @@ export default function ServiceDetail({ dataServiceDetail }) {
         (translation) => translation.language.code === currentLanguage
       );
       if (matchingTranslation && router.locale !== serviceBy.language?.slug) {
-        console.log("hello");
         router.push(matchingTranslation.slug);
       } else if (router.locale !== serviceBy.language?.slug) {
         window.location.href = "/";
