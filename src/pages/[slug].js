@@ -7,6 +7,8 @@ import {
   getDataForNewAndInsightsSection,
   GetListSlugServiceParent,
   GetServiceParentDetailBySlug,
+  GetListSlugIndustry,
+  GetIndustryDetailBySlug,
 } from "./api/graphql";
 import Head from "next/head";
 import Header from "@/components/layout/Header/Header";
@@ -31,6 +33,7 @@ export default function DynamicDetailPage({
   serviceData,
   serviceParentsData,
   caseStudyData,
+  industriesData,
   blogData,
   relatedPosts,
   dataFooter,
@@ -89,6 +92,18 @@ export default function DynamicDetailPage({
       </>
     );
   }
+  if (industriesData) {
+    const dataHead = replaceUrlsHead(industriesData.industryBy.seo.fullHead);
+    return (
+      <>
+        <Header data={dataHeader} />
+        <Head>{dataHead && parse(dataHead)}</Head>
+        <SchemaODS type="industryBy" />
+        <ServiceDetail dataServiceDetail={industriesData} />
+        <Footer data={dataFooter} />
+      </>
+    );
+  }
 }
 
 export async function getStaticPaths() {
@@ -122,6 +137,7 @@ export async function getStaticPaths() {
     },
     locale: service.language.code.toLowerCase(),
   }));
+  //list slug industries
   const listCaseStudy = await GetListSlugCaseStudy();
   const pathsCaseStudy = listCaseStudy.map((caseStudy) => ({
     params: {
@@ -129,10 +145,19 @@ export async function getStaticPaths() {
     },
     locale: caseStudy.language.code.toLowerCase(),
   }));
+  // list slug industry
+  const listIndustry = await GetListSlugIndustry();
+  const pathsIndustry = listIndustry.map((industry) => ({
+    params: {
+      slug: industry.slug,
+    },
+    locale: industry.language.code.toLowerCase(),
+  }));
   const paths = servicePaths
     .concat(allPostsPaths)
     .concat(pathsServiceParent)
-    .concat(pathsCaseStudy);
+    .concat(pathsCaseStudy)
+    .concat(pathsIndustry);
   return {
     paths,
     fallback: "blocking",
@@ -149,6 +174,7 @@ export async function getStaticProps(context) {
     blogData,
     serviceParentsData,
     caseStudyData,
+    industriesData,
     dataFooter,
     dataHeader,
   ] = await Promise.all([
@@ -156,6 +182,7 @@ export async function getStaticProps(context) {
     GetPostDetailBySlug(params.slug, language),
     GetServiceParentDetailBySlug(params.slug),
     GetCaseStudyDetailBySlug(params.slug),
+    GetIndustryDetailBySlug(params.slug),
     getTranslatedDataFooter(language),
     getDataMenu(language),
   ]);
@@ -194,6 +221,15 @@ export async function getStaticProps(context) {
     return {
       props: {
         caseStudyData,
+        dataFooter,
+        dataHeader,
+      },
+      revalidate: 3600,
+    };
+  } else if (industriesData && industriesData.industryBy) {
+    return {
+      props: {
+        industriesData,
         dataFooter,
         dataHeader,
       },

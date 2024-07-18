@@ -35,6 +35,12 @@
       max-height: 126px;
       min-height: 126px;
       padding: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      a{
+        text-decoration: underline;
+      }
       &::-webkit-scrollbar {
         width: 4px;
       }

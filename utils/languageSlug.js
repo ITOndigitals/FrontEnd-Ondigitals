@@ -12,7 +12,7 @@ export const localeLang = {
   jp: "日本語",
   kr: "한국어",
 };
-export const localeLangButtonServerChild = {
+export const localeLangButtonServiceChild = {
   en: "Get Started Today",
   vi: "Bắt đầu ngay",
   zh: "今天开始",
@@ -121,6 +121,13 @@ export const languagePathsCaseStudy = {
   jp: "/jp/ケーススタディ",
   kr: "/kr/사례-연구",
 };
+export const languagePathsIndustries = {
+  en: "/industries",
+  vi: "/vi/cac-nhom-nganh",
+  zh: "/zh/行业应用",
+  jp: "/jp/私たちがサービスを提供する業界",
+  kr: "/kr/우리가-서비스하는-산업",
+};
 export const getLanguagePathService = (locale) => {
   return languagePathsService[locale] || "/services";
 };
@@ -142,6 +149,9 @@ export const getLanguagePathCodesofEthnics = (locale) => {
 };
 export const getLanguagePathCaseStudy = (locale) => {
   return languagePathsCaseStudy[locale] || "/case-study";
+};
+export const getLanguagePathIndustries = (locale) => {
+  return languagePathsIndustries[locale] || "/industries";
 };
 export const slugServicesMenuMobile = {
   en: {

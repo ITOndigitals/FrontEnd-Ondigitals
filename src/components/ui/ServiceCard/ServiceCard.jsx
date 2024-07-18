@@ -8,7 +8,7 @@ export default function ServiceCard({ data }) {
     return null;
   }
   const { serviceHomepage, slug, featuredImage } = data;
-  const { altText, sourceUrl } = featuredImage?.node;
+  const { altText, sourceUrl } = featuredImage?.node || {};
   const [isMobile, setIsMobile] = useState(false);
 
   const [isHover, setIsHover] = useState(false);

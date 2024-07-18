@@ -12,12 +12,18 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const parse = require("html-react-parser");
 
 export default function NeedHelpDigitalGrowth({ data }) {
-  const { title, textButton, content, buttonColor, backgroundColor } =
-    data || {};
+  const {
+    title,
+    textButton,
+    content,
+    buttonColor,
+    backgroundColor,
+    textColor,
+  } = data || {};
   const { locale } = useRouter();
   return (
     <section
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundColor: backgroundColor, color: textColor || "#fff" }}
       className={classes["help-digital-growth-main"]}
     >
       <div className="container">

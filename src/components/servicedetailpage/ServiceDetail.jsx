@@ -17,6 +17,7 @@ export default function ServiceDetail({ dataServiceDetail }) {
   const serviceBy =
     dataServiceDetail?.serviceBy ||
     dataServiceDetail?.serviceParentBy ||
+    dataServiceDetail?.industryBy ||
     dataServiceDetail.pageBy ||
     {};
   const {

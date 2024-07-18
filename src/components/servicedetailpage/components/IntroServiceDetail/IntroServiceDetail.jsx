@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./IntroServiceDetail.module.scss";
 import Image from "next/image";
-import ButtonNoBorder from "@/components/ui/Buttons/ButtonNoBorder/ButtonNoBorder";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getLanguagePathContact, localeLangButtonServerChild } from "../../../../../utils/languageSlug";
+import { getLanguagePathContact, localeLangButtonServiceChild } from "../../../../../utils/languageSlug";
 const parse = require("html-react-parser");
 
 export default function IntroServiceDetail({ data }) {
@@ -41,7 +40,7 @@ export default function IntroServiceDetail({ data }) {
               className={classes["intro-service-detail__content__text__btn"]}
               href={getLanguagePathContact(locale)}
             >
-             {localeLangButtonServerChild[locale]}
+             {localeLangButtonServiceChild[locale]}
             </Link>
           </div>
           <div className={classes["intro-service-detail__content__image"]}>

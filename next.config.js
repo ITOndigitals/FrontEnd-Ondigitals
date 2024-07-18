@@ -39,6 +39,9 @@ const nextConfig = {
         "codes-of-ethnics"
       )
     );
+    rewrites = rewrites.concat(
+      generateRewrites("vi", "cac-nhom-nganh", "industries")
+    );
     // Configurations for different paths and locales japan
     rewrites = rewrites.concat(
       generateRewrites("jp", "%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9", "services")
@@ -72,6 +75,13 @@ const nextConfig = {
         "jp",
         "%e3%83%87%e3%82%b8%e3%82%bf%e3%83%ab-%e3%83%9e%e3%83%bc%e3%82%b1%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0-%e3%81%ae-%e5%80%ab%e7%90%86-%e8%a6%8f%e5%ae%9a",
         "codes-of-ethnics"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "jp",
+        "%e7%a7%81%e3%81%9f%e3%81%a1%e3%81%8c%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9%e3%82%92%e6%8f%90%e4%be%9b%e3%81%99%e3%82%8b%e6%a5%ad%e7%95%8c",
+        "industries"
       )
     );
     // Configurations for different paths and locales korea
@@ -109,6 +119,13 @@ const nextConfig = {
         "codes-of-ethnics"
       )
     );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "kr",
+        "%ec%9a%b0%eb%a6%ac%ea%b0%80-%ec%84%9c%eb%b9%84%ec%8a%a4%ed%95%98%eb%8a%94-%ec%82%b0%ec%97%85",
+        "industries"
+      )
+    );
     // Configurations for different paths and locales china
     rewrites = rewrites.concat(
       generateRewrites("zh", "%e6%9c%8d-%e5%8a%a1", "services")
@@ -117,7 +134,11 @@ const nextConfig = {
       generateRewrites("zh", "%e8%81%94%e7%b3%bb", "contact")
     );
     rewrites = rewrites.concat(
-      generateRewrites("zh", "%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90", "case-study")
+      generateRewrites(
+        "zh",
+        "%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90",
+        "case-study"
+      )
     );
     rewrites = rewrites.concat(
       generateRewrites(
@@ -138,6 +159,13 @@ const nextConfig = {
         "zh",
         "%e6%95%b0-%e5%ad%97-%e8%90%a5-%e9%94%80-%e9%81%93-%e5%be%b7-%e5%87%86-%e5%88%99",
         "codes-of-ethnics"
+      )
+    );
+    rewrites = rewrites.concat(
+      generateRewrites(
+        "zh",
+        "%e8%a1%8c%e4%b8%9a%e5%ba%94%e7%94%a8",
+        "industries"
       )
     );
     return rewrites;

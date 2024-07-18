@@ -38,7 +38,7 @@ export default function SchemaODS({ type }) {
   if (!data) {
     return null;
   }
-  const { title, description, focusKeywords } = data[typeData]?.seo || null;
+  const { title, description, focusKeywords } = data[typeData]?.seo || {};
   const keywords = focusKeywords && focusKeywords.length > 0 ? focusKeywords[0] : "On Digitals";
   return (
     <Head>
