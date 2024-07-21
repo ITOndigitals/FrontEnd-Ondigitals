@@ -359,7 +359,8 @@ const Header = ({ data }) => {
                   <SelectOptionLanguage isDark={isDark} />
                 </div>
               </div>
-              <div
+              {/* ẩn tạm thời  */}
+              {/* <div
                 className={`${classes["header-btn"]} ${
                   classes["header-btn__Request"]
                 } ${
@@ -403,7 +404,7 @@ const Header = ({ data }) => {
                     onClose={togglePopup}
                   />
                 )}
-              </div>
+              </div> */}
               <div
                 className={menuButtonClasses}
                 onClick={toggleMenuButtonHandler}
