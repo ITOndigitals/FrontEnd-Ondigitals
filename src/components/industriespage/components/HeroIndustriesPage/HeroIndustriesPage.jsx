@@ -24,9 +24,9 @@ export default function HeroIndustriesPage({ data }) {
       <div className="container">
         <div className={classes["hero-industries__content"]}>
           <div className={classes["hero-industries__content__text"]}>
-            <h1 className={classes["hero-industries__content__text__heading"]}>
+            <h2 className={classes["hero-industries__content__text__heading"]}>
               {title && title}
-            </h1>
+            </h2>
             {/* <p className={classes["hero-industries__content__text__title"]}>
              
             </p> */}

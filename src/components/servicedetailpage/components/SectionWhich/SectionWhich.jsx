@@ -17,6 +17,8 @@ export default function SectionWhich({ data }) {
     textHeadingLeft,
     layoutContentSectionWhich,
     uselayout3card,
+    useObjectFitCoverImage,
+    noUsePaddingInCard,
   } = data;
   const isUseVideo = layoutContentSectionWhich[0]?.urlVideo;
   const layOut3Card = uselayout3card
@@ -103,7 +105,8 @@ export default function SectionWhich({ data }) {
           <div>
             {layoutContentSectionWhich &&
               layoutContentSectionWhich.map((item, index) => {
-                const { card, title, backgroundCardColor,uselayout3cards } = item;
+                const { card, title, backgroundCardColor, uselayout3cards } =
+                  item;
                 return (
                   <div key={index}>
                     <div
@@ -128,7 +131,10 @@ export default function SectionWhich({ data }) {
                               key={index}
                               className={`${
                                 classes["section-which__content__card"]
-                              } ${uselayout3cards && classes["section-which__content__layout3"]}`}
+                              } ${
+                                uselayout3cards &&
+                                classes["section-which__content__layout3"]
+                              }`}
                             >
                               <div
                                 style={{
@@ -209,6 +215,7 @@ export default function SectionWhich({ data }) {
                     className={`${classes["section-which__content__card"]} ${layOut3Card}`}
                   >
                     <div
+                      style={{ padding: noUsePaddingInCard ? "0px" : "10px" }}
                       className={classes["section-which__content__card__image"]}
                     >
                       <div
@@ -221,6 +228,7 @@ export default function SectionWhich({ data }) {
                           style={{
                             width: "100%",
                             height: "100%",
+                            objectFit:useObjectFitCoverImage ? "cover":"contain"
                           }}
                           width="0"
                           height="0"

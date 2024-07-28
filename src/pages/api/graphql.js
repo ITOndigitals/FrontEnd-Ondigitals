@@ -541,6 +541,8 @@ export const GetServiceDetailBySlug = async (slug) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
+            useObjectFitCoverImage
+            noUsePaddingInCard
             layoutContentSectionWhich {
               ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
@@ -1077,6 +1079,8 @@ export const GetServiceParentDetailBySlug = async (slug) => {
           }
           sectionWhich {
             uselayout3card
+            useObjectFitCoverImage
+            noUsePaddingInCard
             backgroundColor
             textHeadingRight
             textHeadingLeft
@@ -1280,6 +1284,8 @@ export const getDataPolicyAndCoEPage = async (id) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
+            useObjectFitCoverImage
+            noUsePaddingInCard
             layoutContentSectionWhich {
               ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
@@ -1374,10 +1380,10 @@ export const GetDataSchema = async (type, slug) => {
     return null;
   }
 };
-export const GetPageIndustries = async (id,languageCode) => {
+export const GetPageIndustries = async (id, languageCode) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetPageIndustries($id: Int!,$languageCode: LanguageCodeFilterEnum!) {
+    query GetPageIndustries($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pageBy(pageId: $id) {
         content
         seo {
@@ -1455,7 +1461,7 @@ export const GetPageIndustries = async (id,languageCode) => {
       }
     }
   `;
-  const variables = { id,languageCode };
+  const variables = { id, languageCode };
   try {
     const data = await request(endpoint, query, variables);
     return data;
@@ -1591,6 +1597,8 @@ export const GetIndustryDetailBySlug = async (slug) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
+            useObjectFitCoverImage
+            noUsePaddingInCard
             layoutContentSectionWhich {
               ... on Industry_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent

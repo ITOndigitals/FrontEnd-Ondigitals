@@ -73,6 +73,7 @@ export default function IntroCaseStudyDetail({ data }) {
                   key={index}
                   backgroundColor={item?.description}
                   name={item?.name}
+                  href={item?.slug}
                 />
               ))}
             </div>
