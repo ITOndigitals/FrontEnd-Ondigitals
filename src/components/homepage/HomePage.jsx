@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import IntroSection from "./components/IntroSection/IntroSection";
 import ServiceSection from "./components/ServiceSection/ServiceSection";
 import CaseStudySection from "./components/CaseStudySection/CaseStudySection";
@@ -57,44 +57,38 @@ const HomePage = ({ allPosts, dataHomepage }) => {
     setHeaderCanChangeColor();
     setToLight();
   };
-  const CounterNumber = () => {
+  const CounterNumber = useCallback(() => {
     const elements = document.querySelectorAll(
       ".number-trusted, .number-successful, .number-monthly"
     );
     const maxValues = [number1, number2, number3];
-    const duration = 2000; // Thời gian chạy animation, tính theo miliseconds
-    const steps = 50; // Số bước chạy animation
-    const delay = duration / steps; // Thời gian chờ giữa các bước
-    function runCounterForElement(currentValue, maxValue, element) {
-      const stepValue = Math.ceil(maxValue / steps); // Giá trị tăng ở mỗi bước
-      let timeoutId; // Biến để lưu trữ ID của setTimeout
-      function updateCounter() {
+    const duration = 2000;
+    const steps = 50;
+    const delay = duration / steps;
+
+    elements.forEach((element, index) => {
+      let currentValue = 0;
+      const maxValue = maxValues[index];
+      const stepValue = Math.ceil(maxValue / steps);
+      const updateCounter = () => {
         element.textContent = currentValue + "+";
-      }
-      function animateCounter() {
+      };
+      const animateCounter = () => {
         if (currentValue <= maxValue) {
           updateCounter();
-          timeoutId = setTimeout(() => {
+          setTimeout(() => {
             currentValue += stepValue;
             animateCounter();
           }, delay);
         }
-      }
-
+      };
       animateCounter();
-
-      // Dừng animation sau `duration` miliseconds
       setTimeout(() => {
-        clearTimeout(timeoutId);
         currentValue = maxValue;
         updateCounter();
       }, duration);
-    }
-
-    elements.forEach((element, index) => {
-      runCounterForElement(0, maxValues[index], element);
     });
-  };
+  }, [number1, number2, number3]);
   //Lướt lên slider
   const scrollToSlider = () => {
     if (swiperRef.current) {
@@ -242,7 +236,6 @@ const HomePage = ({ allPosts, dataHomepage }) => {
       header.classList.remove("hide");
     }
   };
-
   return (
     <>
       <style>

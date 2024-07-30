@@ -65,6 +65,8 @@ export default function App({ Component, pageProps }) {
                 href="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
                 as="image"
               />
+              <link rel="preconnect" href="https://www.googletagmanager.com" />
+              <link rel="preconnect" href="https://www.google-analytics.com" />
               <meta name="geo.region" content="VN-SG" />
               <meta name="geo.placename" content="Ho Chi Minh" />
               <meta
@@ -75,7 +77,11 @@ export default function App({ Component, pageProps }) {
                 name="ICBM"
                 content="10.763109429425983, 106.69381408995902"
               />
-              <script src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2" />
+              <script
+                async
+                defer
+                src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2"
+              ></script>
               <script
                 dangerouslySetInnerHTML={{
                   __html: `

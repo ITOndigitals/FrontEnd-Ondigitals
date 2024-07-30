@@ -86,7 +86,7 @@ export default function SchemaODS({ type }) {
                 "inLanguage": "${inLanguage[router.locale]}"
             },
             "sameAs": [
-                "http://ondigitals.com"
+                "https://ondigitals.com"
             ],
             "worksFor": {
                 "@id": "https://ondigitals.com/#organization"
