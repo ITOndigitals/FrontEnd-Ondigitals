@@ -10,9 +10,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { useEffect } from "react";
 import { langHtml } from "../../utils/languageSlug";
-import { GoogleFonts } from "next-google-fonts";
-import { Maven_Pro } from "next/font/google";
-import Script from "next/script";
+import { Maven_Pro, Noto_Sans_SC } from "next/font/google";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { RECAPTCHA_SITE_KEY } from "@/configurations/recaptcha";
 
@@ -20,10 +18,7 @@ const fixelFont = localFont({
   src: "../fonts/FixelVariable.ttf",
   display: "swap",
 });
-const notoSans = localFont({
-  src: "../fonts/NotoSansSC-Light.woff2",
-  display: "swap",
-});
+const notoSans = Noto_Sans_SC({ subsets: ["latin"] });
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 
@@ -60,13 +55,13 @@ export default function App({ Component, pageProps }) {
         <ApolloProvider client={client}>
           <Layout className={selectedFont}>
             <Head>
-              <link
-                rel="preload"
-                href="https://api.ondigitals.com/wp-content/uploads/2023/09/ondigitals.webp"
-                as="image"
-              />
               <link rel="preconnect" href="https://www.googletagmanager.com" />
               <link rel="preconnect" href="https://www.google-analytics.com" />
+              <script
+                src="https://www.google.com/recaptcha/api.js?render=explicit"
+                async
+                defer
+              ></script>
               <meta name="geo.region" content="VN-SG" />
               <meta name="geo.placename" content="Ho Chi Minh" />
               <meta
