@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import IntroCaseStudyPage from "./components/IntroCaseStudyPage/IntroCaseStudyPage";
 import { useBoundStore } from "@/store/useBoundStore";
-import CaseStudy from "./components/CaseStudy/CaseStudy";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
+import dynamic from "next/dynamic";
+
+const CaseStudy = dynamic(() => import("./components/CaseStudy/CaseStudy"), { ssr: true });
 
 export default function CaseStudyPage({ data }) {
   const { pageBy, allCaseStudy } = data;

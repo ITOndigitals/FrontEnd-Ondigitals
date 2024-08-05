@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
 const i18nConfig = require("./i18n");
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 function generateRewrites(locale, sourcePath, destinationPath) {
   return [
     {
@@ -188,4 +191,4 @@ const nextConfig = {
   i18n: i18nConfig,
   trailingSlash: true,
 };
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

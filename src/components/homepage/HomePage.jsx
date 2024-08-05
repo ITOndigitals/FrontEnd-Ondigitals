@@ -1,10 +1,5 @@
 import React, { useCallback } from "react";
 import IntroSection from "./components/IntroSection/IntroSection";
-import ServiceSection from "./components/ServiceSection/ServiceSection";
-import CaseStudySection from "./components/CaseStudySection/CaseStudySection";
-import PartnerSection from "./components/PartnerSection/PartnerSection";
-import NewAndInsightsSection from "./components/NewAndInsightsSection/NewAndInsightsSection";
-import ContactSection from "./components/ContactSection/ContactSection";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -16,6 +11,15 @@ import SectionNavButtons from "../ui/Buttons/SectionNavButtons/SectionNavButtons
 import { useBoundStore } from "@/store/useBoundStore";
 import CouterNumber from "../ui/CouterNumber/CouterNumber";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+// Dynamic import với SSR cho các component
+const ServiceSection = dynamic(() => import('./components/ServiceSection/ServiceSection'), { ssr: true });
+const CaseStudySection = dynamic(() => import("./components/CaseStudySection/CaseStudySection"), { ssr: true });
+const PartnerSection = dynamic(() => import("./components/PartnerSection/PartnerSection"), { ssr: true });
+const NewAndInsightsSection = dynamic(() => import("./components/NewAndInsightsSection/NewAndInsightsSection"), { ssr: true });
+const ContactSection = dynamic(() => import("./components/ContactSection/ContactSection"), { ssr: true });
+
 const HomePage = ({ allPosts, dataHomepage }) => {
   const dataHomePages = dataHomepage;
   const { locale } = useRouter();
@@ -50,13 +54,13 @@ const HomePage = ({ allPosts, dataHomepage }) => {
   );
 
   //Lướt tới contact form
-  const scrollToContactForm = () => {
-    if (contactFormRef.current) {
-      contactFormRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    setHeaderCanChangeColor();
-    setToLight();
-  };
+  // const scrollToContactForm = () => {
+  //   if (contactFormRef.current) {
+  //     contactFormRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  //   setHeaderCanChangeColor();
+  //   setToLight();
+  // };
   const CounterNumber = useCallback(() => {
     const elements = document.querySelectorAll(
       ".number-trusted, .number-successful, .number-monthly"

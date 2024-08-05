@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import IntroService from "./components/IntroService/IntroService";
-import AllServiceOndigitals from "./components/AllServiceOndigitals/AllServiceOndigitals";
-import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useBoundStore } from "@/store/useBoundStore";
+import dynamic from "next/dynamic";
+
+const AllServiceOndigitals = dynamic(() => import("./components/AllServiceOndigitals/AllServiceOndigitals"), { ssr: true });
+const NeedHelpDigitalGrowth = dynamic(() => import("../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth"), { ssr: true });
 
 export default function ServicePage({ data }) {
   const { pageBy } = data;

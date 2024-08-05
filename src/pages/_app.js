@@ -13,6 +13,7 @@ import { langHtml } from "../../utils/languageSlug";
 import { Maven_Pro, Noto_Sans_SC } from "next/font/google";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { RECAPTCHA_SITE_KEY } from "@/configurations/recaptcha";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const fixelFont = localFont({
   src: "../fonts/FixelVariable.ttf",
@@ -51,47 +52,33 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}
-      <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
-        <ApolloProvider client={client}>
-          <Layout className={selectedFont}>
-            <Head>
-              <link rel="preconnect" href="https://www.googletagmanager.com" />
-              <link rel="preconnect" href="https://www.google-analytics.com" />
-              <script
-                src="https://www.google.com/recaptcha/api.js?render=explicit"
-                async
-                defer
-              ></script>
-              <meta name="geo.region" content="VN-SG" />
-              <meta name="geo.placename" content="Ho Chi Minh" />
-              <meta
-                name="geo.position"
-                content="10.763109429425983;106.69381408995902"
-              />
-              <meta
-                name="ICBM"
-                content="10.763109429425983, 106.69381408995902"
-              />
-              <script
-                async
-                defer
-                src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2"
-              ></script>
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-H7T16R0SB2');
-    `,
-                }}
-              />
-            </Head>
+      <ApolloProvider client={client}>
+        <Layout className={selectedFont}>
+          <Head>
+            <meta name="geo.region" content="VN-SG" />
+            <meta name="geo.placename" content="Ho Chi Minh" />
+            <meta
+              name="geo.position"
+              content="10.763109429425983;106.69381408995902"
+            />
+            <meta
+              name="ICBM"
+              content="10.763109429425983, 106.69381408995902"
+            />
+            <link
+              rel="preconnect"
+              href="https://www.google.com"
+              crossorigin
+            ></link>
+
+            <link rel="dns-prefetch" href="https://www.google.com"></link>
+          </Head>
+          <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
             <Component {...pageProps} />
-          </Layout>
-        </ApolloProvider>
-      </GoogleReCaptchaProvider>
+          </GoogleReCaptchaProvider>
+          <GoogleTagManager gtmId="G-H7T16R0SB2" />
+        </Layout>
+      </ApolloProvider>
     </>
   );
 }

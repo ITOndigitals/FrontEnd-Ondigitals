@@ -4,7 +4,10 @@ import {
   getTranslatedDataFooter,
 } from "./api/graphqlHeaderFooter";
 import Footer from "@/components/layout/Footer/Footer";
-import CustomPage404 from "@/components/custompage404/CustomPage404";
+import dynamic from "next/dynamic";
+
+const CustomPage404 = dynamic(() => import("@/components/custompage404/CustomPage404"), { ssr: true });
+
 export default function Page404({ dataFooter, dataHeader }) {
   return (
     <>

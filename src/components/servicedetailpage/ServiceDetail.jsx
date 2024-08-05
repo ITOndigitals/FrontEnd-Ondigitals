@@ -4,12 +4,15 @@ import { useBoundStore } from "@/store/useBoundStore";
 import ContentServiceDetail from "./components/ContentServiceDetail/ContentServiceDetail";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useRouter } from "next/router";
-import FAQServiceDetail from "./components/FAQServiceDetail/FAQServiceDetail";
-import SectionWhy from "./components/SectionWhy/SectionWhy";
-import SectionWho from "./components/SectionWho/SectionWho";
-import SectionHow from "./components/SectionHow/SectionHow";
-import SectionWhich from "./components/SectionWhich/SectionWhich";
-import SectionWhat from "./components/SectionWhat/SectionWhat";
+import dynamic from "next/dynamic";
+
+const SectionWhy = dynamic(() => import("./components/SectionWhy/SectionWhy"), { ssr: true });
+const SectionWho = dynamic(() => import("./components/SectionWho/SectionWho"), { ssr: true });
+const SectionHow = dynamic(() => import("./components/SectionHow/SectionHow"), { ssr: true });
+const SectionWhich = dynamic(() => import("./components/SectionWhich/SectionWhich"), { ssr: true });
+const SectionWhat = dynamic(() => import("./components/SectionWhat/SectionWhat"), { ssr: true });
+const FAQServiceDetail = dynamic(() => import("./components/FAQServiceDetail/FAQServiceDetail"), { ssr: true });
+
 
 export default function ServiceDetail({ dataServiceDetail }) {
   const router = useRouter();
