@@ -42,13 +42,20 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     const handleLanguageChange = () => {
-      document.documentElement.lang = langHtml[locale];
+      if (langHtml[locale]) {
+        document.documentElement.lang = langHtml[locale];
+      }
     };
-    router.events.on("routeChangeComplete", handleLanguageChange);
+    if (router?.events) {
+      router.events.on("routeChangeComplete", handleLanguageChange);
+    }
     return () => {
-      router.events.off("routeChangeComplete", handleLanguageChange);
+      if (router?.events) {
+        router.events.off("routeChangeComplete", handleLanguageChange);
+      }
     };
-  }, [router]);
+  }, [router, locale]);
+
   return (
     <>
       {isLoading && <LoadingSpinner hasOverlay />}
@@ -70,13 +77,26 @@ export default function App({ Component, pageProps }) {
               href="https://www.google.com"
               crossorigin
             ></link>
-
             <link rel="dns-prefetch" href="https://www.google.com"></link>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-H7T16R0SB2"
+            ></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-H7T16R0SB2');
+            `,
+              }}
+            ></script>
           </Head>
           <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
             <Component {...pageProps} />
           </GoogleReCaptchaProvider>
-          <GoogleTagManager gtmId="G-H7T16R0SB2" />
         </Layout>
       </ApolloProvider>
     </>

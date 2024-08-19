@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import classes from "./BlogPage.module.scss";
 import { useBoundStore } from "@/store/useBoundStore";
-import BlogFooter from "./components/BlogsFooter/BlogFooter";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { GET_POSTS_BY_FILTER } from "@/pages/api/graphqlApollo";
-import dynamic from "next/dynamic";
+import BlogList from "./components/BlogsListing/BlogList";
+import BlogsHeader from "./components/BlogsHeader/BlogsHeader";
 
-const BlogList = dynamic(() => import("./components/BlogsListing/BlogList"), {
-  ssr: true,
-});
-const BlogsHeader = dynamic(() => import("./components/BlogsHeader/BlogsHeader"), {
-  ssr: true,
-});
+
 const BlogPage = ({ blogsData, textContent }) => {
   if (!blogsData) {
     return null;
