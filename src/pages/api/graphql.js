@@ -72,7 +72,11 @@ export const getDataPageBlog = async (language, first, before, after, last) => {
             }
           }
           link
-          categories {
+          categories(
+            where: {
+              exclude: [1, 249, 215, 254, 7]
+            }
+          ) {
             nodes {
               slug
               name
@@ -414,10 +418,13 @@ export const GetListSlugService = async () => {
   }
 };
 
-export const GetServiceDetailBySlug = async (slug) => {
+export const GetServiceDetailBySlug = async (slug, language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetServiceDetailBySlug($slug: String!) {
+    query GetServiceDetailBySlug(
+      $slug: String!
+      $language: LanguageCodeFilterEnum!
+    ) {
       serviceBy(slug: $slug) {
         content
         title
@@ -466,6 +473,7 @@ export const GetServiceDetailBySlug = async (slug) => {
                 sourceUrl
               }
               textContent
+              urlCard
             }
             textLeftHead
             textRightHead
@@ -541,12 +549,12 @@ export const GetServiceDetailBySlug = async (slug) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
-            useObjectFitCoverImage
-            noUsePaddingInCard
+            widthCard
             layoutContentSectionWhich {
               ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
                 title
+                urlCard
                 imageCard {
                   altText
                   sourceUrl
@@ -565,6 +573,7 @@ export const GetServiceDetailBySlug = async (slug) => {
                 card {
                   title
                   textContent
+                  urlCard
                   imageCard {
                     altText
                     sourceUrl
@@ -605,9 +614,26 @@ export const GetServiceDetailBySlug = async (slug) => {
           }
         }
       }
+      serviceParents(
+        where: { language: $language, orderby: { field: DATE, order: ASC } }
+      ) {
+        nodes {
+          serviceHomepage {
+            name
+            secondaryColor
+          }
+          slug
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
     }
   `;
-  const variables = { slug };
+  const variables = { slug, language };
   try {
     const data = await request(endpoint, query, variables);
     return data;
@@ -955,10 +981,13 @@ export const GetListSlugServiceParent = async () => {
     return [];
   }
 };
-export const GetServiceParentDetailBySlug = async (slug) => {
+export const GetServiceParentDetailBySlug = async (slug, language) => {
   const endpoint = endPointApi;
   const query = gql`
-    query GetServiceParentDetailBySlug($slug: String!) {
+    query GetServiceParentDetailBySlug(
+      $slug: String!
+      $language: LanguageCodeFilterEnum!
+    ) {
       serviceParentBy(slug: $slug) {
         content
         title
@@ -1007,6 +1036,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
                 sourceUrl
               }
               textContent
+              urlCard
             }
             textLeftHead
             textRightHead
@@ -1079,8 +1109,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
           }
           sectionWhich {
             uselayout3card
-            useObjectFitCoverImage
-            noUsePaddingInCard
+            widthCard
             backgroundColor
             textHeadingRight
             textHeadingLeft
@@ -1088,6 +1117,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
               ... on Service_parent_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
                 title
+                urlCard
                 imageCard {
                   altText
                   sourceUrl
@@ -1106,6 +1136,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
                 card {
                   title
                   textContent
+                  urlCard
                   imageCard {
                     altText
                     sourceUrl
@@ -1137,6 +1168,7 @@ export const GetServiceParentDetailBySlug = async (slug) => {
               textHeadTitle
               textTitle
               backgroundColorImage
+              selectPositionImage
               imageSectionIntro {
                 altText
                 sourceUrl
@@ -1145,9 +1177,26 @@ export const GetServiceParentDetailBySlug = async (slug) => {
           }
         }
       }
+      serviceParents(
+        where: { language: $language, orderby: { field: DATE, order: ASC } }
+      ) {
+        nodes {
+          serviceHomepage {
+            name
+            secondaryColor
+          }
+          slug
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
     }
   `;
-  const variables = { slug };
+  const variables = { slug, language };
   try {
     const data = await request(endpoint, query, variables);
     return data;
@@ -1209,6 +1258,7 @@ export const getDataPolicyAndCoEPage = async (id) => {
                 sourceUrl
               }
               textContent
+              urlCard
             }
             textLeftHead
             textRightHead
@@ -1284,12 +1334,12 @@ export const getDataPolicyAndCoEPage = async (id) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
-            useObjectFitCoverImage
-            noUsePaddingInCard
+            widthCard
             layoutContentSectionWhich {
               ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
                 title
+                urlCard
                 imageCard {
                   altText
                   sourceUrl
@@ -1308,6 +1358,7 @@ export const getDataPolicyAndCoEPage = async (id) => {
                 card {
                   title
                   textContent
+                  urlCard
                   imageCard {
                     altText
                     sourceUrl
@@ -1522,6 +1573,7 @@ export const GetIndustryDetailBySlug = async (slug) => {
                 sourceUrl
               }
               textContent
+              urlCard
             }
             textLeftHead
             textRightHead
@@ -1597,12 +1649,12 @@ export const GetIndustryDetailBySlug = async (slug) => {
             textHeadingRight
             textHeadingLeft
             uselayout3card
-            useObjectFitCoverImage
-            noUsePaddingInCard
+            widthCard
             layoutContentSectionWhich {
               ... on Industry_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
                 textContent
                 title
+                urlCard
                 imageCard {
                   altText
                   sourceUrl
@@ -1621,6 +1673,7 @@ export const GetIndustryDetailBySlug = async (slug) => {
                 card {
                   title
                   textContent
+                  urlCard
                   imageCard {
                     altText
                     sourceUrl

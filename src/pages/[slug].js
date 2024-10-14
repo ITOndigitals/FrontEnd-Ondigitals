@@ -178,9 +178,9 @@ export async function getStaticProps(context) {
     dataFooter,
     dataHeader,
   ] = await Promise.all([
-    GetServiceDetailBySlug(params.slug),
+    GetServiceDetailBySlug(params.slug, language),
     GetPostDetailBySlug(params.slug, language),
-    GetServiceParentDetailBySlug(params.slug),
+    GetServiceParentDetailBySlug(params.slug, language),
     GetCaseStudyDetailBySlug(params.slug),
     GetIndustryDetailBySlug(params.slug),
     getTranslatedDataFooter(language),

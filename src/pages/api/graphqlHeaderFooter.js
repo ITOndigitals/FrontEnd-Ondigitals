@@ -29,6 +29,10 @@ export const GetDataFooter = async (id) => {
               listExplore
               title
             }
+            columIndustries {
+              listIndustries
+              titleIndustries
+            }
             title
           }
           translations {

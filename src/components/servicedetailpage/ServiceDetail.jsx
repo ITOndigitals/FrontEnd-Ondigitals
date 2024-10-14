@@ -5,14 +5,29 @@ import ContentServiceDetail from "./components/ContentServiceDetail/ContentServi
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import ListServiceParents from "./components/ListServiceParents/ListServiceParents";
 
-const SectionWhy = dynamic(() => import("./components/SectionWhy/SectionWhy"), { ssr: true });
-const SectionWho = dynamic(() => import("./components/SectionWho/SectionWho"), { ssr: true });
-const SectionHow = dynamic(() => import("./components/SectionHow/SectionHow"), { ssr: true });
-const SectionWhich = dynamic(() => import("./components/SectionWhich/SectionWhich"), { ssr: true });
-const SectionWhat = dynamic(() => import("./components/SectionWhat/SectionWhat"), { ssr: true });
-const FAQServiceDetail = dynamic(() => import("./components/FAQServiceDetail/FAQServiceDetail"), { ssr: true });
-
+const SectionWhy = dynamic(() => import("./components/SectionWhy/SectionWhy"), {
+  ssr: true,
+});
+const SectionWho = dynamic(() => import("./components/SectionWho/SectionWho"), {
+  ssr: true,
+});
+const SectionHow = dynamic(() => import("./components/SectionHow/SectionHow"), {
+  ssr: true,
+});
+const SectionWhich = dynamic(
+  () => import("./components/SectionWhich/SectionWhich"),
+  { ssr: true }
+);
+const SectionWhat = dynamic(
+  () => import("./components/SectionWhat/SectionWhat"),
+  { ssr: true }
+);
+const FAQServiceDetail = dynamic(
+  () => import("./components/FAQServiceDetail/FAQServiceDetail"),
+  { ssr: true }
+);
 
 export default function ServiceDetail({ dataServiceDetail }) {
   const router = useRouter();
@@ -23,6 +38,7 @@ export default function ServiceDetail({ dataServiceDetail }) {
     dataServiceDetail?.industryBy ||
     dataServiceDetail.pageBy ||
     {};
+  const dataServicesParent = dataServiceDetail?.serviceParents?.nodes;
   const {
     layoutContentServiceDetail,
     sectionContentDetail,
@@ -99,6 +115,7 @@ export default function ServiceDetail({ dataServiceDetail }) {
         />
       )}
       <NeedHelpDigitalGrowth data={dataCTA} />
+      {dataServicesParent && <ListServiceParents data={dataServicesParent} />}
     </>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./CardSectionWho.module.scss";
 import Image from "next/image";
 import { Maven_Pro } from "next/font/google";
+import Link from "next/link";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -10,9 +11,15 @@ export default function CardSectionWho({ data }) {
   if (!data) {
     return null;
   }
-  const { listImageLogo, mainImage, textContent } = data;
+  const { listImageLogo, mainImage, textContent, urlCard } = data;
   return (
     <div className={classes["card-section-who"]}>
+      {urlCard && (
+        <Link
+          className={classes["card-section-who__link"]}
+          href={urlCard}
+        ></Link>
+      )}
       <div className={classes["card-section-who__image"]}>
         <Image
           src={mainImage?.sourceUrl}

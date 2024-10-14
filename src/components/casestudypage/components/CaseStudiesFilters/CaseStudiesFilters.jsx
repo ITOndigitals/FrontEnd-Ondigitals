@@ -5,38 +5,6 @@ import { useRouter } from "next/router";
 import { GET_CATEGORY_POST, GET_TAG } from "@/pages/api/graphqlApollo";
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useMemo } from "react";
-
-const DUMMY_CATEGORIES = [
-  {
-    id: 1,
-    name: "ALL",
-  },
-  {
-    id: 2,
-    name: "SEO",
-  },
-  {
-    id: 3,
-    name: "PPC",
-  },
-  {
-    id: 4,
-    name: "Content Marketing",
-  },
-  {
-    id: 5,
-    name: "Social Media",
-  },
-  {
-    id: 6,
-    name: "Website / App Development",
-  },
-  {
-    id: 7,
-    name: "Creative Design",
-  },
-];
-
 const DUMMY_SORT_BY = [
   {
     id: 1,

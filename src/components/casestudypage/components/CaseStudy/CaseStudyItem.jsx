@@ -18,6 +18,7 @@ const CaseStudyItem = ({ item }) => {
 
   return (
     <div className={`${classes.item} case-study-item`}>
+      <Link className={classes["item-link"]} href={handleUrl(slug)}></Link>
       <div className={classes["item-wrapper"]}>
         <Image
           src={featuredImage?.node?.sourceUrl}
@@ -28,9 +29,9 @@ const CaseStudyItem = ({ item }) => {
         />
         <div className={classes["item-content"]}>
           <div>
-            <Link href={handleUrl(slug)} className={classes["item-content__main-title"]}>
+            <p className={classes["item-content__main-title"]}>
               {title && title}
-            </Link>
+            </p>
           </div>
           <ul className={classes["tag-list"]}>
             {categories.nodes.map((item, index) => (

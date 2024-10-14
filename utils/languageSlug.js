@@ -33,6 +33,14 @@ export const localeLangButtonBackToList = {
   jp: "リストに戻る",
   kr: "다시 목록으로",
 };
+export const localeViewAllServices = {
+  en: "View all services",
+  vi: "Xem tất cả dịch vụ",
+  zh: "查看所有服务",
+  jp: "すべてのサービスを表示",
+  kr: "모든 서비스 보기",
+};
+
 export const localeLangButtonContact = {
   en: "CONTACT US",
   vi: "LIÊN HỆ",
@@ -179,4 +187,11 @@ export const slugServicesMenuMobile = {
     name: "모든 서비스",
     slug: "/vi/dich-vu",
   },
+};
+export const localeTextDigitalMarketing = {
+  en: "Check out more Digital Marketing Solution",
+  vi: "Xem thêm các giải pháp tiếp thị kỹ thuật số",
+  zh: "查看所有服务",
+  jp: "さらに多くのデジタルマーケティングソリューションを確認",
+  kr: "더 많은 디지털 마케팅 솔루션 확인",
 };

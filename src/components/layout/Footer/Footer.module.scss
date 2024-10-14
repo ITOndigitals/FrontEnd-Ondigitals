@@ -106,8 +106,28 @@
       position: absolute;
       bottom: -6px;
       height: 2.5px;
-      width: 100%;
+      width: 80%;
       background-color: rgba(171, 139, 212, 1);
+      left: 0;
+    }
+  }
+  .colum-title-media {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    color: #fff;
+    margin-top: 60px;
+    position: relative;
+    width: fit-content;
+    margin-bottom: 20px;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      height: 2.5px;
+      width: 80%;
+      background-color: #fff;
       left: 0;
     }
   }

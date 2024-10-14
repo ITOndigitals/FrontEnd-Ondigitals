@@ -12,6 +12,10 @@ import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import {
+  languagePathsIndustries,
+  languagePathsService,
+} from "../../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -26,7 +30,7 @@ export default function Footer({ data }) {
     return <div>Loading.....</div>;
   }
   const { footerods, content } = data[0];
-  const { title, columExplore, columFollowUs, columService, test1111 } =
+  const { title, columExplore, columFollowUs, columService, columIndustries } =
     footerods;
 
   return (
@@ -55,9 +59,16 @@ export default function Footer({ data }) {
             </div>
           </div>
           <div className={classes["colum-2"]}>
-            <p className={classes["colum__title"]}>
-              {columService?.titleServices}
-            </p>
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              href={languagePathsService[locale]}
+            >
+              <p className={classes["colum__title"]}>
+                {columService?.titleServices}
+              </p>
+            </Link>
             <div className={classes["row__services"]}>
               {columService?.services &&
                 columService.services.map((item, index) => (
@@ -79,12 +90,28 @@ export default function Footer({ data }) {
           </div>
           <div className={classes["colum-3"]}>
             <div>
-              <p className={classes["colum__title"]}>{columExplore?.title}</p>
-              {columExplore.listExplore && parse(columExplore.listExplore)}
+              <Link
+                style={{
+                  textDecoration: "none",
+                }}
+                href={languagePathsIndustries[locale]}
+              >
+                <p className={classes["colum__title"]}>
+                  {columIndustries?.titleIndustries}
+                </p>
+              </Link>
+              {columIndustries.listIndustries &&
+                parse(columIndustries.listIndustries)}
             </div>
           </div>
           <div className={classes["colum-4"]}>
-            <p className={classes["colum__title"]}>{columFollowUs?.title}</p>
+            <div>
+              <p className={classes["colum__title"]}>{columExplore?.title}</p>
+              {columExplore.listExplore && parse(columExplore.listExplore)}
+            </div>
+            <p className={classes["colum-title-media"]}>
+              {columFollowUs?.title}
+            </p>
             <div className={classes["icon__homepage--social"]}>
               {columFollowUs.listIcon &&
                 columFollowUs.listIcon.map((item, index) => (
@@ -114,7 +141,10 @@ export default function Footer({ data }) {
                   height={25}
                 />
               </Link>
-              <Script strategy="lazyOnload" src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js" />
+              <Script
+                strategy="lazyOnload"
+                src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"
+              />
             </div>
           </div>
         </div>

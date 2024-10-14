@@ -102,7 +102,7 @@ export default function FAQServiceDetail({ data, titleHeading }) {
               ))}
           </div>
         ))}
-        <div className={classes["faq-service-detail__footer"]}>
+        {/* <div className={classes["faq-service-detail__footer"]}>
           <ButtonNoBorder
             href="/services"
             textSize="md"
@@ -116,7 +116,7 @@ export default function FAQServiceDetail({ data, titleHeading }) {
           >
             <UpNavIcon width={30} height={30} color="#fff" />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import classes from "./SectionWhich.module.scss";
 import Image from "next/image";
 import { Content, Maven_Pro } from "next/font/google";
 import VideoPlayer from "@/components/ui/VideoPlayer/VideoPlayer";
+import Link from "next/link";
 
 const parse = require("html-react-parser");
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
@@ -17,14 +18,67 @@ export default function SectionWhich({ data }) {
     textHeadingLeft,
     layoutContentSectionWhich,
     uselayout3card,
-    useObjectFitCoverImage,
-    noUsePaddingInCard,
+    widthCard,
   } = data;
   const isUseVideo = layoutContentSectionWhich[0]?.urlVideo;
   const layOut3Card = uselayout3card
     ? classes["section-which__content__layout3"]
     : "";
+  const styleWidht = widthCard ? { width: widthCard } : {};
+
   const isCardHasTitle = layoutContentSectionWhich[0]?.card;
+
+  const ImageCard = ({ urlCard, imageCard, title, classes }) => {
+    const ImageComponent = () => (
+      <Image
+        src={imageCard?.sourceUrl}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+        width="0"
+        height="0"
+        alt={imageCard?.altText}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+      />
+    );
+
+    const TitleComponent = () => (
+      <div className={classes["section-which__content__card__text__title"]}>
+        {title && parse(title)}
+      </div>
+    );
+
+    if (urlCard) {
+      return (
+        <>
+          <Link
+            href={urlCard}
+            className={classes["section-which__content__card__image__item"]}
+          >
+            <ImageComponent />
+          </Link>
+          <Link
+            href={urlCard}
+            className={classes["section-which__content__card__text__title"]}
+          >
+            {title && parse(title)}
+          </Link>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className={classes["section-which__content__card__image__item"]}>
+            <ImageComponent />
+          </div>
+          <TitleComponent />
+        </>
+      );
+    }
+  };
+
   return (
     <section
       style={{ backgroundColor: backgroundColor ? backgroundColor : "#6F1AB6" }}
@@ -44,7 +98,6 @@ export default function SectionWhich({ data }) {
             </div>
           </div>
         </div>
-
         {isUseVideo ? (
           <div className={classes["section-which__content-video"]}>
             {layoutContentSectionWhich &&
@@ -125,9 +178,10 @@ export default function SectionWhich({ data }) {
                     >
                       {card &&
                         card.map((item, index) => {
-                          const { title, textContent, imageCard } = item;
+                          const { title, imageCard,urlCard } = item;
                           return (
                             <div
+                              style={styleWidht}
                               key={index}
                               className={`${
                                 classes["section-which__content__card"]
@@ -146,52 +200,12 @@ export default function SectionWhich({ data }) {
                                   classes["section-which__content__card__image"]
                                 }
                               >
-                                <div
-                                  className={
-                                    classes[
-                                      "section-which__content__card__image__item"
-                                    ]
-                                  }
-                                >
-                                  <Image
-                                    src={imageCard?.sourceUrl}
-                                    style={{
-                                      width: "100%",
-                                      height: "100%",
-                                    }}
-                                    width="0"
-                                    height="0"
-                                    alt={imageCard?.altText}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                                  />
-                                </div>
-                              </div>
-                              <div
-                                className={
-                                  classes["section-which__content__card__text"]
-                                }
-                              >
-                                <div
-                                  className={
-                                    classes[
-                                      "section-which__content__card__text__title"
-                                    ]
-                                  }
-                                >
-                                  {title && parse(title)}
-                                </div>
-                                <div
-                                  style={{
-                                    fontFamily: MavenPro.style.fontFamily,
-                                  }}
-                                  className={
-                                    classes[
-                                      "section-which__content__card__text__detail"
-                                    ]
-                                  }
-                                >
-                                  {textContent && parse(textContent)}
-                                </div>
+                                <ImageCard
+                                  urlCard={urlCard}
+                                  imageCard={imageCard}
+                                  title={title}
+                                  classes={classes}
+                                />
                               </div>
                             </div>
                           );
@@ -208,52 +222,22 @@ export default function SectionWhich({ data }) {
           >
             {layoutContentSectionWhich &&
               layoutContentSectionWhich.map((item, index) => {
-                const { textContent, title, imageCard } = item;
+                const { title, imageCard, urlCard } = item;
                 return (
                   <div
+                    style={styleWidht}
                     key={index}
                     className={`${classes["section-which__content__card"]} ${layOut3Card}`}
                   >
                     <div
-                      style={{ padding: noUsePaddingInCard ? "0px" : "10px" }}
                       className={classes["section-which__content__card__image"]}
                     >
-                      <div
-                        className={
-                          classes["section-which__content__card__image__item"]
-                        }
-                      >
-                        <Image
-                          src={imageCard?.sourceUrl}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit:useObjectFitCoverImage ? "cover":"contain"
-                          }}
-                          width="0"
-                          height="0"
-                          alt={imageCard?.altText}
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      className={classes["section-which__content__card__text"]}
-                    >
-                      <div
-                        className={
-                          classes["section-which__content__card__text__title"]
-                        }
-                      >
-                        {title && parse(title)}
-                      </div>
-                      <div
-                        className={
-                          classes["section-which__content__card__text__detail"]
-                        }
-                      >
-                        {textContent && parse(textContent)}
-                      </div>
+                      <ImageCard
+                        urlCard={urlCard}
+                        imageCard={imageCard}
+                        title={title}
+                        classes={classes}
+                      />
                     </div>
                   </div>
                 );

@@ -111,7 +111,14 @@ export const GET_POSTS_BY_TAG = gql`
 `;
 export const GET_CATEGORY_POST = gql`
   query GetCategoryPost($language: LanguageCodeFilterEnum!) {
-    categories(where: { language: $language,, order: ASC, orderby: COUNT }) {
+    categories(
+      where: {
+        language: $language
+        order: ASC
+        orderby: COUNT
+        exclude: [1, 249, 215, 254, 7]
+      }
+    ) {
       nodes {
         name
         slug

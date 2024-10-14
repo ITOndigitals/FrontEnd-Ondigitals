@@ -1,11 +1,11 @@
 .title-list-card-has-title {
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: 600;
+  line-height: 28px;
   text-align: center;
-  margin: 10px 0 30px 0;
+  margin:30px 0;
 }
 .section-which {
   height: auto;
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  a{
+  a {
     text-decoration: underline;
   }
   &__head {
@@ -53,11 +53,15 @@
     gap: 24px;
     &__card {
       width: 23%;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
       &__image {
         background: #3d1766;
         overflow: hidden;
         border-radius: 16px;
-        padding: 10px;
+        width: 100%;
         &__item {
           position: relative;
           height: 250px;
@@ -65,23 +69,25 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
           img {
-            aspect-ratio: 1/0.9;
-            border-radius: 16px;
-            object-fit: contain;
+            object-fit: cover;
           }
         }
       }
       &__text {
         &__title {
-          color: #fff;
+          color: #3D1766;
           font-size: 20px;
           font-style: normal;
-          font-weight: 600;
+          font-weight: 600 !important;
           line-height: 28px;
           text-align: center;
-          margin-top: 24px;
-          margin-bottom: 8px;
+          padding: 8px;
+          display: block;
+          background-color: #fff;
+          text-decoration: unset !important;
+          height: 100%;
         }
         &__detail {
           color: #fff;
@@ -187,7 +193,7 @@
     }
     &__content {
       &__card {
-        width: 47%;
+        width: 47% !important;
         &__image {
           background: #3d1766;
           overflow: hidden;
@@ -196,30 +202,7 @@
             position: relative;
             height: 250px;
             width: 100%;
-            img {
-              aspect-ratio: 1/0.9;
-              border-radius: 16px;
-            }
-          }
-        }
-        &__text {
-          &__title {
-            color: #fff;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 28px;
-            text-align: center;
-            margin-top: 24px;
-            margin-bottom: 8px;
-          }
-          &__detail {
-            color: #fff;
-            text-align: center;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
+           
           }
         }
       }
@@ -247,36 +230,8 @@
           background: #3d1766;
           overflow: hidden;
           border-radius: 16px;
-          &__item {
-            position: relative;
-            height: 250px;
-            width: 100%;
-            img {
-              aspect-ratio: 1/0.9;
-              border-radius: 16px;
-            }
-          }
         }
-        &__text {
-          &__title {
-            color: #fff;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 28px;
-            text-align: center;
-            margin-top: 24px;
-            margin-bottom: 8px;
-          }
-          &__detail {
-            color: #fff;
-            text-align: center;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
-          }
-        }
+       
       }
     }
   }
@@ -285,7 +240,7 @@
   .section-which {
     &__content {
       &__card {
-        width: 100%;
+        width: 100% !important;
         &__image {
           background: #3d1766;
           overflow: hidden;
@@ -294,30 +249,6 @@
             position: relative;
             height: 190px;
             width: 100%;
-            img {
-              aspect-ratio: 1/1;
-              border-radius: 16px;
-            }
-          }
-        }
-        &__text {
-          &__title {
-            color: #fff;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 28px;
-            text-align: center;
-            margin-top: 24px;
-            margin-bottom: 8px;
-          }
-          &__detail {
-            color: #fff;
-            text-align: center;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
           }
         }
       }
@@ -328,7 +259,7 @@
   .section-which {
     &__content {
       &__card {
-        width: 45%;
+        width: 100% !important;
         &__image {
           background: #3d1766;
           overflow: hidden;
@@ -337,30 +268,6 @@
             position: relative;
             height: 150px;
             width: 100%;
-            img {
-              aspect-ratio: 1/1;
-              border-radius: 16px;
-            }
-          }
-        }
-        &__text {
-          &__title {
-            color: #fff;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 28px;
-            text-align: center;
-            margin-top: 24px;
-            margin-bottom: 8px;
-          }
-          &__detail {
-            color: #fff;
-            text-align: center;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
           }
         }
       }
