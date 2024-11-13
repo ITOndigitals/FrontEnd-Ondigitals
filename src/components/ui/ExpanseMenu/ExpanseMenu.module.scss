@@ -55,6 +55,7 @@
       img {
         top: -16% !important;
         left: -8% !important;
+        animation: rotate 30s linear infinite;
       }
     }
     &__head-line {
@@ -317,5 +318,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); /* Bắt đầu từ 0 độ */
+  }
+  100% {
+    transform: rotate(360deg); /* Quay 360 độ */
   }
 }

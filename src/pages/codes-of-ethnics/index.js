@@ -32,11 +32,16 @@ export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
     }
   }, [locale]);
   const dataHead = replaceUrlsHead(updatedData.pageBy?.seo?.fullHead);
+  const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
+
   return (
     <>
       <Header data={dataHeader} />
-      <Head>{dataHead && parse(dataHead)}</Head>
-      <SchemaODS/>
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
+      <SchemaODS />
       <ServiceDetail dataServiceDetail={updatedData} isUsePageId={true} />
       <Footer data={dataFooter} />
     </>

@@ -11,34 +11,41 @@ import Footer from "@/components/layout/Footer/Footer";
 import { useRouter } from "next/router";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 import IndustriesPage from "@/components/industriespage/IndustriesPage";
-import { getLanguagePathIndustries, languagePathsIndustries } from "../../../utils/languageSlug";
+import {
+  getLanguagePathIndustries,
+  languagePathsIndustries,
+} from "../../../utils/languageSlug";
 
 const parse = require("html-react-parser");
 
 export default function Index({ updatedData, dataFooter, dataHeader }) {
-    if (!updatedData) {
-      return null;
-    }
-    const router = useRouter();
-    const { locale } = router;
-    const basePath = getLanguagePathIndustries(locale);
-    useEffect(() => {
-      if (locale in languagePathsIndustries) {
-        router.push(basePath);
-      }
-    }, [locale]);
-    const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
-    return (
-      <>
-        <Header data={dataHeader} />
-        <Head>{dataHead && parse(dataHead)}</Head>
-        <h1 style={{ display: "none" }}>{updatedData?.pageBy?.seo?.title}</h1>
-        <SchemaODS />
-        <IndustriesPage data={updatedData}/>
-        <Footer data={dataFooter} />
-      </>
-    );
+  if (!updatedData) {
+    return null;
   }
+  const router = useRouter();
+  const { locale } = router;
+  const basePath = getLanguagePathIndustries(locale);
+  useEffect(() => {
+    if (locale in languagePathsIndustries) {
+      router.push(basePath);
+    }
+  }, [locale]);
+  const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
+  const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
+  return (
+    <>
+      <Header data={dataHeader} />
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
+      <h1 style={{ display: "none" }}>{updatedData?.pageBy?.seo?.title}</h1>
+      <SchemaODS />
+      <IndustriesPage data={updatedData} />
+      <Footer data={dataFooter} />
+    </>
+  );
+}
 export const getServerSideProps = async ({ locale }) => {
   const language = locale.toUpperCase();
   const idPage = 54444;

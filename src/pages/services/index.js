@@ -31,10 +31,14 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
     }
   }, [locale]);
   const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
+  const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
   return (
     <>
       <Header data={dataHeader} />
-      <Head>{dataHead && parse(dataHead)}</Head>
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
       <h1 style={{ display: "none" }}>{updatedData?.pageBy?.seo?.title}</h1>
       <SchemaODS />
       <ServicePage data={updatedData} />

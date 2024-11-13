@@ -32,11 +32,15 @@ export default function PagesMainCaseStudy({
     }
   }, [locale]);
   const dataHead = replaceUrlsHead(updatedData.pageBy?.seo?.fullHead);
+  const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
   return (
     <>
       <Header data={dataHeader} />
-      <Head>{dataHead && parse(dataHead)}</Head>
-      <SchemaODS/>
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
+      <SchemaODS />
       <CaseStudyPage data={updatedData} />
       <Footer data={dataFooter} />
     </>

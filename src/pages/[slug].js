@@ -41,10 +41,16 @@ export default function DynamicDetailPage({
 }) {
   if (serviceData) {
     const dataHead = replaceUrlsHead(serviceData.serviceBy.seo.fullHead);
+    const additionalHeadScripts = replaceUrlsHead(
+      serviceData.serviceBy.addHeadPage.addContentHead
+    );
     return (
       <>
         <Header data={dataHeader} />
-        <Head>{dataHead && parse(dataHead)}</Head>
+        <Head>
+          {dataHead && parse(dataHead)}
+          {additionalHeadScripts && parse(additionalHeadScripts)}
+        </Head>
         <SchemaODS type="serviceBy" />
         <ServiceDetail dataServiceDetail={serviceData} />
         <Footer data={dataFooter} />
@@ -53,9 +59,15 @@ export default function DynamicDetailPage({
   }
   if (blogData) {
     const dataHead = replaceUrlsHead(blogData.postBy.seo.fullHead);
+    const additionalHeadScripts = replaceUrlsHead(
+      blogData.postBy.addHeadPage.addContentHead
+    );
     return (
       <>
-        <Head>{dataHead && parse(dataHead)}</Head>
+        <Head>
+          {dataHead && parse(dataHead)}
+          {additionalHeadScripts && parse(additionalHeadScripts)}
+        </Head>
         <Header data={dataHeader} />
         <SchemaODS type="postBy" />
         <BlogDetail postDetail={blogData} relatedPosts={relatedPosts} />
@@ -67,10 +79,16 @@ export default function DynamicDetailPage({
     const dataHead = replaceUrlsHead(
       serviceParentsData.serviceParentBy.seo.fullHead
     );
+    const additionalHeadScripts = replaceUrlsHead(
+      serviceParentsData.serviceParentBy.addHeadPage.addContentHead
+    );
     return (
       <>
         <Header data={dataHeader} />
-        <Head>{dataHead && parse(dataHead)}</Head>
+        <Head>
+          {dataHead && parse(dataHead)}
+          {additionalHeadScripts && parse(additionalHeadScripts)}
+        </Head>
         <SchemaODS type="serviceParentBy" />
         <ServiceDetail dataServiceDetail={serviceParentsData} />
         <Footer data={dataFooter} />
@@ -79,10 +97,16 @@ export default function DynamicDetailPage({
   }
   if (caseStudyData) {
     const dataHead = replaceUrlsHead(caseStudyData.caseStudyBy.seo.fullHead);
+    const additionalHeadScripts = replaceUrlsHead(
+      caseStudyData.caseStudyBy.addHeadPage.addContentHead
+    );
     return (
       <>
         <Header data={dataHeader} />
-        <Head>{dataHead && parse(dataHead)}</Head>
+        <Head>
+          {dataHead && parse(dataHead)}
+          {additionalHeadScripts && parse(additionalHeadScripts)}
+        </Head>
         <h1 style={{ display: "none" }}>
           {caseStudyData?.caseStudyBy?.seo?.title}
         </h1>
@@ -94,10 +118,16 @@ export default function DynamicDetailPage({
   }
   if (industriesData) {
     const dataHead = replaceUrlsHead(industriesData.industryBy.seo.fullHead);
+    const additionalHeadScripts = replaceUrlsHead(
+      industriesData.industryBy.addHeadPage.addContentHead
+    );
     return (
       <>
         <Header data={dataHeader} />
-        <Head>{dataHead && parse(dataHead)}</Head>
+        <Head>
+          {dataHead && parse(dataHead)}
+          {additionalHeadScripts && parse(additionalHeadScripts)}
+        </Head>
         <SchemaODS type="industryBy" />
         <ServiceDetail dataServiceDetail={industriesData} />
         <Footer data={dataFooter} />

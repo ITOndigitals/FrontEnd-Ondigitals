@@ -75,7 +75,7 @@ export default function App({ Component, pageProps }) {
             <link
               rel="preconnect"
               href="https://www.google.com"
-              crossorigin
+              crossOrigin
             ></link>
             <link rel="dns-prefetch" href="https://www.google.com"></link>
             <script

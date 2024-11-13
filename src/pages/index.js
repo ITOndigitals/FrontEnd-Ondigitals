@@ -47,12 +47,15 @@ export default function Home({
       /trang-chu\/|homepagechina\/|trang-chu-nhat\/|trang-chu-han\//g,
       ""
     ) || "";
+  const additionalHeadScripts =
+    dataHomepage?.pages?.nodes?.[0]?.addHeadPage?.addContentHead;
   return (
     <>
       <Head>
         {fullHeadHTML && parse(fullHeadHTML)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
       </Head>
-      <SchemaODS/>
+      <SchemaODS />
       <Header data={dataHeader} />
       <HomePage allPosts={allPosts} dataHomepage={dataHomepage} />
       <Footer data={dataFooter} />

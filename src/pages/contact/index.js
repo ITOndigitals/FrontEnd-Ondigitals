@@ -30,12 +30,16 @@ export default function ContactUs({ updatedData, dataFooter, dataHeader }) {
       router.push(basePath);
     }
   }, [locale]);
-  const { pageContact, seo } = updatedData;
+  const { pageContact, seo, addHeadPage } = updatedData;
   const dataHead = replaceUrlsHead(seo?.fullHead);
+  const additionalHeadScripts = addHeadPage.addContentHead;
   return (
     <>
-      <Head>{dataHead && parse(dataHead)}</Head>
-      <SchemaODS/>
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
+      <SchemaODS />
       <Header data={dataHeader} />
       <Contact data={pageContact} />
       <Footer data={dataFooter} />

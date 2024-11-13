@@ -43,10 +43,15 @@ export default function Blog({
     }
   }, [locale]);
   const dataHead = replaceUrlsHead(seoHead?.seo?.fullHead);
+  const additionalHeadScripts = seoHead.addHeadPage.addContentHead;
+
   return (
     <>
-      <Head>{dataHead && parse(dataHead)}</Head>
-      <SchemaODS/>
+      <Head>
+        {dataHead && parse(dataHead)}
+        {additionalHeadScripts && parse(additionalHeadScripts)}
+      </Head>
+      <SchemaODS />
       <Header data={dataHeader} />
       <h1 style={{ display: "none" }}>{seoHead?.seo?.title}</h1>
       <BlogPage blogsData={allPosts} textContent={seoHead} />

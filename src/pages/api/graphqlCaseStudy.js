@@ -30,6 +30,9 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
   const query = gql`
     query GetCaseStudyDetailBySlug($slug: String!) {
       caseStudyBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
         content
         cta {
           title
@@ -184,6 +187,9 @@ export const GetDataPageCaseStudy = async (id, languageCode) => {
         }
         seo {
           fullHead
+        }
+        addHeadPage {
+          addContentHead
         }
       }
       allCaseStudy(

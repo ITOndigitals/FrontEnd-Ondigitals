@@ -72,11 +72,7 @@ export const getDataPageBlog = async (language, first, before, after, last) => {
             }
           }
           link
-          categories(
-            where: {
-              exclude: [1, 249, 215, 254, 7]
-            }
-          ) {
+          categories(where: { exclude: [1, 249, 215, 254, 7] }) {
             nodes {
               slug
               name
@@ -143,6 +139,9 @@ export const GetPostDetailBySlug = async (slug, language) => {
       $language: LanguageCodeFilterEnum!
     ) {
       postBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
         seo {
           fullHead
         }
@@ -243,6 +242,9 @@ export const GetDataHomepage = async (id, languageCode) => {
     query getDataHomePage($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pages(where: { id: $id }) {
         nodes {
+          addHeadPage {
+            addContentHead
+          }
           slug
           pageId
           language {
@@ -426,6 +428,9 @@ export const GetServiceDetailBySlug = async (slug, language) => {
       $language: LanguageCodeFilterEnum!
     ) {
       serviceBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
         content
         title
         cta {
@@ -647,6 +652,9 @@ export const GetPageService = async (id, languageCode) => {
   const query = gql`
     query GetPageService($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pageBy(pageId: $id) {
+        addHeadPage {
+          addContentHead
+        }
         title
         content
         seo {
@@ -872,6 +880,9 @@ export const GetSeoAndContentBlogPage = async (id) => {
   const query = gql`
     query GetSeoBlogPage($id: Int!) {
       pageBy(pageId: $id) {
+        addHeadPage {
+          addContentHead
+        }
         seo {
           fullHead
           title
@@ -906,6 +917,9 @@ export const GetDataPageContact = async (id) => {
   const query = gql`
     query GetDataPageContact($id: Int!) {
       pageBy(pageId: $id) {
+        addHeadPage {
+          addContentHead
+        }
         seo {
           fullHead
         }
@@ -989,6 +1003,9 @@ export const GetServiceParentDetailBySlug = async (slug, language) => {
       $language: LanguageCodeFilterEnum!
     ) {
       serviceParentBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
         content
         title
         cta {
@@ -1210,6 +1227,9 @@ export const getDataPolicyAndCoEPage = async (id) => {
   const query = gql`
     query GetSeoBlogPage($id: Int!) {
       pageBy(pageId: $id) {
+        addHeadPage {
+          addContentHead
+        }
         content
         title
         cta {
@@ -1436,6 +1456,9 @@ export const GetPageIndustries = async (id, languageCode) => {
   const query = gql`
     query GetPageIndustries($id: Int!, $languageCode: LanguageCodeFilterEnum!) {
       pageBy(pageId: $id) {
+        addHeadPage {
+          addContentHead
+        }
         content
         seo {
           fullHead
@@ -1526,6 +1549,9 @@ export const GetIndustryDetailBySlug = async (slug) => {
   const query = gql`
     query GetIndustryDetailBySlug($slug: String!) {
       industryBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
         content
         title
         cta {
