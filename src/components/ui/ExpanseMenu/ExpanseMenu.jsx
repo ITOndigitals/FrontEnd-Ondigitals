@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import classes from "./ExpanseMenu.module.scss";
 import Image from "next/image";
@@ -13,6 +13,7 @@ import {
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useRouter } from "next/router";
 import { slugServicesMenuMobile } from "../../../../utils/languageSlug";
+import dynamic from "next/dynamic";
 
 const parse = require("html-react-parser");
 const listIconSocial = [
@@ -47,6 +48,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
   if (!menu) {
     return null;
   }
+  const LazyMapChart = lazy(() => import("../../../../utils/MapChart"));
   const [isMobile, setIsMobile] = useState(false);
   const { locale } = useRouter();
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
@@ -78,32 +80,13 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
       <div className={classes["menu-list-wrapper"]}>
         <div className={classes["menu-list-wrapper__map"]}>
           <div className={classes["menu-list-wrapper__image"]}>
-            <Image
-              fill
-              src="https://api.ondigitals.com/wp-content/uploads/2023/11/GLOBE.png"
-              alt="Ondigitals"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-            />
+            {isActive && (
+              <Suspense fallback={<div>Loading map...</div>}>
+                {!isMobile && <LazyMapChart />}
+              </Suspense>
+            )}
           </div>
-          <div className={classes["menu-list-wrapper__head-line"]}>
-            {updatedData?.header?.headLineMenu &&
-              parse(updatedData?.header?.headLineMenu)}
-          </div>
-          <p className={classes["menu-list-wrapper__japan"]}>Japan </p>
-          <p className={classes["menu-list-wrapper__china"]}>China </p>
-          <p className={classes["menu-list-wrapper__thailand"]}>Thailand </p>
-          <p className={classes["menu-list-wrapper__taiwan"]}>Taiwan </p>
-          <p className={classes["menu-list-wrapper__vietnam"]}>Vietnam </p>
-          <p className={classes["menu-list-wrapper__philippines"]}>
-            Philippines
-          </p>
-
-          <p className={classes["menu-list-wrapper__malaysia"]}>Malaysia </p>
-          <p className={classes["menu-list-wrapper__singapore"]}>Singapore </p>
-          <p className={classes["menu-list-wrapper__indonesia"]}>Indonesia </p>
-          <p className={classes["menu-list-wrapper__australia"]}>Australia </p>
         </div>
-
         <div
           className={`container--big ${classes["menu-list-wrapper-inner"]}`}
           style={{ overflowY: "auto" }}
