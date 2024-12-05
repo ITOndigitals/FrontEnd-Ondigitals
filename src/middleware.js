@@ -6,7 +6,7 @@ import { dataListslugOld } from "../utils/dataListslugOld";
 import { dataListSlugEn } from "../utils/dataSlugPostEn";
 import { urlRedirects } from "../utils/urlRedirects";
 
-export function middleware(request) {
+export async function middleware(request) {
   const targetHost = "ondigitals.com";
   const urlMain = "https://ondigitals.com";
   const stringsToCheck = ["vi", "zh", "jp", "kr"];
@@ -16,6 +16,50 @@ export function middleware(request) {
   if (protocol !== "https" || host.startsWith("www.")) {
     const redirectUrl = `https://${targetHost}${request.nextUrl.pathname}`;
     return NextResponse.redirect(redirectUrl, { status: 301 });
+  }
+  // Kiểm tra nếu cookie "hasRedirected" đã tồn tại
+  const cookie = request.cookies.get("hasRedirected");
+  if (!cookie) {
+    // Lấy thông tin địa lý từ GeoJS API
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.ip ||
+      "8.8.8.8";
+    const languageMap = {
+      vn: "vi", // Việt Nam -> Tiếng Việt
+      cn: "zh", // Trung Quốc -> Tiếng Trung
+      jp: "jp", // Nhật Bản -> Tiếng Nhật
+      kr: "kr", // Hàn Quốc -> Tiếng Hàn
+    };
+
+    try {
+      const geoRes = await fetch(
+        `https://get.geojs.io/v1/ip/country/${ip}.json`
+      );
+      const geoData = await geoRes.json();
+      const countryCode = geoData?.country?.toLowerCase();
+      if (languageMap[countryCode]) {
+        const language = languageMap[countryCode]; // Gán ngôn ngữ theo quốc gia
+        const redirectUrl = new URL(
+          `${urlMain}/${language}${request.nextUrl.pathname}${request.nextUrl.search}`
+        );
+
+        const response = NextResponse.redirect(redirectUrl);
+        response.cookies.set("hasRedirected", "true", { path: "/" });
+        return response;
+      } else {
+        // Nếu không phải các quốc gia trên, giữ nguyên URL mà không cần mã ngôn ngữ
+        const redirectUrl = new URL(
+          `${urlMain}${request.nextUrl.pathname}${request.nextUrl.search}`
+        );
+
+        const response = NextResponse.redirect(redirectUrl);
+        response.cookies.set("hasRedirected", "true", { path: "/" });
+        return response;
+      }
+    } catch (error) {
+      console.error("Error fetching geolocation data:", error);
+    }
   }
   // function chuyển 301 các url bài viết tiếng việt
   function modifySlugItem(item, urlMain, language) {
@@ -82,12 +126,14 @@ export function middleware(request) {
   }
 
   // fuction 301 các services website cũ cho các ngôn ngữ
-  const matchedItemServiceOld = dataSlugServiceOldAndRedirectUrl.find((item) => {
-    return (
-      request.nextUrl.pathname === `/${encodeURIComponent(item.slugOld)}/` &&
-      !stringsToCheck.some((str) => request.nextUrl.locale.includes(str))
-    );
-  });
+  const matchedItemServiceOld = dataSlugServiceOldAndRedirectUrl.find(
+    (item) => {
+      return (
+        request.nextUrl.pathname === `/${encodeURIComponent(item.slugOld)}/` &&
+        !stringsToCheck.some((str) => request.nextUrl.locale.includes(str))
+      );
+    }
+  );
   if (matchedItemServiceOld) {
     const redirectUrl =
       matchedItemServiceOld.locale === "en"

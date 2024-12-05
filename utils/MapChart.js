@@ -51,7 +51,7 @@ const MapChart = () => {
 
     // Tạo hiệu ứng hover
     const hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = chart.colors.getIndex(0).brighten(-0.5);
+    hs.properties.fill = am4core.color("#ff0032"); // Màu đỏ khi hover
 
     // Tạo animation bằng setInterval
     const animateRotation = () => {
@@ -60,22 +60,20 @@ const MapChart = () => {
       }
     };
 
-    const intervalId = setInterval(animateRotation, 100); // Tần suất 20fps (~50ms)
+    const intervalId = setInterval(animateRotation, 120); // Tần suất 20fps (~50ms)
 
     // Thay đổi màu sắc cho các quốc gia
     const countriesToColor = {
-      JP: am4core.color("#D50032"), // Japan (Red)
-      CN: am4core.color("#DE2910"), // China (Red)
-      TH: am4core.color("#1E30A7"), // Thailand (Blue)
-      TW: am4core.color("#C8102E"), // Taiwan (Red)
-      VN: am4core.color("#DA291C"), // Vietnam (Red)
-      PH: am4core.color("#0033A0"), // Philippines (Blue)
-      MY: am4core.color("#006747"), // Malaysia (Green)
-      SG: am4core.color("#D11C35"), // Singapore (Red)
-      ID: am4core.color("#D32F2F"), // Indonesia (Red)
-      AU: am4core.color("#003B5C"), // Australia (Dark Blue)
+      JP: am4core.color("#dcc7ed"),
+      CN: am4core.color("#dcc7ed"),
+      TH: am4core.color("#dcc7ed"),
+      TW: am4core.color("#dcc7ed"),
+      VN: am4core.color("#dcc7ed"),
+      MY: am4core.color("#dcc7ed"),
+      SG: am4core.color("#dcc7ed"),
+      ID: am4core.color("#dcc7ed"),
+      AU: am4core.color("#dcc7ed"),
     };
-
     polygonSeries.events.on("ready", () => {
       Object.keys(countriesToColor).forEach((countryCode) => {
         const countryPolygon = polygonSeries.getPolygonById(countryCode);
@@ -84,7 +82,6 @@ const MapChart = () => {
         }
       });
     });
-
     // Cleanup
     return () => {
       isMounted = false;
