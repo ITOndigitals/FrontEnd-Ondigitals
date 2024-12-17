@@ -6,61 +6,61 @@ import { dataListslugOld } from "../utils/dataListslugOld";
 import { dataListSlugEn } from "../utils/dataSlugPostEn";
 import { urlRedirects } from "../utils/urlRedirects";
 
-export async function middleware(request) {
+export function middleware(request) {
   const targetHost = "ondigitals.com";
   const urlMain = "https://ondigitals.com";
   const stringsToCheck = ["vi", "zh", "jp", "kr"];
   const host = request.headers.get("host");
   const protocol = request.headers.get("x-forwarded-proto") || "http"; // Sử dụng header "x-forwarded-proto" để xác định giao thức nếu bạn đang sử dụng proxy
   // Kiểm tra nếu giao thức không phải HTTPS hoặc host có tiền tố www
-  if (protocol !== "https" || host.startsWith("www.")) {
-    const redirectUrl = `https://${targetHost}${request.nextUrl.pathname}`;
-    return NextResponse.redirect(redirectUrl, { status: 301 });
-  }
-  // Kiểm tra nếu cookie "hasRedirected" đã tồn tại
-  const cookie = request.cookies.get("hasRedirected");
-  if (!cookie) {
-    // Lấy thông tin địa lý từ GeoJS API
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.ip ||
-      "8.8.8.8";
-    const languageMap = {
-      vn: "vi", // Việt Nam -> Tiếng Việt
-      cn: "zh", // Trung Quốc -> Tiếng Trung
-      jp: "jp", // Nhật Bản -> Tiếng Nhật
-      kr: "kr", // Hàn Quốc -> Tiếng Hàn
-    };
+  // if (protocol !== "https" || host.startsWith("www.")) {
+  //   const redirectUrl = `https://${targetHost}${request.nextUrl.pathname}`;
+  //   return NextResponse.redirect(redirectUrl, { status: 301 });
+  // }
+  // // // Kiểm tra nếu cookie "hasRedirected" đã tồn tại
+  // const cookie = request.cookies.get("hasRedirected");
+  // if (!cookie) {
+  //   // Lấy thông tin địa lý từ GeoJS API
+  //   const ip =
+  //     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+  //     request.ip ||
+  //     "8.8.8.8";
+  //   const languageMap = {
+  //     vn: "vi", // Việt Nam -> Tiếng Việt
+  //     cn: "zh", // Trung Quốc -> Tiếng Trung
+  //     jp: "jp", // Nhật Bản -> Tiếng Nhật
+  //     kr: "kr", // Hàn Quốc -> Tiếng Hàn
+  //   };
 
-    try {
-      const geoRes = await fetch(
-        `https://get.geojs.io/v1/ip/country/${ip}.json`
-      );
-      const geoData = await geoRes.json();
-      const countryCode = geoData?.country?.toLowerCase();
-      if (languageMap[countryCode]) {
-        const language = languageMap[countryCode]; // Gán ngôn ngữ theo quốc gia
-        const redirectUrl = new URL(
-          `${urlMain}/${language}${request.nextUrl.pathname}${request.nextUrl.search}`
-        );
+  //   try {
+  //     const geoRes = await fetch(
+  //       `https://get.geojs.io/v1/ip/country/${ip}.json`
+  //     );
+  //     const geoData = await geoRes.json();
+  //     const countryCode = geoData?.country?.toLowerCase();
+  //     if (languageMap[countryCode]) {
+  //       const language = languageMap[countryCode]; // Gán ngôn ngữ theo quốc gia
+  //       const redirectUrl = new URL(
+  //         `${urlMain}/${language}${request.nextUrl.pathname}${request.nextUrl.search}`
+  //       );
 
-        const response = NextResponse.redirect(redirectUrl);
-        response.cookies.set("hasRedirected", "true", { path: "/" });
-        return response;
-      } else {
-        // Nếu không phải các quốc gia trên, giữ nguyên URL mà không cần mã ngôn ngữ
-        const redirectUrl = new URL(
-          `${urlMain}${request.nextUrl.pathname}${request.nextUrl.search}`
-        );
+  //       const response = NextResponse.redirect(redirectUrl);
+  //       response.cookies.set("hasRedirected", "true", { path: "/" });
+  //       return response;
+  //     } else {
+  //       // Nếu không phải các quốc gia trên, giữ nguyên URL mà không cần mã ngôn ngữ
+  //       const redirectUrl = new URL(
+  //         `${urlMain}${request.nextUrl.pathname}${request.nextUrl.search}`
+  //       );
 
-        const response = NextResponse.redirect(redirectUrl);
-        response.cookies.set("hasRedirected", "true", { path: "/" });
-        return response;
-      }
-    } catch (error) {
-      console.error("Error fetching geolocation data:", error);
-    }
-  }
+  //       const response = NextResponse.redirect(redirectUrl);
+  //       response.cookies.set("hasRedirected", "true", { path: "/" });
+  //       return response;
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching geolocation data:", error);
+  //   }
+  // }
   // function chuyển 301 các url bài viết tiếng việt
   function modifySlugItem(item, urlMain, language) {
     const slugPrefix = language === "vi" ? "/vi/" : "/";
