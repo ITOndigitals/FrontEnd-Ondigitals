@@ -27,6 +27,8 @@ export default function SectionDigitalsContentCaseStudy({ data }) {
     listImage,
     layoutVideo,
     textColor,
+    contentBelowImage,
+    leftContentImage,
   } = data || {};
   return (
     <section
@@ -43,11 +45,24 @@ export default function SectionDigitalsContentCaseStudy({ data }) {
             <TopRightArrow width={24} height={24} color={textColor} />
           </div>
         </div>
-        <div
-          style={{ fontFamily: MavenPro.style.fontFamily }}
-          className={classes["section-digitals-content-decs"]}
-        >
-          {textDecs && parse(textDecs)}
+        <div className={classes["section-digitals-content-decs"]}>
+          <div
+            style={{ fontFamily: MavenPro.style.fontFamily }}
+            className={classes["section-digitals-content-decs__content"]}
+          >
+            {textDecs && parse(textDecs)}
+          </div>
+          {leftContentImage && (
+            <div className={classes["section-digitals-content-decs__image"]}>
+              <Image
+                src={leftContentImage?.sourceUrl}
+                fill
+                style={{ objectFit: "contain" }}
+                alt={leftContentImage?.altText}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              />
+            </div>
+          )}
         </div>
         {listImage && (
           <div className={classes["section-digitals-content-body"]}>
@@ -96,6 +111,14 @@ export default function SectionDigitalsContentCaseStudy({ data }) {
                   </div>
                 ))}
             </div>
+          </div>
+        )}
+        {contentBelowImage && (
+          <div
+            className={classes["section-digitals-content__below-image"]}
+            style={{ fontFamily: MavenPro.style.fontFamily }}
+          >
+            {contentBelowImage && parse(contentBelowImage)}
           </div>
         )}
         {layoutVideo &&

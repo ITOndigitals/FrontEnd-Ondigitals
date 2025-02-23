@@ -87,6 +87,11 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
             sectionContentDetail {
               backgroundColor
               textColor
+              contentBelowImage
+              leftContentImage {
+                altText
+                sourceUrl
+              }
               layoutVideo {
                 ... on Case_study_Casestudydetailpage_SectionContentBody_sectionContentDetail_LayoutVideo_LayoutVideoSingle {
                   backgroundColor
