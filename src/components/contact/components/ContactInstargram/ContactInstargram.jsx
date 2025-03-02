@@ -10,12 +10,17 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export default function ContactInstargram({ data }) {
   const [posts, setPosts] = useState([]);
-  const { titleLeft, textRight, textButton, accessTokenIntagram } = data;
+  const {
+    titleLeft,
+    textRight,
+    textButton,
+    accessTokenIntagram ,
+  } = data;
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${accessTokenIntagram}&limit=4`
+          `https://graph.facebook.com/v22.0/17841440871598469/media?fields=id,media_type,media_url,permalink,thumbnail_url&access_token=${accessTokenIntagram}&limit=4`
         );
         setPosts(response.data.data);
       } catch (error) {

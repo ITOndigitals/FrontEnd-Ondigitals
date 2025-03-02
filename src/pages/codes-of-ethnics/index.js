@@ -16,6 +16,7 @@ import {
 } from "../../../utils/languageSlug";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 import SchemaODS from "../../../utils/schema";
+import HreflangTags from "../../../utils/hreflangTags";
 
 const parse = require("html-react-parser");
 
@@ -33,6 +34,7 @@ export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
   }, [locale]);
   const dataHead = replaceUrlsHead(updatedData.pageBy?.seo?.fullHead);
   const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
+  const translations = updatedData?.pageBy?.translations || [];
 
   return (
     <>
@@ -41,6 +43,11 @@ export default function DataPolicy({ updatedData, dataFooter, dataHeader }) {
         {dataHead && parse(dataHead)}
         {additionalHeadScripts && parse(additionalHeadScripts)}
       </Head>
+      <HreflangTags
+        translations={translations}
+        currentUri={router.asPath}
+        locale={locale}
+      />
       <SchemaODS />
       <ServiceDetail dataServiceDetail={updatedData} isUsePageId={true} />
       <Footer data={dataFooter} />

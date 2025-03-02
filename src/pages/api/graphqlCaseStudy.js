@@ -51,8 +51,12 @@ export const GetCaseStudyDetailBySlug = async (slug) => {
         }
         translations {
           language {
+            slug
             code
+            locale
+            name
           }
+          uri
           slug
         }
         caseStudyDetailPage {
@@ -179,8 +183,11 @@ export const GetDataPageCaseStudy = async (id, languageCode) => {
         }
         translations {
           language {
+            slug
             code
+            locale
           }
+          uri
           pageId
         }
         cta {

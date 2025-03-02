@@ -97,7 +97,18 @@
     }
   }
 }
-
+@media (min-width: 1024px) {
+  .blog-detail {
+    &-content {
+      &__toc {
+       position: sticky;
+       left: 0;
+       height: fit-content;
+       top: 80px;
+      }
+    }
+  }
+}
 // @media (max-width: 992px) {
 //   .blog-detail {
 //     &-content {

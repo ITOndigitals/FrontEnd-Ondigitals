@@ -54,6 +54,31 @@ export default function Home({
       <Head>
         {fullHeadHTML && parse(fullHeadHTML)}
         {additionalHeadScripts && parse(additionalHeadScripts)}
+        <link
+          rel="alternate"
+          href="https://ondigitals.com/vi/"
+          hrefLang="vi"
+        />
+        <link
+          rel="alternate"
+          href="https://ondigitals.com/zh/"
+          hrefLang="zh"
+        />
+        <link
+          rel="alternate"
+          href="https://ondigitals.com/jp/"
+          hrefLang="ja"
+        />
+        <link
+          rel="alternate"
+          href="https://ondigitals.com/kr/"
+          hrefLang="ko"
+        />
+        <link
+          rel="alternate"
+          href="https://ondigitals.com/"
+          hrefLang="x-default"
+        />
       </Head>
       <SchemaODS />
       <Header data={dataHeader} />

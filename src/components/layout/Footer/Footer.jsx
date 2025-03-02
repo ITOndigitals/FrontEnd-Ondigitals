@@ -8,7 +8,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import classes from "./Footer.module.scss";
 import { Maven_Pro } from "next/font/google";
-import { IconZalo, LogoFooter } from "@/components/ui/Icons/ListIcon";
+import {
+  IconZalo,
+  LogoFooter,
+} from "@/components/ui/Icons/ListIcon";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -29,6 +32,12 @@ export default function Footer({ data }) {
   if (!data) {
     return <div>Loading.....</div>;
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const { footerods, content } = data[0];
   const { title, columExplore, columFollowUs, columService, columIndustries } =
     footerods;
@@ -56,6 +65,17 @@ export default function Footer({ data }) {
                 {title && title}
               </p>
               {content && parse(content)}
+            </div>
+            <div className={classes["colum-1__map-wrapper-map-item"]}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6402117870234!2d106.68875007460305!3d10.762187159457106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3528168587%3A0xb88ddea7383b07dc!2sDigital%20Marketing%20Agency%20-%20On%20Digitals!5e0!3m2!1svi!2s!4v1694778233203!5m2!1svi!2s"
+                width="500"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
           <div className={classes["colum-2"]}>
@@ -152,6 +172,37 @@ export default function Footer({ data }) {
       <div className={classes["btn-contact"]}>
         <Link href={`/${locale}/contact`}>Contact Us</Link>
       </div>
+      <button
+        className={classes["back-to-top"]}
+        onClick={scrollToTop}
+        title="Back to Top"
+      >
+        <svg
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 48.000000 48.000000"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <g
+            transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
+            fill="#fff"
+            stroke="none"
+          >
+            <path
+              d="M145 310 c-71 -71 -87 -92 -77 -102 10 -10 29 4 92 67 l80 80 80 -80
+                  c63 -63 82 -77 92 -67 10 10 -6 31 -77 102 -49 50 -92 90 -95 90 -3 0 -46 -40
+                  -95 -90z"
+            />
+            <path
+              d="M145 190 c-71 -71 -87 -92 -77 -102 10 -10 29 4 92 67 l80 80 80 -80
+                c63 -63 82 -77 92 -67 10 10 -6 31 -77 102 -49 50 -92 90 -95 90 -3 0 -46 -40
+                -95 -90z"
+            />
+          </g>
+        </svg>
+      </button>
     </footer>
   );
 }

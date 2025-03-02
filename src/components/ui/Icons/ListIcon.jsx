@@ -1088,3 +1088,24 @@ export const IconChevronRight = ({ width, height, color }) => {
     </svg>
   );
 };
+export const IconAuthor = ({ width = 16, height = 16, color = "#000000" }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g
+        transform="translate(0, 24) scale(0.1, -0.1)"
+        fill={color}
+        stroke="none"
+      >
+        <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19 -60 0z m46 -16 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16 -11z" />
+        <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -17 7 -20 54 -20 30 0 58 5 61 10 4 6 -14 10 -46 10 -42 0 -50 2 -40 12 7 8 36 13 67 12 53 0 69 8 38 20 -27 10 -78 6 -106 -10z" />
+        <path d="M219 83 c-1 -4 -1 -12 0 -16 1 -5 -3 -5 -9 -2 -13 8 -60 -32 -60 -52 0 -22 14 -15 54 26 23 24 34 41 27 45 -6 4 -12 4 -12 -1z" />
+      </g>
+    </svg>
+  );
+};

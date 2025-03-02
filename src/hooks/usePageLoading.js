@@ -1,37 +1,46 @@
-import Router from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const usePageLoading = (delay = 1000) => {
-  const timeoutRef = useRef();
+  const router = useRouter();
+  const timeoutRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const start = () => {
-      // Kiểm tra xem hành động điều hướng có phải là bởi router.push() hay không
-      if (Router.asPath === window.location.pathname) {
-        timeoutRef.current = window.setTimeout(() => {
+    const start = (url) => {
+      // So sánh URL đích với URL hiện tại để xác định có cần loading không
+      if (url !== router.asPath) {
+        timeoutRef.current = setTimeout(() => {
           setIsLoading(true);
-          document.getElementById("main").style.display = "none";
+          const mainElement = document.getElementById("main");
+          if (mainElement) {
+            mainElement.style.display = "none";
+          }
         }, delay);
       }
     };
 
     const end = () => {
-      window.clearTimeout(timeoutRef.current);
+      clearTimeout(timeoutRef.current);
       setIsLoading(false);
-      document.getElementById("main").style.display = "block";
+      const mainElement = document.getElementById("main");
+      if (mainElement) {
+        mainElement.style.display = "block";
+      }
     };
 
-    Router.events.on("routeChangeStart", start);
-    Router.events.on("routeChangeComplete", end);
-    Router.events.on("routeChangeError", end);
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
 
+    // Cleanup khi component unmount
     return () => {
-      Router.events.off("routeChangeStart", start);
-      Router.events.off("routeChangeComplete", end);
-      Router.events.off("routeChangeError", end);
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
+      clearTimeout(timeoutRef.current); // Đảm bảo timeout bị hủy
     };
-  }, [delay]);
+  }, [delay, router.asPath]); // Thêm router.asPath vào dependency để cập nhật khi URL thay đổi
 
   return isLoading;
 };

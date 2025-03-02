@@ -15,6 +15,7 @@ import {
   getLanguagePathIndustries,
   languagePathsIndustries,
 } from "../../../utils/languageSlug";
+import HreflangTags from "../../../utils/hreflangTags";
 
 const parse = require("html-react-parser");
 
@@ -32,6 +33,8 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
   }, [locale]);
   const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
   const additionalHeadScripts = updatedData.pageBy.addHeadPage.addContentHead;
+  const translations = updatedData.pageBy?.translations || [];
+
   return (
     <>
       <Header data={dataHeader} />
@@ -39,6 +42,11 @@ export default function Index({ updatedData, dataFooter, dataHeader }) {
         {dataHead && parse(dataHead)}
         {additionalHeadScripts && parse(additionalHeadScripts)}
       </Head>
+      <HreflangTags
+        translations={translations}
+        currentUri={router.asPath}
+        locale={locale}
+      />
       <h1 style={{ display: "none" }}>{updatedData?.pageBy?.seo?.title}</h1>
       <SchemaODS />
       <IndustriesPage data={updatedData} />

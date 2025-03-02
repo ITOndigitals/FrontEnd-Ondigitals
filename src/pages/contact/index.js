@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 import SchemaODS from "../../../utils/schema";
+import HreflangTags from "../../../utils/hreflangTags";
 
 const parse = require("html-react-parser");
 
@@ -33,12 +34,19 @@ export default function ContactUs({ updatedData, dataFooter, dataHeader }) {
   const { pageContact, seo, addHeadPage } = updatedData;
   const dataHead = replaceUrlsHead(seo?.fullHead);
   const additionalHeadScripts = addHeadPage.addContentHead;
+  const translations = updatedData?.translations || [];
   return (
     <>
       <Head>
         {dataHead && parse(dataHead)}
         {additionalHeadScripts && parse(additionalHeadScripts)}
       </Head>
+      <HreflangTags
+        translations={translations}
+        currentUri={router.asPath}
+        locale={locale}
+      />
+
       <SchemaODS />
       <Header data={dataHeader} />
       <Contact data={pageContact} />

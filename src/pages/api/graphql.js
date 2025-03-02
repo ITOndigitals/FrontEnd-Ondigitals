@@ -157,8 +157,12 @@ export const GetPostDetailBySlug = async (slug, language) => {
         }
         translations {
           language {
+            slug
             code
+            locale
+            name
           }
+          uri
           slug
         }
         featuredImage {
@@ -446,8 +450,12 @@ export const GetServiceDetailBySlug = async (slug, language) => {
         }
         translations {
           language {
+            slug
             code
+            locale
+            name
           }
+          uri
           slug
         }
         language {
@@ -671,10 +679,12 @@ export const GetPageService = async (id, languageCode) => {
         }
         translations {
           language {
+            slug
+            code
             locale
             name
-            code
           }
+          uri
           pageId
         }
         pageService {
@@ -816,7 +826,9 @@ export const GetPageAboutUs = async (id, languageCode) => {
           language {
             slug
             code
+            locale
           }
+          uri
           pageId
         }
       }
@@ -954,9 +966,11 @@ export const GetDataPageContact = async (id) => {
         }
         translations {
           language {
+            slug
             code
-            name
+            locale
           }
+          uri
           pageId
         }
       }
@@ -1021,8 +1035,12 @@ export const GetServiceParentDetailBySlug = async (slug, language) => {
         }
         translations {
           language {
+            slug
             code
+            locale
+            name
           }
+          uri
           slug
         }
         language {
@@ -1245,9 +1263,12 @@ export const getDataPolicyAndCoEPage = async (id) => {
         }
         translations {
           language {
+            slug
             code
+            locale
           }
           slug
+          uri
           pageId
         }
         language {
@@ -1480,10 +1501,12 @@ export const GetPageIndustries = async (id, languageCode) => {
         }
         translations {
           language {
+            slug
             code
             locale
             name
           }
+          uri
           pageId
         }
         pageIndustries {
@@ -1567,8 +1590,12 @@ export const GetIndustryDetailBySlug = async (slug) => {
         }
         translations {
           language {
+            slug
             code
+            locale
+            name
           }
+          uri
           slug
         }
         language {

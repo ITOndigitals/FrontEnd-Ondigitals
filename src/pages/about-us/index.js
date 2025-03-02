@@ -15,6 +15,7 @@ import {
 import { useEffect } from "react";
 import replaceUrlsHead from "../../../utils/replaceUrlsHead";
 import SchemaODS from "../../../utils/schema";
+import HreflangTags from "../../../utils/hreflangTags";
 
 const parse = require("html-react-parser");
 
@@ -32,10 +33,12 @@ const index = ({ updatedData, dataFooter, dataHeader }) => {
     }, [locale]);
 
     const dataHead = replaceUrlsHead(updatedData.pageBy.seo.fullHead);
+    const translations = updatedData?.pageBy?.translations || [];
     return (
       <>
         <Header data={dataHeader} />
         <Head>{dataHead && parse(dataHead)}</Head>
+        <HreflangTags translations={translations} currentUri={router.asPath} locale={locale} />
         <SchemaODS/>
         <AboutUs data={updatedData} />
         <Footer data={dataFooter} />

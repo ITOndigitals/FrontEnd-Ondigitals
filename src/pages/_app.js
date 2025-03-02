@@ -74,31 +74,7 @@ export default function App({ Component, pageProps }) {
             />
             <link rel="preconnect" href="https://www.google.com"></link>
             <link rel="dns-prefetch" href="https://www.google.com"></link>
-            <link
-              rel="alternate"
-              href="https://ondigitals.com/vi"
-              hrefLang="vi-VN"
-            />
-            <link
-              rel="alternate"
-              href="https://ondigitals.com/zh"
-              hrefLang="zh-CN"
-            />
-            <link
-              rel="alternate"
-              href="https://ondigitals.com/jp"
-              hrefLang="ja-JP"
-            />
-            <link
-              rel="alternate"
-              href="https://ondigitals.com/kr"
-              hrefLang="ko-KR"
-            />
-            <link
-              rel="alternate"
-              href="https://ondigitals.com/"
-              hrefLang="x-default"
-            />
+          
 
             <script
               async

@@ -27,6 +27,7 @@ import {
 } from "./api/graphqlCaseStudy";
 import CaseStudyDetail from "@/components/casestudydetailpage/CaseStudyDetail";
 import SchemaODS from "../../utils/schema";
+import HreflangTags from "../../utils/hreflangTags";
 const parse = require("html-react-parser");
 
 export default function DynamicDetailPage({
@@ -39,11 +40,14 @@ export default function DynamicDetailPage({
   dataFooter,
   dataHeader,
 }) {
+  const router = useRouter();
+  const { locale } = router;
   if (serviceData) {
     const dataHead = replaceUrlsHead(serviceData.serviceBy.seo.fullHead);
     const additionalHeadScripts = replaceUrlsHead(
       serviceData.serviceBy.addHeadPage.addContentHead
     );
+    const translations = serviceData.serviceBy?.translations || [];
     return (
       <>
         <Header data={dataHeader} />
@@ -51,6 +55,11 @@ export default function DynamicDetailPage({
           {dataHead && parse(dataHead)}
           {additionalHeadScripts && parse(additionalHeadScripts)}
         </Head>
+        <HreflangTags
+          translations={translations}
+          currentUri={router.asPath}
+          locale={locale}
+        />
         <SchemaODS type="serviceBy" />
         <ServiceDetail dataServiceDetail={serviceData} />
         <Footer data={dataFooter} />
@@ -62,12 +71,19 @@ export default function DynamicDetailPage({
     const additionalHeadScripts = replaceUrlsHead(
       blogData.postBy.addHeadPage.addContentHead
     );
+    const translations = blogData.postBy?.translations || [];
+
     return (
       <>
         <Head>
           {dataHead && parse(dataHead)}
           {additionalHeadScripts && parse(additionalHeadScripts)}
         </Head>
+        <HreflangTags
+          translations={translations}
+          currentUri={router.asPath}
+          locale={locale}
+        />
         <Header data={dataHeader} />
         <SchemaODS type="postBy" />
         <BlogDetail postDetail={blogData} relatedPosts={relatedPosts} />
@@ -82,6 +98,8 @@ export default function DynamicDetailPage({
     const additionalHeadScripts = replaceUrlsHead(
       serviceParentsData.serviceParentBy.addHeadPage.addContentHead
     );
+    const translations = serviceParentsData.serviceParentBy?.translations || [];
+
     return (
       <>
         <Header data={dataHeader} />
@@ -89,6 +107,11 @@ export default function DynamicDetailPage({
           {dataHead && parse(dataHead)}
           {additionalHeadScripts && parse(additionalHeadScripts)}
         </Head>
+        <HreflangTags
+          translations={translations}
+          currentUri={router.asPath}
+          locale={locale}
+        />
         <SchemaODS type="serviceParentBy" />
         <ServiceDetail dataServiceDetail={serviceParentsData} />
         <Footer data={dataFooter} />
@@ -100,6 +123,7 @@ export default function DynamicDetailPage({
     const additionalHeadScripts = replaceUrlsHead(
       caseStudyData.caseStudyBy.addHeadPage.addContentHead
     );
+    const translations = caseStudyData.caseStudyBy?.translations || [];
     return (
       <>
         <Header data={dataHeader} />
@@ -107,6 +131,11 @@ export default function DynamicDetailPage({
           {dataHead && parse(dataHead)}
           {additionalHeadScripts && parse(additionalHeadScripts)}
         </Head>
+        <HreflangTags
+          translations={translations}
+          currentUri={router.asPath}
+          locale={locale}
+        />
         <h1 style={{ display: "none" }}>
           {caseStudyData?.caseStudyBy?.seo?.title}
         </h1>
@@ -121,6 +150,8 @@ export default function DynamicDetailPage({
     const additionalHeadScripts = replaceUrlsHead(
       industriesData.industryBy.addHeadPage.addContentHead
     );
+    const translations = industriesData.industryBy?.translations || [];
+
     return (
       <>
         <Header data={dataHeader} />
@@ -128,6 +159,11 @@ export default function DynamicDetailPage({
           {dataHead && parse(dataHead)}
           {additionalHeadScripts && parse(additionalHeadScripts)}
         </Head>
+        <HreflangTags
+          translations={translations}
+          currentUri={router.asPath}
+          locale={locale}
+        />
         <SchemaODS type="industryBy" />
         <ServiceDetail dataServiceDetail={industriesData} />
         <Footer data={dataFooter} />
