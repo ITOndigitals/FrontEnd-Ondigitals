@@ -67,12 +67,12 @@ export default function Home({
         <link
           rel="alternate"
           href="https://ondigitals.com/jp/"
-          hrefLang="ja"
+          hrefLang="jp"
         />
         <link
           rel="alternate"
           href="https://ondigitals.com/kr/"
-          hrefLang="ko"
+          hrefLang="kr"
         />
         <link
           rel="alternate"

@@ -2,7 +2,7 @@ import Head from "next/head";
 
 const HreflangTags = ({ translations, currentUri, locale }) => {
   const baseUrl = "https://ondigitals.com";
-  const languageMap = { EN: "en", ZH: "zh", JP: "ja", KR: "ko", VI: "vi" };
+  const languageMap = { EN: "en", ZH: "zh", JP: "jp", KR: "kr", VI: "vi" };
 
   const currentLang = languageMap[locale.toUpperCase()] || locale.toLowerCase();
   const langPrefix = currentLang === "en" ? "" : `/${currentLang}`;
