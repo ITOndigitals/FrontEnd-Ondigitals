@@ -5,7 +5,7 @@ import { IconAuthor, IconCalendarBlogs, IconEye } from "../Icons/ListIcon";
 import dynamic from "next/dynamic";
 
 const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
-const StarRating = dynamic(() => import("../../ui/StarRating/starRating"), {
+const StarRating = dynamic(() => import("../../ui/StarRating/StarRating"), {
   ssr: false, // Disable server-side rendering
 });
 const DateAndViews = ({ createDate, views, postId }) => {
