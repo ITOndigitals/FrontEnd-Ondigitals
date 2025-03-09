@@ -138,7 +138,7 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
               ))}
           </div>
           <div>
-            <DateAndViews createDate={post.date} views={viewPost} />
+            <DateAndViews createDate={post.date} views={viewPost} postId={idPost} />
           </div>
         </div>
 

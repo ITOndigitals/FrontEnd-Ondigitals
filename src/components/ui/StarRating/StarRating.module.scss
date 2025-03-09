@@ -1,0 +1,24 @@
+.star-rating {
+  color: #131114;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  span {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.star {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+  font-size: 20px !important;
+}
+
+.star.active {
+  color: gold;
+}
