@@ -28,7 +28,6 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
     slug: post?.slug,
     language: post?.language?.slug,
   };
-  console.log(post);
   const matchingTranslation = data.translations.find(
     (translation) => translation.language.code === currentLanguage
   );
