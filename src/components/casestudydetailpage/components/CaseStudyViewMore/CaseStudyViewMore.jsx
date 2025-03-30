@@ -18,7 +18,7 @@ export default function CaseStudyViewMore() {
       <div className={`container ${classes["view-more-content"]}`}>
         <ButtonNoBorder
           href={languagePathsCaseStudy[locale]}
-          RightIcon={<TopRightArrow width={24} height={24} color="#fff" />}
+          RightIcon={<TopRightArrow width={24} height={24} color="#111" />}
         >
          {textTranslate[locale]}
         </ButtonNoBorder>

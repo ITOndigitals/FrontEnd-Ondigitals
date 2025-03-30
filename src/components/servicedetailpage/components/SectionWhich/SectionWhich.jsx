@@ -20,7 +20,7 @@ export default function SectionWhich({ data }) {
     uselayout3card,
     widthCard,
   } = data;
-  const isUseVideo = layoutContentSectionWhich[0]?.urlVideo;
+  const isUseLayout2Col = layoutContentSectionWhich[0]?.urlVideo || layoutContentSectionWhich[0]?.mainImageUpload;
   const layOut3Card = uselayout3card
     ? classes["section-which__content__layout3"]
     : "";
@@ -98,11 +98,17 @@ export default function SectionWhich({ data }) {
             </div>
           </div>
         </div>
-        {isUseVideo ? (
+        {isUseLayout2Col ? (
           <div className={classes["section-which__content-video"]}>
             {layoutContentSectionWhich &&
               layoutContentSectionWhich.map((item, index) => {
-                const { content, title, urlVideo, videoDescription } = item;
+                const {
+                  content,
+                  title,
+                  urlVideo,
+                  videoDescription,
+                  mainImageUpload,
+                } = item;
                 return (
                   <div
                     key={index}
@@ -113,17 +119,38 @@ export default function SectionWhich({ data }) {
                         classes["section-which__content-video__detail__left"]
                       }
                     >
-                      <VideoPlayer url={urlVideo} />
-                      <div
-                        style={{ fontFamily: MavenPro.style.fontFamily }}
-                        className={
-                          classes[
-                            "section-which__content-video__detail__left__description"
-                          ]
-                        }
-                      >
-                        {videoDescription && parse(videoDescription)}
-                      </div>
+                      {urlVideo ? (
+                        <>
+                          <VideoPlayer url={urlVideo} />
+                          <div
+                            style={{ fontFamily: MavenPro.style.fontFamily }}
+                            className={
+                              classes[
+                                "section-which__content-video__detail__left__description"
+                              ]
+                            }
+                          >
+                            {videoDescription && parse(videoDescription)}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <Image
+                            src={mainImageUpload?.sourceUrl}
+                            alt={mainImageUpload?.altText}
+                            width={0}
+                            height={300} 
+                            sizes="100vw"
+                            style={{
+                              width: "100%",
+                              height: "300px",
+                              objectFit: "cover",
+                              borderRadius:"16px"
+                            
+                            }} 
+                          />
+                        </>
+                      )}
                     </div>
                     <div
                       className={
@@ -178,7 +205,7 @@ export default function SectionWhich({ data }) {
                     >
                       {card &&
                         card.map((item, index) => {
-                          const { title, imageCard,urlCard } = item;
+                          const { title, imageCard, urlCard } = item;
                           return (
                             <div
                               style={styleWidht}

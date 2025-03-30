@@ -8,16 +8,15 @@ const MavenPro = Maven_Pro({ subsets: ["latin", "vietnamese"] });
 const StarRating = dynamic(() => import("../../ui/StarRating/StarRating"), {
   ssr: false, // Disable server-side rendering
 });
-const DateAndViews = ({ createDate, views, postId }) => {
+const DateAndViews = ({ createDate, views, dataRating }) => {
   const parsedDate = parseISO(createDate);
   const formattedDate = format(parsedDate, "dd/MM/yyyy");
-
   return (
     <div
       style={{ fontFamily: MavenPro.style.fontFamily }}
       className={classes["dateview-wrapper"]}
     >
-      {postId && <StarRating postId={postId} />}
+      {dataRating && <StarRating dataRating={dataRating} />}
       <p>
         <IconAuthor color={"#111111"} width={16} height={16} />
         On Digitals

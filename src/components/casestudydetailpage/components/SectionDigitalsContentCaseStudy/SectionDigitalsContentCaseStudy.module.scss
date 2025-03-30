@@ -59,6 +59,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 50px 0;
+    padding-bottom: 0;
     img {
       margin: 20px 0;
       object-fit: cover;
@@ -98,6 +99,7 @@
         gap: 20px;
         width: 31%;
         align-items: center;
+        box-shadow: 0px 8px 16.4px 0px #00000040;
 
         &__image {
           width: 100%;
@@ -188,7 +190,7 @@
     }
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 300px) {
   .section-digitals-content {
     &__below-image {
       img {

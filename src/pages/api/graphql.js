@@ -578,6 +578,10 @@ export const GetServiceDetailBySlug = async (slug, language) => {
                 title
                 urlVideo
                 videoDescription
+                mainImageUpload {
+                  altText
+                  sourceUrl
+                }
               }
               ... on Service_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
                 title
@@ -1163,6 +1167,10 @@ export const GetServiceParentDetailBySlug = async (slug, language) => {
                 title
                 urlVideo
                 videoDescription
+                mainImageUpload {
+                  altText
+                  sourceUrl
+                }
               }
               ... on Service_parent_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
                 title
@@ -1391,6 +1399,10 @@ export const getDataPolicyAndCoEPage = async (id) => {
                 title
                 urlVideo
                 videoDescription
+                mainImageUpload {
+                  altText
+                  sourceUrl
+                }
               }
               ... on Page_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
                 title
@@ -1718,6 +1730,10 @@ export const GetIndustryDetailBySlug = async (slug) => {
                 title
                 urlVideo
                 videoDescription
+                mainImageUpload {
+                  altText
+                  sourceUrl
+                }
               }
               ... on Industry_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
                 title

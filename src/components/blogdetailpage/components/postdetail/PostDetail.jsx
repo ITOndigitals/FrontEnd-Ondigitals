@@ -22,6 +22,13 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
   const idPost = post?.postId;
   const viewPost = (idPost % 41) + 10;
   const basePath = getLanguagePathBlog(router.locale);
+  const dataRating = {
+    postId: idPost,
+    title: post?.title,
+    slug: post?.slug,
+    language: post?.language?.slug,
+  };
+  console.log(post);
   const matchingTranslation = data.translations.find(
     (translation) => translation.language.code === currentLanguage
   );
@@ -138,7 +145,11 @@ export default function PostDetail({ data, applyMarkDown, textBtn }) {
               ))}
           </div>
           <div>
-            <DateAndViews createDate={post.date} views={viewPost} postId={idPost} />
+            <DateAndViews
+              createDate={post.date}
+              views={viewPost}
+              dataRating={dataRating}
+            />
           </div>
         </div>
 
