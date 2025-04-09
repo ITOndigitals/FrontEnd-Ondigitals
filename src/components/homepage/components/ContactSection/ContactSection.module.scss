@@ -46,28 +46,7 @@
         }
       }
     }
-    &__email {
-      display: flex;
-      align-items: baseline;
-      gap: 3px;
-      margin-top: 50px;
-      flex-wrap: wrap;
-      &__text {
-        color: #fff;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 16px;
-      }
-      &__address {
-        color: #dcc7ed;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 24px;
-        text-decoration-line: underline;
-      }
-    }
+  
   }
   &__columRight {
     width: 35%;

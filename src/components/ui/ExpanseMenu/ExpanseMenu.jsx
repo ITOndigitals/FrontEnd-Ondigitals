@@ -118,12 +118,7 @@ const ExpanseMenu = ({ options, isActive, menu }) => {
               ))}
           </ul>
           <div>
-            <a
-              href="mailto:contact@ondigitals.com"
-              className={classes["menu-list__emailContact"]}
-            >
-              contact@ondigitals.com
-            </a>
+           
 
             <div
               className={classes["menu-social"]}

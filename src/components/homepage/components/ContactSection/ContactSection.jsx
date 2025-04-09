@@ -272,20 +272,7 @@ const ContactSection = React.forwardRef((props, ref) => {
               ) : null}
             </span>
           </form>
-          <div className={classes["contact-section__columLeft__email"]}>
-            <p
-              style={{ fontFamily: MavenPro.style.fontFamily }}
-              className={classes["contact-section__columLeft__email__text"]}
-            >
-              {textEmailContact && textEmailContact}
-            </p>
-            <a
-              href="mailto:contact@ondigitals.com"
-              className={classes["contact-section__columLeft__email__address"]}
-            >
-              contact@ondigitals.com
-            </a>
-          </div>
+        
         </div>
         <div className={classes["contact-section__columRight"]}>
           <div className={classes["contact-section__columRight__image"]}>
