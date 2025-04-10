@@ -1819,3 +1819,46 @@ export const GetListSlugIndustry = async () => {
     return [];
   }
 };
+export const getPostsForRSS = async () => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetPosts {
+      posts(first: 10) {
+        nodes {
+          id
+          title
+          slug
+          date
+          excerpt
+          uri
+          author {
+            node {
+              name
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+          language {
+            locale
+          }
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await request(endpoint, query);
+    return data.posts.nodes;
+  } catch (error) {
+    console.error("[RSS] Error fetching posts:", error);
+    return [];
+  }
+};

@@ -99,6 +99,11 @@ export default function App({ Component, pageProps }) {
             })(window,document,'script','dataLayer','GTM-PKHCHP2');`,
               }}
             />
+            <script
+              src="https://analytics.ahrefs.com/analytics.js"
+              data-key="3jLTjVmcIhawhP7L13bZVQ"
+              async
+            ></script>
           </Head>
           <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
             <Component {...pageProps} />
