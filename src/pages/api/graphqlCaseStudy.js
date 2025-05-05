@@ -181,6 +181,18 @@ export const GetDataPageCaseStudy = async (id, languageCode) => {
             tittleIndustry
           }
         }
+        listCountry {
+          textRight
+          textLeft
+          listItemCountry {
+            text
+            linkItem
+            image {
+              altText
+              sourceUrl
+            }
+          }
+        }
         translations {
           language {
             slug

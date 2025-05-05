@@ -45,7 +45,6 @@ export default function ContactUsForm({ data }) {
       name: "",
       message: "",
       email: "",
-      phone: "",
       honeypot: "", // Trường honeypot ẩn
     },
     validationSchema: getValidationSchema(locale),
@@ -76,12 +75,7 @@ export default function ContactUsForm({ data }) {
           variables: {
             body: `<h4 style="color: black;">Companyname or Name Client: <p style="font-weight: 300; display: inline;">${values.name}</p></h4> 
               <h4 style="color: black;">Email: <p style="font-weight: 300; display: inline;">${values.email}</p></h4>  
-              <h4 style="color: black;">
-                Phone Number: 
-                <a href="tel:${values.phone}" style="color: #1155CC; display: inline;">
-                  <p style="font-weight: 300; display: inline;">${values.phone}</p>
-                </a>
-              </h4>
+  
               <strong style="color: black;">Message:</strong> 
               <pre style="font-weight: 400;display: inline;white-space: pre-wrap;line-height: 24px;font-family: 'Roboto';font-size: 16px;">${values.message}</pre>
             `,
@@ -143,6 +137,7 @@ export default function ContactUsForm({ data }) {
             <form
               className={classes["contact-section__columLeft__form"]}
               onSubmit={formik.handleSubmit}
+              autoComplete="off"
             >
               <Input
                 title={fieldName?.textLable}
@@ -178,7 +173,7 @@ export default function ContactUsForm({ data }) {
                   formik.touched.email && !formik.errors.email ? true : false
                 }
               />
-              <Input
+              {/* <Input
                 title={fieldPhone?.textLable}
                 type={"tel"}
                 fieldName={"phone"}
@@ -194,7 +189,7 @@ export default function ContactUsForm({ data }) {
                 isSuccess={
                   formik.touched.phone && !formik.errors.phone ? true : false
                 }
-              />
+              /> */}
               <MesageTextarea
                 title={fieldMessage?.textLable}
                 name="message"

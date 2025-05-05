@@ -3,12 +3,15 @@ import IntroCaseStudyPage from "./components/IntroCaseStudyPage/IntroCaseStudyPa
 import { useBoundStore } from "@/store/useBoundStore";
 import NeedHelpDigitalGrowth from "../ui/NeedHelpDigitalGrowth/NeedHelpDigitalGrowth";
 import dynamic from "next/dynamic";
+import CountryList from "./components/CountryList/CountryList";
 
-const CaseStudy = dynamic(() => import("./components/CaseStudy/CaseStudy"), { ssr: true });
+const CaseStudy = dynamic(() => import("./components/CaseStudy/CaseStudy"), {
+  ssr: true,
+});
 
 export default function CaseStudyPage({ data }) {
   const { pageBy, allCaseStudy } = data;
-  const { cta, pageCaseStudy } = pageBy;
+  const { cta, pageCaseStudy, listCountry } = pageBy;
   const combinedData = { ...pageCaseStudy, ...allCaseStudy };
   const setToLight = useBoundStore((state) => state.setToLight);
   const setHeaderCanChangeColor = useBoundStore(
@@ -44,6 +47,7 @@ export default function CaseStudyPage({ data }) {
     <>
       <IntroCaseStudyPage data={pageCaseStudy.sectionIntro} />
       <CaseStudy data={combinedData} />
+      {listCountry && <CountryList data={listCountry} />}
       <NeedHelpDigitalGrowth data={cta} />
     </>
   );

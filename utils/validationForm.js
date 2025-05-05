@@ -35,10 +35,10 @@ const getValidationSchema = (language) => {
     email: Yup.string()
       .email(selectedLanguage.string.email)
       .required(selectedLanguage.string.required),
-    phone: Yup.string()
-      .matches(/^[0-9+\s]+$/, selectedLanguage.string.matches)
-      .min(10, selectedLanguage.string.min)
-      .max(15, selectedLanguage.string.max),
+    // phone: Yup.string()
+    //   .matches(/^[0-9+\s]+$/, selectedLanguage.string.matches)
+    //   .min(10, selectedLanguage.string.min)
+    //   .max(15, selectedLanguage.string.max),
     // message: Yup.string()
     //   .min(10, "Minimum 10 characters required")
     //   .required("This field is not empty"),

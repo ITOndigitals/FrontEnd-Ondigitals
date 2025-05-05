@@ -75,7 +75,7 @@ export default function SchemaODS({ type }) {
             },
             {
             "@type": "Person",
-            "@id": "https://api.ondigitals.com/",
+            "@id": "https://ondigitals.com/",
             "name": "webadmin",
             "url": "https://ondigitals.com/",
             "image": {

@@ -1862,3 +1862,262 @@ export const getPostsForRSS = async () => {
     return [];
   }
 };
+export const GetListSlugCountry = async () => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetListSlugCountry {
+      countries(first: 100) {
+        nodes {
+          slug
+          countryId
+          language {
+            locale
+            code
+          }
+        }
+      }
+    }
+  `;
+  try {
+    const data = await request(endpoint, query);
+    return data.countries.nodes;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return [];
+  }
+};
+export const GetCountryDetailBySlug = async (slug, language) => {
+  const endpoint = endPointApi;
+  const query = gql`
+    query GetCountryDetailBySlug(
+      $slug: String!
+      $language: LanguageCodeFilterEnum!
+    ) {
+      countryBy(slug: $slug) {
+        addHeadPage {
+          addContentHead
+        }
+        content
+        title
+        cta {
+          title
+          textButton
+          content
+          buttonColor
+          backgroundColor
+          textColor
+        }
+        seo {
+          fullHead
+        }
+        translations {
+          language {
+            slug
+            code
+            locale
+            name
+          }
+          uri
+          slug
+        }
+        language {
+          slug
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        serviceHomepage {
+          color
+          name
+          secondaryColor
+          titleBelowTextHeadingPageServiceDetail
+          titleHeadingSectionFaq
+          sectionWho {
+            backgroundColor
+            color
+            projectCardShort {
+              listImageLogo {
+                altText
+                sourceUrl
+              }
+              mainImage {
+                altText
+                sourceUrl
+              }
+              textContent
+              urlCard
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionWhat {
+            backgroundColor
+            contentLeft
+            contentRight
+            textTitle
+            mainImage {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhy {
+            backgroundColor
+            color
+            listCardWhy {
+              cardContent
+              cardTitle
+              mainImage {
+                altText
+                sourceUrl
+              }
+            }
+            textLeftHead
+            textRightHead
+          }
+          sectionHow {
+            cardStep {
+              cardContent
+              cardTitle
+              titleStep
+              iconCardStep
+            }
+            contentListSteps
+            contentPlatform {
+              contentTitle
+              iconImage {
+                altText
+                sourceUrl
+              }
+              platformGlobal {
+                content
+                listIconImage {
+                  altText
+                  sourceUrl
+                }
+                name
+              }
+              platformVietnam {
+                content
+                fieldGroupName
+                listSocialMedia {
+                  sourceUrl
+                  altText
+                }
+                name
+              }
+              textFooterPlatform
+              title
+            }
+            textLeftHead
+            textRightHead
+            titleListSteps
+            imageIcon {
+              altText
+              sourceUrl
+            }
+          }
+          sectionWhich {
+            backgroundColor
+            textHeadingRight
+            textHeadingLeft
+            uselayout3card
+            widthCard
+            layoutContentSectionWhich {
+              ... on Country_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCard {
+                textContent
+                title
+                urlCard
+                imageCard {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Country_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutVideo {
+                content
+                title
+                urlVideo
+                videoDescription
+                mainImageUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              ... on Country_Servicehomepage_SectionWhich_LayoutContentSectionWhich_LayoutCardHasTitle {
+                title
+                backgroundCardColor
+                uselayout3cards
+                card {
+                  title
+                  textContent
+                  urlCard
+                  imageCard {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+          sectionContentDetail {
+            ... on Country_Servicehomepage_SectionContentDetail_ContentNoImage {
+              content
+              title
+            }
+            ... on Country_Servicehomepage_SectionContentDetail_ContentWithImage {
+              content
+              image {
+                altText
+                sourceUrl
+              }
+              title
+            }
+          }
+          layoutContentServiceDetail {
+            ... on Country_Servicehomepage_LayoutContentServiceDetail_SectionIntro {
+              backgroundColor
+              color
+              textLeft
+              textRight
+              textHeadTitle
+              textTitle
+              backgroundColorImage
+              selectPositionImage
+              imageSectionIntro {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+      serviceParents(
+        where: { language: $language, orderby: { field: DATE, order: ASC } }
+      ) {
+        nodes {
+          serviceHomepage {
+            name
+            secondaryColor
+          }
+          slug
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  `;
+  const variables = { slug, language };
+  try {
+    const data = await request(endpoint, query, variables);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return null;
+  }
+};
