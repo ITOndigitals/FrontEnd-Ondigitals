@@ -266,7 +266,6 @@ const ContactSection = React.forwardRef((props, ref) => {
               ) : null}
             </span>
           </form>
-        
         </div>
         <div className={classes["contact-section__columRight"]}>
           <div className={classes["contact-section__columRight__image"]}>
