@@ -9,6 +9,7 @@ const messages = {
       matches: "Only numbers are allowed",
       min: "At least 10 digits",
       max: "At most 15 digits",
+      minString: "Must be more than 10 characters",
     },
   },
   vi: {
@@ -19,6 +20,7 @@ const messages = {
       matches: "Chỉ cho phép nhập số",
       min: "Ít nhất 10 chữ số",
       max: "Tối đa 15 chữ số",
+      minString: "Phải có ít nhất 10 chữ cái",
     },
   },
 };
@@ -34,14 +36,18 @@ const getValidationSchema = (language) => {
       .required(selectedLanguage.string.required),
     email: Yup.string()
       .email(selectedLanguage.string.email)
+      .matches(
+        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        selectedLanguage.string.email
+      )
       .required(selectedLanguage.string.required),
     // phone: Yup.string()
     //   .matches(/^[0-9+\s]+$/, selectedLanguage.string.matches)
     //   .min(10, selectedLanguage.string.min)
     //   .max(15, selectedLanguage.string.max),
-    // message: Yup.string()
-    //   .min(10, "Minimum 10 characters required")
-    //   .required("This field is not empty"),
+    message: Yup.string()
+      .min(10, selectedLanguage.string.minString)
+      .required(selectedLanguage.string.required),
   });
 
   return validationSchema;
