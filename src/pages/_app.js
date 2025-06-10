@@ -64,6 +64,7 @@ export default function App({ Component, pageProps }) {
           <Head>
             <meta name="geo.region" content="VN-SG" />
             <meta name="geo.placename" content="Ho Chi Minh" />
+
             <meta
               name="geo.position"
               content="10.763109429425983;106.69381408995902"
@@ -72,6 +73,7 @@ export default function App({ Component, pageProps }) {
               name="ICBM"
               content="10.763109429425983, 106.69381408995902"
             />
+            <meta name="yandex-verification" content="38da6e6e9e06d5e4" />
             <link rel="preconnect" href="https://www.google.com"></link>
             <link rel="dns-prefetch" href="https://www.google.com"></link>
 
